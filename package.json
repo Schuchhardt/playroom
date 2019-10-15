@@ -4,10 +4,12 @@
   "dependencies": {
     "@rails/webpacker": "3.5",
     "buefy": "^0.7.2",
+    "chart.js": "^2.8.0",
     "lodash": "^4.17.11",
     "moment": "^2.24.0",
     "nes.css": "^2.0.0",
     "vue": "^2.6.6",
+    "vue-chartkick": "^0.5.2",
     "vue-dni": "^1.0.1",
     "vue-frappe-gantt": "^0.3.4",
     "vue-loader": "14.2.2",

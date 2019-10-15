@@ -21,8 +21,10 @@ body{
 	img{
 		height: 80px;
 	    position: relative;
-	    left: 100px;
 	    top: 10px;
+		display: block;
+		margin: auto;
+		max-width: 90%;
 	}
 }
 
@@ -55,6 +57,9 @@ body{
 		input{
 			font-size: 18px;
 			border-radius: 15px;
+			&::placeholder {
+				font-size: 18px;
+			}
 		}
 		label{
 			margin: 5px 0px;

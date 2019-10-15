@@ -1,6 +1,7 @@
 import Router from 'vue-router';
 import Playsets from './components/playsets';
 import Games from './components/games';
+import Stats from './components/stats';
 
 export default new Router({
   routes: [
@@ -13,6 +14,11 @@ export default new Router({
       path: '/games/:playset_id?',
       name: 'Games',
       component: Games,
+    },
+    {
+      path: '/stats',
+      name: 'Stats',
+      component: Stats,
     }
   ]
 });

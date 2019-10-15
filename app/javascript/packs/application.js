@@ -15,7 +15,9 @@ import 'buefy/dist/buefy.css'
 import Router from 'vue-router';
 import Resource from 'vue-resource';
 import VueScrollTo from 'vue-scrollto';
- 
+import Chartkick from 'vue-chartkick';
+
+Vue.use(Chartkick)
 Vue.use(Buefy, {
 	defaultIconPack: 'fa',
 	defaultDayNames: ['Dom', 'Lun', 'Ma', 'Mie', 'Jue', 'Vie', 'Sáb'],

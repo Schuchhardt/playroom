@@ -44,7 +44,7 @@
           <div class="columns games-grid" v-if="games.length > 0">
             <p class="t" v-if="filteredGames.length == 0"> Por favor selecciona una ludoteca</p>
             <p class="t"> Mostrando {{filteredGames.length}} juegos</p>
-            <div class="column is-one-quarter game-detail" v-for="g in filteredGames" :key="g.id">
+            <div class="column is-one-quarter is-full-mobile game-detail" v-for="g in filteredGames" :key="g.id">
 
               <div class="card" v-on:click.prevent="openGameDetail(g)">
                 <div class="card-header">
@@ -405,7 +405,7 @@ export default {
         margin: 10px;
         margin-bottom: 0;
         padding: 0px;
-        height: 100%;
+        height: 310px;
         opacity: 1;
         transition: all .6s ease;
         border-radius: 5px;
@@ -418,13 +418,25 @@ export default {
           height: 60px;
           padding: 10px;
           background-color: darken(#443c8f, 10%);
+          height: 20%;
+        }
+        .card-image{
+          height: 80%;
+          .image{
+            height: 100%;
+          }
+          img{
+            max-height: 100%;
+          }
         }
         p{
           color: white;
           text-transform: uppercase;
           text-align: center;
           width: 100%;
-          letter-spacing: 2px;
+          letter-spacing: 5px;
+          font-weight: lighter;
+          font-size: 20px;
         }
       }
     }
@@ -475,8 +487,8 @@ export default {
 }
 
 .filter-container{
-  position: absolute;
-  bottom: 20px;
+  position: fixed;
+  bottom: 30px;
   right: 30px;
   height: 100px;
   width: 100px;
