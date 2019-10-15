@@ -1,0 +1,73 @@
+//
+// Common Colors Vars
+//
+$black: #000000;
+$white: #ffffff;
+
+$red: #e94763;
+$orange: #f3955f;
+$turquese: #26a2a0;
+$light-turquese: #46d3a4;
+$yellow: #fac146;
+$dark-blue: #657f8f;
+
+@mixin odd(){
+  &:nth-child(odd) {
+    @content
+  }
+}
+
+@mixin even(){
+  &:nth-child(even) {
+    @content
+  }
+}
+
+// generic transform
+@mixin transform($transforms) {
+     -moz-transform: $transforms;
+       -o-transform: $transforms;
+      -ms-transform: $transforms;
+  -webkit-transform: $transforms;
+          transform: $transforms;
+}
+// rotate
+@mixin rotate ($deg) {
+  @include transform(rotate(#{$deg}deg));
+}
+ 
+// scale
+@mixin scale($scale) {
+   @include transform(scale($scale));
+} 
+
+@mixin transition($time) {
+     -moz-transition: $time;
+       -o-transition: $time;
+      -ms-transition: $time;
+  -webkit-transition: $time;
+          transition: $time;
+}
+
+@mixin linear-gradient($color1, $color2) {
+  background: $color1; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(to left, $color1, $color2); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(to left, $color1, $color2); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(to left, $color1, $color2); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to left , $color1, $color2); /* Standard syntax */
+}
+
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content; 
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  } 
+}

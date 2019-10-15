@@ -1,0 +1,25 @@
+{
+  "name": "odj",
+  "private": true,
+  "dependencies": {
+    "@rails/webpacker": "3.5",
+    "buefy": "^0.7.2",
+    "lodash": "^4.17.11",
+    "moment": "^2.24.0",
+    "nes.css": "^2.0.0",
+    "vue": "^2.6.6",
+    "vue-dni": "^1.0.1",
+    "vue-frappe-gantt": "^0.3.4",
+    "vue-loader": "14.2.2",
+    "vue-multiselect": "^2.1.6",
+    "vue-resource": "^1.5.1",
+    "vue-router": "^3.0.2",
+    "vue-scrollto": "^2.15.0",
+    "vue-template-compiler": "^2.6.6",
+    "vuex": "^3.1.0",
+    "yarn": "^1.13.0"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "2.11.2"
+  }
+}

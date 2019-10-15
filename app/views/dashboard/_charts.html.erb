@@ -1,0 +1,24 @@
+<%= javascript_include_tag "https://www.google.com/jsapi", "Chart.bundle", "chartkick" %>
+
+<!-- <h4>Colegios por region</h4>	 -->
+<%# per_region = {} %>
+<%# per_commune = Establishment.all.group(:commune).count.map{|c, count| [c.region.name, count]} %>
+<%# per_commune.each{|c| per_region[c[0]] = (per_region[c[0]] || 0) + c[1]} %>
+<%#= pie_chart per_region.to_a %>
+
+<h4>Colegios por tipo</h4>	
+<%= pie_chart Establishment.group(:establishment_kind).count %>
+
+<h4>Tiempos de Juego</h4>	
+<%= bar_chart Game.group(:game_time).count(:game_time).sort_by{|g, c| g.to_i} %>
+
+<h4>Dificultad por Juego</h4>	
+<%= pie_chart Game.group(:difficulty).count(:difficulty) %>
+
+<h4>Edad sugerida por Juego</h4>	
+<%= column_chart Game.group(:suggested_age).count(:suggested_age).sort_by{|g, c| g.delete('^0-9').to_i}  %>
+
+<h4>Cantidad de Jugadores por Juego</h4>	
+<%= bar_chart Game.group(:number_of_players).count.sort %>
+
+

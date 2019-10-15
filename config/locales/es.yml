@@ -1,0 +1,380 @@
+es:
+  helpers:
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: "Ningún %{entry_name} encontrado"
+          one: "Mostrando <b>1</b> %{entry_name}"
+          other: "Mostrando <b>todos %{count}</b> %{entry_name}"
+      more_pages:
+        display_entries: "Mostrando %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> de <b>%{total}</b> en total"
+  views:
+    pagination:
+      truncate: "..."
+      next: "Siguiente"
+      previous: "Anterior"
+      last: "Último"
+      first: "Primero"
+  activerecord:
+    models:
+      admin_user: 
+        one: "Administrador"
+        other: "Administradores"
+      user: 
+        one: "Usuario"
+        other: "Usuarios"
+      establishment: 
+        one: "Colegio"
+        other: "Colegios"
+      region: 
+        one: "Región"
+        other: "Regiones"
+      commune: 
+        one: "Comuna"
+        other: "Comunas"
+      playset: 
+        one: "Ludoteca"
+        other: "Ludotecas"
+      game: 
+        one: "Juego"
+        other: "Juegos"
+      game_set:
+        one: "Set de Juego"
+        other: "Set de Juegos"
+      playset_subscription:
+        one: "Suscripción Ludoteca"
+        other: "Suscripción Ludotecas"
+      skill:
+        one: "Habilidad"
+        other: "Habilidades"
+      class_planning:
+        one: "Planificación"
+        other: "Planificaciones"
+      user_establishment:
+        one: "Encargado Establecimiento"
+        other: "Encargado Establecimientos"
+      game_skill:
+        one: "Habilidad Juego"
+        other: "Habilidades del Juego"
+    attributes:
+      admin_user:
+        name: "Nombre"
+        email: "Correo"
+      user:
+        establishment: "Establecimiento"
+        name: "Nombre"
+        email: "Correo"
+        phone: "Fono"
+        role: "Rol de usuario"
+        password: "Contraseña"
+        password_confirmation: "Confirmar Contraseña"
+        user_type: "Tipo de usuario"
+        user_type_list: 
+          teacher: "Profesor"
+          executive: "Director"
+          student: "Alumno"
+          internal: "Interno"
+      establishment:
+        name: "Nombre"
+        phone: "Fono"
+        address: "Dirección"
+        commune: "Comuna"
+        education_level_preschool: "Prescolar?"
+        education_level_primary: "1º Ciclo"
+        education_level_secondary: "2º Ciclo"
+        education_level_secondary_tech: "Educación Media"
+        establishment_kind: "Tipo de establecimiento"
+        ive: "IVE"
+        students_per_course: "Nro de Estudiantes por curso"
+        total_students: "Nro total de estudiantes"
+      user_establishment:
+        establishment: "Establecimiento"
+        user: "Usuario"
+      region: 
+        name: "Nombre"
+      commune: 
+        name: "Nombre"
+      playset: 
+        name: "Nombre"
+        description: "Descripción"
+        price: "Precio"
+      game: 
+        name: "Nombre"
+        description: "Descripción"
+        suggested_age: "Edad sugerida"
+        game_time: "Tiempo de juego"
+        number_of_players: "Nro de jugadores"
+        difficulty: "Dificultad"
+        image: "Imagen"
+        level_preschool: "Parvulos"
+        level_first_primary: "1º Ciclo"
+        level_second_primary: "2º Ciclo"
+        level_secondary: "Ed. Media"
+      game_skill:
+        game: "Juego"
+        skill: "Habilidad"
+      game_set:
+        game: "Juego"
+        playset: "Ludoteca"
+        suggested_copies: "Copias sugeridas"
+      playset_subscription:
+        establishment: "Establecimiento"
+        playset: "Ludoteca"
+        started_at: "Fecha Inicio"
+        finished_at: "Fecha Termino"
+      skill:
+        name: "Nombre Habilidad"
+        skill_category: "Categoria de Habilidad"
+      class_planning:
+        aptitudes: "Conocimientos Aptitudinales"
+        class_date: "Fecha"
+        class_game_timing: "Momento de la clase en que se usa el Juego"
+        contents: "Contenidos"
+        curricular_subject: "Asignatura curricular"
+        emotions: "Emoción esperada"
+        end_class_description: "Descripción - Cierre de Clase"
+        evaluation_indicators: "Indicadores de Evaluación"
+        evaluation_methods: "Metodos de Evaluación"
+        extracurricular_activity: "Nombre Actividad extracurricular"
+        game_goal_class_relation: "Relación explicita del juego y el objectivo de la clase"
+        game_modifications: "Modificaciones y/o adecuaciones"
+        game_teaching: "Enseñanza del juego"
+        general_requirements_of_group: "Requerimientos del respecto del grupo y convivencia"
+        init_class_description: "Descripción - Inicio de Clase"
+        learning_objective: "Objetivo de aprendizaje"
+        learning_unit: "Unidad de aprendizaje"
+        level: "Nivel/Curso"
+        middle_class_description: "Descripción - Desarrollo de Clase"
+        number_of_students: "Cantidad de Estudiantes totales"
+        number_of_students_per_group: "Cantidad de Estudiantes por grupo"
+        other_resources_needed: "Otros recursos necesarios"
+        title: "titulo"
+        skills: "Conocimientos Procedimentales - Habilidades"
+    errors:
+      messages:
+        record_invalid: "La validación falló: %{errors}"
+        restrict_dependent_destroy:
+          has_one: No se puede eliminar el registro porque existe un %{record} dependiente
+          has_many: No se puede eliminar el registro porque existen %{record} dependientes
+  date:
+    abbr_day_names:
+    - dom
+    - lun
+    - mar
+    - mié
+    - jue
+    - vie
+    - sáb
+    abbr_month_names:
+    -
+    - ene
+    - feb
+    - mar
+    - abr
+    - may
+    - jun
+    - jul
+    - ago
+    - sep
+    - oct
+    - nov
+    - dic
+    day_names:
+    - domingo
+    - lunes
+    - martes
+    - miércoles
+    - jueves
+    - viernes
+    - sábado
+    formats:
+      default: "%-d/%-m/%Y"
+      long: "%-d de %B de %Y"
+      short: "%-d de %b"
+    month_names:
+    -
+    - enero
+    - febrero
+    - marzo
+    - abril
+    - mayo
+    - junio
+    - julio
+    - agosto
+    - septiembre
+    - octubre
+    - noviembre
+    - diciembre
+    months:
+      january: Enero
+      february: Febrero
+      march: Marzo
+      april: Abril
+      may: Mayo
+      june: Junio
+      july: Julio
+      august: Agosto
+      september: Septiembre
+      october: Octubre
+      november: Noviembre
+      december: Diciembre
+    order:
+    - :day
+    - :month
+    - :year
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: alrededor de 1 hora
+        other: alrededor de %{count} horas
+      about_x_months:
+        one: alrededor de 1 mes
+        other: alrededor de %{count} meses
+      about_x_years:
+        one: alrededor de 1 año
+        other: alrededor de %{count} años
+      almost_x_years:
+        one: casi 1 año
+        other: casi %{count} años
+      half_a_minute: medio minuto
+      less_than_x_minutes:
+        one: menos de 1 minuto
+        other: menos de %{count} minutos
+      less_than_x_seconds:
+        one: menos de 1 segundo
+        other: menos de %{count} segundos
+      over_x_years:
+        one: más de 1 año
+        other: más de %{count} años
+      x_days:
+        one: 1 día
+        other: "%{count} días"
+      x_minutes:
+        one: 1 minuto
+        other: "%{count} minutos"
+      x_months:
+        one: 1 mes
+        other: "%{count} meses"
+      x_years:
+        one: 1 año
+        other: "%{count} años"
+      x_seconds:
+        one: 1 segundo
+        other: "%{count} segundos"
+    prompts:
+      day: Día
+      hour: Hora
+      minute: Minutos
+      month: Mes
+      second: Segundos
+      year: Año
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      accepted: debe ser aceptado
+      blank: no puede estar en blanco
+      present: debe estar en blanco
+      confirmation: no coincide
+      empty: no puede estar vacío
+      equal_to: debe ser igual a %{count}
+      even: debe ser par
+      exclusion: está reservado
+      greater_than: debe ser mayor que %{count}
+      greater_than_or_equal_to: debe ser mayor que o igual a %{count}
+      inclusion: no está incluido en la lista
+      invalid: no es válido
+      less_than: debe ser menor que %{count}
+      less_than_or_equal_to: debe ser menor que o igual a %{count}
+      model_invalid: "La validación falló: %{errors}"
+      not_a_number: no es un número
+      not_an_integer: debe ser un entero
+      odd: debe ser impar
+      required: debe existir
+      taken: ya está en uso
+      too_long:
+        one: "es demasiado largo (1 carácter máximo)"
+        other: "es demasiado largo (%{count} caracteres máximo)"
+      too_short:
+        one: "es demasiado corto (1 carácter mínimo)"
+        other: "es demasiado corto (%{count} caracteres mínimo)"
+      wrong_length:
+        one: "no tiene la longitud correcta (1 carácter exactos)"
+        other: "no tiene la longitud correcta (%{count} caracteres exactos)"
+      other_than: debe ser distinto de %{count}
+    template:
+      body: 'Se encontraron problemas con los siguientes campos:'
+      header:
+        one: No se pudo guardar este/a %{model} porque se encontró 1 error
+        other: No se pudo guardar este/a %{model} porque se encontraron %{count} errores
+  helpers:
+    select:
+      prompt: Por favor seleccione
+    submit:
+      create: Crear %{model}
+      submit: Guardar %{model}
+      update: Actualizar %{model}
+  number:
+    currency:
+      format:
+        delimiter: "."
+        format: "%u %n "
+        precision: 0
+        separator: ","
+        significant: false
+        strip_insignificant_zeros: false
+        unit: "$"
+    format:
+      delimiter: "."
+      precision: 3
+      separator: ","
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: "%n %u"
+        units:
+          billion: mil millones
+          million:
+            one: millón
+            other: millones
+          quadrillion: mil billones
+          thousand: mil
+          trillion:
+            one: billón
+            other: billones
+          unit: ''
+      format:
+        delimiter: ''
+        precision: 1
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one: Byte
+            other: Bytes
+          gb: GB
+          kb: KB
+          mb: MB
+          tb: TB
+    percentage:
+      format:
+        delimiter: ''
+        format: "%n %"
+    precision:
+      format:
+        delimiter: ''
+  support:
+    array:
+      last_word_connector: " y "
+      two_words_connector: " y "
+      words_connector: ", "
+  time:
+    am: am
+    formats:
+      default: "%A, %-d de %B de %Y %H:%M:%S %z"
+      long: "%-d de %B de %Y %H:%M"
+      short: "%-d de %b %H:%M"
+      simple: "%d/%m/%y %H:%M"
+    pm: pm

@@ -1,0 +1,228 @@
+<template>
+  <div id="app">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" >
+          <img height="150" class="logo-img" src="./images/playroom_logo.png">
+        </a>
+
+        <a role="button" class="navbar-burger burger" :class="{'is-active': isMobile}" aria-label="menu" aria-expanded="false" v-on:click="setMobile()">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div id="landing-navbar" class="navbar-menu" :class="{'is-active': isMobile}">
+        <div class="navbar-start">
+          <router-link class="navbar-item" to="/" exact>
+            <span class="icon">
+              <i class="fas fa-archway" aria-hidden="true"></i>
+            </span>
+            <span>Ludotecas</span>
+          </router-link>
+          <router-link class="navbar-item" to="/games">
+            <span class="icon">
+              <i class="fas fa-book" aria-hidden="true"></i>
+            </span>
+            <span>Juegos</span>
+          </router-link>
+          <router-link class="navbar-item" to="/stats">
+            <span class="icon">
+              <i class="fas fa-chart-bar" aria-hidden="true"></i>
+            </span>
+            <span>Estadisticas</span>
+          </router-link>
+        </div>
+        <div class="navbar-end ">
+          <div class="navbar-item">
+            <div class="tile is-parent is-vertical">
+            <div class="tile is-child no-m">
+            <p v-if="currentUser" class="user-name">
+              <span class="user-text">{{currentUser.name || currentUser.email}}</span>
+               <a class="button is-light close-btn" v-on:click="signOut()">
+                <span class="x">X</span> <span>Salir</span> 
+              </a></p>
+            </div>
+            <div class="tile is-child">
+            <p v-if="currentEstablishment" class="user-name">{{currentEstablishment.name}}</p>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </nav>
+    <router-view></router-view>
+    <!-- <div class="chatbot-bubble">
+      <p class="nes-balloon from-right">¿Necesitas<br>Ayuda?</p>
+      <i class="nes-octocat"></i>
+    </div> -->
+  </div>
+</template>
+
+<script>
+
+export default {
+  name: 'App',
+  data() {
+    return {
+      currentUser: null,
+      currentEstablishment: null,
+      isMobile: false
+    }
+  },
+  mounted() {
+    this.currentUser = window.currentUser;
+    this.currentEstablishment = window.currentEstablishment;
+  },
+  methods: {
+    signOut () {
+      this.$http.delete('/users/sign_out').then( () => {
+         window.location.href = "/";
+      })
+    },
+    setMobile () {
+      this.isMobile = !this.isMobile
+    }
+  }
+};
+</script>
+
+<style lang="scss">
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+body{
+	background-color: #FFF;
+}
+
+html{
+  @media(max-width: 414px) {
+    min-width: 103vw;
+  }
+}
+
+#app {
+  font-family: 'Lato', cursive;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+
+html, body, pre, code, kbd, samp, button, a, input{
+	font-family: 'Lato', cursive;
+}
+
+.navbar{
+  background-color: #0f0d2a;
+  height: 130px;
+  /deep/ .navbar-burger{
+    color: white;
+    position: relative;
+    top: 30px;
+    left: 10px;
+  }
+}
+
+
+.navbar-brand{
+  height: 110px;
+  width: 25%;
+  position: relative;
+  top: 10px;
+  @media(max-width: 414px) {
+    width: 90%;
+  }
+  .navbar-item{
+    padding-left: 10%;
+    max-width: 95%;
+  }
+  img{
+    max-height: 90%;
+    display: block;
+    margin: auto;
+    box-sizing: unset;
+    position: relative;
+    left: 0;
+  }
+}
+
+.navbar-menu{
+  background-color: #0f0d2a;
+  .navbar-item{
+    font-size: 22px;
+    padding: 25px;
+    text-transform: uppercase;
+    color: white;
+    color: gray;
+    i{
+      color: #00d8cd;
+      opacity: 0.6;
+    }
+    &.router-link-active{
+      color: white;
+      i{
+        color: #00d8cd
+      }
+    }
+    &:hover{
+      background-color: #0f0d2a !important;
+    }
+  }
+  .close-btn{
+    background-color: transparent;
+    float: right;
+    color: white;
+    .x{
+      padding-right: 10px;
+      font-size: 24px;
+      font-weight: bolder;
+      color: lightgray;
+    }
+  }
+}
+
+.user-name{
+  font-size: 12px;
+  position: relative;
+  right: 40%;
+  top: 20px;
+  .user-text{
+    position: relative;
+    top: 10px;
+  }
+}
+
+#landing-navbar{
+  .navbar-start .navbar-item{
+    display: block;
+    span{
+      position: relative;
+      top: 25px;
+        @media(max-width: 414px) {
+        top: 0px;
+      }
+    }
+  }
+  .tile.no-m{
+    margin-bottom: 5px !important;
+  }
+  .buttons .close-btn{
+    display: block;
+    position: relative;
+    bottom: 10px;
+    width: 100%;
+    text-align: right;
+  }
+  .user-name{
+    font-size: 14px;
+    display: block;
+    width: 100%;
+    left: 0;
+    top: 0px;
+  }
+}
+
+
+</style>
