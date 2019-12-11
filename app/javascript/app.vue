@@ -3,7 +3,7 @@
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <a class="navbar-item" >
-          <img height="150" class="logo-img" src="./images/playroom_logo.png">
+          <img height="150" class="logo-img" src="./images/pr3.png">
         </a>
 
         <a role="button" class="navbar-burger burger" :class="{'is-active': isMobile}" aria-label="menu" aria-expanded="false" v-on:click="setMobile()">

@@ -9,7 +9,7 @@
               <div class="card-header">
                 <p class="title">{{playset.name}}</p>
               </div>
-              <div class="card-image">
+              <div class="card-image" @click.prevent="goToPlayset(playset)">
                 <figure class="image">
                   <img v-if="playset.image_url" :src="playset.image_url" alt="ludoteca"> 
                   <img v-if="!playset.image_url" src="../../assets/images/pie_head.png" alt="ludoteca"> 

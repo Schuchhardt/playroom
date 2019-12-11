@@ -5,7 +5,7 @@
 
       <div class="columns is-3" >
           <p>Estadisticas</p>
-          <pie-chart :data="{'Blueberry': 44, 'Strawberry': 23}"></pie-chart>
+          <pie-chart :data="{'Pensamiento Estratégico': 44, 'Pensamiento Lógico': 23}"></pie-chart>
       </div>
     </div>
   </div>
