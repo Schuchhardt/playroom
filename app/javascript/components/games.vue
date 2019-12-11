@@ -68,7 +68,7 @@
       <section v-if="currentGame">
         <div class="columns">
           <div class="column">
-            <div><img height="100" src="../images/playroom_logo.png"></div>
+            <div><img height="100" src="../images/pr3.png"></div>
             <p class="bd-notification is-info"><img v-bind:src="currentGame.image_url" alt="Juego"></p>
             <br>
             <br>
