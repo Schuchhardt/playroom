@@ -1,6 +1,6 @@
 ActiveAdmin.register Commune do
   permit_params :name
-  menu priority: 6
+  menu false#, priority: 6
   
   index do
     selectable_column

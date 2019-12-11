@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_16_044158) do
+ActiveRecord::Schema.define(version: 2019_12_10_223618) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -133,6 +133,7 @@ ActiveRecord::Schema.define(version: 2019_07_16_044158) do
     t.boolean "level_first_primary", default: false
     t.boolean "level_second_primary", default: false
     t.boolean "level_secondary", default: false
+    t.string "sku"
   end
 
   create_table "levels", force: :cascade do |t|

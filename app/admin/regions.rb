@@ -1,6 +1,6 @@
 ActiveAdmin.register Region do
   permit_params :name
-  menu priority: 5
+  menu false#, priority: 5
 
   index do
     selectable_column

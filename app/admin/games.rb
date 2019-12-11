@@ -1,12 +1,13 @@
 ActiveAdmin.register Game do
   active_admin_import
-  permit_params :name, :description, :difficulty, :game_time, :number_of_players, :suggested_age, :youtube_link, :level_preschool, :level_first_primary, :level_second_primary, :level_secondary, :image
+  permit_params :name, :sku, :description, :difficulty, :game_time, :number_of_players, :suggested_age, :youtube_link, :level_preschool, :level_first_primary, :level_second_primary, :level_secondary, :image
   menu priority: 3
 
   index do
     selectable_column
     id_column
     column :name
+    column :sku
     column :description
     column :difficulty
     column :game_time           
@@ -20,6 +21,7 @@ ActiveAdmin.register Game do
   show do
     attributes_table do
         row :name
+        row :sku
         row :description
         row :difficulty
         row :game_time           
@@ -58,7 +60,8 @@ ActiveAdmin.register Game do
   form do |f|
     f.inputs do
       f.input :name
-      f.input :description
+      f.input :sku
+      f.input :description, as: :text
       f.input :difficulty
       f.input :game_time           
       f.input :number_of_players

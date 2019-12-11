@@ -1,6 +1,7 @@
 ActiveAdmin.register AdminUser do
   active_admin_import
   permit_params :email, :password, :password_confirmation
+  menu false
 
   index do
     selectable_column

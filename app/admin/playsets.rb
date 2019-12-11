@@ -1,6 +1,6 @@
 ActiveAdmin.register Playset do
   permit_params :name, :description, :price, :image
-  menu priority: 2
+  menu priority: 3
 
   index do
     selectable_column

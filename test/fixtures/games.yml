@@ -13,6 +13,7 @@
 #  level_secondary      :boolean          default(FALSE)
 #  name                 :string
 #  number_of_players    :string
+#  sku                  :string
 #  suggested_age        :string
 #  youtube_link         :string
 #  created_at           :datetime         not null
