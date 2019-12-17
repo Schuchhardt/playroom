@@ -2,7 +2,7 @@ ActiveAdmin.register Game do
   active_admin_import
   permit_params :name, :sku, :description, :difficulty, :game_time, :idps, :number_of_players, 
     :suggested_age, :youtube_link, :level_preschool, :level_first_primary, :level_second_primary, 
-    :level_secondary, :image
+    :level_secondary, :image, game_skills_attributes: [:id, :_destroy, :skill_id]
 
   menu priority: 3
 
@@ -11,9 +11,8 @@ ActiveAdmin.register Game do
     id_column
     column :name
     column :sku
-    column :description
     column :difficulty
-    column :game_time           
+    column :game_time
     column :number_of_players
     column :suggested_age
     actions
@@ -65,11 +64,11 @@ ActiveAdmin.register Game do
       f.input :name
       f.input :sku
       f.input :description, as: :text
-      f.input :difficulty
+      f.input :difficulty, :as => :select, :collection => ["inicial", "intermedio", "avanzado"]
       f.input :game_time           
       f.input :number_of_players
       f.input :idps
-      f.input :suggested_age
+      f.input :suggested_age, :as => :select, :collection => (0..15).to_a.map{|n| "Desde #{n} años"}
       f.input :youtube_link
       f.input :level_preschool
       f.input :level_first_primary
@@ -78,15 +77,15 @@ ActiveAdmin.register Game do
       f.input :image, as: :file
     end
     
-    # f.has_many :game_skills, label: "asd" do |gs|
-    #   gs.inputs "Habilidades" do
-    #     if !gs.object.nil?
-    #       gs.input :_destroy, :as => :boolean, :label => "Eliminar?"
-    #     end
+    f.has_many :game_skills, label: "asd" do |gs|
+      gs.inputs "Habilidades" do
+        if !gs.object.nil?
+          gs.input :_destroy, :as => :boolean, :label => "Eliminar?"
+        end
 
-    #     gs.input :skill 
-    #   end
-    # end
+        gs.input :skill 
+      end
+    end
 
     f.actions
   end

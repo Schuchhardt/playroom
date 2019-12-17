@@ -5,97 +5,65 @@ namespace :load do
 
 		skills = [
 			{
-				name: "Pensamiento Crítico",
-				skill_category: "Habilidades del siglo XXI"
+				skill_category: "Autogestión",
+				name: "Reconocimiento de emociones"
 			},
 			{
-				name: "Pensamiento Creativo",
-				skill_category: "Habilidades del siglo XXI"
+				skill_category: "Autogestión",
+				name: "Reconocimiento de intereses"
 			},
 			{
-				name: "Resolución de Problemas",
-				skill_category: "Habilidades del siglo XXI"
+				skill_category: "Autogestión",
+				name: "Autovaloración"
 			},
 			{
-				name: "Comunicación Efectiva",
-				skill_category: "Habilidades del siglo XXI"
+				skill_category: "Autoconciencia",
+				name: "Autocontrol, manejo de impulso y conducta"
 			},
 			{
-				name: "Trabajo Colaborativo",
-				skill_category: "Habilidades del siglo XXI"
+				skill_category: "Autoconciencia",
+				name: "Manejo y expresion adecuada de emociones"
 			},
 			{
-				name: "Empatía",
-				skill_category: "Habilidades del siglo XXI"
-			},
-			{ 
-				name: "Recordar",
-				skill_category: "Habilidades del Pensamiento"
-			},
-			{ 
-				name: "Comprender",
-				skill_category: "Habilidades del Pensamiento"
-			},
-			{ 
-				name: "Aplicar",
-				skill_category: "Habilidades del Pensamiento"
-			},
-			{ 
-				name: "Analizar",
-				skill_category: "Habilidades del Pensamiento"
-			},
-			{ 
-				name: "Evaluar",
-				skill_category: "Habilidades del Pensamiento"
-			},
-			{ 
-				name: "Crear",
-				skill_category: "Habilidades del Pensamiento"
+				skill_category: "Autoconciencia",
+				name: "Automotivación, logro de metas personales"
 			},
 			{
-				name: "Autonomia",
-				skill_category: "Habilidades Socioemocionales"
+				skill_category: "Conciencia del otro",
+				name: "Empatía"
 			},
 			{
-				name: "Autorregulación",
-				skill_category: "Habilidades Socioemocionales"
+				skill_category: "Conciencia del otro",
+				name: "Toma de perspectiva"
 			},
 			{
-				name: "Conciencia de los otros",
-				skill_category: "Habilidades Socioemocionales"
+				skill_category: "Habilidades sociales",
+				name: "Establecer y mantener relaciones sanas y gratificantes"
 			},
 			{
-				name: "Habilidades para relacionarser",
-				skill_category: "Habilidades Socioemocionales"
+				skill_category: "Habilidades sociales",
+				name: "Trabajo en equipo, cooperación"
 			},
 			{
-				name: "Toma de decisiones responsable",
-				skill_category: "Habilidades Socioemocionales"
+				skill_category: "Habilidades sociales",
+				name: "Dialogo y participación"
 			},
-			# {
-			# 	name: "Desarrollo y Gestión",
-			# 	skill_category: "Habilidades para la vida"
-			# },
-			# {
-			# 	name: "Autocuidado",
-			# 	skill_category: "Habilidades para la vida"
-			# },
-			# {
-			# 	name: "Sentido de pertenencia",
-			# 	skill_category: "Habilidades para la vida"
-			# },
-			# {
-			# 	name: "Participación y Organización",
-			# 	skill_category: "Habilidades para la vida"
-			# },
-			# {
-			# 	name: "Comprensión del otro y del entorno",
-			# 	skill_category: "Habilidades para la vida"
-			# },
-			# {
-			# 	name: "Relación con los otros y el entorno",
-			# 	skill_category: "Habilidades para la vida"
-			# }
+			{
+				skill_category: "Habilidades sociales",
+				name: "Comunicación asertiva"
+			},
+			{
+				skill_category: "Habilidades sociales",
+				name: "Resolución pacifica de conflictos"
+			},
+			{
+				skill_category: "Toma de decisiones responsables",
+				name: "Razonamiento moral"
+			},
+			{
+				skill_category: "Toma de decisiones responsables",
+				name: "Toma de decisiones responsables"
+			}
 		]
 
 		Skill.destroy_all
@@ -108,3 +76,25 @@ namespace :load do
 	end
 
 end
+
+# 1 - Autogestion
+# 	- Reconocimiento de emociones
+# 	- Reconocimiento de intereses
+# 	- Autovaloración
+# 2 - Autoconciencia
+# 	- Autocontrol, manejo de impulso y conducta
+# 	- Manejo y expresion adecuada de emociones
+# 	- Automotivación, logro de metas personales
+# 3 - Conciencia del otro
+# 	- Empatía
+# 	- Toma de perspectiva
+# 4 - Habilidades sociales
+# 	- Establecer y mantener relaciones sanas y gratificantes
+# 	- Trabajo en equipo, cooperación
+# 	- Dialogo y participación
+# 	- Comunicación asertiva
+# 	- Resolución pacifica de conflictos
+# 5 - Toma de decisiones responsables
+# 	- Razonamiento moral
+# 	- Toma de decisiones responsables
+
