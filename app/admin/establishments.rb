@@ -1,6 +1,7 @@
 ActiveAdmin.register Establishment do
-  active_admin_import
-  permit_params :name, :rbd, :address, :phone, :commune_id, :education_level_preschool, :education_level_primary, :education_level_secondary, :education_level_secondary_tech, :establishment_kind, :ive, :students_per_course, :total_students
+  permit_params :name, :rbd, :address, :phone, :commune_id, :education_level_preschool,
+    :education_level_primary, :education_level_secondary, :education_level_secondary_tech,
+    :establishment_kind, :ive, :students_per_course, :total_students
   menu priority: 2
 
   index do
@@ -10,6 +11,7 @@ ActiveAdmin.register Establishment do
     column :rbd
     column :commune
     column :phone
+    column :contact_name
     actions
   end
 
@@ -22,6 +24,9 @@ ActiveAdmin.register Establishment do
       row :rbd
       row :commune
       row :phone
+      row :contact_name
+      row :contact_email
+      row :contact_phone
     end
     panel "Ludotecas" do
       table_for establishment.playsets do
@@ -41,6 +46,9 @@ ActiveAdmin.register Establishment do
       f.input :rbd
       f.input :address
       f.input :phone
+      f.input :contact_name
+      f.input :contact_email
+      f.input :contact_phone
       f.input :establishment_kind, as: :select, collection: (["Part. Sub.","Municipal","Particular", "Corporación", "Fundación"])
       f.input :commune
       f.input :education_level_preschool

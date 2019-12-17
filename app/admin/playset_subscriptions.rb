@@ -7,7 +7,6 @@ ActiveAdmin.register PlaysetSubscription do
     id_column
     column :establishment
     column :playset
-    column :started_at
     column :finished_at
     actions
   end
@@ -23,5 +22,6 @@ ActiveAdmin.register PlaysetSubscription do
     end
     f.actions
   end
+
 
 end

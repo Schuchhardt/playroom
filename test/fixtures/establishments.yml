@@ -4,6 +4,9 @@
 #
 #  id                             :bigint(8)        not null, primary key
 #  address                        :string
+#  contact_email                  :string
+#  contact_name                   :string
+#  contact_phone                  :string
 #  education_level_preschool      :boolean
 #  education_level_primary        :boolean
 #  education_level_secondary      :boolean

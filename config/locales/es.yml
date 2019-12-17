@@ -79,6 +79,9 @@ es:
         phone: "Fono"
         address: "Dirección"
         commune: "Comuna"
+        contact_name: "Nombre del TD (Tomador de decisiones)"
+        contact_email: "Email TD"
+        contact_phone: "Fono TD"
         education_level_preschool: "Prescolar?"
         education_level_primary: "1º Ciclo"
         education_level_secondary: "2º Ciclo"
@@ -98,6 +101,8 @@ es:
         name: "Nombre"
         description: "Descripción"
         price: "Precio"
+        created_at: "Creada el"
+        updated_at: "Actualizada el"
       game: 
         name: "Nombre"
         description: "Descripción"

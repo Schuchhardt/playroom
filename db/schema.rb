@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_10_223618) do
+ActiveRecord::Schema.define(version: 2019_12_17_022709) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +86,9 @@ ActiveRecord::Schema.define(version: 2019_12_10_223618) do
     t.boolean "education_level_primary"
     t.boolean "education_level_secondary"
     t.boolean "education_level_secondary_tech"
+    t.string "contact_name"
+    t.string "contact_email"
+    t.string "contact_phone"
     t.index ["commune_id"], name: "index_establishments_on_commune_id"
   end
 

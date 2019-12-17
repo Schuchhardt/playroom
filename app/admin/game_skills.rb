@@ -1,6 +1,6 @@
 ActiveAdmin.register GameSkill do
   permit_params :game_id, :skill_id
-  menu priority: 6
+  menu false
 
   index do
     selectable_column

@@ -1,6 +1,6 @@
 ActiveAdmin.register UserEstablishment do
   permit_params :establishment_id, :user_id
-  menu priority: 6
+  menu false
 
   index do
     selectable_column

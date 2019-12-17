@@ -16,7 +16,7 @@ ActiveAdmin.setup do |config|
   #
   # Note: Aim for an image that's 21px high so it fits in the header.
   #
-  config.site_title_image = "playroom_logo.png"
+  config.site_title_image = "pr3.png"
 
   # == Default Namespace
   #

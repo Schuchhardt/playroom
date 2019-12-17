@@ -1,6 +1,9 @@
 ActiveAdmin.register Game do
   active_admin_import
-  permit_params :name, :sku, :description, :difficulty, :game_time, :number_of_players, :suggested_age, :youtube_link, :level_preschool, :level_first_primary, :level_second_primary, :level_secondary, :image
+  permit_params :name, :sku, :description, :difficulty, :game_time, :idps, :number_of_players, 
+    :suggested_age, :youtube_link, :level_preschool, :level_first_primary, :level_second_primary, 
+    :level_secondary, :image
+
   menu priority: 3
 
   index do
