@@ -39,8 +39,8 @@ es:
         one: "Juego"
         other: "Juegos"
       game_set:
-        one: "Set de Juego"
-        other: "Set de Juegos"
+        one: "Juegos"
+        other: "Juegos de la Ludoteca"
       playset_subscription:
         one: "Suscripción Ludoteca"
         other: "Suscripción Ludotecas"
@@ -98,9 +98,13 @@ es:
       commune: 
         name: "Nombre"
       playset: 
+        establishment: "Establecimiento"
+        playset_type: "Tipo de Ludoteca"
         name: "Nombre"
         description: "Descripción"
         price: "Precio"
+        start_at: "Fecha Inicio"
+        finish_at: "Fecha Termino"
         created_at: "Creada el"
         updated_at: "Actualizada el"
       game: 
@@ -122,11 +126,6 @@ es:
         game: "Juego"
         playset: "Ludoteca"
         suggested_copies: "Copias sugeridas"
-      playset_subscription:
-        establishment: "Establecimiento"
-        playset: "Ludoteca"
-        started_at: "Fecha Inicio"
-        finished_at: "Fecha Termino"
       skill:
         name: "Nombre Habilidad"
         skill_category: "Categoria de Habilidad"

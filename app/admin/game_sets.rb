@@ -1,6 +1,6 @@
 ActiveAdmin.register GameSet do
   permit_params :game_id, :playset_id, :suggested_copies
-  menu priority: 7
+  menu false
 
   index do
     selectable_column

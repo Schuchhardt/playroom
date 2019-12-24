@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_17_022709) do
+ActiveRecord::Schema.define(version: 2019_12_24_180042) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -165,6 +165,11 @@ ActiveRecord::Schema.define(version: 2019_12_17_022709) do
     t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "playset_type"
+    t.bigint "establishment_id"
+    t.date "start_at"
+    t.date "finish_at"
+    t.index ["establishment_id"], name: "index_playsets_on_establishment_id"
   end
 
   create_table "regions", force: :cascade do |t|
@@ -223,6 +228,7 @@ ActiveRecord::Schema.define(version: 2019_12_17_022709) do
   add_foreign_key "game_skills", "skills"
   add_foreign_key "playset_subscriptions", "establishments"
   add_foreign_key "playset_subscriptions", "playsets"
+  add_foreign_key "playsets", "establishments"
   add_foreign_key "user_establishments", "establishments"
   add_foreign_key "user_establishments", "users"
 end

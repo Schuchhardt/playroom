@@ -9,12 +9,9 @@ ActiveAdmin.register Game do
   index do
     selectable_column
     id_column
-    column :name
     column :sku
-    column :difficulty
-    column :game_time
-    column :number_of_players
-    column :suggested_age
+    column :name
+    column :idps
     actions
   end
 
@@ -79,11 +76,10 @@ ActiveAdmin.register Game do
     
     f.has_many :game_skills, label: "asd" do |gs|
       gs.inputs "Habilidades" do
+        gs.input :skill 
         if !gs.object.nil?
           gs.input :_destroy, :as => :boolean, :label => "Eliminar?"
         end
-
-        gs.input :skill 
       end
     end
 

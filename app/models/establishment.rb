@@ -33,9 +33,8 @@
 
 class Establishment < ApplicationRecord
 	belongs_to :commune, optional: true
-	has_many :playset_subscriptions
+	has_many :playsets
 	has_many :user_establishments
-	has_many :playsets, through: :playset_subscriptions
 	has_many :users, through: :user_establishments
 
 	def region_name
