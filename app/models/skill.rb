@@ -13,6 +13,6 @@ class Skill < ApplicationRecord
 	has_many :game_skills, dependent: :destroy
 
 	def display_name
-		"#{self.skill_category} #{self.name}"
+		"#{self.skill_category} - #{self.name}"
 	end
 end
