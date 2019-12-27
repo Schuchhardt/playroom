@@ -6,7 +6,6 @@
 #  description          :string
 #  difficulty           :string
 #  game_time            :string
-#  idps                 :string
 #  level_first_primary  :boolean          default(FALSE)
 #  level_preschool      :boolean          default(FALSE)
 #  level_second_primary :boolean          default(FALSE)

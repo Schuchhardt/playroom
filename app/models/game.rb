@@ -6,7 +6,6 @@
 #  description          :string
 #  difficulty           :string
 #  game_time            :string
-#  idps                 :string
 #  level_first_primary  :boolean          default(FALSE)
 #  level_preschool      :boolean          default(FALSE)
 #  level_second_primary :boolean          default(FALSE)
@@ -25,10 +24,13 @@ class Game < ApplicationRecord
 	has_many :game_sets
 	has_many :game_skills
 	has_many :game_levels
+	has_many :game_idps
 	has_many :playsets, through: :game_sets
 	has_many :levels, through: :game_levels
 	has_many :skills, through: :game_skills
+	has_many :idps, through: :game_idps
 	accepts_nested_attributes_for :game_skills, :allow_destroy => true
+	accepts_nested_attributes_for :game_idps, :allow_destroy => true
 
 	def image_url
 		self.image.service_url if self.image and self.image.attached?

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_27_201004) do
+ActiveRecord::Schema.define(version: 2019_12_27_223035) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -104,6 +104,15 @@ ActiveRecord::Schema.define(version: 2019_12_27_201004) do
     t.index ["user_id"], name: "index_experiences_on_user_id"
   end
 
+  create_table "game_idps", force: :cascade do |t|
+    t.bigint "idp_id"
+    t.bigint "game_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_game_idps_on_game_id"
+    t.index ["idp_id"], name: "index_game_idps_on_idp_id"
+  end
+
   create_table "game_levels", force: :cascade do |t|
     t.bigint "game_id"
     t.bigint "level_id"
@@ -143,12 +152,26 @@ ActiveRecord::Schema.define(version: 2019_12_27_201004) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "youtube_link"
-    t.string "idps"
     t.boolean "level_preschool", default: false
     t.boolean "level_first_primary", default: false
     t.boolean "level_second_primary", default: false
     t.boolean "level_secondary", default: false
     t.string "sku"
+  end
+
+  create_table "idp_games", force: :cascade do |t|
+    t.bigint "idp_id"
+    t.bigint "game_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_idp_games_on_game_id"
+    t.index ["idp_id"], name: "index_idp_games_on_idp_id"
+  end
+
+  create_table "idps", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "levels", force: :cascade do |t|
@@ -223,12 +246,16 @@ ActiveRecord::Schema.define(version: 2019_12_27_201004) do
   add_foreign_key "establishments", "communes"
   add_foreign_key "experiences", "games"
   add_foreign_key "experiences", "users"
+  add_foreign_key "game_idps", "games"
+  add_foreign_key "game_idps", "idps"
   add_foreign_key "game_levels", "games"
   add_foreign_key "game_levels", "levels"
   add_foreign_key "game_sets", "games"
   add_foreign_key "game_sets", "playsets"
   add_foreign_key "game_skills", "games"
   add_foreign_key "game_skills", "skills"
+  add_foreign_key "idp_games", "games"
+  add_foreign_key "idp_games", "idps"
   add_foreign_key "playsets", "establishments"
   add_foreign_key "user_establishments", "establishments"
   add_foreign_key "user_establishments", "users"

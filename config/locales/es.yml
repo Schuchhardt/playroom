@@ -56,6 +56,12 @@ es:
       game_skill:
         one: "Habilidad Juego"
         other: "Habilidades del Juego"
+      game_idp:
+        one: "IDPS"
+        other: "IDPS"
+      idp:
+        one: "IDPS"
+        other: "IDPS"
     attributes:
       admin_user:
         name: "Nombre"
@@ -126,6 +132,8 @@ es:
         game: "Juego"
         playset: "Ludoteca"
         suggested_copies: "Copias disponibles"
+      idp:
+        name: "Nombre"
       skill:
         name: "Nombre Habilidad"
         skill_category: "Categoria de Habilidad"

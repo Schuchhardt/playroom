@@ -2,7 +2,7 @@ ActiveAdmin.register Game do
   active_admin_import
   permit_params :name, :sku, :description, :difficulty, :game_time, :idps, :number_of_players, 
     :suggested_age, :youtube_link, :level_preschool, :level_first_primary, :level_second_primary, 
-    :level_secondary, :image, game_skills_attributes: [:id, :_destroy, :skill_id]
+    :level_secondary, :image, game_skills_attributes: [:id, :_destroy, :skill_id], game_idps_attributes: [:id, :_destroy, :idp_id]
 
   menu priority: 3
 
@@ -11,7 +11,6 @@ ActiveAdmin.register Game do
     id_column
     column :sku
     column :name
-    column :idps
     actions
   end
 
@@ -25,7 +24,6 @@ ActiveAdmin.register Game do
         row :difficulty
         row :game_time           
         row :number_of_players
-        row :idps
         row :suggested_age
         row :youtube_link
         row :level_preschool
@@ -54,6 +52,13 @@ ActiveAdmin.register Game do
         end
       end
     end
+    panel "IDPS" do
+      table_for game.game_idps do
+        column "Nombre" do |gs|
+          gs.idp.name
+        end
+      end
+    end
   end
 
   form do |f|
@@ -64,7 +69,6 @@ ActiveAdmin.register Game do
       f.input :difficulty, :as => :select, :collection => ["inicial", "intermedio", "avanzado"]
       f.input :game_time           
       f.input :number_of_players
-      f.input :idps
       f.input :suggested_age, :as => :select, :collection => (0..15).to_a.map{|n| "Desde #{n} años"}
       f.input :youtube_link
       f.input :level_preschool
@@ -74,9 +78,18 @@ ActiveAdmin.register Game do
       f.input :image, as: :file
     end
     
-    f.has_many :game_skills, label: "asd" do |gs|
+    f.has_many :game_skills do |gs|
       gs.inputs "Habilidades" do
         gs.input :skill 
+        if !gs.object.nil?
+          gs.input :_destroy, :as => :boolean, :label => "Eliminar?"
+        end
+      end
+    end
+
+    f.has_many :game_idps do |gs|
+      gs.inputs "IDPS" do
+        gs.input :idp
         if !gs.object.nil?
           gs.input :_destroy, :as => :boolean, :label => "Eliminar?"
         end
