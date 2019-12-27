@@ -125,7 +125,7 @@ es:
       game_set:
         game: "Juego"
         playset: "Ludoteca"
-        suggested_copies: "Copias sugeridas"
+        suggested_copies: "Copias disponibles"
       skill:
         name: "Nombre Habilidad"
         skill_category: "Categoria de Habilidad"

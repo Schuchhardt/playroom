@@ -36,6 +36,12 @@ ActiveAdmin.register Establishment do
         column "Nro de juegos" do |gs|
           gs.games.count
         end
+        column "Fecha Inicio" do |gs|
+          gs.start_at
+        end
+        column "Fecha Termino" do |gs|
+          gs.finish_at
+        end
       end
     end
   end
