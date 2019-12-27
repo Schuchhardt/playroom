@@ -23,39 +23,41 @@ namespace :load do
 				g.youtube_link = row[5].value
 				g.difficulty = row[6].value
 				g.idps = row[7].value
+				g.level_first_primary = true
+				g.level_preschool = true
+				g.level_second_primary = true
+				g.level_secondary = true
 				g.save!
 				puts g.inspect
 
-				skills_name = [
-					"Pensamiento Crítico",
-					"Pensamiento Creativo",
-					"Resolución de Problemas",
-					"Comunicación Efectiva",
-					"Trabajo en Equipo",
-					"Empatía",
-					"Recordar",
-					"Comprender",
-					"Aplicar",
-					"Analizar",
-					"Evaluar",
-					"Crear",
-					"Conciencia de sí mismo",
-					"Autorregulación",
-					"Conciencia de los otros",
-					"Habilidades para relacionarse",
-					"Toma de decisiones responsable"
-				]
+				# skills_name = [
+				# 	"Pensamiento Crítico",
+				# 	"Pensamiento Creativo",
+				# 	"Resolución de Problemas",
+				# 	"Comunicación Efectiva",
+				# 	"Trabajo en Equipo",
+				# 	"Empatía",
+				# 	"Recordar",
+				# 	"Comprender",
+				# 	"Aplicar",
+				# 	"Analizar",
+				# 	"Evaluar",
+				# 	"Crear",
+				# 	"Conciencia de sí mismo",
+				# 	"Autorregulación",
+				# 	"Conciencia de los otros",
+				# 	"Habilidades para relacionarse",
+				# 	"Toma de decisiones responsable"
+				# ]
 
-				skills_name.each_with_index do |s_name, index|
-					if row[index + 12].value && row[index + 12].value == "x"
-						s = Skill.find_by_name s_name
-						gs = GameSkill.create game: g, skill: s
-						puts gs.inspect
-					end
-				end
+				# skills_name.each_with_index do |s_name, index|
+				# 	if row[index + 12].value && row[index + 12].value == "x"
+				# 		s = Skill.find_by_name s_name
+				# 		gs = GameSkill.create game: g, skill: s
+				# 		puts gs.inspect
+				# 	end
+				# end
 			end
-
-
 
 		end
 

@@ -4,10 +4,10 @@
       <p v-if="playsets.length == 0"><br><br> No hay Ludotecas cargadas en este establecimiento</p>
 
       <div class="columns is-3" >
-          <div class="column is-one-third playset is-full-mobile" v-for="playset in playsets" v-bind:key="playset.id">
+          <div class="column is-one-third playset is-full-mobile" v-for="playset in playsets" v-bind:key="playset.id" v-bind:class="{ disabled: playset.disabled }">
             <div class="card">
               <div class="card-header">
-                <p class="title">{{playset.name}}</p>
+                <p class="title">{{playset.playset_type}}</p>
               </div>
               <div class="card-image" @click.prevent="goToPlayset(playset)">
                 <figure class="image">
@@ -46,16 +46,13 @@ export default {
   mounted () {
     const vm = this
     this.$store.dispatch('playsetStore/index')
-      .then( res => {
-      console.log(vm)
-    //   this.playsets = playsets;
-    })
   },
   methods: {
      ...mapActions('playsetStore', ['index', 'show']),
      ...mapActions('gameStore', ['show', 'inPlayset']),
 
     goToPlayset (playset) {
+      if (playset.disabled) return;
       this.$router.push("games/" + playset.id)
     },
   }
@@ -110,6 +107,10 @@ export default {
   &:hover{
     opacity: 0.6;
     cursor: pointer;
+  }
+  &.disabled{
+    opacity: 0.56;
+    cursor: not-allowed;
   }
   @media(max-width: 414px) {
     width: 80%;

@@ -5,27 +5,31 @@ namespace :load do
 
 		skills = [
 			{
-				skill_category: "Autogestión",
+				skill_category: "Autoconciencia",
 				name: "Reconocimiento de emociones"
 			},
 			{
-				skill_category: "Autogestión",
-				name: "Reconocimiento de intereses"
+				skill_category: "Autoconciencia",
+				name: "Reconocimiento de intereses, valores y habilidades"
 			},
 			{
-				skill_category: "Autogestión",
+				skill_category: "Autoconciencia",
 				name: "Autovaloración"
 			},
 			{
 				skill_category: "Autoconciencia",
+				name: "Autoconocimiento"
+			},
+			{
+				skill_category: "Autogestión",
 				name: "Autocontrol, manejo de impulso y conducta"
 			},
 			{
-				skill_category: "Autoconciencia",
-				name: "Manejo y expresion adecuada de emociones"
+				skill_category: "Autogestión",
+				name: "Manejo y expresión adecuada de emociones"
 			},
 			{
-				skill_category: "Autoconciencia",
+				skill_category: "Autogestión",
 				name: "Automotivación, logro de metas personales"
 			},
 			{
@@ -46,7 +50,7 @@ namespace :load do
 			},
 			{
 				skill_category: "Habilidades sociales",
-				name: "Dialogo y participación"
+				name: "Diálogo y participación"
 			},
 			{
 				skill_category: "Habilidades sociales",
@@ -77,11 +81,12 @@ namespace :load do
 
 end
 
-# 1 - Autogestion
+# 1 - Autoconciencia
 # 	- Reconocimiento de emociones
 # 	- Reconocimiento de intereses
 # 	- Autovaloración
-# 2 - Autoconciencia
+#	- Autoconocimiento
+# 2 - Autogestion
 # 	- Autocontrol, manejo de impulso y conducta
 # 	- Manejo y expresion adecuada de emociones
 # 	- Automotivación, logro de metas personales

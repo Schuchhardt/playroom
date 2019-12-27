@@ -2,12 +2,11 @@ class LandingController < ApplicationController
 	before_action :authenticate_user!
 
 	PLAYSET_TYPES = [
-		{ id: 1, name: "Convivencia Escolar", image_url: "", description: "" },
-		{ id: 2, name: "Formación Ciudadana", image_url: "", description: "" },
-		{ id: 3, name: "Decreto 83", image_url: "", description: "" },
-		{ id: 4, name: "DUA", image_url: "", description: "" },
-		{ id: 5, name: "PIE", image_url: "", description: "" },
-		{ id: 6, name: "Estrategias de Transición (373)", image_url: "", description: "" }
+		{ id: "1", playset_type: "Convivencia Escolar", image_url: "https://i.imgur.com/q6oPqTX.jpg", description: "" },
+		{ id: "2", playset_type: "Formación Ciudadana", image_url: "https://i.imgur.com/YE8UCqD.jpg", description: "" },
+		{ id: "3", playset_type: "Decreto 83, DUA", image_url: "https://i.imgur.com/KuWUQJm.jpg", description: "" },
+		{ id: "4", playset_type: "PIE", image_url: "https://i.imgur.com/HxgsqLd.jpg", description: "" },
+		{ id: "5", playset_type: "Estrategias de Transición (373)", image_url: "https://i.imgur.com/YNVJX7D.jpg", description: "" }
 	]
 
 	def index
@@ -23,6 +22,13 @@ class LandingController < ApplicationController
 			playset = pl.slice(:id, :name, :playset_type, :description, :number_of_games, :image_url ).dup
 			playset[:disabled] = false
 			formatted_playsets << playset
+		end
+
+		PLAYSET_TYPES.each do |ps|
+			puts ps.inspect
+			unless formatted_playsets.map{|fp| fp[:playset_type]}.uniq.include?(ps[:playset_type])
+				formatted_playsets << ps.merge({ disabled: true })
+			end
 		end
 		render json: formatted_playsets, status: 200
 	end

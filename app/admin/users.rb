@@ -1,5 +1,6 @@
 ActiveAdmin.register User do
-  permit_params :name, :phone, :user_type, :email, :password, :password_confirmation
+  permit_params :name, :phone, :user_type, :email, :password, :password_confirmation,
+    user_establishments_attributes: [:id, :_destroy, :establishment_id]
 
   index do
     selectable_column
@@ -12,7 +13,25 @@ ActiveAdmin.register User do
   end
 
   filter :email
-  filter :created_at
+  filter :name
+
+  show do
+    attributes_table do
+        row :name
+        row :email
+        row :user_type
+        row :phone
+        row :created_at
+        row :updated_at
+    end
+    panel "Colegios a los que pertenece" do
+      table_for user.user_establishments do
+        column "Nombre" do |gs|
+          gs.establishment.name
+        end
+      end
+    end
+  end
 
   form do |f|
     f.inputs do
@@ -23,6 +42,17 @@ ActiveAdmin.register User do
       f.input :password
       f.input :password_confirmation
     end
+
+    f.has_many :user_establishments do |gs|
+      gs.inputs "Colegios" do
+        gs.input :establishment
+        if !gs.object.nil?
+          gs.input :_destroy, :as => :boolean, :label => "Eliminar?"
+        end
+      end
+    end
+
+
     f.actions
   end
 

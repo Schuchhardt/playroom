@@ -31,7 +31,7 @@ ActiveAdmin.register Establishment do
     panel "Ludotecas" do
       table_for establishment.playsets do
         column "Nombre" do |gs|
-          gs.name
+          gs.playset_type
         end
         column "Nro de juegos" do |gs|
           gs.games.count

@@ -51,8 +51,8 @@ es:
         one: "Planificación"
         other: "Planificaciones"
       user_establishment:
-        one: "Encargado Establecimiento"
-        other: "Encargado Establecimientos"
+        one: "Establecimiento"
+        other: "Establecimientos"
       game_skill:
         one: "Habilidad Juego"
         other: "Habilidades del Juego"

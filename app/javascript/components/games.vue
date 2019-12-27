@@ -24,7 +24,7 @@
             <ul class="menu-list">
               <li v-for="p in playsets" :key="p.id">
                 <b-checkbox :native-value="p.id" v-model="selectedPlaysets" >
-                    {{p.name}}
+                    {{p.playset_type}}
                 </b-checkbox>
               </li>
             </ul>
@@ -147,7 +147,7 @@ export default {
   },
  computed: {
     playsets () {
-      return this.$store.state.playsetStore.playsets
+      return this.$store.state.playsetStore.playsets.filter((pl) => !pl.disabled)
     },
     filteredGames () {
       return this.$store.getters["gameStore/gamesFiltered"]

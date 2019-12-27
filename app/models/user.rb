@@ -36,6 +36,8 @@ class User < ApplicationRecord
   has_many :user_establishments
   has_many :establishments, through: :user_establishments
 
+  accepts_nested_attributes_for :user_establishments, :allow_destroy => true
+
   enum user_type: { teacher: 0, executive: 1}
   translate_enum :user_type
 
