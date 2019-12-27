@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_24_180042) do
+ActiveRecord::Schema.define(version: 2019_12_27_122316) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -148,17 +148,6 @@ ActiveRecord::Schema.define(version: 2019_12_24_180042) do
     t.integer "since_age"
   end
 
-  create_table "playset_subscriptions", force: :cascade do |t|
-    t.bigint "establishment_id"
-    t.bigint "playset_id"
-    t.datetime "started_at"
-    t.datetime "finished_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["establishment_id"], name: "index_playset_subscriptions_on_establishment_id"
-    t.index ["playset_id"], name: "index_playset_subscriptions_on_playset_id"
-  end
-
   create_table "playsets", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -226,8 +215,6 @@ ActiveRecord::Schema.define(version: 2019_12_24_180042) do
   add_foreign_key "game_sets", "playsets"
   add_foreign_key "game_skills", "games"
   add_foreign_key "game_skills", "skills"
-  add_foreign_key "playset_subscriptions", "establishments"
-  add_foreign_key "playset_subscriptions", "playsets"
   add_foreign_key "playsets", "establishments"
   add_foreign_key "user_establishments", "establishments"
   add_foreign_key "user_establishments", "users"

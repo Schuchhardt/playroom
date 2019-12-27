@@ -1,6 +1,15 @@
 class LandingController < ApplicationController
 	before_action :authenticate_user!
 
+	PLAYSET_TYPES = [
+		{ id: 1, name: "Convivencia Escolar", image_url: "", description: "" },
+		{ id: 2, name: "Formación Ciudadana", image_url: "", description: "" },
+		{ id: 3, name: "Decreto 83", image_url: "", description: "" },
+		{ id: 4, name: "DUA", image_url: "", description: "" },
+		{ id: 5, name: "PIE", image_url: "", description: "" },
+		{ id: 6, name: "Estrategias de Transición (373)", image_url: "", description: "" }
+	]
+
 	def index
 		@current_establishment = current_user.establishments.first
   	end
@@ -11,7 +20,7 @@ class LandingController < ApplicationController
 			return render json: formatted_playsets, status: 200
 		end
 		current_user.establishments.first.playsets.each do |pl|
-			playset = pl.slice(:id, :name, :description, :number_of_games, :image_url ).dup
+			playset = pl.slice(:id, :name, :playset_type, :description, :number_of_games, :image_url ).dup
 			playset[:disabled] = false
 			formatted_playsets << playset
 		end

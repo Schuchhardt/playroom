@@ -202,9 +202,7 @@ export default {
           const allSkillsId = []
           Object.values(this.$store.state.gameStore.skills).forEach( (sc) => {
             allSkillsId.push(sc.map( (s) => s.id))
-            console.log(sc)
           })
-          console.log(allSkillsId)
           vm.selectedSkills = allSkillsId.flat()
         }, 500);
       })

@@ -83,11 +83,11 @@ const gameStore = {
     gamesFiltered: state => {
       return state.games.filter(game => {
         const playsetIntersection = state.filterPlaysets.filter(fp => game.playsets_ids.includes(parseInt(fp)));
-        const skillIntersection = state.filterSkills.filter(fs => game.skills_ids.includes(parseInt(fs)));
+        //const skillIntersection = state.filterSkills.filter(fs => game.skills_ids.includes(parseInt(fs)));
         const levelIntersection = state.filterLevels.filter(fl => game.game_levels.includes(fl));
         return playsetIntersection.length > 0 &&
-               levelIntersection.length > 0 &&
-               skillIntersection.length > 0
+               levelIntersection.length > 0 // &&
+               //skillIntersection.length > 0
       })
     }
   }

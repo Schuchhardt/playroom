@@ -24,7 +24,7 @@
 
 class Playset < ApplicationRecord
 	belongs_to :establishment
-	has_many :game_sets
+	has_many :game_sets, dependent: :destroy
 	has_many :games, through: :game_sets
 	has_one_attached :image
 	accepts_nested_attributes_for :game_sets, :allow_destroy => true
