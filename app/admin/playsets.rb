@@ -11,6 +11,7 @@ ActiveAdmin.register Playset do
     column "Nro de Juegos" do |ps|
       ps.games.count
     end
+    column :description
     actions
   end
 

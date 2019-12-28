@@ -15,20 +15,29 @@ ActiveAdmin.register Game do
     id_column
     column :name
     column "Descripción" do |game|
-      !game.description.nil?
+      !game.description.empty?
+    end
+    column "Imagen" do |game|
+      game.image.attached?
+    end
+    column "Habilidades" do |game|
+      game.game_skills.any?
+    end
+    column "IDPS" do |game|
+      game.idps.any?
     end
     column "Dificultad" do |game|
-      !game.difficulty.nil?
+      !game.difficulty.empty?
     end
     column "Duración" do |game|
-      !game.game_time.nil?
+      !game.game_time.empty?
     end
-    column "Nº de Jugadores" do |game|
-      !game.number_of_players.nil?
-    end
-    column "Edad sugerida" do |game|
-      !game.suggested_age.nil?
-    end
+    # column "Nº de Jugadores" do |game|
+    #   !game.number_of_players.empty?
+    # end
+    # column "Edad sugerida" do |game|
+    #   !game.suggested_age.empty?
+    # end
     column "Youtube Link" do |game|
       !game.youtube_link.nil?
     end
