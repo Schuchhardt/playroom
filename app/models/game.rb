@@ -6,6 +6,8 @@
 #  description          :string
 #  difficulty           :string
 #  game_time            :string
+#  game_time_from       :integer
+#  game_time_to         :integer
 #  level_first_primary  :boolean          default(FALSE)
 #  level_preschool      :boolean          default(FALSE)
 #  level_second_primary :boolean          default(FALSE)
@@ -65,4 +67,5 @@ class Game < ApplicationRecord
 	def skills_by_category
 		self.skills.group_by(&:skill_category)
 	end
+
 end

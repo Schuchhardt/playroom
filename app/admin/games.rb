@@ -13,8 +13,25 @@ ActiveAdmin.register Game do
   index do
     selectable_column
     id_column
-    column :sku
     column :name
+    column "Descripción" do |game|
+      !game.description.nil?
+    end
+    column "Dificultad" do |game|
+      !game.difficulty.nil?
+    end
+    column "Duración" do |game|
+      !game.game_time.nil?
+    end
+    column "Nº de Jugadores" do |game|
+      !game.number_of_players.nil?
+    end
+    column "Edad sugerida" do |game|
+      !game.suggested_age.nil?
+    end
+    column "Youtube Link" do |game|
+      !game.youtube_link.nil?
+    end
     actions
   end
 
