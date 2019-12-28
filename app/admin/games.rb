@@ -27,10 +27,10 @@ ActiveAdmin.register Game do
       game.idps.any?
     end
     column "Dificultad" do |game|
-      !game.difficulty.empty?
+      !game.difficulty.nil?
     end
     column "Duración" do |game|
-      !game.game_time.empty?
+      !game.game_time.nil?
     end
     # column "Nº de Jugadores" do |game|
     #   !game.number_of_players.empty?
