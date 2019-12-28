@@ -1,6 +1,6 @@
 ActiveAdmin.register Idp do
   permit_params :name
-  menu priority: 5
+  menu false
 
   index do
     selectable_column

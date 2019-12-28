@@ -6,7 +6,11 @@ class LandingController < ApplicationController
 		{ id: "2", playset_type: "Formación Ciudadana", image_url: "https://i.imgur.com/YE8UCqD.jpg", description: "" },
 		{ id: "3", playset_type: "Decreto 83, DUA", image_url: "https://i.imgur.com/KuWUQJm.jpg", description: "" },
 		{ id: "4", playset_type: "PIE", image_url: "https://i.imgur.com/HxgsqLd.jpg", description: "" },
-		{ id: "5", playset_type: "Estrategias de Transición (373)", image_url: "https://i.imgur.com/YNVJX7D.jpg", description: "" }
+		{ id: "5", playset_type: "Estrategias de Transición (373)", image_url: "https://i.imgur.com/YNVJX7D.jpg", description: "" },
+		{ id: "6", playset_type: "Equipo directivo", image_url: "https://i.imgur.com/YNVJX7D.jpg", description: "" },
+		{ id: "7", playset_type: "Taller PlayGo", image_url: "https://i.imgur.com/YNVJX7D.jpg", description: "" },
+		{ id: "8", playset_type: "Espacios CRA", image_url: "https://i.imgur.com/YNVJX7D.jpg", description: "" },
+		{ id: "9", playset_type: "EJT", image_url: "https://i.imgur.com/YNVJX7D.jpg", description: "" }
 	]
 
 	def index

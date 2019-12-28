@@ -48,7 +48,7 @@ ActiveAdmin.register Playset do
   form do |f|
     f.inputs do
       f.input :establishment
-      f.input :playset_type, :as => :select, :collection => ["Convivencia Escolar", "Formación Ciudadana", "Decreto 83, DUA", "PIE", "Estrategias de Transición (373)"]
+      f.input :playset_type, :as => :select, :collection => ["Convivencia Escolar", "Formación Ciudadana", "Decreto 83, DUA", "PIE", "Estrategias de Transición (373)", "Equipo directivo", "Taller PlayGo", "Espacios CRA", "EJT"]
       f.input :description, as: :text
       f.input :price
       f.input :start_at

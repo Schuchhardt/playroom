@@ -6,6 +6,10 @@ ActiveAdmin.register Game do
 
   menu priority: 3
 
+  before_save do |game|
+    game.name = game.name.upcase
+  end
+
   index do
     selectable_column
     id_column

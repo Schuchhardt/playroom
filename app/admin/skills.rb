@@ -1,6 +1,6 @@
 ActiveAdmin.register Skill do
   permit_params :name, :skill_category
-  menu priority: 4
+  menu false
 
   index do
     selectable_column

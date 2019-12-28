@@ -9,7 +9,7 @@ ActiveAdmin.register Establishment do
     id_column
     column :name
     column :rbd
-    column :commune
+    column :commune, :sortable => 'communes.name'
     column :phone
     column :contact_name
     actions

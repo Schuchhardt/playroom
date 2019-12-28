@@ -31,6 +31,7 @@ class Game < ApplicationRecord
 	has_many :idps, through: :game_idps
 	accepts_nested_attributes_for :game_skills, :allow_destroy => true
 	accepts_nested_attributes_for :game_idps, :allow_destroy => true
+	default_scope { order(name: :asc) }
 
 	def image_url
 		self.image.service_url if self.image and self.image.attached?
