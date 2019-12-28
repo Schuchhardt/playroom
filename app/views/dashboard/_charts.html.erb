@@ -10,15 +10,15 @@
 <%= pie_chart Establishment.group(:establishment_kind).count %>
 
 <h4>Tiempos de Juego</h4>	
-<%= bar_chart Game.group(:game_time).count(:game_time).sort_by{|g, c| g.to_i} %>
+<%= bar_chart Game.unscoped.group(:game_time).count(:game_time).sort_by{|g, c| g.to_i} %>
 
 <h4>Dificultad por Juego</h4>	
-<%= pie_chart Game.group(:difficulty).count(:difficulty) %>
+<%= pie_chart Game.unscoped.group(:difficulty).count(:difficulty) %>
 
 <h4>Edad sugerida por Juego</h4>	
-<%= column_chart Game.group(:suggested_age).count(:suggested_age).sort_by{|g, c| g.delete('^0-9').to_i}  %>
+<%= column_chart Game.unscoped.group(:suggested_age).count(:suggested_age).sort_by{|g, c| g.delete('^0-9').to_i}  %>
 
 <h4>Cantidad de Jugadores por Juego</h4>	
-<%= bar_chart Game.group(:number_of_players).count.sort %>
+<%= bar_chart Game.unscoped.group(:number_of_players).count.sort %>
 
 
