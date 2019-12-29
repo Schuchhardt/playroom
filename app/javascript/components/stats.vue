@@ -1,43 +1,54 @@
 <template>
   <div class="stats container-fluid">
     <div class="container">
-      <p v-if="playsets.length == 0"><br><br> No hay Ludotecas cargadas en este establecimiento</p>
 
       <div class="columns is-3" >
           <p>Estadisticas</p>
-          <pie-chart :data="{'Pensamiento Estratégico': 44, 'Pensamiento Lógico': 23}"></pie-chart>
+          <br>
+          <pie-chart :data="skills_category"></pie-chart>
+          <br>
+          <bar-chart :data="skills_xx"></bar-chart>
+          <br>
+          <column-chart :data="idps"></column-chart>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex'
 
 export default {
   name: 'Stats',
   data() {
     return {
       loading: false,
-      currentGame: null
+      currentGame: null,
+      skills_category: [
+        ["1. Autoconciencia", 92],
+        ["2. Autogestión", 88],
+        ["3. Conciencia del otro", 65],
+        ["4. Habilidades sociales", 87],
+        ["5. Toma de decisiones responsables", 82]
+      ],
+      skills_xx: [
+				["Pensamiento critico", 76],
+				["Creatividad", 67],
+				["Curiosidad", 77],
+				["Trabajo en equipo (Colaboración)", 92],
+				["Comunicación", 80],
+        ["Aprender a aprender", 89],
+      ],
+      idps: [
+        ["Autoestima académica y motivación escolar", 77],
+        ["Asistencia escolar", 65 ],
+        ["Retención escolar", 82],
+        ["Equidad de genero", 77],
+        ["Participación y formación ciudadana", 91],
+        ["Clima de convivencia escolar", 76 ],
+      ]
     };
   },
-  computed: {
-    playsets () {
-      return this.$store.state.playsetStore.playsets
-    },
-    currentPlayset () {
-      return this.$store.state.playsetStore.playset
-    }
-  },
-  mounted () {
-    const vm = this
-    this.$store.dispatch('playsetStore/index')
-  },
   methods: {
-     ...mapActions('playsetStore', ['index', 'show']),
-     ...mapActions('gameStore', ['show', 'inPlayset']),
-
     goToPlayset (playset) {
       this.$router.push("games/" + playset.id)
     },
