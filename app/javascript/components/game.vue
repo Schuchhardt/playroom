@@ -151,6 +151,11 @@ export default {
   margin-left: 80px;
   background: white;
   border-radius: 100%;
+  @media(max-width: 375px){
+    height: 370px;
+    width: 370px;
+    margin-left: 0px;
+  }
   .sel{
     background: white;
     border-radius: 100%;
