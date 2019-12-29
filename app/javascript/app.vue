@@ -31,7 +31,7 @@
             <span class="icon">
               <i class="fas fa-chalkboard-teacher" aria-hidden="true"></i>
             </span>
-            <span>Experiencias</span>
+            <span> Experiencias</span>
           </router-link>
           <router-link class="navbar-item" to="/stats">
             <span class="icon">

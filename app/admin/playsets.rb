@@ -3,6 +3,11 @@ ActiveAdmin.register Playset do
     game_sets_attributes: [:id, :_destroy, :game_id, :suggested_copies]
   menu priority: 2
 
+  before_save do |playset|
+    default_playset = PLAYSET_TYPES.find{ |pl| pl[:playset_type] == playset[:playset_type]}
+    playset.description = default_playset[:description] unless !playset.description.empty?
+  end
+
   index do
     selectable_column
     id_column
@@ -26,11 +31,11 @@ ActiveAdmin.register Playset do
         row :start_at
         row :finish_at
         row :price
-        row "Imagen" do |g|
-          if g.image.attached?
-            image_tag url_for(g.image)
+        row "Imagen" do |p|
+          if p.image.attached?
+            image_tag url_for(p.image)
           else
-            nil
+            image_tag PLAYSET_TYPES.find{ |pl| pl[:playset_type] == p.playset_type}[:image_url]
           end
         end
     end
