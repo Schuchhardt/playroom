@@ -47,7 +47,7 @@
             <p v-if="currentUser" class="user-name">
               <span class="user-text">{{currentUser.name || currentUser.email}}</span>
                <a class="button is-light close-btn" v-on:click="signOut()">
-                <span class="x">X</span> <span>Salir</span> 
+                <span>(Salir)</span> 
               </a></p>
             </div>
             <div class="tile is-child">
@@ -67,7 +67,7 @@
 <footer class="footer">
   <div class="content has-text-centered">
     <p>
-      <strong>Playroom Learning ® 2019</strong> desarrollado por <a href="https://ludotecasescolares.cl">ludotecas escolares</a>.
+      <strong>Playroom Learning ® 2019</strong> desarrollado por <a href="https://ludotecasescolares.cl" target="_blank">ludotecas escolares</a>.
     </p>
   </div>
 </footer>
@@ -198,13 +198,13 @@ html, body, pre, code, kbd, samp, button, a, input{
   }
   .close-btn{
     background-color: transparent;
-    float: right;
     color: white;
-    .x{
-      padding-right: 10px;
-      font-size: 24px;
-      font-weight: bolder;
-      color: lightgray;
+    display: inline-block;
+    padding: 0px;
+    span{
+      font-size: 11px;
+      position: relative;
+      top: 6px;
     }
   }
 }
@@ -215,6 +215,11 @@ html, body, pre, code, kbd, samp, button, a, input{
   right: 40%;
   top: 20px;
   .user-text{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 150px;
+    display: inline-block;
+    white-space: nowrap;
     position: relative;
     top: 10px;
   }

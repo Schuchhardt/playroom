@@ -35,7 +35,7 @@
                 <p><strong>Tiempo de juego aproximado:</strong> {{currentGame.game_time}}</p>
                 <p><strong>Nro de Jugadores:</strong> {{currentGame.number_of_players}}</p>
                 <p v-if="currentGame.idps_names"><strong>IDPS:</strong> {{currentGame.idps_names}}</p>
-
+<!-- 
                 <div v-for="(skills, category) in currentGame.skills_by_category" :key="category">
                   <p class="menu-label">
                     {{category}}
@@ -44,7 +44,15 @@
                     <span v-for="s in skills" :key="s.id" class="tag is-light">{{s.name}}</span>
                   </div>
                   <br>
-                </div> 
+                </div>  -->
+                <div class="sel-circle">
+                  <div class="sel">SEL</div>
+                  <img v-bind:class="{ disabled: !hasSelCategory(currentGame, 1) }" class="autogestion" src="../images/autogestion.png" alt="Autogestión">
+                  <img v-bind:class="{ disabled: !hasSelCategory(currentGame, 2) }" class="autoconciencia" src="../images/autoconciencia.png" alt="Autoconciencia">
+                  <img v-bind:class="{ disabled: !hasSelCategory(currentGame, 3) }" class="conciencia" src="../images/conciencia_del_otro.png" alt="Conciencia del otro">
+                  <img v-bind:class="{ disabled: !hasSelCategory(currentGame, 4) }" class="habilidades" src="../images/habilidades_sociales.png" alt="Habilidades sociales">
+                  <img v-bind:class="{ disabled: !hasSelCategory(currentGame, 5) }" class="decisiones" src="../images/toma_decisiones.png" alt="Toma de decisiones">
+                </div>
 
               <br>
             </div>
@@ -73,7 +81,16 @@ export default {
     },
  },
   methods: {
-
+    hasSelCategory(currentGame, categoryNumber){
+      let flag = false;
+      Object.keys(currentGame.skills_by_category).forEach( (key => {
+        const nameMatch = key.includes(categoryNumber.toString())
+        if (nameMatch && currentGame.skills_by_category[key].length > 0) {
+          flag = true
+        }
+      }))
+      return flag
+    },
      getBgImg(game) {
       return {
         "background-image": "url(' " + game.image_url + "')"
@@ -124,6 +141,67 @@ export default {
     }
     li::before{
       margin-right: 10px;
+    }
+  }
+}
+
+.sel-circle{
+  height: 380px;
+  width: 390px;
+  margin-left: 80px;
+  background: white;
+  border-radius: 100%;
+  .sel{
+    background: white;
+    border-radius: 100%;
+    height: 100px;
+    width: 100px;
+    display: block;
+    margin: auto;
+    background-color: #a14271;
+    text-align: center;
+    line-height: 100px;
+    font-weight: bolder;
+    font-size: 30px;
+    position: relative;
+    top: 140px;
+  }
+  img{
+    width: 100px;
+    transition: all 1s ease;
+    position: relative;
+    &:hover{
+      transform: scale(1.05);
+      z-index: 9999;
+    }
+    &.disabled{
+      -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+      filter: grayscale(100%);
+    }
+    &.autogestion{
+      top: -107px;
+      left: 15px;
+      width: 189px;
+    }
+    &.autoconciencia{
+      width: 166px;
+      top: -86px;
+      left: -19px;
+    }
+    &.conciencia{
+    width: 138px;
+    top: -133px;
+    left: 202px;
+    }
+    &.habilidades{
+      width: 200px;
+      top: -100px;
+      left: -75px;
+    }
+    &.decisiones{
+      top: -344px;
+      left: -112px;
+      width: 120px;
     }
   }
 }

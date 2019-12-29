@@ -2,7 +2,7 @@
   <div class="games container-fluid">
     <div class="container-fluid is-fullhd">
       <div class="columns">
-        <div class="column is-one-third" v-if="showFilters">
+        <div class="column is-one-quarter" v-if="showFilters">
           <aside class="menu">
             <p class="menu-label">
               Buscador por nombre
@@ -10,7 +10,7 @@
             <b-field>
                 <b-autocomplete
                     v-model="name"
-                    placeholder="Ingresa el nombre del juego"
+                    placeholder="Ingresa el nombre"
                     :keep-first="keepFirst"
                     :open-on-focus="openOnFocus"
                     :data="filteredGamesPerName"

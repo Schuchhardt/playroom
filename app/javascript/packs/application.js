@@ -23,6 +23,9 @@ Vue.use(VueLazyload, {
   loading: 'https://i.imgur.com/wGXA2aO.gif',
   attempt: 1
 })
+Chartkick.options = {
+  colors: ["#553d96", "#ebd30c", "#5da629", "#d83c7f", "#004c7d", "#393292", "#4ac3d6"]
+}
 Vue.use(Chartkick)
 Vue.use(Buefy, {
 	defaultIconPack: 'fa',

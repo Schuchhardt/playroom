@@ -142,8 +142,10 @@ export default {
 
 .columns{
   padding-top: 20px;
+  padding-left: 50px;
   @media(max-width: 414px) {
     width: 105%;
+    padding-left: 0;
   }
 }
 
