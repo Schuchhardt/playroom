@@ -1,6 +1,6 @@
 <template>
   <div class="games container-fluid">
-    <div class="container is-fullhd">
+    <div class="container-fluid is-fullhd">
       <div class="columns">
         <div class="column is-one-third" v-if="showFilters">
           <aside class="menu">
@@ -46,14 +46,14 @@
             <p class="t"> Mostrando {{filteredGames.length}} juegos</p>
             <div class="column is-one-quarter is-full-mobile game-detail" v-for="g in filteredGames" :key="g.id">
 
-              <div class="card" v-on:click.prevent="openGameDetail(g)">
+              <div class="card" v-on:click.prevent="goToGame(g)">
                 <div class="card-header">
                   <p class="title">{{g.name}}</p>
                 </div>
                 <div class="card-image">
                   <figure class="image">
-                    <img v-if="g.image_url" :src="g.image_url" alt="ludoteca"> 
-                    <img v-if="!g.image_url" src="../../assets/images/pie_head.png" alt="ludoteca"> 
+                    <img v-if="g.image_url" v-lazy="g.image_url" alt="ludoteca"> 
+                    <img v-if="!g.image_url" v-lazy="'../../assets/images/pie_head.png'" alt="ludoteca"> 
                   </figure>
                 </div>
 
@@ -64,7 +64,7 @@
         </div>
       </div>
     </div>
-    <b-modal :active.sync="isGameModalActive" scroll="keep" id="gameModal">
+    <!-- <b-modal :active.sync="isGameModalActive" scroll="keep" id="gameModal">
       <section v-if="currentGame">
         <div class="columns">
           <div class="column">
@@ -85,7 +85,7 @@
                 <p><strong>Edad sugerida:</strong> {{currentGame.suggested_age}}</p>
                 <p><strong>Tiempo de juego aproximado:</strong> {{currentGame.game_time}}</p>
                 <p><strong>Nro de Jugadores:</strong> {{currentGame.number_of_players}}</p>
-                <p><strong>IDPS:</strong> {{currentGame.idps}}</p>
+                <p><strong>IDPS:</strong> {{currentGame.idps_names}}</p>
                 <div class="paralem" :class="'p_' + i "  v-for="(level,i) in currentGame.category_levels" :key="i">
                   <p>{{level}}</p>
                 </div>
@@ -108,7 +108,7 @@
           </div>        
         </div>
       </section>
-    </b-modal>
+    </b-modal> -->
     <div class="filter-container" >
       <button class="filter-toggle" @click.prevent="toggleFilters()">
         <div class="icon">
@@ -194,8 +194,9 @@ export default {
       .then( () => vm.$store.dispatch('gameStore/loadSkills') )
       .then( () => {
         setTimeout(() => {
-          if (vm.$router.currentRoute.params.playset_id) {
-            vm.selectedPlaysets = [vm.$router.currentRoute.params.playset_id]
+          console.log(vm.$router.currentRoute.query.playsetId)  
+          if (vm.$router.currentRoute.query.playsetId) {
+            vm.selectedPlaysets = [vm.$router.currentRoute.query.playsetId]
           } else {
             vm.selectedPlaysets = this.$store.state.playsetStore.playsets.map( (p) => p.id)  
           }
@@ -243,11 +244,13 @@ export default {
           }
         })
      },
+     goToGame(game) {
+        this.$router.push("games/" + game.id)
+     },
      printGameDetail() {
       window.printJS({printable: "gameModal", type: "html", css: "https://unpkg.com/buefy/dist/buefy.min.css" } )
      },
      toggleFilters() {
-       console.log("asd")
        this.showFilters = !this.showFilters;
      }
 
@@ -261,13 +264,13 @@ export default {
 .games{
   min-height: 100vh;
   // background-image: url("../../assets/images/juegos_fondo.png");
-  background-color: darken(#443c8f, 30%);
+  background-color: #221f43;
   background-repeat: repeat-y;
   background-size: contain;
 
-  .container{
-    background: darken(#443c8f, 30%);
-    
+  .is-fullhd {
+    background: #221f43;
+    padding: 0 20px;
   }
 
   .results-container{
@@ -275,7 +278,7 @@ export default {
     padding: 12px;
     display: block;
     margin: auto;
-    background: darken(#443c8f, 30%);
+    background: #221f43;
     position: relative;
     top: 95px;
     .bg-img{
@@ -360,7 +363,7 @@ export default {
   }
 
   .games-grid{
-    background: darken(#443c8f, 30%);
+    background: #211e43;
     opacity: 0.9;
     .game-detail{
       .bg-img{
@@ -442,6 +445,7 @@ export default {
       width: 100%;
       margin-top: 30px;
       font-size: 13px;
+      color: darken( white, 10%);
     }
   }
   /deep/ .modal-content{

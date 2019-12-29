@@ -16,7 +16,13 @@ import Router from 'vue-router';
 import Resource from 'vue-resource';
 import VueScrollTo from 'vue-scrollto';
 import Chartkick from 'vue-chartkick';
+import VueLazyload from 'vue-lazyload'
 
+Vue.use(VueLazyload, {
+  preLoad: 1.3,
+  loading: 'https://i.imgur.com/wGXA2aO.gif',
+  attempt: 1
+})
 Vue.use(Chartkick)
 Vue.use(Buefy, {
 	defaultIconPack: 'fa',

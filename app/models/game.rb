@@ -51,6 +51,10 @@ class Game < ApplicationRecord
 		self.levels.map(&:category).uniq
 	end
 
+	def idps_names
+		"#{self.idps.map(&:name).join(" - ")}"
+	end	
+
 	def game_levels
 	 	gl = []
 		gl << "Ed. Párvulos" if self.level_preschool

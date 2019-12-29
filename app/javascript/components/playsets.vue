@@ -11,8 +11,7 @@
               </div>
               <div class="card-image" @click.prevent="openPlaysetDetail(playset)">
                 <figure class="image">
-                  <img v-if="playset.image_url" :src="playset.image_url" alt="ludoteca"> 
-                  <img v-if="!playset.image_url" src="../../assets/images/ludotecas.sample.jpg" alt="ludoteca"> 
+                  <img v-if="playset.image_url" v-lazy="playset.image_url" alt="ludoteca"> 
                 </figure>
               </div>
 
@@ -84,7 +83,8 @@ export default {
 
     goToPlayset (playset) {
       if (playset.disabled) return;
-      this.$router.push("games/" + playset.id)
+      this.$router.push({ path: 'games', query: { playsetId: playset.id }})
+
     },
   }
 };

@@ -13,12 +13,12 @@ export default new Router({
       component: Playsets,
     },
     {
-      path: '/games/:playset_id?',
+      path: '/games',
       name: 'Games',
       component: Games,
     },
     {
-      path: '/games/:playset_id/:game_id',
+      path: '/games/:gameId',
       name: 'Game',
       component: Game,
     },

@@ -41,10 +41,15 @@ class LandingController < ApplicationController
 		end
 		current_user.establishments.first.playsets.each do |pl|
 			pl.games.each do |game|
-				formatted_games << game.slice(:id, :name, :description, :difficulty, :game_time, :idps, :number_of_players, :suggested_age, :youtube_embed_url, :image_url, :playsets_ids, :skills_ids, :skills_by_category, :game_levels)
+				formatted_games << game.slice(:id, :name, :description, :difficulty, :game_time, :idps_names, :number_of_players, :suggested_age, :youtube_embed_url, :image_url, :playsets_ids, :skills_ids, :skills_by_category, :game_levels)
 			end
 		end
 		render json: formatted_games.sort_by { |obj| obj[:name] }.uniq { |item| item[:id] }
+	end
+
+	def game
+		game = Game.find params[:id]
+		render json: game.slice(:id, :name, :description, :difficulty, :game_time, :idps_names, :number_of_players, :suggested_age, :youtube_embed_url, :image_url, :playsets_ids, :skills_ids, :skills_by_category, :game_levels) , status: 200
 	end
 
 	def skills

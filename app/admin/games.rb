@@ -26,12 +26,18 @@ ActiveAdmin.register Game do
     column "IDPS" do |game|
       game.idps.any?
     end
-    column "Dificultad" do |game|
-      !game.difficulty.nil?
+    column "Niveles" do |game|
+      [game.level_preschool, game.level_first_primary, game.level_second_primary, game.level_secondary].any? { |x| x == true }
     end
-    column "Duración" do |game|
-      !game.game_time.nil?
+    column "Ludotecas" do |game|
+      game.playsets.any?
     end
+    # column "Dificultad" do |game|
+    #   !game.difficulty.nil?
+    # end
+    # column "Duración" do |game|
+    #   !game.game_time.nil?
+    # end
     # column "Nº de Jugadores" do |game|
     #   !game.number_of_players.empty?
     # end

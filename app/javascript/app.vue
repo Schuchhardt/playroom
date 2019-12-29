@@ -64,6 +64,13 @@
       <p class="nes-balloon from-right">¿Necesitas<br>Ayuda?</p>
       <i class="nes-octocat"></i>
     </div> -->
+<footer class="footer">
+  <div class="content has-text-centered">
+    <p>
+      <strong>Playroom Learning ® 2019</strong> desarrollado por <a href="https://ludotecasescolares.cl">ludotecas escolares</a>.
+    </p>
+  </div>
+</footer>
   </div>
 </template>
 
@@ -99,7 +106,7 @@ export default {
 @import url('https://fonts.googleapis.com/css?family=Lato');
 
 body{
-	background-color: #FFF;
+	background-color: #1f1c43;
 }
 
 html{
@@ -128,6 +135,17 @@ html, body, pre, code, kbd, samp, button, a, input{
     position: relative;
     top: 30px;
     left: 10px;
+  }
+}
+
+.footer{
+  width: 100%;
+  background-color: #0f0d2a;
+  color: white;
+  p, strong{
+    color: white;
+    text-transform: uppercase;
+    font-family: 'Lato', cursive;
   }
 }
 
