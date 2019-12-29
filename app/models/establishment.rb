@@ -33,6 +33,7 @@
 
 class Establishment < ApplicationRecord
 	belongs_to :commune, optional: true
+	has_one_attached :logo
 	has_many :playsets
 	has_many :user_establishments
 	has_many :users, through: :user_establishments

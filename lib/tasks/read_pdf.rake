@@ -13,7 +13,6 @@ namespace :read_pdf do
 				file = File.open(filename)
 				game.image.attach(io: file, filename: "#{g_folder}.png")
 				game.save!
-				ap game
 			else
 				puts "*****"*4
 				puts "NO EXISTE!!! #{filename}"

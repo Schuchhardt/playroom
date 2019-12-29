@@ -3,30 +3,38 @@
       <section class="container" v-if="currentGame">
         <nav class="breadcrumb" aria-label="breadcrumbs">
           <ul>
-            <li><a @click.prevent="goBack()"> < Volver</a></li>
-            <li class="is-active"><a href="#" aria-current="page">{{currentGame.name}}</a></li>
+            <li><a @click.prevent="goBack()">
+            <span class="icon">
+              <i class="fas fa-chevron-left" aria-hidden="true"></i> 
+              <span class="text"> Juegos </span>
+            </span>
+            </a> </li>
+            <li class="is-active"> {{currentGame.name}}</li>
           </ul>
         </nav>
         <div class="columns">
-          <div class="column">
+          <div class="column is-full-mobile">
             <p class="bd-notification is-info"><img v-bind:src="currentGame.image_url" alt="Juego"></p>
             <br>
-                            <p><strong>¿Como jugar?</strong></p>
+            <div v-if="currentGame.youtube_embed_url">
+                <p><strong>¿Como jugar?</strong></p>
                 <br>            
                 <iframe :src="currentGame.youtube_embed_url" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
             <br>
             <button @click.prevent="printGameDetail()" class="button is-light">Imprimir Ficha</button>
           </div>
-          <div class="column">
+          <div class="column is-full-mobile">
             <p class="title is-4">{{currentGame.name}}</p>
             <p><strong>Descripción:</strong>
             <p class="bd-notification is-info description">{{currentGame.description}}</p>
+            <br>
             <div class="content">
                 <p><strong>Dificultad:</strong> <span class="is-warning">{{currentGame.difficulty}}</span></p>
                 <p><strong>Edad sugerida:</strong> {{currentGame.suggested_age}}</p>
                 <p><strong>Tiempo de juego aproximado:</strong> {{currentGame.game_time}}</p>
                 <p><strong>Nro de Jugadores:</strong> {{currentGame.number_of_players}}</p>
-                <p><strong>IDPS:</strong> {{currentGame.idps_names}}</p>
+                <p v-if="currentGame.idps_names"><strong>IDPS:</strong> {{currentGame.idps_names}}</p>
 
                 <div v-for="(skills, category) in currentGame.skills_by_category" :key="category">
                   <p class="menu-label">
@@ -37,9 +45,7 @@
                   </div>
                   <br>
                 </div> 
-                <div v-if="currentGame.youtube_embed_url">
 
-                </div>
               <br>
             </div>
           </div>        
@@ -88,10 +94,11 @@ export default {
   
 .game{
   min-height: 100vh;
-  // background-image: url("../../assets/images/juegos_fondo.png");
   background-color: #221f43;
-  background-repeat: repeat-y;
-  background-size: contain;
+
+  img{
+    width: 350px
+  }
 
   .container{
     background: #221f43;
@@ -107,10 +114,16 @@ export default {
   }
 
   .breadcrumb{
-    padding-left: 30px;
+    padding-left: 40px;
     a {
       color: white;
-      text-decoration: underline;
+      padding: 0 30px;
+      .text{
+        padding-left: 10px;
+      }
+    }
+    li::before{
+      margin-right: 10px;
     }
   }
 }

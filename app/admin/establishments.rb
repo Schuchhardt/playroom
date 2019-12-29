@@ -1,7 +1,7 @@
 ActiveAdmin.register Establishment do
   permit_params :name, :rbd, :address, :phone, :commune_id, :education_level_preschool,
     :education_level_primary, :education_level_secondary, :education_level_secondary_tech,
-    :establishment_kind, :ive, :students_per_course, :total_students
+    :establishment_kind, :ive, :students_per_course, :total_students, :logo
   menu priority: 2
 
   index do
@@ -27,6 +27,21 @@ ActiveAdmin.register Establishment do
       row :contact_name
       row :contact_email
       row :contact_phone
+      row "Logo" do |e|
+        if e.logo.attached?
+          image_tag url_for(e.logo)
+        else
+          nil
+        end
+      end
+      row :establishment_kind
+      row :education_level_preschool
+      row :education_level_primary
+      row :education_level_secondary
+      row :education_level_secondary_tech
+      row :ive
+      row :students_per_course
+      row :total_students
     end
     panel "Ludotecas" do
       table_for establishment.playsets do
@@ -50,6 +65,7 @@ ActiveAdmin.register Establishment do
     f.inputs do
       f.input :name
       f.input :rbd
+      f.input :logo, as: :file
       f.input :address
       f.input :phone
       f.input :contact_name

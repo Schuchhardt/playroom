@@ -6,6 +6,7 @@ import Stats from './components/stats';
 import Experiences from './components/experiences';
 
 export default new Router({
+  // mode: 'history',
   routes: [
     {
       path: '/',
@@ -32,5 +33,8 @@ export default new Router({
       name: 'Experiences',
       component: Experiences,
     }
-  ]
+  ],
+  scrollBehavior() {
+    return {x: 0, y: 0}
+  }
 });

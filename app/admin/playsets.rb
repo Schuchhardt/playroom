@@ -16,7 +16,12 @@ ActiveAdmin.register Playset do
     column "Nro de Juegos" do |ps|
       ps.games.count
     end
-    column :description
+    column "Descripción" do |ps|
+      !ps.description.nil?
+    end
+    column "Imagen" do |ps|
+      ps.image.attached?
+    end
     actions
   end
 

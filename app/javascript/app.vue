@@ -142,6 +142,9 @@ html, body, pre, code, kbd, samp, button, a, input{
   width: 100%;
   background-color: #0f0d2a;
   color: white;
+  padding: 40px 20px;
+  font-size: 12px;
+  margin-top: 30px;
   p, strong{
     color: white;
     text-transform: uppercase;
@@ -175,10 +178,9 @@ html, body, pre, code, kbd, samp, button, a, input{
 .navbar-menu{
   background-color: #0f0d2a;
   .navbar-item{
-    font-size: 22px;
-    padding: 25px;
+    font-size: 17px;
+    padding: 25px 15px;
     text-transform: uppercase;
-    color: white;
     color: gray;
     i{
       color: #00d8cd;

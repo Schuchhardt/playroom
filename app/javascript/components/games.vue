@@ -40,7 +40,7 @@
             </ul>
           </aside>
         </div>
-        <div class="column">
+        <div class="column gamelist">
           <div class="columns games-grid" v-if="games.length > 0">
             <p class="t" v-if="filteredGames.length == 0"> Por favor selecciona una ludoteca</p>
             <p class="t"> Mostrando {{filteredGames.length}} juegos</p>
@@ -64,51 +64,7 @@
         </div>
       </div>
     </div>
-    <!-- <b-modal :active.sync="isGameModalActive" scroll="keep" id="gameModal">
-      <section v-if="currentGame">
-        <div class="columns">
-          <div class="column">
-            <div><img height="100" src="../images/pr3.png"></div>
-            <p class="bd-notification is-info"><img v-bind:src="currentGame.image_url" alt="Juego"></p>
-            <br>
-            <br>
-            <p><strong>Descripción:</strong>
-            <p class="bd-notification is-info description">{{currentGame.description}}</p>
-            
-            <button @click.prevent="printGameDetail()" class="button is-light">Imprimir Ficha</button>
-          </div>
-          <div class="column">
-            <p class="title is-4">{{currentGame.name}}</p>
 
-            <div class="content">
-                <p><strong>Dificultad:</strong> <span class="is-warning">{{currentGame.difficulty}}</span></p>
-                <p><strong>Edad sugerida:</strong> {{currentGame.suggested_age}}</p>
-                <p><strong>Tiempo de juego aproximado:</strong> {{currentGame.game_time}}</p>
-                <p><strong>Nro de Jugadores:</strong> {{currentGame.number_of_players}}</p>
-                <p><strong>IDPS:</strong> {{currentGame.idps_names}}</p>
-                <div class="paralem" :class="'p_' + i "  v-for="(level,i) in currentGame.category_levels" :key="i">
-                  <p>{{level}}</p>
-                </div>
-
-            <div v-for="(skills, category) in currentGame.skills_by_category" :key="category">
-              <p class="menu-label">
-                {{category}}
-              </p>
-              <div class="tags">
-                <span v-for="s in skills" :key="s.id" class="tag is-light">{{s.name}}</span>
-              </div>
-              <br>
-            </div> 
-                <div v-if="currentGame.youtube_embed_url">
-                <p><strong>¿Como jugar?</strong></p>
-                <iframe :src="currentGame.youtube_embed_url" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-
-            </div>
-          </div>        
-        </div>
-      </section>
-    </b-modal> -->
     <div class="filter-container" >
       <button class="filter-toggle" @click.prevent="toggleFilters()">
         <div class="icon">
@@ -205,7 +161,7 @@ export default {
             allSkillsId.push(sc.map( (s) => s.id))
           })
           vm.selectedSkills = allSkillsId.flat()
-        }, 500);
+        }, 1000);
       })
     this.selectedLevels = this.levels
   },
@@ -263,7 +219,6 @@ export default {
   
 .games{
   min-height: 100vh;
-  // background-image: url("../../assets/images/juegos_fondo.png");
   background-color: #221f43;
   background-repeat: repeat-y;
   background-size: contain;
@@ -271,6 +226,10 @@ export default {
   .is-fullhd {
     background: #221f43;
     padding: 0 20px;
+  }
+
+  .gamelist{
+    max-width: 100%;
   }
 
   .results-container{
@@ -434,8 +393,11 @@ export default {
           color: white;
           text-transform: uppercase;
           text-align: center;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
           width: 100%;
-          letter-spacing: 5px;
+          letter-spacing: 3px;
           font-weight: lighter;
           font-size: 20px;
         }
