@@ -6,13 +6,13 @@
             <li><a @click.prevent="goBack()">
             <span class="icon">
               <i class="fas fa-chevron-left" aria-hidden="true"></i> 
-              <span class="text"> Juegos </span>
+              <span class="text"> JUEGOS </span>
             </span>
             </a> </li>
             <li class="is-active"> {{currentGame.name}}</li>
           </ul>
         </nav>
-        <div class="columns">
+        <div class="columns" id="game">
           <div class="column is-full-mobile">
             <p class="bd-notification is-info"><img v-bind:src="currentGame.image_url" alt="Juego"></p>
             <br>
@@ -45,7 +45,7 @@
                   </div>
                   <br>
                 </div>  -->
-                <div class="sel-circle">
+                <div class="sel-circle no-print">
                   <div class="sel">SEL</div>
                   <img v-bind:class="{ disabled: !hasSelCategory(currentGame, 1) }" class="autogestion" src="../images/autogestion.png" alt="Autogestión">
                   <img v-bind:class="{ disabled: !hasSelCategory(currentGame, 2) }" class="autoconciencia" src="../images/autoconciencia.png" alt="Autoconciencia">
@@ -100,7 +100,7 @@ export default {
        this.$router.go(-1)
      },
      printGameDetail() {
-      window.printJS({printable: "gameModal", type: "html", css: "https://unpkg.com/buefy/dist/buefy.min.css" } )
+      window.printJS({printable: "game", type: "html", css: "https://unpkg.com/buefy/dist/buefy.min.css" } )
      }
   }
 };
@@ -110,7 +110,7 @@ export default {
 @import "../utils.scss";
   
 .game{
-  min-height: 100vh;
+  min-height: 1250px;
   background-color: #221f43;
 
   img{
@@ -208,6 +208,12 @@ export default {
       left: -112px;
       width: 120px;
     }
+  }
+}
+
+@media print{    
+  .no-print{
+    display: none !important;
   }
 }
 
