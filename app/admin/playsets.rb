@@ -49,7 +49,7 @@ ActiveAdmin.register Playset do
         column "Nombre" do |gs|
           gs.game.name
         end
-        column "Copias sugeridas" do |gs|
+        column "Copias disponibles" do |gs|
           gs.suggested_copies
         end
       end

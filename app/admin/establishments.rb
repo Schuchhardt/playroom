@@ -45,17 +45,17 @@ ActiveAdmin.register Establishment do
     end
     panel "Ludotecas" do
       table_for establishment.playsets do
-        column "Nombre" do |gs|
-          gs.playset_type
+        column "Nombre" do |ps|
+          link_to ps.playset_type, admin_playset_path(ps)
         end
-        column "Nro de juegos" do |gs|
-          gs.games.count
+        column "Nro de juegos" do |ps|
+          ps.games.count
         end
-        column "Fecha Inicio" do |gs|
-          gs.start_at
+        column "Fecha Inicio" do |ps|
+          ps.start_at
         end
-        column "Fecha Termino" do |gs|
-          gs.finish_at
+        column "Fecha Termino" do |ps|
+          ps.finish_at
         end
       end
     end
