@@ -38,6 +38,7 @@ class Establishment < ApplicationRecord
 	has_many :user_establishments
 	has_many :establishment_resources
 	has_many :users, through: :user_establishments
+	has_many :resources, through: :establishment_resources
 
 	def region_name
 		self.commune.region.name if self.commune

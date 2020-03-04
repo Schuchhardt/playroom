@@ -65,6 +65,17 @@ class LandingController < ApplicationController
 		render json: skill_categories
 	end
 
+	def resources
+		formatted_res = []
+		if current_user.establishments.empty?
+			return render json: formatted_res, status: 200
+		end
+		current_user.establishments.first.resources.each do |res|
+			formatted_res << res
+		end
+		render json: formatted_res
+	end
+
 	private
 	
 	def get_default_img playset

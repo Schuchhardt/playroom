@@ -2,93 +2,37 @@
   <div class="experiences container-fluid">
     <div class="container is-fullhd">
       <div class="tile is-ancestor">
-        <div class="tile is-vertical is-8">
-            <div class="tile">
-            <div class="tile is-parent is-vertical">
-                <article class="tile is-child notification is-primary">
-                <p class="title">Vertical...</p>
-                <p class="subtitle">Top tile</p>
-                </article>
-                <article class="tile is-child notification is-warning">
-                <p class="title">...tiles</p>
-                <p class="subtitle">Bottom tile</p>
-                </article>
-            </div>
-            <div class="tile is-parent">
-                <article class="tile is-child notification is-info">
-                <p class="title">Middle tile</p>
-                <p class="subtitle">With an image</p>
-                <figure class="image is-4by3">
-                    <img src="https://bulma.io/images/placeholders/640x480.png">
-                </figure>
-                </article>
-            </div>
-            </div>
-            <div class="tile is-parent">
-            <article class="tile is-child notification is-danger">
-                <p class="title">Wide tile</p>
-                <p class="subtitle">Aligned with the right tile</p>
-                <div class="content">
-                <!-- Content -->
-                </div>
-            </article>
-            </div>
-        </div>
-        <div class="tile is-parent">
+        <!-- <div class="tile is-parent">
             <article class="tile is-child notification is-success">
             <div class="content">
                 <p class="title">Tall tile</p>
-                <p class="subtitle">With even more content</p>
-                <div class="content">
-                <!-- Content -->
-                </div>
+                <p class="subtitle">Descargar</p>
             </div>
             </article>
-        </div>
-      </div>
-      <div class="tile is-ancestor">
-        <div class="tile is-parent">
-            <article class="tile is-child notification is-success">
-            <div class="content">
-                <p class="title">Tall tile</p>
-                <p class="subtitle">With even more content</p>
-                <div class="content">
-                <!-- Content -->
-                </div>
-            </div>
-            </article>
-        </div>
-        <div class="tile is-vertical is-8">
+        </div> -->
+        <div class="tile is-vertical is-full">
             <div class="tile">
-            <div class="tile is-parent is-vertical">
-                <article class="tile is-child notification is-primary">
-                <p class="title">Vertical...</p>
-                <p class="subtitle">Top tile</p>
-                </article>
-                <article class="tile is-child notification is-warning">
-                <p class="title">...tiles</p>
-                <p class="subtitle">Bottom tile</p>
-                </article>
-            </div>
-            <div class="tile is-parent">
-                <article class="tile is-child notification is-info">
-                <p class="title">Middle tile</p>
-                <p class="subtitle">With an image</p>
-                <figure class="image is-4by3">
-                    <img src="https://bulma.io/images/placeholders/640x480.png">
-                </figure>
-                </article>
-            </div>
-            </div>
-            <div class="tile is-parent">
-            <article class="tile is-child notification is-danger">
-                <p class="title">Wide tile</p>
-                <p class="subtitle">Aligned with the right tile</p>
-                <div class="content">
-                <!-- Content -->
+                <div class="tile is-parent is-vertical">
+                    <article class="tile is-child notification is-success" v-for="resource in resources" :key="resource.id">
+                    <p class="title">{{resource.name}}</p>
+                    <a v-bind:href="resource.file_url" target="_blank">
+                        <p class="subtitle">Descargar</p>
+                    </a>
+                    </article>
                 </div>
-            </article>
+                <!-- <div class="tile is-parent">
+                    <article class="tile is-child notification is-info">
+                    <p class="title">Middle tile</p>
+                    <p class="subtitle">Descargar</p>
+                    </article>
+                </div> -->
             </div>
+            <!-- <div class="tile is-parent">
+                <article class="tile is-child notification is-danger">
+                    <p class="title">Wide tile</p>
+                    <p class="subtitle">Descargar</p>
+                </article>
+            </div> -->
         </div>
 
       </div>
@@ -100,11 +44,20 @@
 import { mapActions, mapState } from 'vuex'
 
 export default {
-  name: 'Experiences',
+  name: 'Resources',
   data() {
     return {
       loading: false,
     };
+  },
+  computed: {
+    resources () {
+      return this.$store.state.resourceStore.resources
+    }
+  },
+  mounted () {
+    const vm = this
+    this.$store.dispatch('resourceStore/index')
   }
 };
 </script>

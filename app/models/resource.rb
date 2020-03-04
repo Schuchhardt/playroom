@@ -11,4 +11,5 @@
 
 class Resource < ApplicationRecord
     has_many :establishment_resources
+    accepts_nested_attributes_for :establishment_resources, :allow_destroy => true
 end

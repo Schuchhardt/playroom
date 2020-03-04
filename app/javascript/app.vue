@@ -164,12 +164,16 @@ html, body, pre, code, kbd, samp, button, a, input{
   width: 25%;
   position: relative;
   top: 10px;
-  @media(max-width: 414px) {
+  @media(max-width: 1096px) {
     width: 90%;
   }
   .navbar-item{
     padding-left: 10%;
     max-width: 95%;
+
+    @media(max-width: 1096px) {
+      max-height: 90%;
+    }
   }
   img{
     max-height: 90%;
@@ -178,6 +182,7 @@ html, body, pre, code, kbd, samp, button, a, input{
     box-sizing: unset;
     position: relative;
     left: 0;
+
   }
 }
 

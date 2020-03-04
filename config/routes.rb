@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'landing/playsets'
   get 'landing/games'
   get 'landing/skills'
+  get 'landing/resources'
   get 'landing/skills_categories'
   get 'landing/playsets/:id' => "landing#playset"
   get 'landing/games/:id' => "landing#game"

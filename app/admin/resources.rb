@@ -11,6 +11,20 @@ ActiveAdmin.register Resource do
 
   filter :name
 
+  show do
+    attributes_table do
+        row :name
+        row :file_url
+    end
+    panel "Establecimientos que tienen este recurso" do
+      table_for resource.establishment_resources do
+        column "Nombre" do |gs|
+          gs.establishment.name
+        end
+      end
+    end
+  end
+
   form do |f|
     f.inputs do
       f.input :name

@@ -158,7 +158,7 @@ export default {
   padding: 0px;
   width: 30%;
   height: 100%;
-  opacity: 1;
+  opacity: 0.9;
   transition: all .6s ease;
   border-radius: 5px;
   .card-header{
@@ -182,7 +182,7 @@ export default {
     background-color: #221f43;
   }
   &:hover{
-    opacity: 0.6;
+    opacity: 1;
     cursor: pointer;
   }
   &.disabled{

@@ -6,7 +6,7 @@ import Vuex from 'vuex'
 import playsetStore from './modules/playsets'
 import gameStore from './modules/games'
 import establishmentStore from './modules/establishments'
-import planificationStore from './modules/planifications'
+import resourceStore from './modules/resources'
 
 Vue.use(Vuex)
 
@@ -15,6 +15,6 @@ export default new Vuex.Store({
     playsetStore,
     gameStore,
     establishmentStore,
-    planificationStore
+    resourceStore
   }
 })
