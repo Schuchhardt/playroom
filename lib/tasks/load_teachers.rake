@@ -20,7 +20,8 @@ namespace :load do
 		csv = CSV.parse(csv_text, :headers => true)
         csv.each do |row|
             user = User.find_or_create_by email: row['CORREO']
-            user.update! name: row['NOMBRE'], password: row['RUT'].gsub(".", "").gsub("-", "").gsub("K", "k"), user_type: :teacher
+            # falta apellido
+            user.update! name: row['NOMBRE'], rut: row['RUT'], password: row['RUT'].gsub(".", "").gsub("-", "").gsub("K", "k"), user_type: :teacher
             puts user.inspect
             UserEstablishment.create establishment: est, user: user
 		end

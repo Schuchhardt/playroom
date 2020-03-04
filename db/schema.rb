@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_28_213533) do
+ActiveRecord::Schema.define(version: 2020_03_04_161133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,15 @@ ActiveRecord::Schema.define(version: 2019_12_28_213533) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["region_id"], name: "index_communes_on_region_id"
+  end
+
+  create_table "establishment_resources", force: :cascade do |t|
+    t.bigint "establishment_id"
+    t.bigint "resource_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["establishment_id"], name: "index_establishment_resources_on_establishment_id"
+    t.index ["resource_id"], name: "index_establishment_resources_on_resource_id"
   end
 
   create_table "establishments", force: :cascade do |t|
@@ -205,6 +214,13 @@ ActiveRecord::Schema.define(version: 2019_12_28_213533) do
     t.string "short_name"
   end
 
+  create_table "resources", force: :cascade do |t|
+    t.string "name"
+    t.string "file_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "skills", force: :cascade do |t|
     t.string "name"
     t.string "skill_category"
@@ -239,12 +255,15 @@ ActiveRecord::Schema.define(version: 2019_12_28_213533) do
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
     t.string "role"
+    t.string "rut"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "communes", "regions"
+  add_foreign_key "establishment_resources", "establishments"
+  add_foreign_key "establishment_resources", "resources"
   add_foreign_key "establishments", "communes"
   add_foreign_key "experiences", "games"
   add_foreign_key "experiences", "users"

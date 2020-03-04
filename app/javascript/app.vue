@@ -27,6 +27,12 @@
             </span>
             <span>Juegos</span>
           </router-link>
+          <router-link class="navbar-item" to="/resources">
+            <span class="icon">
+              <i class="fas fa-book" aria-hidden="true"></i>
+            </span>
+            <span>Recursos</span>
+          </router-link>
           <!-- <router-link class="navbar-item" to="/experiences">
             <span class="icon">
               <i class="fas fa-chalkboard-teacher" aria-hidden="true"></i>

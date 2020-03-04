@@ -1,5 +1,5 @@
 ActiveAdmin.register User do
-  permit_params :name, :phone, :user_type, :email, :password, :password_confirmation,
+  permit_params :name, :phone, :user_type, :email, :rut, :password, :password_confirmation,
     user_establishments_attributes: [:id, :_destroy, :establishment_id]
 
   index do
@@ -7,7 +7,7 @@ ActiveAdmin.register User do
     id_column
     column :name
     column :email
-    column :user_type
+    column :rut
     column :phone
     actions
   end
@@ -19,6 +19,7 @@ ActiveAdmin.register User do
     attributes_table do
         row :name
         row :email
+        row :rut
         row :user_type
         row :phone
         row :created_at
@@ -37,6 +38,7 @@ ActiveAdmin.register User do
     f.inputs do
       f.input :user_type, as: :select, collection: (User.translated_user_types.map{ |w| [w[0], w[1]]})
       f.input :email
+      f.input :rut
       f.input :name
       f.input :phone
       f.input :password

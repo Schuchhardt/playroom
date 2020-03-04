@@ -16,6 +16,7 @@
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
 #  role                   :string
+#  rut                    :string
 #  sign_in_count          :integer          default(0), not null
 #  user_type              :integer
 #  created_at             :datetime         not null

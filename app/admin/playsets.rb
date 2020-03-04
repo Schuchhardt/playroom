@@ -6,6 +6,7 @@ ActiveAdmin.register Playset do
   before_save do |playset|
     default_playset = PLAYSET_TYPES.find{ |pl| pl[:playset_type] == playset[:playset_type]}
     playset.description = default_playset[:description] unless !playset.description.empty?
+    # playset.description = default_playset[:description] unless !playset.description.empty?
   end
 
   index do

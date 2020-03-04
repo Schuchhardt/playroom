@@ -29,6 +29,9 @@ es:
       region: 
         one: "Región"
         other: "Regiones"
+      resource: 
+        one: "Recurso"
+        other: "Recursos"
       commune: 
         one: "Comuna"
         other: "Comunas"
@@ -63,9 +66,12 @@ es:
         one: "IDPS"
         other: "IDPS"
     attributes:
-      admin_user:
+      resource:
         name: "Nombre"
         email: "Correo"
+      admin_user:
+        name: "Nombre"
+        file_url: "URL del archivo"
       user:
         establishment: "Establecimiento"
         name: "Nombre"

@@ -4,6 +4,7 @@ import Games from './components/games';
 import Game from './components/game';
 import Stats from './components/stats';
 import Experiences from './components/experiences';
+import Resources from './components/resources';
 
 export default new Router({
   // mode: 'history',
@@ -32,6 +33,11 @@ export default new Router({
       path: '/experiences',
       name: 'Experiences',
       component: Experiences,
+    },
+    {
+      path: '/resources',
+      name: 'Resources',
+      component: Resources,
     }
   ],
   scrollBehavior() {
