@@ -29,7 +29,7 @@
           </router-link>
           <router-link class="navbar-item" to="/resources">
             <span class="icon">
-              <i class="fas fa-book" aria-hidden="true"></i>
+              <i class="fas fa-archive" aria-hidden="true"></i>
             </span>
             <span>Recursos</span>
           </router-link>

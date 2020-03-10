@@ -68,6 +68,7 @@ export default {
 .experiences{
   background-color: #221f43;
   padding: 40px;
+  min-height: 70vh;
 }
 
 </style>

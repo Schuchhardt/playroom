@@ -15,7 +15,7 @@
                     :open-on-focus="openOnFocus"
                     :data="filteredGamesPerName"
                     field="name"
-                    @select="(option) => openGameDetail(option)">
+                    @select="(option) => goToGame(option)">
                 </b-autocomplete>
             </b-field>
             <p class="menu-label">
@@ -45,7 +45,6 @@
             <p class="t" v-if="filteredGames.length == 0"> Por favor selecciona una ludoteca</p>
             <p class="t"> Mostrando {{filteredGames.length}} juegos</p>
             <div class="column is-one-quarter is-full-mobile game-detail" v-for="g in filteredGames" :key="g.id">
-
               <div class="card" v-on:click.prevent="goToGame(g)">
                 <div class="card-header">
                   <p class="title">{{g.name}}</p>
@@ -56,9 +55,7 @@
                     <img v-if="!g.image_url" v-lazy="'../../assets/images/pie_head.png'" alt="ludoteca"> 
                   </figure>
                 </div>
-
               </div>
-
             </div>
           </div>
         </div>
@@ -150,7 +147,6 @@ export default {
       .then( () => vm.$store.dispatch('gameStore/loadSkills') )
       .then( () => {
         setTimeout(() => {
-          console.log(vm.$router.currentRoute.query.playsetId)  
           if (vm.$router.currentRoute.query.playsetId) {
             vm.selectedPlaysets = [vm.$router.currentRoute.query.playsetId]
           } else {
@@ -201,7 +197,7 @@ export default {
         })
      },
      goToGame(game) {
-        this.$router.push("games/" + game.id)
+        this.$router.push("/games/" + game.id)
      },
      printGameDetail() {
       window.printJS({printable: "gameModal", type: "html", css: "https://unpkg.com/buefy/dist/buefy.min.css" } )
@@ -452,8 +448,8 @@ export default {
 
 .filter-container{
   position: fixed;
-  bottom: 30px;
-  right: 30px;
+  bottom: 20px;
+  left: 30px;
   height: 100px;
   width: 100px;
   background-color: #302b63;

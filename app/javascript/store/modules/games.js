@@ -2,6 +2,7 @@
 const gameStore = {
   namespaced: true,
   state: {
+    loading: false,
     games: [],
     game: null,
     skills: [],
@@ -34,27 +35,37 @@ const gameStore = {
       state.filterSkills = data
       return state;
     },
+    setLoading(state, data) {
+      state.loading = data
+      return state;
+    }
   },
   actions: {
     index(context) {
+      context.commit('setLoading', true)
   		fetch('/landing/games').then(response => {
         response.json().then( (r) => {
-  			 context.commit('many', r)
+         context.commit('many', r)
+         context.commit('setLoading', false)
         })
 
   		}, error => {
-  			// error callback
+        // error callback
+        context.commit('setLoading', false)
   			console.log(error)
   		});
     },
     show(context, id) {
+      context.commit('setLoading', true)
   		fetch(`/landing/games/${id}`).then(response => {
         response.json().then( (r) => {
          context.commit('one', r)
+         context.commit('setLoading', false)
         })
 
   		}, error => {
-  			// error callback
+        // error callback
+        context.commit('setLoading', false)
   			console.log(error)
   		});
     },

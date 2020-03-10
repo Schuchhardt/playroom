@@ -49,7 +49,15 @@ class LandingController < ApplicationController
 
 	def game
 		game = Game.find params[:id]
-		render json: game.slice(:id, :name, :description, :difficulty, :game_time, :idps_names, :number_of_players, :suggested_age, :youtube_embed_url, :image_url, :playsets_ids, :skills_ids, :skills_by_category, :game_levels) , status: 200
+		g = game.slice(:id, :name, :description, :difficulty, :game_time, :idps_names, :number_of_players, :suggested_age, :youtube_embed_url, :image_url, :playsets_ids, :skills_ids, :skills_by_category, :game_levels)
+		all_games_in_playset = []
+		current_user.establishments.first.playsets.each do |pl|
+			pl.games.each do |game|
+				all_games_in_playset << game.slice(:id, :name, :image_url, :game_time, :difficulty, :suggested_age, :skills_ids) if game[:id] != g[:id]
+			end
+		end
+		related_games = get_related_games(g, all_games_in_playset.uniq{|gp| gp[:id]})
+		render json: g.merge({related_games: related_games}) , status: 200
 	end
 
 	def skills
@@ -80,6 +88,26 @@ class LandingController < ApplicationController
 	
 	def get_default_img playset
 		PLAYSET_TYPES.find{ |pl| pl[:playset_type] == playset[:playset_type]}[:image_url]
+	end
+
+	def get_related_games game, games_to_match
+		games_ranking = []
+		games_to_match.each do |g|
+			matches = count_matches(game[:skills_ids], g[:skills_ids])
+			matches += 1 if g[:difficulty] == game[:difficulty]
+			matches += 1 if g[:suggested_age] == game[:suggested_age]
+			matches += 1 if g[:game_time] == game[:game_time]
+			games_ranking << { matches: matches, game: g}
+		end
+		games_ranking.sort_by{ |hsh| hsh[:matches] }.map{ |hsh| hsh[:game] }.reverse.first(4)
+	end
+
+	def count_matches arr, arr2
+		num = 0
+		arr.uniq.each do |a|
+			num += arr2.uniq.count(a)
+		end
+		num
 	end
 
 end

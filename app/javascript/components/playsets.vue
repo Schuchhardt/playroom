@@ -120,6 +120,7 @@ export default {
     }
     .description{
       padding: 30px;
+      text-align: justify;
     }
     button{
       background: transparent;
