@@ -69,6 +69,7 @@ ActiveAdmin.register Playset do
     end
 
     f.has_many :game_sets do |gs|
+      gs.object.suggested_copies = gs.object.suggested_copies || "1"
       gs.inputs "Juego" do
         gs.input :game
         gs.input :suggested_copies

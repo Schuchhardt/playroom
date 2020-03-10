@@ -2,7 +2,7 @@ ActiveAdmin.register Game do
   active_admin_import
   permit_params :name, :sku, :description, :difficulty, :game_time, :idps, :number_of_players, 
     :suggested_age, :youtube_link, :level_preschool, :level_first_primary, :level_second_primary, 
-    :level_secondary, :image, game_skills_attributes: [:id, :_destroy, :skill_id], game_idps_attributes: [:id, :_destroy, :idp_id]
+    :level_secondary, :image, :game_type, game_skills_attributes: [:id, :_destroy, :skill_id], game_idps_attributes: [:id, :_destroy, :idp_id]
 
   menu priority: 3
 
@@ -61,6 +61,7 @@ ActiveAdmin.register Game do
         row :game_time           
         row :number_of_players
         row :suggested_age
+        row :game_type
         row :youtube_link
         row :level_preschool
         row :level_first_primary
@@ -103,6 +104,7 @@ ActiveAdmin.register Game do
       f.input :sku
       f.input :description, as: :text
       f.input :difficulty, :as => :select, :collection => ["inicial", "intermedio", "avanzado"]
+      f.input :game_type, :as => :select, :collection => ["competitivo", "colaborativo", "semi-colaborativo"]
       f.input :game_time           
       f.input :number_of_players
       f.input :suggested_age, :as => :select, :collection => (0..15).to_a.map{|n| "Desde #{n} años"}

@@ -48,8 +48,11 @@ ActiveAdmin.register Establishment do
         column "Nombre" do |ps|
           link_to ps.playset_type, admin_playset_path(ps)
         end
-        column "Nro de juegos" do |ps|
-          ps.games.count
+        column "Nro de títulos" do |ps|
+          ps.number_of_games
+        end
+        column "Nro de copias totales" do |ps|
+          ps.number_of_copies
         end
         column "Fecha Inicio" do |ps|
           ps.start_at

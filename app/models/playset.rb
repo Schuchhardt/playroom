@@ -33,6 +33,10 @@ class Playset < ApplicationRecord
 		self.games.count
 	end
 
+	def number_of_copies
+		self.game_sets.map{|gs| gs.suggested_copies.nil? || gs.suggested_copies.empty? ? 1 : gs.suggested_copies.to_i }.reduce(&:+)
+	end
+
 	def image_url
 		self.image.service_url if self.image and self.image.attached?
 	end
