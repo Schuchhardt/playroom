@@ -19,9 +19,9 @@ namespace :load do
 		csv_text = File.read("#{ROOT_CSV}#{ENV['CSV']}")
 		csv = CSV.parse(csv_text, :headers => true)
         csv.each do |row|
-            pass = row['RUT'].gsub(".", "").gsub("-", "").gsub("K", "k") # password es su rut sin puntos ni guion
+            rut = row['RUT'].gsub(".", "").gsub("-", "").gsub("K", "k") # password es su rut sin puntos ni guion
             user = User.find_by email: row['CORREO']
-            user_data = {name: row['NOMBRE'], last_name: row['APELLIDO'], rut: row['RUT'], password: pass, phone: row['FONO'].gsub(/\s+/, ""), user_type: :teacher}
+            user_data = {name: row['NOMBRE'].strip, last_name: row['APELLIDO'].strip, rut: rut, password: rut, phone: row['FONO'].gsub(/\s+/, ""), user_type: :teacher}
             if user.nil?
                 user = User.create user_data.merge({email: row['CORREO'].strip.downcase})
             else
