@@ -35,7 +35,6 @@ gem "roo", "~> 2.8.0"
 gem 'youtube_addy'
 gem "active_admin_import"
 
-
 # HEROKU
 gem 'therubyracer', platforms: :ruby
 gem 'rails_12factor', group: :production

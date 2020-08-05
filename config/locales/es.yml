@@ -1,13 +1,4 @@
 es:
-  helpers:
-    page_entries_info:
-      one_page:
-        display_entries:
-          zero: "Ningún %{entry_name} encontrado"
-          one: "Mostrando <b>1</b> %{entry_name}"
-          other: "Mostrando <b>todos %{count}</b> %{entry_name}"
-      more_pages:
-        display_entries: "Mostrando %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> de <b>%{total}</b> en total"
   views:
     pagination:
       truncate: "..."
@@ -325,6 +316,14 @@ es:
         one: No se pudo guardar este/a %{model} porque se encontró 1 error
         other: No se pudo guardar este/a %{model} porque se encontraron %{count} errores
   helpers:
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: "Ningún %{entry_name} encontrado"
+          one: "Mostrando <b>1</b> %{entry_name}"
+          other: "Mostrando <b>todos %{count}</b> %{entry_name}"
+      more_pages:
+        display_entries: "Mostrando %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> de <b>%{total}</b> en total"
     select:
       prompt: Por favor seleccione
     submit:

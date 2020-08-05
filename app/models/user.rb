@@ -34,7 +34,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :recoverable, :rememberable, :validatable, :trackable
   
-  has_many :user_establishments
+  has_many :user_establishments, dependent: :destroy
   has_many :establishments, through: :user_establishments
 
   accepts_nested_attributes_for :user_establishments, :allow_destroy => true
