@@ -15,12 +15,12 @@ Rails.application.config.content_security_policy do |policy|
 	# Specify URI for violation reports
 	# policy.report_uri "/csp-violation-report-endpoint"
 	# if Rails.env.development?
-	#policy.script_src :self, :https, :unsafe_eval, :unsafe_inline
-	if Rails.env.development?
-		policy.script_src :self, :https, :unsafe_eval
-	else
-		policy.script_src :self, :https
-	end
+	policy.script_src :self, :https, :unsafe_eval, :unsafe_inline
+	# if Rails.env.development?
+	# 	policy.script_src :self, :https, :unsafe_eval
+	# else
+	# 	policy.script_src :self, :https
+	# end
 
 	policy.style_src   :self, :https, :unsafe_eval, :unsafe_inline
 	policy.frame_src	:self, :https, "*.youtube.com"
