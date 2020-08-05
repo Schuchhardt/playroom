@@ -1,8 +1,8 @@
 {
-  "name": "odj",
+  "name": "playroom",
   "private": true,
   "dependencies": {
-    "@rails/webpacker": "3.5",
+    "@rails/webpacker": "5.1.1",
     "buefy": "^0.7.2",
     "chart.js": "^2.8.0",
     "lodash": "^4.17.11",
@@ -23,6 +23,6 @@
     "yarn": "^1.13.0"
   },
   "devDependencies": {
-    "webpack-dev-server": "2.11.2"
+    "webpack-dev-server": "3.11.0"
   }
 }
