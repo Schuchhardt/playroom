@@ -40,11 +40,11 @@
               <p v-if="currentGame.idps_names"><strong>IDPS:</strong> {{currentGame.idps_names}}</p>
               <div class="sel-circle no-print">
                 <div class="sel">SEL</div>
-                <img v-bind:class="{ disabled: !hasSelCategory(currentGame, 1) }" class="autogestion" src="../images/autogestion.png" alt="Autogestión">
-                <img v-bind:class="{ disabled: !hasSelCategory(currentGame, 2) }" class="autoconciencia" src="../images/autoconciencia.png" alt="Autoconciencia">
-                <img v-bind:class="{ disabled: !hasSelCategory(currentGame, 3) }" class="conciencia" src="../images/conciencia_del_otro.png" alt="Conciencia del otro">
-                <img v-bind:class="{ disabled: !hasSelCategory(currentGame, 4) }" class="habilidades" src="../images/habilidades_sociales.png" alt="Habilidades sociales">
-                <img v-bind:class="{ disabled: !hasSelCategory(currentGame, 5) }" class="decisiones" src="../images/toma_decisiones.png" alt="Toma de decisiones">
+                <img v-bind:class="{ disabled: !hasSelCategory(currentGame, 1) }" class="autogestion" src="~images/autogestion.png" alt="Autogestión">
+                <img v-bind:class="{ disabled: !hasSelCategory(currentGame, 2) }" class="autoconciencia" src="~images/autoconciencia.png" alt="Autoconciencia">
+                <img v-bind:class="{ disabled: !hasSelCategory(currentGame, 3) }" class="conciencia" src="~images/conciencia_del_otro.png" alt="Conciencia del otro">
+                <img v-bind:class="{ disabled: !hasSelCategory(currentGame, 4) }" class="habilidades" src="~images/habilidades_sociales.png" alt="Habilidades sociales">
+                <img v-bind:class="{ disabled: !hasSelCategory(currentGame, 5) }" class="decisiones" src="~images/toma_decisiones.png" alt="Toma de decisiones">
               </div>
             <br>
           </div>
