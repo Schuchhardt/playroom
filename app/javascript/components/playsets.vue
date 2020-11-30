@@ -24,7 +24,7 @@
       <section v-if="currentPlayset">
         <div class="columns">
           <div class="column">
-            <div><img height="100" src="../images/pr3.png"></div>
+            <div><img height="100" v-bind:src="require('../images/pr3.png')"></div>
             
             <br>
             <p class="bd-notification is-info"><img v-bind:src="currentPlayset.image_url" alt="Ludoteca"></p>

@@ -26,7 +26,7 @@ gem 'awesome_print'
 gem 'pdf-reader'
 gem 'docx'
 gem "aws-sdk-s3", require: false
-gem 'webpacker'
+gem 'webpacker', '~> 5.x'
 gem 'foreman'
 gem 'translate_enum', require: 'translate_enum/active_record'
 gem 'chartkick'
