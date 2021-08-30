@@ -148,7 +148,7 @@ ActiveAdmin.register Game do
     def update(options={}, &block)
       super do |success, failure|
         block.call(success, failure) if block
-        failure.html { render: :edit }
+        failure.html { render :edit }
       end
     end
   end
