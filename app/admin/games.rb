@@ -145,12 +145,12 @@ ActiveAdmin.register Game do
       object.update_attributes(*attributes)
       puts "after update"
     end
-    def update(options={}, &block)
-      super do |success, failure|
-        block.call(success, failure) if block
-        failure.html { render :edit }
-      end
-    end
+    # def update(options={}, &block)
+    #   super do |success, failure|
+    #     block.call(success, failure) if block
+    #     failure.html { render :edit }
+    #   end
+    # end
   end
 
   csv do
