@@ -138,6 +138,20 @@ ActiveAdmin.register Game do
     f.actions
   end
 
+  controller do
+    def update_resource(object, attributes)
+      puts "before update"
+      puts attributes.inspect
+      object.update_attributes(*attributes)
+      puts "after update"
+    end
+    def update(options={}, &block)
+      super do |success, failure|
+        block.call(success, failure) if block
+        failure.html { render: :edit }
+      end
+    end
+  end
 
   csv do
     column :id
