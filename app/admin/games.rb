@@ -2,7 +2,7 @@ ActiveAdmin.register Game do
   active_admin_import
   permit_params :name, :sku, :description, :difficulty, :game_time, :idps, :number_of_players, 
     :suggested_age, :youtube_link, :level_preschool, :level_first_primary, :level_second_primary, 
-    :level_secondary, :image, :game_type, game_skills_attributes: [:id, :_destroy, :skill_id], game_idps_attributes: [:id, :_destroy, :idp_id]
+    :level_secondary, :cover_url, :game_type, game_skills_attributes: [:id, :_destroy, :skill_id], game_idps_attributes: [:id, :_destroy, :idp_id]
 
   menu priority: 3
 
@@ -17,8 +17,8 @@ ActiveAdmin.register Game do
     column "Descripción" do |game|
       !game.description.empty?
     end
-    column "Imagen" do |game|
-      game.image.attached?
+    column "Portada" do |game|
+      !game.cover_url.nil?
     end
     column "Habilidades" do |game|
       game.game_skills.any?
@@ -67,11 +67,11 @@ ActiveAdmin.register Game do
         row :level_first_primary
         row :level_second_primary
         row :level_secondary
-        row "Imagen" do |g|
-          if g.image.attached?
-            image_tag url_for(g.image)
-          else
+        row "Portada" do |g|
+          if g.cover_url.nil?
             nil
+          else
+            image_tag g.cover_url
           end
         end
     end
@@ -113,7 +113,8 @@ ActiveAdmin.register Game do
       f.input :level_first_primary
       f.input :level_second_primary
       f.input :level_secondary
-      f.input :image, as: :file
+      f.input :cover_url
+      # f.input :image, as: :file
     end
     
     f.has_many :game_skills do |gs|
@@ -152,7 +153,8 @@ ActiveAdmin.register Game do
     column :level_second_primary
     column :level_secondary
     column :youtube_link        
-    column('link_imagen') { |g| g.image.attached? ? url_for(g.image) : '' }     
+    column :cover_url
+    #column('link_imagen') { |g| g.image.attached? ? url_for(g.image) : '' }     
     column :created_at     
     column :updated_at     
   end

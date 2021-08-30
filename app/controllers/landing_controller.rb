@@ -11,8 +11,8 @@ class LandingController < ApplicationController
 			return render json: formatted_playsets, status: 200
 		end
 		current_user.establishments.first.playsets.each do |pl|
-			playset = pl.slice(:id, :name, :playset_type, :description, :number_of_games, :image_url, :number_of_games ).dup
-			playset[:image_url] = get_default_img(playset) if playset[:image_url].nil?
+			playset = pl.slice(:id, :name, :playset_type, :description, :number_of_games, :cover_url, :number_of_games ).dup
+			playset[:image_url] = get_default_img(playset) if playset[:cover_url].nil?
 			playset[:disabled] = false
 			formatted_playsets << playset
 		end

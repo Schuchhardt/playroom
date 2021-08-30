@@ -1,5 +1,5 @@
 ActiveAdmin.register Playset do
-  permit_params :establishment_id, :description, :price, :playset_type, :image, :start_at, :finish_at,
+  permit_params :establishment_id, :description, :price, :playset_type, :cover_url, :start_at, :finish_at,
     game_sets_attributes: [:id, :_destroy, :game_id, :suggested_copies]
   menu priority: 2
 
@@ -21,7 +21,7 @@ ActiveAdmin.register Playset do
       !ps.description.nil?
     end
     column "Imagen" do |ps|
-      ps.image.attached?
+      !ps.cover_url.nil?
     end
     actions
   end
@@ -38,8 +38,8 @@ ActiveAdmin.register Playset do
         row :finish_at
         row :price
         row "Imagen" do |p|
-          if p.image.attached?
-            image_tag url_for(p.image)
+          if !p.cover_url.nil?
+            image_tag p.cover_url
           else
             image_tag PLAYSET_TYPES.find{ |pl| pl[:playset_type] == p.playset_type}[:image_url]
           end
@@ -65,7 +65,8 @@ ActiveAdmin.register Playset do
       f.input :price
       f.input :start_at
       f.input :finish_at
-      f.input :image, as: :file
+      f.input :cover_url
+      # f.input :image, as: :file
     end
 
     f.has_many :game_sets do |gs|

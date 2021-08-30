@@ -3,6 +3,7 @@
 # Table name: games
 #
 #  id                   :bigint(8)        not null, primary key
+#  cover_url            :string
 #  description          :string
 #  difficulty           :string
 #  game_time            :string

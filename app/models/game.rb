@@ -3,6 +3,7 @@
 # Table name: games
 #
 #  id                   :bigint(8)        not null, primary key
+#  cover_url            :string
 #  description          :string
 #  difficulty           :string
 #  game_time            :string
@@ -37,7 +38,7 @@ class Game < ApplicationRecord
 	default_scope { order(name: :asc) }
 
 	def image_url
-		self.image.service_url if self.image and self.image.attached?
+		self.cover_url # if self.image and self.image.attached?
 	end
 
 	def youtube_embed_url

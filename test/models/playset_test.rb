@@ -3,6 +3,7 @@
 # Table name: playsets
 #
 #  id               :bigint(8)        not null, primary key
+#  cover_url        :string
 #  description      :string
 #  finish_at        :date
 #  name             :string

@@ -3,6 +3,7 @@
 # Table name: playsets
 #
 #  id               :bigint(8)        not null, primary key
+#  cover_url        :string
 #  description      :string
 #  finish_at        :date
 #  name             :string
@@ -38,6 +39,6 @@ class Playset < ApplicationRecord
 	end
 
 	def image_url
-		self.image.service_url if self.image and self.image.attached?
+		self.cover_url # if self.cover_url and self.image.attached?
 	end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_10_190151) do
+ActiveRecord::Schema.define(version: 2021_08_30_035436) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -169,6 +169,7 @@ ActiveRecord::Schema.define(version: 2020_03_10_190151) do
     t.integer "game_time_from"
     t.integer "game_time_to"
     t.string "game_type"
+    t.string "cover_url"
   end
 
   create_table "idp_games", force: :cascade do |t|
@@ -205,6 +206,7 @@ ActiveRecord::Schema.define(version: 2020_03_10_190151) do
     t.bigint "establishment_id"
     t.date "start_at"
     t.date "finish_at"
+    t.string "cover_url"
     t.index ["establishment_id"], name: "index_playsets_on_establishment_id"
   end
 
