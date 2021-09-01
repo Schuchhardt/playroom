@@ -33,6 +33,7 @@
           <p class="bd-notification is-info description">{{currentGame.description}}</p>
           <br>
           <div class="content">
+              <p><strong>Tipo de juego:</strong> <span class="is-warning">{{currentGame.game_type}}</span></p>
               <p><strong>Dificultad:</strong> <span class="is-warning">{{currentGame.difficulty}}</span></p>
               <p><strong>Edad sugerida:</strong> {{currentGame.suggested_age}}</p>
               <p><strong>Tiempo de juego aproximado:</strong> {{currentGame.game_time}}</p>

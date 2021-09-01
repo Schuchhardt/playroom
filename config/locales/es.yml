@@ -118,6 +118,7 @@ es:
         game_time: "Tiempo de juego"
         number_of_players: "Nro de jugadores"
         difficulty: "Dificultad"
+        game_type: "Tipo de juego"
         image: "Imagen"
         cover_url: "Link de la imagen (imgur)"
         level_preschool: "Parvulos"

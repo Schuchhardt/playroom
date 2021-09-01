@@ -8,5 +8,5 @@ PLAYSET_TYPES = [
     { id: "6", playset_type: "Equipo directivo", image_url: "https://i.imgur.com/PNHMbjE.jpg", description: "" },
     { id: "7", playset_type: "Taller PlayGo", image_url: "https://i.imgur.com/Uv0opz1.jpg", description: "" },
     { id: "8", playset_type: "Espacios CRA", image_url: "https://i.imgur.com/c0Xw251.jpg", description: "" },
-    { id: "9", playset_type: "EJT", image_url: "https://i.imgur.com/TTHcVCI.jpg", description: "" }
+    { id: "9", playset_type: "Vuelve a clases, vuelve a jugar", image_url: "https://i.imgur.com/TTHcVCI.jpg", description: "" }
   ]
