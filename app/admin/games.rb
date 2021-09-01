@@ -12,7 +12,7 @@ ActiveAdmin.register Game do
   end
 
   index do
-    selectable_column
+    #selectable_column
     id_column
     column :name
     column "Descripción" do |game|
