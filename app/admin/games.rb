@@ -31,7 +31,7 @@ ActiveAdmin.register Game do
       [game.level_preschool, game.level_first_primary, game.level_second_primary, game.level_secondary].any? { |x| x == true }
     end
     column "Ludotecas" do |game|
-      game.playsets.any?
+      game.playsets.count
     end
     # column "Dificultad" do |game|
     #   !game.difficulty.nil?
@@ -76,10 +76,10 @@ ActiveAdmin.register Game do
           end
         end
     end
-    panel "Ludotecas" do
+    panel "Ludotecas donde esta el juego" do
       table_for game.game_sets do
-        column "Nombre" do |gs|
-          gs.playset.name
+        column "Ludoteca - Colegio" do |gs|
+          "#{gs.playset.playset_type} - #{gs.playset.establishment.name}" 
         end
       end
     end
