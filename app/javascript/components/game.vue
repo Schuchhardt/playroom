@@ -25,11 +25,11 @@
               <iframe :src="currentGame.youtube_embed_url" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
           <br>
-          <button @click.prevent="printGameDetail()" class="button is-light">Imprimir Ficha</button>
           <div class="content" v-if="hasSelCategory(currentGame, 'XXI')">
             <p><strong>Habilidades del Siglo XXI:</strong></p>
             <p v-for="xxiSkill in currentGame.skills_by_category['Habilidades del siglo XXI']" :key="xxiSkill.id">{{xxiSkill.name}}</p>
           </div>
+          <button @click.prevent="printGameDetail()" class="button is-light">Imprimir Ficha</button>
         </div>
         <div class="column is-full-mobile">
           <p class="title is-4">{{currentGame.name}}</p>
@@ -37,8 +37,8 @@
           <p class="bd-notification is-info description">{{currentGame.description}}</p>
           <br>
           <div class="content">
-              <p v-if="currentGame.game_type"><strong>Tipo de juego:</strong> <span class="is-warning">{{currentGame.game_type}}</span></p>
-              <p><strong>Dificultad:</strong> <span class="is-warning">{{currentGame.difficulty}}</span></p>
+              <p v-if="currentGame.game_type"><strong>Tipo de juego:</strong> <span class="is-warning capitalized">{{currentGame.game_type}}</span></p>
+              <p><strong>Dificultad:</strong> <span class="is-warning capitalized">{{currentGame.difficulty}}</span></p>
               <p><strong>Edad sugerida:</strong> {{currentGame.suggested_age}}</p>
               <p><strong>Tiempo de juego aproximado:</strong> {{currentGame.game_time}}</p>
               <p><strong>Nro de Jugadores:</strong> {{currentGame.number_of_players}}</p>
@@ -327,6 +327,10 @@ export default {
     letter-spacing: 2px;
     font-weight: bolder;
   }
+}
+
+.capitalized{
+  text-transform: capitalize;
 }
 
 </style>
