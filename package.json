@@ -27,5 +27,8 @@
   },
   "peerDependencies": {
     "postinstall": "npm rebuild node-sass"
+  },
+  "engines": {
+    "node": "12.5.0"
   }
 }
