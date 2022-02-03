@@ -71,6 +71,8 @@ es:
         role: "Rol de usuario"
         password: "Contraseña"
         password_confirmation: "Confirmar Contraseña"
+        sign_in_count: "Total de sesiones"
+        last_sign_in_at: "Ultima conexión"
         user_type: "Tipo de usuario"
         user_type_list: 
           teacher: "Profesor"

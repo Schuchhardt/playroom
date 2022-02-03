@@ -1,0 +1,20 @@
+  <p>
+       <%= raw(@active_admin_import_model.hint) %> 
+    </p>
+    <p> Descargar planilla tipo: <a style="color: black;text-decoration:underline" target="_blank" href="https://docs.google.com/spreadsheets/d/1Id0LRxC7GfDptp2J42pUvxlVewEuhgNagpH5zhuP1uM/edit?usp=sharing"> Click aquí </a> DESCARGAR COMO CSV</p>
+    
+    <br>
+    <%= semantic_form_for @active_admin_import_model, url: {action: :import_csv}, html: {multipart: true} do |f| %>
+        <label for="establishment_id"> Seleccione colegio </label>
+        <select name="establishment_id" id="establishment_id" >
+            <%= options_for_select(Establishment.all.select(:name, :id).map{|s| [s.name, s.id]}) %>
+        </select>
+
+        <%= f.inputs do %>
+            <%= f.input :file, as: :file, label: "Seleccionar Planilla" %>
+        <% end %>
+
+        <%= f.actions do %>
+            <%= f.action :submit, label: t("active_admin_import.import_btn"), button_html: {disable_with: t("active_admin_import.import_btn_disabled")} %>
+        <% end %>
+    <% end %>

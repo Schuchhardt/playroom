@@ -6,6 +6,12 @@
 <%# per_commune.each{|c| per_region[c[0]] = (per_region[c[0]] || 0) + c[1]} %>
 <%#= pie_chart per_region.to_a %>
 
+<h4>Juegos en más ludotecas</h4>	
+<%= bar_chart Game.all.map { |g| [g.name, g.playsets_count]}.sort_by{|g, c| c}.last(10).reverse%>
+
+<h4>Ludotecas en más colegios</h4>	
+<%= pie_chart Playset.unscoped.group(:playset_type).count(:playset_type) %>
+
 <h4>Colegios por tipo</h4>	
 <%= pie_chart Establishment.group(:establishment_kind).count %>
 

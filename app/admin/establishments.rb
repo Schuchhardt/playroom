@@ -43,7 +43,7 @@ ActiveAdmin.register Establishment do
       row :students_per_course
       row :total_students
     end
-    panel "Ludotecas" do
+    panel "Ludotecas (#{establishment.playsets.count})" do
       table_for establishment.playsets do
         column "Nombre" do |ps|
           link_to ps.playset_type, admin_playset_path(ps)
@@ -62,6 +62,20 @@ ActiveAdmin.register Establishment do
         end
       end
     end
+    panel "Usuarios (#{establishment.users.uniq.count})" do
+      table_for establishment.users.uniq do
+        column "Nombre" do |ps|
+          link_to "#{ps.name} #{ps.last_name}", admin_user_path(ps)
+        end
+        column "Email" do |ps|
+          ps.email
+        end
+        column "Rol" do |ps|
+          ps.user_type
+        end
+      end
+    end
+
   end
 
   form do |f|

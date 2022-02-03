@@ -1,5 +1,4 @@
 ActiveAdmin.register Game do
-  active_admin_import
   permit_params :name, :sku, :description, :difficulty, :game_time, :idps, :number_of_players, 
     :suggested_age, :youtube_link, :level_preschool, :level_first_primary, :level_second_primary, 
     :level_secondary, :cover_url, :game_type, game_skills_attributes: [:id, :_destroy, :skill_id], game_idps_attributes: [:id, :_destroy, :idp_id]
@@ -11,10 +10,15 @@ ActiveAdmin.register Game do
     true
   end
 
+  config.sort_order = "name_asc"
+
   index do
     #selectable_column
     id_column
     column :name
+    column "Ludotecas" do |game|
+      game.playsets.count
+    end
     column "Descripción" do |game|
       !game.description.empty?
     end
@@ -30,21 +34,6 @@ ActiveAdmin.register Game do
     column "Niveles" do |game|
       [game.level_preschool, game.level_first_primary, game.level_second_primary, game.level_secondary].any? { |x| x == true }
     end
-    column "Ludotecas" do |game|
-      game.playsets.count
-    end
-    # column "Dificultad" do |game|
-    #   !game.difficulty.nil?
-    # end
-    # column "Duración" do |game|
-    #   !game.game_time.nil?
-    # end
-    # column "Nº de Jugadores" do |game|
-    #   !game.number_of_players.empty?
-    # end
-    # column "Edad sugerida" do |game|
-    #   !game.suggested_age.empty?
-    # end
     column "Youtube Link" do |game|
       !game.youtube_link.nil?
     end

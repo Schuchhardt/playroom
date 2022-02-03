@@ -74,4 +74,7 @@ class Game < ApplicationRecord
 		self.skills.group_by(&:skill_category)
 	end
 
+	def playsets_count
+		self.game_sets.map(&:playset_id).uniq.count
+	end
 end
