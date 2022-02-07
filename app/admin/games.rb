@@ -16,8 +16,8 @@ ActiveAdmin.register Game do
     #selectable_column
     id_column
     column :name
-    column "Ludotecas" do |game|
-      game.playsets.count
+    column "# Ludotecas" do |game|
+      game.playsets_count
     end
     column "Descripción" do |game|
       !game.description.empty?
@@ -33,9 +33,6 @@ ActiveAdmin.register Game do
     end
     column "Niveles" do |game|
       [game.level_preschool, game.level_first_primary, game.level_second_primary, game.level_secondary].any? { |x| x == true }
-    end
-    column "Youtube Link" do |game|
-      !game.youtube_link.nil?
     end
     actions
   end

@@ -45,4 +45,13 @@ class User < ApplicationRecord
   def display_name
   	"#{self.name} #{self.email}"
   end
+
+  def school_name
+    if establishments.uniq.count > 1
+      "#{establishments.length} colegios" 
+    else
+      establishments.first.name
+    end
+  end
+
 end

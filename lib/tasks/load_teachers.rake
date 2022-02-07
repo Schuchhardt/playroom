@@ -28,7 +28,7 @@ namespace :load do
                 user.update! user_data
             end
             puts user.inspect
-            UserEstablishment.create establishment: est, user: user
+            UserEstablishment.find_or_create_by establishment: est, user: user
 		end
 
 	end

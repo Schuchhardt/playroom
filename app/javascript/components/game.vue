@@ -25,6 +25,9 @@
               <iframe :src="currentGame.youtube_embed_url" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
           <br>
+          <p><strong>Descripción:</strong></p>
+          <p class="bd-notification is-info description">{{currentGame.description}}</p>
+          <br>
           <div class="content" v-if="hasSelCategory(currentGame, 'XXI')">
             <p><strong>Habilidades del Siglo XXI:</strong></p>
             <p v-for="xxiSkill in currentGame.skills_by_category['Habilidades del siglo XXI']" :key="xxiSkill.id">{{xxiSkill.name}}</p>
@@ -33,15 +36,25 @@
         </div>
         <div class="column is-full-mobile">
           <p class="title is-4">{{currentGame.name}}</p>
-          <p><strong>Descripción:</strong></p>
-          <p class="bd-notification is-info description">{{currentGame.description}}</p>
           <br>
           <div class="content">
               <p v-if="currentGame.game_type"><strong>Tipo de juego:</strong> <span class="is-warning capitalized">{{currentGame.game_type}}</span></p>
-              <p><strong>Dificultad:</strong> <span class="is-warning capitalized">{{currentGame.difficulty}}</span></p>
-              <p><strong>Edad sugerida:</strong> {{currentGame.suggested_age}}</p>
-              <p><strong>Tiempo de juego aproximado:</strong> {{currentGame.game_time}}</p>
-              <p><strong>Nro de Jugadores:</strong> {{currentGame.number_of_players}}</p>
+              <p>
+                <span class="icon"><i class="fas fa-brain" aria-hidden="true"></i></span>
+                <strong>Dificultad:</strong> <span class="is-warning capitalized">{{currentGame.difficulty}}</span>
+              </p>
+              <p>
+                <span class="icon"><i class="fas fa-child" aria-hidden="true"></i></span>
+                <strong>Edad sugerida:</strong> {{currentGame.suggested_age}}
+              </p>
+              <p>
+                <span class="icon"><i class="fas fa-clock" aria-hidden="true"></i></span>
+                <strong>Tiempo de juego aproximado:</strong> {{currentGame.game_time}}
+              </p>
+              <p>
+                <span class="icon"><i class="fas fa-users" aria-hidden="true"></i></span>
+                <strong>Nro de Jugadores:</strong> {{currentGame.number_of_players}}
+              </p>
               <p v-if="currentGame.idps_names"><strong>IDPS:</strong> {{currentGame.idps_names}}</p>
               <div class="sel-circle no-print">
                 <div class="sel">SEL</div>
@@ -65,7 +78,7 @@
             <div class="card-image">
               <figure class="image">
                 <img v-if="g.image_url" v-lazy="g.image_url" alt="ludoteca"> 
-                <img v-if="!g.image_url" v-lazy="'../../assets/images/pie_head.png'" alt="ludoteca"> 
+                <img v-if="!g.image_url" v-lazy="'https://i.imgur.com/Erx03u5.png'" alt="ludoteca"> 
               </figure>
             </div>
           </div>
@@ -117,7 +130,17 @@ export default {
        this.$router.go(-1)
      },
      printGameDetail() {
-      window.printJS({printable: "game", type: "html", css: "https://unpkg.com/buefy/dist/buefy.min.css" } )
+      window.printJS(
+        {
+          printable: "game",
+          type: "html",
+          targetStyles: ['*'],
+          header: `Ficha de juego: ${this.currentGame.name}`,
+          onError: function  (error) {
+            console.log('Error found => ' + error.message)
+          }
+        }  
+      )
      }
   }
 };

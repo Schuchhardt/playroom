@@ -2,7 +2,7 @@ class LandingController < ApplicationController
 	before_action :authenticate_user!
 
 	def index
-		@current_establishment = current_user.establishments.first
+		@current_establishment = get_current_establishment
   	end
 
 	def playsets
@@ -10,7 +10,7 @@ class LandingController < ApplicationController
 		if current_user.establishments.empty?
 			return render json: formatted_playsets, status: 200
 		end
-		current_user.establishments.first.playsets.each do |pl|
+		get_current_establishment.playsets.each do |pl|
 			playset = pl.slice(:id, :name, :playset_type, :description, :number_of_games, :cover_url, :number_of_games ).dup
 			playset[:image_url] = get_default_img(playset) if playset[:cover_url].nil? || playset[:cover_url].empty?
 			playset[:disabled] = false
@@ -39,7 +39,7 @@ class LandingController < ApplicationController
 		if current_user.establishments.empty?
 			return render json: formatted_games, status: 200
 		end
-		current_user.establishments.first.playsets.each do |pl|
+		get_current_establishment.playsets.each do |pl|
 			pl.games.each do |game|
 				formatted_games << game.slice(:id, :name, :description, :difficulty, :game_time, :idps_names, :number_of_players, :suggested_age, :youtube_embed_url, :image_url, :playsets_ids, :skills_ids, :skills_by_category, :game_levels)
 			end
@@ -51,7 +51,7 @@ class LandingController < ApplicationController
 		game = Game.find params[:id]
 		g = game.slice(:id, :name, :description, :difficulty, :game_time, :idps_names, :number_of_players, :suggested_age, :youtube_embed_url, :image_url, :playsets_ids, :skills_ids, :skills_by_category, :game_levels, :game_type)
 		all_games_in_playset = []
-		current_user.establishments.first.playsets.each do |pl|
+		get_current_establishment.playsets.each do |pl|
 			pl.games.each do |game|
 				all_games_in_playset << game.slice(:id, :name, :image_url, :game_time, :difficulty, :suggested_age, :skills_ids) if game[:id] != g[:id]
 			end
@@ -78,7 +78,7 @@ class LandingController < ApplicationController
 		if current_user.establishments.empty?
 			return render json: formatted_res, status: 200
 		end
-		current_user.establishments.first.resources.each do |res|
+		get_current_establishment.resources.each do |res|
 			formatted_res << res
 		end
 		render json: formatted_res
@@ -108,6 +108,14 @@ class LandingController < ApplicationController
 			num += arr2.uniq.count(a)
 		end
 		num
+	end
+
+	def get_current_establishment
+		if cookies[:establishment_id].nil?
+			current_user.establishments.first
+		else 
+			current_user.establishments.find_by(id: cookies[:establishment_id])
+		end
 	end
 
 end

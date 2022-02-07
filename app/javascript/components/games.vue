@@ -52,7 +52,7 @@
                 <div class="card-image">
                   <figure class="image">
                     <img v-if="g.image_url" v-lazy="g.image_url" alt="ludoteca"> 
-                    <img v-if="!g.image_url" v-lazy="'../../assets/images/pie_head.png'" alt="ludoteca"> 
+                    <img v-if="!g.image_url" v-lazy="'https://i.imgur.com/Erx03u5.png'" alt="ludoteca"> 
                   </figure>
                 </div>
               </div>
