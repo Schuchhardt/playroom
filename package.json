@@ -2,12 +2,12 @@
   "name": "playroom",
   "private": true,
   "dependencies": {
-    "@rails/webpacker": "5.1.1",
+    "@rails/webpacker": "5.4.3",
     "buefy": "^0.7.2",
     "chart.js": "^2.8.0",
     "lodash": "^4.17.11",
     "moment": "^2.24.0",
-    "nes.css": "^2.0.0",
+    "sass": "^1.49.7",
     "vue": "^2.6.11",
     "vue-chartkick": "^0.5.2",
     "vue-dni": "^1.0.1",
@@ -25,10 +25,7 @@
   "devDependencies": {
     "webpack-dev-server": "3.11.0"
   },
-  "peerDependencies": {
-    "postinstall": "npm rebuild node-sass"
-  },
   "engines": {
-    "node": "12.5.0"
+    "node": "16.13.1"
   }
 }

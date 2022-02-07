@@ -254,12 +254,12 @@ export default {
     width: 100%;
   }
 
-  /deep/ .autocomplete{
+  ::v-deep .autocomplete{
     width: 70%;
     margin: auto;
   }
 
-  /deep/ .dropdown-trigger{
+  ::v-deep .dropdown-trigger{
     width: 100%;
     button{
       width: 100%;
@@ -267,7 +267,7 @@ export default {
     }
   }
 
-  /deep/ .input{
+  ::v-deep .input{
     background-color: transparentize($dark-blue, 0.3);
     border-color: transparent;
     &::placeholder{
@@ -307,7 +307,7 @@ export default {
       }
     }
 
-    /deep/ .checkbox{
+    ::v-deep .checkbox{
       width: 100%;
       text-align: left;
     }
@@ -406,7 +406,7 @@ export default {
       color: darken( white, 10%);
     }
   }
-  /deep/ .modal-content{
+  ::v-deep .modal-content{
     width: 100%;
     background: #0f0d2a;
     color:white;

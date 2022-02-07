@@ -99,7 +99,7 @@ export default {
   color: white;
   min-height: 90vh;
 
- /deep/ .modal-content{
+ ::v-deep .modal-content{
     width: 100%;
     background: #0f0d2a;
     color:white;

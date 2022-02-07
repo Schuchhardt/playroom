@@ -66,10 +66,6 @@
 
     </nav>
     <router-view></router-view>
-    <!-- <div class="chatbot-bubble">
-      <p class="nes-balloon from-right">¿Necesitas<br>Ayuda?</p>
-      <i class="nes-octocat"></i>
-    </div> -->
 <footer class="footer">
   <div class="content has-text-centered">
     <p>
@@ -136,7 +132,7 @@ html, body, pre, code, kbd, samp, button, a, input{
 .navbar{
   background-color: #0f0d2a;
   height: 130px;
-  /deep/ .navbar-burger{
+  ::v-deep .navbar-burger{
     color: white;
     position: relative;
     top: 30px;
