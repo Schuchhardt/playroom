@@ -33,12 +33,6 @@
             </span>
             <span>Recursos</span>
           </router-link>
-          <!-- <router-link class="navbar-item" to="/experiences">
-            <span class="icon">
-              <i class="fas fa-chalkboard-teacher" aria-hidden="true"></i>
-            </span>
-            <span> Experiencias</span>
-          </router-link> -->
           <router-link class="navbar-item" to="/stats">
             <span class="icon">
               <i class="fas fa-chart-bar" aria-hidden="true"></i>
@@ -65,7 +59,7 @@
                         type="is-primary"
                         :icon-right="active ? 'menu-up' : 'menu-down'" />
                 </template>
-                <b-dropdown-item v-for="est in allEstablishments" aria-role="listitem" :key="est.id" @click="changeSchool(est)">{{est.name}}</b-dropdown-item>
+                <b-dropdown-item class="ditem" v-for="est in allEstablishments" aria-role="listitem" :key="est.id" @click="changeSchool(est)">{{est.name}}</b-dropdown-item>
               </b-dropdown>
             </div>
             </div>
@@ -108,6 +102,7 @@ export default {
     this.currentUser = window.currentUser;
     this.currentEstablishment = window.currentEstablishment;
     this.allEstablishments = window.allEstablishments;
+    setCookie('establishment_id', currentEstablishment.id, 30);
   },
   methods: {
     signOut () {
@@ -224,6 +219,9 @@ html, body, pre, code, kbd, samp, button, a, input{
     }
     &:hover{
       background-color: #0f0d2a !important;
+    }
+    .ditem{
+      text-transform: capitalize !important;;
     }
   }
   .close-btn{
