@@ -44,4 +44,8 @@ class Establishment < ApplicationRecord
 		self.commune.region.name if self.commune
 	end
 
+	def playsets_count
+		playsets.count
+	end
+
 end

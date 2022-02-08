@@ -10,8 +10,11 @@ ActiveAdmin.register Establishment do
     column :name
     column :rbd
     column :commune, :sortable => 'communes.name'
-    column :phone
+    column "# Ludotecas" do |establishment|
+      establishment.playsets_count
+    end
     column :contact_name
+    column :phone
     actions
   end
 
