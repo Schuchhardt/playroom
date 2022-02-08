@@ -9,10 +9,13 @@ ActiveAdmin.register Establishment do
     id_column
     column :name
     column :rbd
-    column :commune, :sortable => 'communes.name'
     column "# Ludotecas" do |establishment|
       establishment.playsets_count
     end
+    column "# Usuarios" do |establishment|
+      establishment.users.uniq.count
+    end
+    column :commune, :sortable => 'communes.name'
     column :contact_name
     column :phone
     actions
