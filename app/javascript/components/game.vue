@@ -29,7 +29,7 @@
           <p><strong>Descripción:</strong></p>
           <p class="bd-notification is-info description">{{currentGame.description}}</p>
           <br>
-          <div class="content" id="game-sels" v-if="hasSelCategory(currentGame, 'XXI')">
+          <div class="content" v-if="hasSelCategory(currentGame, 'XXI')">
             <p><strong>Habilidades del Siglo XXI:</strong></p>
             <p v-for="xxiSkill in currentGame.skills_by_category['Habilidades del siglo XXI']" :key="xxiSkill.id">{{xxiSkill.name}}</p>
           </div>
@@ -56,7 +56,7 @@
                 <strong>Nro de Jugadores:</strong> {{currentGame.number_of_players}}
               </p>
               <p v-if="currentGame.idps_names"><strong>IDPS:</strong> {{currentGame.idps_names}}</p>
-              <div class="sel-circle no-print">
+              <div class="sel-circle no-print" id="game-sels">
                 <div class="sel">SEL</div>
                 <img v-bind:class="{ disabled: !hasSelCategory(currentGame, 1) }" class="autogestion" src="~images/autogestion.png" alt="Autogestión">
                 <img v-bind:class="{ disabled: !hasSelCategory(currentGame, 2) }" class="autoconciencia" src="~images/autoconciencia.png" alt="Autoconciencia">
