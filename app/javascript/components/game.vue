@@ -19,20 +19,20 @@
         <div class="column is-full-mobile">
           <p class="bd-notification is-info"><img v-bind:src="currentGame.image_url" alt="Juego"></p>
           <br>
-          <div v-if="currentGame.youtube_embed_url">
+          <div v-if="currentGame.youtube_embed_url" id="game-video">
               <p><strong>¿Como jugar?</strong></p>
               <br>            
               <iframe :src="currentGame.youtube_embed_url" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
           <br>
+          <button @click.prevent="printGameDetail()" class="button is-light">Imprimir Ficha</button>
           <p><strong>Descripción:</strong></p>
           <p class="bd-notification is-info description">{{currentGame.description}}</p>
           <br>
-          <div class="content" v-if="hasSelCategory(currentGame, 'XXI')">
+          <div class="content" id="game-sels" v-if="hasSelCategory(currentGame, 'XXI')">
             <p><strong>Habilidades del Siglo XXI:</strong></p>
             <p v-for="xxiSkill in currentGame.skills_by_category['Habilidades del siglo XXI']" :key="xxiSkill.id">{{xxiSkill.name}}</p>
           </div>
-          <button @click.prevent="printGameDetail()" class="button is-light">Imprimir Ficha</button>
         </div>
         <div class="column is-full-mobile">
           <p class="title is-4">{{currentGame.name}}</p>
@@ -136,6 +136,9 @@ export default {
           type: "html",
           targetStyles: ['*'],
           header: `Ficha de juego: ${this.currentGame.name}`,
+          documentTitle: 'Playroom 2022',
+          headerStyle: 'font-weight: 300; font-family: Lato',
+          ignoreElements: ['game-video', 'game-sels'],
           onError: function  (error) {
             console.log('Error found => ' + error.message)
           }
