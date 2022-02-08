@@ -13,7 +13,7 @@
 <%= pie_chart Playset.unscoped.group(:playset_type).count(:playset_type) %>
 
 <h4>Colegios con más ludotecas</h4>	
-<%= bar_chart Establishment.all.map { |g| [g.name, g.playsets_count]}.sort_by{|g, c| c}.last(5).reverse%>
+<%= bar_chart Establishment.all.map { |g| [g.name, g.playsets_count]}.sort_by{|g, c| c}.last(10).reverse%>
 
 <h4>Colegios por tipo</h4>	
 <%= pie_chart Establishment.group(:establishment_kind).count %>
