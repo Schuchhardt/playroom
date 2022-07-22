@@ -61,6 +61,7 @@ export default {
 @import "../utils.scss";
 
 .stats{
+  margin-top: 140px;
   background-color: #221f43;
   color: white;
   min-height: 90vh;

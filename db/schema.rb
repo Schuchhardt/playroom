@@ -172,15 +172,6 @@ ActiveRecord::Schema.define(version: 2021_08_30_035436) do
     t.string "cover_url"
   end
 
-  create_table "idp_games", force: :cascade do |t|
-    t.bigint "idp_id"
-    t.bigint "game_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["game_id"], name: "index_idp_games_on_game_id"
-    t.index ["idp_id"], name: "index_idp_games_on_idp_id"
-  end
-
   create_table "idps", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -278,8 +269,6 @@ ActiveRecord::Schema.define(version: 2021_08_30_035436) do
   add_foreign_key "game_sets", "playsets"
   add_foreign_key "game_skills", "games"
   add_foreign_key "game_skills", "skills"
-  add_foreign_key "idp_games", "games"
-  add_foreign_key "idp_games", "idps"
   add_foreign_key "playsets", "establishments"
   add_foreign_key "user_establishments", "establishments"
   add_foreign_key "user_establishments", "users"

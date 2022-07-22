@@ -1,8 +1,24 @@
 <template>
   <div class="games container-fluid">
+    <div class="lds-dual-ring" v-if="loading"><div></div></div>
+    <section>
+      <nav class="breadcrumb" aria-label="breadcrumbs" v-if="currentPlayset">
+        <ul class="navbar-start">
+          <li class="navbar-item">
+            <a @click.prevent="goBack()">
+              <span class="icon">
+                <i class="fas fa-chevron-left" aria-hidden="true"></i> 
+                <span class="text"> LUDOTECAS </span>
+              </span>
+            </a>
+          </li>
+          <li class="navbar-item is-active"> {{currentPlayset.playset_type}}</li>
+        </ul>
+      </nav>
+    </section>
     <div class="container-fluid is-fullhd">
       <div class="columns">
-        <div class="column is-one-quarter" v-if="showFilters">
+        <div class="column is-one-quarter" v-if="!loading && showFilters">
           <aside class="menu">
             <p class="menu-label">
               Buscador por nombre
@@ -18,7 +34,8 @@
                     @select="(option) => goToGame(option)">
                 </b-autocomplete>
             </b-field>
-            <p class="menu-label">
+            
+            <!-- <p class="menu-label">
               Ludotecas
             </p>
             <ul class="menu-list">
@@ -27,7 +44,7 @@
                     {{p.playset_type}}
                 </b-checkbox>
               </li>
-            </ul>
+            </ul> -->
             <p class="menu-label">
               Niveles
             </p>
@@ -42,9 +59,9 @@
         </div>
         <div class="column gamelist">
           <div class="columns games-grid" v-if="games.length > 0">
-            <p class="t" v-if="filteredGames.length == 0"> Por favor selecciona una ludoteca</p>
-            <p class="t"> Mostrando {{filteredGames.length}} juegos</p>
-            <div class="column is-one-quarter is-full-mobile game-detail" v-for="g in filteredGames" :key="g.id">
+            <p class="t" v-if="!loading && filteredGames.length == 0"> Por favor selecciona una ludoteca</p>
+            <p class="t" v-if="!loading"> Mostrando {{filteredGames.length}} juegos</p>
+            <div class="column is-one-third is-full-mobile game-detail" v-for="g in filteredGames" :key="g.id">
               <div class="card" v-on:click.prevent="goToGame(g)">
                 <div class="card-header">
                   <p class="title">{{g.name}}</p>
@@ -79,14 +96,14 @@ export default {
   name: 'Games',
   data() {
     return {
-      loading: false,
+      loading: true,
       currentGame: null,
       isGameModalActive: false,
-      showFilters: false,
+      showFilters: true,
       keepFirst: false,
       openOnFocus: true,
       name: '',
-      selected: null,
+      currentPlayset: null,
       selectedPlaysets: [],
       selectedLevels: [],
       selectedSkills: [],
@@ -149,14 +166,18 @@ export default {
         setTimeout(() => {
           if (vm.$router.currentRoute.query.playsetId) {
             vm.selectedPlaysets = [vm.$router.currentRoute.query.playsetId]
+            vm.currentPlayset = this.$store.state.playsetStore.playsets.find( (p) => p.id == vm.$router.currentRoute.query.playsetId)
           } else {
             vm.selectedPlaysets = this.$store.state.playsetStore.playsets.map( (p) => p.id)  
+            vm.currentPlayset =  this.$store.state.playsetStore.playsets[0]
           }
           const allSkillsId = []
           Object.values(this.$store.state.gameStore.skills).forEach( (sc) => {
             allSkillsId.push(sc.map( (s) => s.id))
           })
           vm.selectedSkills = allSkillsId.flat()
+          console.log(vm.currentPlayset)
+          vm.loading = false
         }, 1000);
       })
     this.selectedLevels = this.levels
@@ -174,6 +195,9 @@ export default {
       return {
         "background-image": "url(' " + game.image_url + "')"
       }
+     },
+      goBack(){
+       this.$router.go(-1)
      },
      reloadFilters () {
       this.inPlayset(this.selectedPlaysets)
@@ -197,7 +221,7 @@ export default {
         })
      },
      goToGame(game) {
-        this.$router.push("/games/" + game.id)
+        this.$router.push({ path: "/games/" + game.id, query: { playsetId: this.$router.currentRoute.query.playsetId} })
      },
      printGameDetail() {
       window.printJS({printable: "gameModal", type: "html", css: "https://unpkg.com/buefy/dist/buefy.min.css" } )
@@ -214,13 +238,32 @@ export default {
 @import "../utils.scss";
   
 .games{
+  margin-top: 130px;
   min-height: 100vh;
-  background-color: #221f43;
-  background-repeat: repeat-y;
+  background-image: url("../../assets/images/fondo.png");
+  background-repeat: repeat;
   background-size: contain;
+  background-color: white;
+
+  .breadcrumb{
+    padding: 10px 80px;
+    a {
+      color: #0f0d2a;
+      padding: 0 30px;
+      .text{
+        padding-left: 10px;
+      }
+    }
+    li::before{
+      margin-right: 10px;
+    }
+    .is-active{
+      color: #0f0d2a;
+      padding-left: 30px;
+    }
+  }
 
   .is-fullhd {
-    background: #221f43;
     padding: 0 20px;
   }
 
@@ -233,7 +276,6 @@ export default {
     padding: 12px;
     display: block;
     margin: auto;
-    background: #221f43;
     position: relative;
     top: 95px;
     .bg-img{
@@ -284,14 +326,14 @@ export default {
   .menu{
     height: 100vh;
     padding-top: 40px;
-    background: darken(#443c8f, 20%);
-    color: white;
-    opacity: 0.9;
+    background: lighten(#221e479e, 80%);
+    color: #0f0d2a;
     .menu-list{
       line-height: 2.25;
       padding-left: 70px;
       .menu-label{
         text-align: left;
+        color: #0f0d2a;
       }
     }
 
@@ -299,7 +341,7 @@ export default {
       margin-top: -20px;
       letter-spacing: 1px;
       text-transform: none;
-      color: white;
+      color: #0f0d2a;
       text-align: left;
       small{
         cursor: pointer;
@@ -318,8 +360,6 @@ export default {
   }
 
   .games-grid{
-    background: #211e43;
-    opacity: 0.9;
     .game-detail{
       .bg-img{
         background-image: url("../images/juego.png");
@@ -354,9 +394,9 @@ export default {
 
 
       .card{
-        -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-        -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-        box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+        -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.35);
+        -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.35);
+        box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.35);
         background-color: #443c8f;
         margin: 10px;
         margin-bottom: 0;
@@ -401,9 +441,8 @@ export default {
     }
     .t{
       width: 100%;
-      margin-top: 30px;
       font-size: 13px;
-      color: darken( white, 10%);
+      color: darken( #0f0d2a, 10%);
     }
   }
   ::v-deep .modal-content{
@@ -488,5 +527,32 @@ iframe{
   width: 100%;
   height: 300px;
 }
+
+.lds-dual-ring {
+  margin-top: 150px;
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #fcf;
+  border-color: #fcf transparent #fcf transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 
 </style>

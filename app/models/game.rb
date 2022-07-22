@@ -55,7 +55,7 @@ class Game < ApplicationRecord
 
 	def idps_names
 		"#{self.idps.map(&:name).join(" - ")}"
-	end	
+	end
 
 	def game_levels
 	 	gl = []

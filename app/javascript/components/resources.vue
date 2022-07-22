@@ -41,8 +41,6 @@
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex'
-
 export default {
   name: 'Resources',
   data() {
@@ -66,6 +64,7 @@ export default {
 @import "../utils.scss";
 
 .experiences{
+  margin-top: 130px;
   background-color: #221f43;
   padding: 40px;
   min-height: 70vh;

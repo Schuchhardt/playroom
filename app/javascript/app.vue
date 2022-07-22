@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <nav class="navbar" role="navigation" aria-label="main navigation">
+    <nav class="navbar nav-fixed" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <router-link class="navbar-item" to="/" exact>
           <img height="150" class="logo-img" src="~images/pr3.png">
@@ -15,18 +15,18 @@
 
       <div id="landing-navbar" class="navbar-menu" :class="{'is-active': isMobile}">
         <div class="navbar-start">
-          <router-link class="navbar-item" to="/" exact>
+          <router-link class="navbar-item" to="/" >
             <span class="icon">
               <i class="fas fa-archway" aria-hidden="true"></i>
             </span>
             <span>Ludotecas</span>
           </router-link>
-          <router-link class="navbar-item" to="/games">
+          <!-- <router-link class="navbar-item" to="/games">
             <span class="icon">
               <i class="fas fa-book" aria-hidden="true"></i>
             </span>
             <span>Juegos</span>
-          </router-link>
+          </router-link> -->
           <router-link class="navbar-item" to="/resources">
             <span class="icon">
               <i class="fas fa-archive" aria-hidden="true"></i>
@@ -37,14 +37,15 @@
             <span class="icon">
               <i class="fas fa-chart-bar" aria-hidden="true"></i>
             </span>
-            <span>Estadisticas</span>
+            <span>Estadísticas</span>
           </router-link>
         </div>
-        <div class="navbar-end ">
+        <div class="navbar-end">
           <div class="navbar-item">
             <div class="tile is-parent is-vertical">
             <div class="tile is-child no-m">
             <p v-if="currentUser" class="user-name">
+              <span class="icon"><i class="fas fa-user" aria-hidden="true"></i></span>
               <span class="user-text">{{currentUser.name || currentUser.email}}</span>
                <a class="button is-light close-btn" v-on:click="signOut()">
                 <span>(Salir)</span> 
@@ -72,7 +73,7 @@
 <footer class="footer">
   <div class="content has-text-centered">
     <p>
-      <strong>Playroom Learning ® 2022</strong> desarrollado por <a href="https://ludotecasescolares.cl" target="_blank">ludotecas escolares</a>.
+      <strong>Playroom Learning ® 2022</strong> desarrollado con ❤ por <a href="https://ludotecasescolares.cl" target="_blank">ludotecas escolares</a>.
     </p>
   </div>
 </footer>
@@ -156,6 +157,11 @@ html, body, pre, code, kbd, samp, button, a, input{
     top: 30px;
     left: 10px;
   }
+  &.nav-fixed{
+    position: fixed;
+    width: 100%;
+    top: 0px;
+  }
 }
 
 .footer{
@@ -213,6 +219,7 @@ html, body, pre, code, kbd, samp, button, a, input{
     }
     &.router-link-active{
       color: white;
+      background: inherit;
       i{
         color: #00d8cd
       }
@@ -250,6 +257,11 @@ html, body, pre, code, kbd, samp, button, a, input{
     white-space: nowrap;
     position: relative;
     top: 10px;
+  }
+  .icon{
+    position: relative;
+    left: 20px;
+    top: 5px;
   }
 }
 

@@ -113,6 +113,7 @@ export default {
 @import "../utils.scss";
 
 .experiences{
+  margin-top: 140px;
   background-color: #221f43;
   padding: 40px;
 }

@@ -9,6 +9,7 @@
     "moment": "^2.24.0",
     "sass": "^1.49.7",
     "vue": "^2.6.11",
+    "vue-carousel": "^0.18.0",
     "vue-chartkick": "^0.5.2",
     "vue-dni": "^1.0.1",
     "vue-frappe-gantt": "^0.3.4",

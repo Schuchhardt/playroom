@@ -36,8 +36,8 @@ gem 'youtube_addy'
 gem "active_admin_import"
 
 # HEROKU
-gem 'therubyracer', platforms: :ruby
-gem 'rails_12factor', group: :production
+#gem 'therubyracer', platforms: :ruby
+#gem 'rails_12factor', group: :production
 
 gem 'rails-erd', group: :development
 

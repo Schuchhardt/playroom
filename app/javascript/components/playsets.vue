@@ -1,6 +1,20 @@
 <template>
   <div class="playsets container-fluid">
     <div class="container">
+      <carousel :autoplay="true" :perPage="1" :loop="true">
+        <slide>
+          <div class="bg bg-1"></div>
+        </slide>
+        <slide>
+          <div class="bg bg-2"></div>
+        </slide>
+        <slide>
+          <div class="bg bg-3"></div>
+        </slide>
+        <slide>
+          <div class="bg bg-4"></div>
+        </slide>
+      </carousel>
       <!-- <p v-if="playsets.length == 0"><br><br> No hay Ludotecas cargadas en este establecimiento</p> -->
 
       <div class="columns is-3" >
@@ -53,14 +67,20 @@
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex'
 
 export default {
   name: 'Playsets',
   data() {
     return {
       isPlaysetModalActive: false,
-      currentPlayset: null
+      currentPlayset: null,
+      carousels: [
+          { text: 'Slide 1', color: 'primary' },
+          { text: 'Slide 2', color: 'info' },
+          { text: 'Slide 3', color: 'success' },
+          { text: 'Slide 4', color: 'warning' },
+          { text: 'Slide 5', color: 'danger' }
+      ]
     };
   },
   computed: {
@@ -96,9 +116,12 @@ export default {
 
 .playsets{
   background-color: #221f43;
+  background-image: url("../../assets/images/fondo.png");
+  background-repeat: no-repeat;
+  background-size: cover;
   color: white;
   min-height: 90vh;
-
+  margin-top: 130px;
  ::v-deep .modal-content{
     width: 100%;
     background: #0f0d2a;
@@ -139,6 +162,24 @@ export default {
 
     }
   }
+  .bg{
+    min-height: 50vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    &.bg-1{
+      background-image: url("../../assets/images/carousel1.jpeg");
+    }
+    &.bg-2{
+      background-image: url("../../assets/images/carousel2.jpeg");
+    }
+    &.bg-3{
+      background-image: url("../../assets/images/carousel3.jpeg");
+    }
+    &.bg-4{
+      background-image: url("../../assets/images/carousel4.jpeg");
+    }
+  }
 }
 
 .columns{
@@ -162,6 +203,18 @@ export default {
   opacity: 0.9;
   transition: all .6s ease;
   border-radius: 5px;
+
+  .card{
+      box-shadow: 0 1px 5px #00000099;
+    transition-duration: 300ms;
+    transition-property: transform, box-shadow;
+    transition-timing-function: ease-out;
+    transform: rotate3d(0);
+    &:hover{
+      transition-duration: 150ms;
+      box-shadow: 0 5px 20px 5px #00000044;
+    }
+  }
   .card-header{
     height: 60px;
     padding: 10px;

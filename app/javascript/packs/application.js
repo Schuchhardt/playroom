@@ -16,7 +16,9 @@ import Router from 'vue-router';
 import Resource from 'vue-resource';
 import VueScrollTo from 'vue-scrollto';
 import Chartkick from 'vue-chartkick';
-import VueLazyload from 'vue-lazyload'
+import VueLazyload from 'vue-lazyload';
+import VueCarousel from 'vue-carousel';
+
 
 Vue.use(VueLazyload, {
   preLoad: 1.3,
@@ -33,6 +35,7 @@ Vue.use(Buefy, {
 	defaultMonthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
 	defaultFirstDayOfWeek: 1
 });
+Vue.use(VueCarousel)
 Vue.use(Router);
 Vue.use(Resource);
 Vue.use(VueScrollTo)
