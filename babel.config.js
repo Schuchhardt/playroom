@@ -39,12 +39,12 @@ module.exports = function(api) {
     ].filter(Boolean),
     plugins: [
       'babel-plugin-macros',
-      // [
-      //   '@babel/plugin-proposal-class-properties',
-      //   {
-      //     loose: true
-      //   }
-      // ],
+      [
+        '@babel/plugin-proposal-class-properties',
+        {
+          loose: true
+        }
+      ],
       [
         '@babel/plugin-transform-runtime',
         {
@@ -52,7 +52,8 @@ module.exports = function(api) {
           regenerator: true,
           corejs: false
         }
-      ]
+      ],
+      ["@babel/plugin-proposal-private-methods", { "loose": true }]
     ].filter(Boolean)
   }
 }
