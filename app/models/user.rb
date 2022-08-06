@@ -47,10 +47,12 @@ class User < ApplicationRecord
   end
 
   def school_name
-    if establishments.uniq.count > 1
-      "#{establishments.length} colegios" 
-    else
-      establishments.first.name
+    if establishments.any?
+      if establishments.uniq.count > 1
+        "#{establishments.length} colegios" 
+      else
+        establishments.first.name
+      end
     end
   end
 
