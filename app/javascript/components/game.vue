@@ -44,9 +44,6 @@
               <iframe :src="currentGame.youtube_embed_url" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
           <br>
-          <!-- <p><strong>Descripción:</strong></p>
-          <p class="bd-notification is-info description">{{currentGame.description}}</p>
-          <br> -->
           <div class="content">
               <p v-if="currentGame.game_type"><strong>Tipo de juego:</strong> <span class="is-warning capitalized">{{currentGame.game_type}}</span></p>
               <p>
