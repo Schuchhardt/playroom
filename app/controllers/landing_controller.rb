@@ -114,7 +114,12 @@ class LandingController < ApplicationController
 		if cookies[:establishment_id].nil?
 			current_user.establishments.first
 		else 
-			current_user.establishments.find_by(id: cookies[:establishment_id])
+			est = current_user.establishments.find_by(id: cookies[:establishment_id])
+			if est.nil?
+				current_user.establishments.first
+			else
+				est
+			end
 		end
 	end
 
