@@ -242,8 +242,9 @@ export default {
   min-height: 100vh;
   background-image: url("../../assets/images/fondo.png");
   background-repeat: repeat;
-  background-size: contain;
+  background-size: 400px;
   background-color: #332d6b;
+  padding-bottom: 100px;
 
   .breadcrumb{
     padding: 10px 80px;

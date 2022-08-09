@@ -5,7 +5,7 @@
         <ul class="navbar-start">
           <li class="navbar-item" v-if="currentPlayset">
             <a @click.prevent="goBack()">
-              <span class="icon">
+              <span class="icon" style="padding-left: 10vw;">
                 <i class="fas fa-chevron-left" aria-hidden="true"></i> 
                 <span class="text"> {{currentPlayset.playset_type}} </span>
               </span>
@@ -65,11 +65,11 @@
       </div>
       <div class="columns banner" v-for="(pt, i) in Object.keys(PLAYSET_TYPES)" :key="i" v-show="currentPlayset.playset_type == PLAYSET_TYPES[pt]">
         <div class="column" >
-          <img src="../../assets/images/CONVENCIA.png" alt="Conviencia Escolar" v-if="currentPlayset.playset_type == PLAYSET_TYPES.CONVIVENCIA"/>
+          <img src="../../assets/images/convivencia.png" alt="Conviencia Escolar" v-if="currentPlayset.playset_type == PLAYSET_TYPES.CONVIVENCIA"/>
           <img src="../../assets/images/FORMACION.png" alt="Formación Ciudadana" v-if="currentPlayset.playset_type == PLAYSET_TYPES.FORMACION"/>
-          <img src="../../assets/images/FORMACION.png" alt="DUA" v-if="currentPlayset.playset_type == PLAYSET_TYPES.DUA"/>
-          <img src="../../assets/images/FORMACION.png" alt="PIE" v-if="currentPlayset.playset_type == PLAYSET_TYPES.PIE"/>
-          <img src="../../assets/images/FORMACION.png" alt="ESTRATEGIAS" v-if="currentPlayset.playset_type == PLAYSET_TYPES.ESTRATEGIAS"/>
+          <img src="../../assets/images/dua.png" alt="DUA" v-if="currentPlayset.playset_type == PLAYSET_TYPES.DUA"/>
+          <img src="../../assets/images/pie.png" alt="PIE" v-if="currentPlayset.playset_type == PLAYSET_TYPES.PIE"/>
+          <img src="../../assets/images/estrategias.png" alt="ESTRATEGIAS" v-if="currentPlayset.playset_type == PLAYSET_TYPES.ESTRATEGIAS"/>
         </div>
         <div class="column text-list">
           <p class="text-left" v-for="(point, index) in PLAYSET_AXES[pt]" :key="index">
@@ -306,8 +306,9 @@ export default {
   min-height: 1250px;
   background-image: url("../../assets/images/fondo.png");
   background-repeat: repeat;
-  background-size: contain;
+  background-size: 400px;
   background-color: white;
+  padding-bottom: 100px;
 
   img{
     width: 450px
