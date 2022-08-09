@@ -90,7 +90,7 @@
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'Games',
@@ -99,7 +99,7 @@ export default {
       loading: true,
       currentGame: null,
       isGameModalActive: false,
-      showFilters: true,
+      showFilters: false,
       keepFirst: false,
       openOnFocus: true,
       name: '',
@@ -243,12 +243,12 @@ export default {
   background-image: url("../../assets/images/fondo.png");
   background-repeat: repeat;
   background-size: contain;
-  background-color: white;
+  background-color: #332d6b;
 
   .breadcrumb{
     padding: 10px 80px;
     a {
-      color: #0f0d2a;
+      color: white;
       padding: 0 30px;
       .text{
         padding-left: 10px;
@@ -258,7 +258,7 @@ export default {
       margin-right: 10px;
     }
     .is-active{
-      color: #0f0d2a;
+      color: white;
       padding-left: 30px;
     }
   }
@@ -397,7 +397,7 @@ export default {
         -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.35);
         -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.35);
         box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.35);
-        background-color: #443c8f;
+        background-color: white;
         margin: 10px;
         margin-bottom: 0;
         padding: 0px;
@@ -413,7 +413,7 @@ export default {
           border-radius: 5px;
           height: 60px;
           padding: 10px;
-          background-color: darken(#443c8f, 10%);
+          background-color: #100d2b;
           height: 20%;
         }
         .card-image{
@@ -436,13 +436,14 @@ export default {
           letter-spacing: 3px;
           font-weight: lighter;
           font-size: 20px;
+          line-height: 40px;
         }
       }
     }
     .t{
       width: 100%;
       font-size: 13px;
-      color: darken( #0f0d2a, 10%);
+      color: white;
     }
   }
   ::v-deep .modal-content{

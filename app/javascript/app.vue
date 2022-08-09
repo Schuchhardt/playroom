@@ -109,6 +109,8 @@ export default {
     signOut () {
       this.$http.delete('/users/sign_out').then( () => {
          window.location.href = "/";
+        document.cookie = 'establishment_id=; Max-Age=-99999999;';  
+
       })
     },
     setMobile () {
