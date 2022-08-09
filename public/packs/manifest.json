@@ -1,0 +1,42 @@
+{
+  "application.css": "/packs/css/application-208b03d1.css",
+  "application.css.map": "/packs/css/application-208b03d1.css.map",
+  "application.js": "/packs/js/application-b15fca86ab4d09e51b7e.js",
+  "application.js.map": "/packs/js/application-b15fca86ab4d09e51b7e.js.map",
+  "entrypoints": {
+    "application": {
+      "css": [
+        "/packs/css/application-208b03d1.css"
+      ],
+      "js": [
+        "/packs/js/application-b15fca86ab4d09e51b7e.js"
+      ],
+      "css.map": [
+        "/packs/css/application-208b03d1.css.map"
+      ],
+      "js.map": [
+        "/packs/js/application-b15fca86ab4d09e51b7e.js.map"
+      ]
+    }
+  },
+  "media/images/CONVENCIA.png": "/packs/media/images/CONVENCIA-d0daf137.png",
+  "media/images/FORMACION.png": "/packs/media/images/FORMACION-b3ad3b3f.png",
+  "media/images/IDPS.png": "/packs/media/images/IDPS-3be76258.png",
+  "media/images/SEL.png": "/packs/media/images/SEL-d5fbf559.png",
+  "media/images/SIGLO XXI.png": "/packs/media/images/SIGLO%20XXI-b4454740.png",
+  "media/images/carousel1.jpeg": "/packs/media/images/carousel1-a315e8f1.jpeg",
+  "media/images/carousel2.jpeg": "/packs/media/images/carousel2-8c8b755d.jpeg",
+  "media/images/carousel3.jpeg": "/packs/media/images/carousel3-1544b98e.jpeg",
+  "media/images/carousel4.jpeg": "/packs/media/images/carousel4-47418f49.jpeg",
+  "media/images/fondo.png": "/packs/media/images/fondo-86d5f1ec.png",
+  "media/images/imprimir.png": "/packs/media/images/imprimir-8c98d361.png",
+  "media/images/juego.png": "/packs/media/images/juego-ed697314fde4213dc28fd07ac46efa81.png",
+  "media/images/level 1.png": "/packs/media/images/level%201-f4a39992.png",
+  "media/images/level 2.png": "/packs/media/images/level%202-53566e58.png",
+  "media/images/level 3.png": "/packs/media/images/level%203-baf30318.png",
+  "media/images/marco1.png": "/packs/media/images/marco1-a7b5d748.png",
+  "media/images/marco_video.png": "/packs/media/images/marco_video-6922f1a8.png",
+  "media/images/pr3.png": "/packs/media/images/pr3-dfae75e9bc29a8c570c75c86eefbe37a.png",
+  "media/images/proferesponde.png": "/packs/media/images/proferesponde-8e70f8e3.png",
+  "media/images/sample_juego.png": "/packs/media/images/sample_juego-4a692714.png"
+}
