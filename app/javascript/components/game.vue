@@ -66,7 +66,7 @@
       <div class="columns banner" v-for="(pt, i) in Object.keys(PLAYSET_TYPES)" :key="i" v-show="currentPlayset.playset_type == PLAYSET_TYPES[pt]">
         <div class="column" >
           <img src="../../assets/images/convivencia.png" alt="Conviencia Escolar" v-if="currentPlayset.playset_type == PLAYSET_TYPES.CONVIVENCIA"/>
-          <img src="../../assets/images/FORMACION.png" alt="Formación Ciudadana" v-if="currentPlayset.playset_type == PLAYSET_TYPES.FORMACION"/>
+          <img src="../../assets/images/formacion.png" alt="Formación Ciudadana" v-if="currentPlayset.playset_type == PLAYSET_TYPES.FORMACION"/>
           <img src="../../assets/images/dua.png" alt="DUA" v-if="currentPlayset.playset_type == PLAYSET_TYPES.DUA"/>
           <img src="../../assets/images/pie.png" alt="PIE" v-if="currentPlayset.playset_type == PLAYSET_TYPES.PIE"/>
           <img src="../../assets/images/estrategias.png" alt="ESTRATEGIAS" v-if="currentPlayset.playset_type == PLAYSET_TYPES.ESTRATEGIAS"/>
