@@ -53,7 +53,7 @@
             </div>
             <div class="tile is-child">
               <p v-if="currentEstablishment && allEstablishments.length == 1" class="user-name">{{currentEstablishment.name}}</p>
-              <b-dropdown aria-role="list" v-if="allEstablishments.length > 1">
+              <b-dropdown aria-role="list" v-if="allEstablishments.length > 1" class="school-dd">
                 <template #trigger="{ active }">
                     <b-button
                         :label="currentEstablishment.name"
@@ -148,6 +148,12 @@ html{
 
 html, body, pre, code, kbd, samp, button, a, input{
 	font-family: 'Lato', cursive;
+}
+
+.school-dd{
+  height: 200px;
+  overflow-y: auto;
+  width: 280px;
 }
 
 .navbar{
