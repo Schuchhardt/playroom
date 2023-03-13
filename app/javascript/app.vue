@@ -51,7 +51,7 @@
                 <span>(Salir)</span> 
               </a></p>
             </div>
-            <div class="tile is-child">
+            <div class="tile is-child dd-tile">
               <p v-if="currentEstablishment && allEstablishments.length == 1" class="user-name">{{currentEstablishment.name}}</p>
               <b-dropdown aria-role="list" v-if="allEstablishments.length > 1" class="school-dd">
                 <template #trigger="{ active }">
@@ -154,6 +154,14 @@ html, body, pre, code, kbd, samp, button, a, input{
   height: 200px;
   overflow-y: auto;
   width: 280px;
+}
+
+.dd-tile {
+  ::v-deep .dropdown-menu{
+    height: 300px;
+    overflow-y: auto;
+    width: 280px;
+  }
 }
 
 .navbar{
