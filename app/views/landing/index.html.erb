@@ -9,7 +9,7 @@
     <script type="text/javascript">
     	window.currentUser = JSON.parse('<%= j current_user.to_json.html_safe %>')
     	window.currentEstablishment = JSON.parse('<%= j @current_establishment.to_json.html_safe %>')
-        window.allEstablishments = JSON.parse('<%= j current_user.establishments.uniq.to_json.html_safe %>')
+        window.allEstablishments = JSON.parse('<%= j current_user.establishments.uniq.reverse.to_json.html_safe %>')
     </script>
     <script>
 
