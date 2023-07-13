@@ -9,7 +9,7 @@ Bundler.require(*Rails.groups)
 module Playroom
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 5.2
+    config.load_defaults 6.1
     config.time_zone = 'Santiago'
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.

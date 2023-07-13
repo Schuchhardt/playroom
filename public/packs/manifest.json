@@ -1,25 +1,24 @@
 {
-  "application.css": "/packs/css/application-116dd64b.css",
-  "application.css.map": "/packs/css/application-116dd64b.css.map",
-  "application.js": "/packs/js/application-3990c50398a6f8265f7b.js",
-  "application.js.map": "/packs/js/application-3990c50398a6f8265f7b.js.map",
+  "application.css": "/packs/css/application-551d48c3.css",
+  "application.css.map": "/packs/css/application-551d48c3.css.map",
+  "application.js": "/packs/js/application-416f9476328a57d85258.js",
+  "application.js.map": "/packs/js/application-416f9476328a57d85258.js.map",
   "entrypoints": {
     "application": {
       "css": [
-        "/packs/css/application-116dd64b.css"
+        "/packs/css/application-551d48c3.css"
       ],
       "js": [
-        "/packs/js/application-3990c50398a6f8265f7b.js"
+        "/packs/js/application-416f9476328a57d85258.js"
       ],
       "css.map": [
-        "/packs/css/application-116dd64b.css.map"
+        "/packs/css/application-551d48c3.css.map"
       ],
       "js.map": [
-        "/packs/js/application-3990c50398a6f8265f7b.js.map"
+        "/packs/js/application-416f9476328a57d85258.js.map"
       ]
     }
   },
-  "media/images/FORMACION.png": "/packs/media/images/FORMACION-83d03d38.png",
   "media/images/IDPS.png": "/packs/media/images/IDPS-3be76258.png",
   "media/images/SEL.png": "/packs/media/images/SEL-d5fbf559.png",
   "media/images/SIGLO XXI.png": "/packs/media/images/SIGLO%20XXI-b4454740.png",
@@ -31,6 +30,7 @@
   "media/images/dua.png": "/packs/media/images/dua-f3c92f9e.png",
   "media/images/estrategias.png": "/packs/media/images/estrategias-feed03c0.png",
   "media/images/fondo.png": "/packs/media/images/fondo-86d5f1ec.png",
+  "media/images/formacion.png": "/packs/media/images/formacion-972575f5.png",
   "media/images/imprimir.png": "/packs/media/images/imprimir-8c98d361.png",
   "media/images/juego.png": "/packs/media/images/juego-ed697314fde4213dc28fd07ac46efa81.png",
   "media/images/level 1.png": "/packs/media/images/level%201-f4a39992.png",
