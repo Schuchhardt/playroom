@@ -1,45 +1,50 @@
 {
-  "application.css": "/packs/css/application-116dd64b.css",
-  "application.css.map": "/packs/css/application-116dd64b.css.map",
-  "application.js": "/packs/js/application-3990c50398a6f8265f7b.js",
-  "application.js.map": "/packs/js/application-3990c50398a6f8265f7b.js.map",
+  "application.css": "/packs/css/application.css",
+  "application.js": "/packs/js/application.js",
+  "css/application.css.map": "/packs/css/application.css.map",
+  "css/vendors-node_modules_buefy_dist_buefy_js-node_modules_vue-carousel_dist_vue-carousel_min_js-n-2788c8.css": "/packs/css/vendors-node_modules_buefy_dist_buefy_js-node_modules_vue-carousel_dist_vue-carousel_min_js-n-2788c8.css",
+  "css/vendors-node_modules_buefy_dist_buefy_js-node_modules_vue-carousel_dist_vue-carousel_min_js-n-2788c8.css.map": "/packs/css/vendors-node_modules_buefy_dist_buefy_js-node_modules_vue-carousel_dist_vue-carousel_min_js-n-2788c8.css.map",
   "entrypoints": {
     "application": {
-      "css": [
-        "/packs/css/application-116dd64b.css"
-      ],
-      "js": [
-        "/packs/js/application-3990c50398a6f8265f7b.js"
-      ],
-      "css.map": [
-        "/packs/css/application-116dd64b.css.map"
-      ],
-      "js.map": [
-        "/packs/js/application-3990c50398a6f8265f7b.js.map"
-      ]
+      "assets": {
+        "js": [
+          "/packs/js/runtime.js",
+          "/packs/js/vendors-node_modules_buefy_dist_buefy_js-node_modules_vue-carousel_dist_vue-carousel_min_js-n-2788c8.js",
+          "/packs/js/application.js"
+        ],
+        "css": [
+          "/packs/css/vendors-node_modules_buefy_dist_buefy_js-node_modules_vue-carousel_dist_vue-carousel_min_js-n-2788c8.css",
+          "/packs/css/application.css"
+        ]
+      }
     }
   },
-  "media/images/FORMACION.png": "/packs/media/images/FORMACION-83d03d38.png",
-  "media/images/IDPS.png": "/packs/media/images/IDPS-3be76258.png",
-  "media/images/SEL.png": "/packs/media/images/SEL-d5fbf559.png",
-  "media/images/SIGLO XXI.png": "/packs/media/images/SIGLO%20XXI-b4454740.png",
-  "media/images/carousel1.jpeg": "/packs/media/images/carousel1-a315e8f1.jpeg",
-  "media/images/carousel2.jpeg": "/packs/media/images/carousel2-8c8b755d.jpeg",
-  "media/images/carousel3.jpeg": "/packs/media/images/carousel3-1544b98e.jpeg",
-  "media/images/carousel4.jpeg": "/packs/media/images/carousel4-47418f49.jpeg",
-  "media/images/convivencia.png": "/packs/media/images/convivencia-942e5981.png",
-  "media/images/dua.png": "/packs/media/images/dua-f3c92f9e.png",
-  "media/images/estrategias.png": "/packs/media/images/estrategias-feed03c0.png",
-  "media/images/fondo.png": "/packs/media/images/fondo-86d5f1ec.png",
-  "media/images/imprimir.png": "/packs/media/images/imprimir-8c98d361.png",
-  "media/images/juego.png": "/packs/media/images/juego-ed697314fde4213dc28fd07ac46efa81.png",
-  "media/images/level 1.png": "/packs/media/images/level%201-f4a39992.png",
-  "media/images/level 2.png": "/packs/media/images/level%202-53566e58.png",
-  "media/images/level 3.png": "/packs/media/images/level%203-baf30318.png",
-  "media/images/marco1.png": "/packs/media/images/marco1-a7b5d748.png",
-  "media/images/marco_video.png": "/packs/media/images/marco_video-6922f1a8.png",
-  "media/images/pie.png": "/packs/media/images/pie-95b7a327.png",
-  "media/images/pr3.png": "/packs/media/images/pr3-dfae75e9bc29a8c570c75c86eefbe37a.png",
-  "media/images/proferesponde.png": "/packs/media/images/proferesponde-8e70f8e3.png",
-  "media/images/sample_juego.png": "/packs/media/images/sample_juego-4a692714.png"
+  "js/application.js.map": "/packs/js/application.js.map",
+  "js/runtime.js.map": "/packs/js/runtime.js.map",
+  "js/vendors-node_modules_buefy_dist_buefy_js-node_modules_vue-carousel_dist_vue-carousel_min_js-n-2788c8.js": "/packs/js/vendors-node_modules_buefy_dist_buefy_js-node_modules_vue-carousel_dist_vue-carousel_min_js-n-2788c8.js",
+  "js/vendors-node_modules_buefy_dist_buefy_js-node_modules_vue-carousel_dist_vue-carousel_min_js-n-2788c8.js.map": "/packs/js/vendors-node_modules_buefy_dist_buefy_js-node_modules_vue-carousel_dist_vue-carousel_min_js-n-2788c8.js.map",
+  "runtime.js": "/packs/js/runtime.js",
+  "static/IDPS.png": "/packs/static/IDPS-3be76258c55b33b0aa47.png",
+  "static/SEL.png": "/packs/static/SEL-d5fbf559b1eaf6f36508.png",
+  "static/SIGLO XXI.png": "/packs/static/SIGLO%20XXI-b4454740d31e5383385e.png",
+  "static/carousel1.jpeg": "/packs/static/carousel1-a315e8f14e1459a61445.jpeg",
+  "static/carousel2.jpeg": "/packs/static/carousel2-8c8b755dedde63d42010.jpeg",
+  "static/carousel3.jpeg": "/packs/static/carousel3-1544b98e611ffc96f05a.jpeg",
+  "static/carousel4.jpeg": "/packs/static/carousel4-47418f4914ade3f7fa57.jpeg",
+  "static/convivencia.png": "/packs/static/convivencia-942e5981eb717ec4b35b.png",
+  "static/dua.png": "/packs/static/dua-f3c92f9e3b48d6b7a274.png",
+  "static/estrategias.png": "/packs/static/estrategias-feed03c04c58f9889d23.png",
+  "static/fondo.png": "/packs/static/fondo-86d5f1ece17185a668fb.png",
+  "static/formacion.png": "/packs/static/formacion-972575f526471f81a1ea.png",
+  "static/imprimir.png": "/packs/static/imprimir-8c98d361e4e4ac34a7a3.png",
+  "static/juego.png": "/packs/static/juego-ed697314fde4213dc28f.png",
+  "static/level 1.png": "/packs/static/level%201-f4a39992d7766ab02cf3.png",
+  "static/level 2.png": "/packs/static/level%202-53566e58c446e8109e1c.png",
+  "static/level 3.png": "/packs/static/level%203-baf30318a7d254537a18.png",
+  "static/marco1.png": "/packs/static/marco1-a7b5d748bb8c18a727cb.png",
+  "static/marco_video.png": "/packs/static/marco_video-6922f1a8e18f3b7a056b.png",
+  "static/pie.png": "/packs/static/pie-95b7a327fb73eda71dca.png",
+  "static/pr3.png": "/packs/static/pr3-dfae75e9bc29a8c570c7.png",
+  "static/proferesponde.png": "/packs/static/proferesponde-8e70f8e3cc6ec5a2eab0.png",
+  "static/sample_juego.png": "/packs/static/sample_juego-4a692714f497ab7ca4a5.png"
 }
