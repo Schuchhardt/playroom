@@ -58,6 +58,10 @@
                 <span class="icon"><i class="fas fa-users" aria-hidden="true"></i></span>
                 <strong>Nro de Jugadores:</strong> {{currentGame.number_of_players}}
               </p>
+              <button v-if="currentGame.pdf_url" @click.prevent="goToPDF()" class="button is-light">
+                <span class="icon"><i class="fas fa-file" aria-hidden="true"></i></span>
+                <span> Ficha detallada del juego</span>
+              </button>
   
             <br>
           </div>
@@ -80,7 +84,7 @@
 
       <div class="columns banner xxi" v-if="hasSelCategory(currentGame, 'XXI')">
         <div class="column">
-          <img src="../../assets/images/SIGLO XXI.png" alt="xxi"/>
+          <img src="../../assets/images/siglo_xxi.png" alt="xxi"/>
         </div>
         <div class="column text-list">
           <p class="text-left" v-for="xxiSkill in currentGame.skills_by_category['Habilidades del siglo XXI']" :key="xxiSkill.id">
@@ -91,7 +95,7 @@
 
      <div class="columns banner sel" v-if="hasSelCategory(currentGame, 1) || hasSelCategory(currentGame, 2) || hasSelCategory(currentGame, 3) || hasSelCategory(currentGame, 4) || hasSelCategory(currentGame, 5)">
         <div class="column">
-          <img src="../../assets/images/SEL.png" alt="SEL"/>
+          <img src="../../assets/images/sel.png" alt="SEL"/>
         </div>
         <div class="column text-list">
           <p class="text-left" v-if="currentGame.skills_by_category['1. Autoconciencia']">Autoconciencia</p>
@@ -119,7 +123,7 @@
 
       <div class="columns banner idps" v-if="currentGame.idps_names">
         <div class="column">
-          <img src="../../assets/images/IDPS.png" alt="idps"/>
+          <img src="../../assets/images/idps.png" alt="idps"/>
         </div>
         <div class="column text-list">
           <p class="text-left" v-for="(idp, index) in currentGame.idps_names.split('-')" :key="index" >

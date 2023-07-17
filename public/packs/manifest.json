@@ -24,9 +24,6 @@
   "js/vendors-node_modules_buefy_dist_buefy_js-node_modules_vue-carousel_dist_vue-carousel_min_js-n-2788c8.js": "/packs/js/vendors-node_modules_buefy_dist_buefy_js-node_modules_vue-carousel_dist_vue-carousel_min_js-n-2788c8.js",
   "js/vendors-node_modules_buefy_dist_buefy_js-node_modules_vue-carousel_dist_vue-carousel_min_js-n-2788c8.js.map": "/packs/js/vendors-node_modules_buefy_dist_buefy_js-node_modules_vue-carousel_dist_vue-carousel_min_js-n-2788c8.js.map",
   "runtime.js": "/packs/js/runtime.js",
-  "static/IDPS.png": "/packs/static/IDPS-3be76258c55b33b0aa47.png",
-  "static/SEL.png": "/packs/static/SEL-d5fbf559b1eaf6f36508.png",
-  "static/SIGLO XXI.png": "/packs/static/SIGLO%20XXI-b4454740d31e5383385e.png",
   "static/carousel1.jpeg": "/packs/static/carousel1-a315e8f14e1459a61445.jpeg",
   "static/carousel2.jpeg": "/packs/static/carousel2-8c8b755dedde63d42010.jpeg",
   "static/carousel3.jpeg": "/packs/static/carousel3-1544b98e611ffc96f05a.jpeg",
@@ -36,6 +33,7 @@
   "static/estrategias.png": "/packs/static/estrategias-feed03c04c58f9889d23.png",
   "static/fondo.png": "/packs/static/fondo-86d5f1ece17185a668fb.png",
   "static/formacion.png": "/packs/static/formacion-972575f526471f81a1ea.png",
+  "static/idps.png": "/packs/static/idps-3be76258c55b33b0aa47.png",
   "static/imprimir.png": "/packs/static/imprimir-8c98d361e4e4ac34a7a3.png",
   "static/juego.png": "/packs/static/juego-ed697314fde4213dc28f.png",
   "static/level 1.png": "/packs/static/level%201-f4a39992d7766ab02cf3.png",
@@ -46,5 +44,7 @@
   "static/pie.png": "/packs/static/pie-95b7a327fb73eda71dca.png",
   "static/pr3.png": "/packs/static/pr3-dfae75e9bc29a8c570c7.png",
   "static/proferesponde.png": "/packs/static/proferesponde-8e70f8e3cc6ec5a2eab0.png",
-  "static/sample_juego.png": "/packs/static/sample_juego-4a692714f497ab7ca4a5.png"
+  "static/sample_juego.png": "/packs/static/sample_juego-4a692714f497ab7ca4a5.png",
+  "static/sel.png": "/packs/static/sel-d5fbf559b1eaf6f36508.png",
+  "static/siglo_xxi.png": "/packs/static/siglo_xxi-b4454740d31e5383385e.png"
 }

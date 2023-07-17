@@ -49,7 +49,7 @@ class LandingController < ApplicationController
 
 	def game
 		game = Game.find params[:id]
-		g = game.slice(:id, :name, :description, :difficulty, :game_time, :idps_names, :number_of_players, :suggested_age, :youtube_embed_url, :image_url, :playsets_ids, :skills_ids, :skills_by_category, :game_levels, :game_type)
+		g = game.slice(:id, :name, :description, :difficulty, :game_time, :idps_names, :number_of_players, :suggested_age, :youtube_embed_url, :image_url, :playsets_ids, :skills_ids, :skills_by_category, :game_levels, :game_type, :pdf_url, :sku, :game_time_from, :game_time_to)
 		all_games_in_playset = []
 		get_current_establishment.playsets.each do |pl|
 			pl.games.each do |game|

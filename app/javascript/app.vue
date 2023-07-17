@@ -151,7 +151,7 @@ html, body, pre, code, kbd, samp, button, a, input{
 }
 
 .school-dd{
-  height: 200px;
+  // height: 200px;
   overflow-y: auto;
   width: 280px;
 }
@@ -212,6 +212,7 @@ html, body, pre, code, kbd, samp, button, a, input{
     }
   }
   img{
+    max-width: 230px;
     max-height: 90%;
     display: block;
     margin: auto;

@@ -1,6 +1,6 @@
 ActiveAdmin.register Game do
   permit_params :name, :sku, :description, :difficulty, :game_time, :idps, :number_of_players, 
-    :suggested_age, :youtube_link, :level_preschool, :level_first_primary, :level_second_primary, 
+    :suggested_age, :youtube_link, :pdf_url, :level_preschool, :level_first_primary, :level_second_primary, 
     :level_secondary, :cover_url, :game_type, game_skills_attributes: [:id, :_destroy, :skill_id], game_idps_attributes: [:id, :_destroy, :idp_id]
 
   menu priority: 3
@@ -50,6 +50,7 @@ ActiveAdmin.register Game do
         row :suggested_age
         row :game_type
         row :youtube_link
+        row :pdf_url
         row :level_preschool
         row :level_first_primary
         row :level_second_primary
@@ -96,6 +97,7 @@ ActiveAdmin.register Game do
       f.input :number_of_players
       f.input :suggested_age, :as => :select, :collection => (0..15).to_a.map{|n| "Desde #{n} años"}
       f.input :youtube_link
+      f.input :pdf_url
       f.input :level_preschool
       f.input :level_first_primary
       f.input :level_second_primary
@@ -153,7 +155,8 @@ ActiveAdmin.register Game do
     column :level_first_primary
     column :level_second_primary
     column :level_secondary
-    column :youtube_link        
+    column :youtube_link
+    column :pdf_url
     column :cover_url
     #column('link_imagen') { |g| g.image.attached? ? url_for(g.image) : '' }     
     column :created_at     
