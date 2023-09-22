@@ -58,9 +58,9 @@
                 <span class="icon"><i class="fas fa-users" aria-hidden="true"></i></span>
                 <strong>Nro de Jugadores:</strong> {{currentGame.number_of_players}}
               </p>
-              <button v-if="currentGame.pdf_url" @click.prevent="goToPDF()" class="button is-light">
+              <button v-if="currentGame.pdf_url" @click.prevent="goToPDF()" class="button is-primary" style="padding: 20px;">
                 <span class="icon"><i class="fas fa-file" aria-hidden="true"></i></span>
-                <span> Ficha detallada del juego</span>
+                <span> Ver ficha técnica</span>
               </button>
   
             <br>
@@ -275,6 +275,9 @@ export default {
      },
      goToGame(game) {
       this.$router.push("/games/" + game.id)
+     },
+     goToPDF() {
+      window.open(this.currentGame.pdf_url, '_blank')
      },
      goBack(){
        this.$router.go(-1)
