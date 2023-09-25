@@ -30,9 +30,9 @@
             </div>
             <div class="column is-full-mobile">
               <b-tooltip :label="currentGame.difficulty">
-                <img class="difficulty-img" src="../../assets/images/level 1.png" :alt="currentGame.difficulty" v-show="currentGame.difficulty == allDifficulties.level_1"/>
-                <img class="difficulty-img" src="../../assets/images/level 2.png" :alt="currentGame.difficulty" v-show="currentGame.difficulty == allDifficulties.level_2"/>
-                <img class="difficulty-img" src="../../assets/images/level 3.png" :alt="currentGame.difficulty" v-show="currentGame.difficulty == allDifficulties.level_3"/>
+                <img class="difficulty-img" src="https://i.ibb.co/Fgcb2XG/level-1.png" :alt="currentGame.difficulty" v-show="currentGame.difficulty == allDifficulties.level_1"/>
+                <img class="difficulty-img" src="https://i.ibb.co/BsPyH64/level-2.png" :alt="currentGame.difficulty" v-show="currentGame.difficulty == allDifficulties.level_2"/>
+                <img class="difficulty-img" src="https://i.ibb.co/CKzjN4R/level-3.png" :alt="currentGame.difficulty" v-show="currentGame.difficulty == allDifficulties.level_3"/>
               </b-tooltip>
             </div>
           </div>
@@ -69,11 +69,11 @@
       </div>
       <div class="columns banner" v-for="(pt, i) in Object.keys(PLAYSET_TYPES)" :key="i" v-show="currentPlayset.playset_type == PLAYSET_TYPES[pt]">
         <div class="column" >
-          <img src="../../assets/images/convivencia.png" alt="Conviencia Escolar" v-if="currentPlayset.playset_type == PLAYSET_TYPES.CONVIVENCIA"/>
-          <img src="../../assets/images/formacion.png" alt="Formación Ciudadana" v-if="currentPlayset.playset_type == PLAYSET_TYPES.FORMACION"/>
-          <img src="../../assets/images/dua.png" alt="DUA" v-if="currentPlayset.playset_type == PLAYSET_TYPES.DUA"/>
-          <img src="../../assets/images/pie.png" alt="PIE" v-if="currentPlayset.playset_type == PLAYSET_TYPES.PIE"/>
-          <img src="../../assets/images/estrategias.png" alt="ESTRATEGIAS" v-if="currentPlayset.playset_type == PLAYSET_TYPES.ESTRATEGIAS"/>
+          <img src="https://i.ibb.co/hccKfQt/convivencia.png" alt="Conviencia Escolar" v-if="currentPlayset.playset_type == PLAYSET_TYPES.CONVIVENCIA"/>
+          <img src="https://i.ibb.co/WDHK1Ww/formacion.png" alt="Formación Ciudadana" v-if="currentPlayset.playset_type == PLAYSET_TYPES.FORMACION"/>
+          <img src="https://i.ibb.co/Tm5nmbN/dua.png" alt="DUA" v-if="currentPlayset.playset_type == PLAYSET_TYPES.DUA"/>
+          <img src="https://i.ibb.co/6rYdTKs/pie.png" alt="PIE" v-if="currentPlayset.playset_type == PLAYSET_TYPES.PIE"/>
+          <img src="https://i.ibb.co/rHjsM6K/estrategias.png" alt="ESTRATEGIAS" v-if="currentPlayset.playset_type == PLAYSET_TYPES.ESTRATEGIAS"/>
         </div>
         <div class="column text-list">
           <p class="text-left" v-for="(point, index) in PLAYSET_AXES[pt]" :key="index">
@@ -84,7 +84,7 @@
 
       <div class="columns banner xxi" v-if="hasSelCategory(currentGame, 'XXI')">
         <div class="column">
-          <img src="../../assets/images/siglo_xxi.png" alt="xxi"/>
+          <img src="https://i.ibb.co/VVLZ25n/siglo-xxi.png" alt="xxi"/>
         </div>
         <div class="column text-list">
           <p class="text-left" v-for="xxiSkill in currentGame.skills_by_category['Habilidades del siglo XXI']" :key="xxiSkill.id">
@@ -95,7 +95,7 @@
 
      <div class="columns banner sel" v-if="hasSelCategory(currentGame, 1) || hasSelCategory(currentGame, 2) || hasSelCategory(currentGame, 3) || hasSelCategory(currentGame, 4) || hasSelCategory(currentGame, 5)">
         <div class="column">
-          <img src="../../assets/images/sel.png" alt="SEL"/>
+          <img src="https://i.ibb.co/qCC4t4N/sel.png" alt="SEL"/>
         </div>
         <div class="column text-list">
           <p class="text-left" v-if="currentGame.skills_by_category['1. Autoconciencia']">Autoconciencia</p>
@@ -123,7 +123,7 @@
 
       <div class="columns banner idps" v-if="currentGame.idps_names">
         <div class="column">
-          <img src="../../assets/images/idps.png" alt="idps"/>
+          <img src="https://i.ibb.co/NT35ZKv/idps.png" alt="idps"/>
         </div>
         <div class="column text-list">
           <p class="text-left" v-for="(idp, index) in currentGame.idps_names.split('-')" :key="index" >
@@ -135,12 +135,12 @@
       <div class="columns">
         <div class="column">
           <button @click.prevent="printGameDetail()" class="button print-btn is-light transparent">
-            <img class="print-img-button" src="../../assets/images/imprimir.png" alt="Imprimir Ficha">
+            <img class="print-img-button" src="https://i.ibb.co/Z1mTM3T/imprimir.png" alt="Imprimir Ficha">
           </button>
         </div>
         <div class="column">
           <button @click.prevent="teacherAnswer()" class="button is-light transparent">
-            <img class="teacher-button" src="../../assets/images/proferesponde.png" alt="Profesor Responde">
+            <img class="teacher-button" src="https://i.ibb.co/ZhhQG4y/proferesponde.png" alt="Profesor Responde">
           </button>
         </div>
       </div>
