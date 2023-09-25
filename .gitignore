@@ -35,21 +35,12 @@
 /config/master.key
 # This file is used by Rack-based servers to start the application.
 
-require_relative 'config/environment'
-
-run Rails.application
-# /public/packs
-/public/packs-test
-/node_modules
-yarn-debug.log*
-.yarn-integrity
-
 /config/application.yml
 
 .DS_Store
 DS_Store
 */**/DS_Store
-/public/packs
+#/public/packs
 /public/packs-test
 /node_modules
 /yarn-error.log

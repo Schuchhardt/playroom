@@ -58,7 +58,7 @@
                 <span class="icon"><i class="fas fa-users" aria-hidden="true"></i></span>
                 <strong>Nro de Jugadores:</strong> {{currentGame.number_of_players}}
               </p>
-              <button v-if="currentGame.pdf_url" @click.prevent="goToPDF()" class="button is-primary" style="padding: 20px;">
+              <button v-if="currentGame.pdf_url" @click.prevent="goToPDF()" class="button is-primary game-pdf-btn" >
                 <span class="icon"><i class="fas fa-file" aria-hidden="true"></i></span>
                 <span> Ver ficha técnica</span>
               </button>
@@ -543,6 +543,14 @@ export default {
 
 .capitalized{
   text-transform: capitalize;
+}
+
+.game-pdf-btn{
+  padding: 20px;
+  margin: 40px;
+  text-transform: uppercase;
+  font-weight: 800;
+  border-radius: 11px;
 }
 
 </style>

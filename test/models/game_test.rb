@@ -16,6 +16,7 @@
 #  level_secondary      :boolean          default(FALSE)
 #  name                 :string
 #  number_of_players    :string
+#  pdf_url              :string
 #  sku                  :string
 #  suggested_age        :string
 #  youtube_link         :string
