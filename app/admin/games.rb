@@ -148,7 +148,8 @@ ActiveAdmin.register Game do
     column :description
     column :difficulty
     column :game_time
-    column :idps
+    column('# ludotecas') { |g| g.playsets_count }
+    #column :idps
     column :number_of_players    
     column :suggested_age  
     column :level_preschool
