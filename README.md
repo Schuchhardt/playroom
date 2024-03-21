@@ -12,7 +12,7 @@ gem install bundle
 rvm use 3.2.2@playroom --create
 # install node
 nvm install 16.18.1
-nvm use16.18.1
+nvm use 16.18.1
 ```
 
 ### Installing
