@@ -53,7 +53,7 @@
             </div>
             <div class="tile is-child dd-tile">
               <p v-if="currentEstablishment && allEstablishments.length == 1" class="user-name">{{currentEstablishment.name}}</p>
-              <b-dropdown aria-role="list" v-if="allEstablishments.length > 1" class="school-dd">
+              <b-dropdown aria-role="list" v-if="allEstablishments.length > 1" class="school-dd" style="display: table-row;">
                 <template #trigger="{ active }">
                     <b-button
                         :label="currentEstablishment.name"
@@ -151,9 +151,9 @@ html, body, pre, code, kbd, samp, button, a, input{
 }
 
 .school-dd{
-  // height: 200px;
   overflow-y: auto;
   width: 280px;
+  display: table-row;
 }
 
 .dd-tile {
