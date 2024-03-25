@@ -1,7 +1,7 @@
 <template>
   <div class="playsets container-fluid">
     <div class="container">
-      <carousel :autoplay="true" :perPage="1" :loop="true">
+      <!-- <carousel :autoplay="true" :perPage="1" :loop="true">
         <slide>
           <div class="bg bg-1"></div>
         </slide>
@@ -14,7 +14,7 @@
         <slide>
           <div class="bg bg-4"></div>
         </slide>
-      </carousel>
+      </carousel> -->
       <!-- <p v-if="playsets.length == 0"><br><br> No hay Ludotecas cargadas en este establecimiento</p> -->
 
       <div class="columns is-3" >

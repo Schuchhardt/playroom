@@ -142,6 +142,10 @@ GEM
     docx (0.8.0)
       nokogiri (~> 1.13, >= 1.13.0)
       rubyzip (~> 2.0)
+    dotenv (3.1.0)
+    dotenv-rails (3.1.0)
+      dotenv (= 3.1.0)
+      railties (>= 6.1)
     erubi (1.12.0)
     execjs (2.8.1)
     faraday (2.7.10)
@@ -385,6 +389,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   docx
+  dotenv-rails
   figaro
   foreman
   groupdate

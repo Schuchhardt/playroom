@@ -73,7 +73,7 @@
 <footer class="footer">
   <div class="content has-text-centered">
     <p>
-      <strong>Playroom Learning ® 2022</strong> desarrollado con ❤ por <a href="https://ludotecasescolares.cl" target="_blank">ludotecas escolares</a>.
+      <strong>Playroom Learning ® 2024</strong> desarrollado con ❤ por <a href="https://ludotecasescolares.cl" target="_blank">ludotecas escolares</a>.
     </p>
   </div>
 </footer>
