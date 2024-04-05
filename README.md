@@ -28,6 +28,12 @@ rake db:migrate
 foreman start
 ```
 
+## Generate assets
+```
+rails assets:clean
+rails assets:precompile
+```
+
 ## Running the tests
 
 ```
