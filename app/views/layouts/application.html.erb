@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Plataforma | Playroom</title>
+    <title>Plataforma Ludotecas | Playroom</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -17,16 +17,23 @@
     <% if devise_controller? %>
       <div class="devise-main-container">
         <div class="devise-navbar">
-          <%= image_tag "pr3.png" %>
+            <%= image_tag "logo2024.png" %>
         </div>
         <div class="devise-container">
           <%= yield %>
         </div>
       </div>
+        <footer>
+        <div class="footer">
+          <%= image_tag "logo-ludotecas.png" %>
+          <p>© 2024 Playroom - Ludotecas Escolares</p>
+        </div>
+      </footer>
     <% else %>
 
       <%= yield %>
       
     <% end %>
+  
   </body>
 </html>

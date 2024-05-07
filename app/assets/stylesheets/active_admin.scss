@@ -8,14 +8,14 @@
 // $sidebar-width: 242px;
 
 a, span, div, p, button, input, textarea{
-    font-family: 'Lato', sans-serif;
+    font-family: 'Righteous', sans-serif;
     letter-spacing: 2px;
     // text-transform: uppercase;
 }
 
 
 // $primary-color: #2dbb43;
-@import url('https://fonts.googleapis.com/css?family=Lato');
+@import url('https://fonts.googleapis.com/css?family=Righteous');
 
 // Overriding any non-variable SASS must be done after the fact.
 // For example, to change the default status-tag color:
@@ -28,7 +28,7 @@ a, span, div, p, button, input, textarea{
 #wrapper .header #tabs li a, .header #tabs li.current a{
     color: white;
     font-size: 16px;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Righteous', sans-serif;
     letter-spacing: 2px;
     text-transform: uppercase;
 }

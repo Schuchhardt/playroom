@@ -32,7 +32,7 @@ class User < ApplicationRecord
   include TranslateEnum
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :recoverable, :rememberable, :validatable, :trackable
+  devise :database_authenticatable, :recoverable, :rememberable, :validatable, :trackable, :registerable
   
   has_many :user_establishments, dependent: :destroy
   has_many :establishments, through: :user_establishments

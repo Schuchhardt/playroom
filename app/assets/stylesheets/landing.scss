@@ -7,10 +7,10 @@ body{
 }
 
 .devise-main-container{
-	background-image: url(boardgame_bg.jpeg);
+	background-image: url(boardgame-hands.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
-	background-position-y: -35px;
+	background-position: center;
 	width: 100%;
 	height: 110vh;
 }
@@ -25,6 +25,16 @@ body{
 		display: block;
 		margin: auto;
 		max-width: 90%;
+	}
+}
+
+footer{
+	background-color: white;
+	color: #100d2a;
+	text-align: center;
+	padding: 20px 0px;
+	img{
+		height: 40px;
 	}
 }
 

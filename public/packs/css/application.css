@@ -1,7 +1,7 @@
 /*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-6.use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-6.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-6.use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./app/javascript/app.vue?vue&type=style&index=0&id=6fb8108a&lang=scss& ***!
   \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-@import url(https://fonts.googleapis.com/css?family=Lato);
+@import url(https://fonts.googleapis.com/css?family=Righteous);
 /*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-6.use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-6.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-6.use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./app/javascript/app.vue?vue&type=style&index=0&id=6fb8108a&lang=scss& (1) ***!
   \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
@@ -14,14 +14,14 @@ html {
 }
 }
 #app {
-  font-family: "Lato", cursive;
+  font-family: "Righteous", cursive;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
 }
 html, body, pre, code, kbd, samp, button, a, input {
-  font-family: "Lato", cursive;
+  font-family: "Righteous", cursive;
 }
 .school-dd {
   overflow-y: auto;
@@ -58,7 +58,7 @@ html, body, pre, code, kbd, samp, button, a, input {
 .footer p, .footer strong {
   color: white;
   text-transform: uppercase;
-  font-family: "Lato", cursive;
+  font-family: "Righteous", cursive;
 }
 .navbar-brand {
   height: 110px;

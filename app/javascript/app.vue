@@ -3,7 +3,7 @@
     <nav class="navbar nav-fixed" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <router-link class="navbar-item" to="/" exact>
-          <img height="150" class="logo-img" src="~images/pr3.png">
+          <img height="150" class="logo-img" src="~images/logo2024.png">
         </router-link>
 
         <a role="button" class="navbar-burger burger" :class="{'is-active': isMobile}" aria-label="menu" aria-expanded="false" v-on:click="setMobile()">
@@ -126,7 +126,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import url('https://fonts.googleapis.com/css?family=Lato');
+@import url('https://fonts.googleapis.com/css?family=Righteous');
 
 body{
 	background-color: #1f1c43;
@@ -139,7 +139,7 @@ html{
 }
 
 #app {
-  font-family: 'Lato', cursive;
+  font-family: 'Righteous', cursive;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -147,7 +147,7 @@ html{
 }
 
 html, body, pre, code, kbd, samp, button, a, input{
-	font-family: 'Lato', cursive;
+	font-family: 'Righteous', cursive;
 }
 
 .school-dd{
@@ -190,7 +190,7 @@ html, body, pre, code, kbd, samp, button, a, input{
   p, strong{
     color: white;
     text-transform: uppercase;
-    font-family: 'Lato', cursive;
+    font-family: 'Righteous', cursive;
   }
 }
 

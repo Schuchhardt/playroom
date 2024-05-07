@@ -66,6 +66,7 @@ es:
       user:
         establishment: "Establecimiento"
         name: "Nombre"
+        last_name: "Apellido"
         email: "Correo"
         phone: "Fono"
         role: "Rol de usuario"

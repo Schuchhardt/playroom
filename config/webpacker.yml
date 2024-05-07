@@ -37,7 +37,7 @@ development:
       #  pathname: "/ws"
       #  port: 8080
     # Should we use gzip compression?
-    compress: true
+    compress: false
     # Note that apps that do not check the host are vulnerable to DNS rebinding attacks
     allowed_hosts: "all"
     pretty: true

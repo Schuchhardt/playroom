@@ -7,9 +7,10 @@ class LandingController < ApplicationController
 
 	def playsets
 		formatted_playsets = []
-		if current_user.establishments.empty?
-			return render json: formatted_playsets, status: 200
-		end
+		# if current_user.establishments.empty?
+		# 	return render json: formatted_playsets, status: 200
+		# end
+		ap get_current_establishment.inspect
 		get_current_establishment.playsets.each do |pl|
 			playset = pl.slice(:id, :name, :playset_type, :description, :number_of_games, :cover_url, :number_of_games ).dup
 			playset[:image_url] = get_default_img(playset) if playset[:cover_url].nil? || playset[:cover_url].empty?
@@ -112,11 +113,11 @@ class LandingController < ApplicationController
 
 	def get_current_establishment
 		if cookies[:establishment_id].nil?
-			current_user.establishments.first
+			current_user.establishments.count > 0 ? current_user.establishments.first : Establishment.first
 		else 
 			est = current_user.establishments.find_by(id: cookies[:establishment_id])
 			if est.nil?
-				current_user.establishments.first
+				current_user.establishments.count > 0 ? current_user.establishments.first : Establishment.first
 			else
 				est
 			end

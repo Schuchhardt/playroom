@@ -293,7 +293,7 @@ export default {
           targetStyles: ['*'],
           header: `Ficha de juego: ${this.currentGame.name}`,
           documentTitle: 'Playroom 2022',
-          headerStyle: 'font-weight: 300; font-family: Lato',
+          headerStyle: 'font-weight: 300; font-family: Righteous',
           ignoreElements: ['game-video', 'game-sels'],
           onError: function  (error) {
             console.log('Error found => ' + error.message)

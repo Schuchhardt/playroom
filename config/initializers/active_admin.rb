@@ -16,7 +16,7 @@ ActiveAdmin.setup do |config|
   #
   # Note: Aim for an image that's 21px high so it fits in the header.
   #
-  config.site_title_image = "pr3.png"
+  config.site_title_image = "logo2024.png"
 
   # == Default Namespace
   #
@@ -286,7 +286,7 @@ ActiveAdmin.setup do |config|
   # By default, the footer shows the current Active Admin version. You can
   # override the content of the footer here.
   #
-  config.footer = "Playroom ® 2019"
+  config.footer = "Playroom ® 2024"
 
   # == Sorting
   #
