@@ -22,11 +22,11 @@ a, span, div, p, button, input, textarea{
 //
 //   .status_tag { background: #6090DB; }
 #wrapper .header #tabs, #wrapper #utility_nav{
-    background-color: #100d2a;
+    background-color: white;
 }
 
 #wrapper .header #tabs li a, .header #tabs li.current a{
-    color: white;
+    color: #100d2a;
     font-size: 16px;
     font-family: 'Righteous', sans-serif;
     letter-spacing: 2px;
@@ -38,10 +38,11 @@ a, span, div, p, button, input, textarea{
 }
 
 #wrapper .header #site_title{
-    background-color: #100d2a;
+    background-color: white;
     img{
-        height: 90%;
-        width: 90%;
+        height: 70%;
+        width: 80%;
+        margin-top: 8px;
     }
 }
 
