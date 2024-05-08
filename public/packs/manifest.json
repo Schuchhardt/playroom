@@ -1,36 +1,58 @@
 {
-  "application.css": "/packs/css/application.css",
-  "application.js": "/packs/js/application.js",
-  "css/application.css.map": "/packs/css/application.css.map",
-  "css/vendors-node_modules_buefy_dist_buefy_js-node_modules_vue-carousel_dist_vue-carousel_min_js-n-2788c8.css": "/packs/css/vendors-node_modules_buefy_dist_buefy_js-node_modules_vue-carousel_dist_vue-carousel_min_js-n-2788c8.css",
-  "css/vendors-node_modules_buefy_dist_buefy_js-node_modules_vue-carousel_dist_vue-carousel_min_js-n-2788c8.css.map": "/packs/css/vendors-node_modules_buefy_dist_buefy_js-node_modules_vue-carousel_dist_vue-carousel_min_js-n-2788c8.css.map",
+  "application.css": "/packs/css/application-c7b37ba8.css",
+  "application.js": "/packs/js/application-5d1f9053e21ad6a8ee30.js",
+  "css/93-35d34798.css": "/packs/css/93-35d34798.css",
+  "css/93-35d34798.css.br": "/packs/css/93-35d34798.css.br",
+  "css/93-35d34798.css.gz": "/packs/css/93-35d34798.css.gz",
+  "css/93-35d34798.css.map": "/packs/css/93-35d34798.css.map",
+  "css/93-35d34798.css.map.br": "/packs/css/93-35d34798.css.map.br",
+  "css/93-35d34798.css.map.gz": "/packs/css/93-35d34798.css.map.gz",
+  "css/application-c7b37ba8.css.br": "/packs/css/application-c7b37ba8.css.br",
+  "css/application-c7b37ba8.css.gz": "/packs/css/application-c7b37ba8.css.gz",
+  "css/application-c7b37ba8.css.map": "/packs/css/application-c7b37ba8.css.map",
+  "css/application-c7b37ba8.css.map.br": "/packs/css/application-c7b37ba8.css.map.br",
+  "css/application-c7b37ba8.css.map.gz": "/packs/css/application-c7b37ba8.css.map.gz",
   "entrypoints": {
     "application": {
       "assets": {
         "js": [
-          "/packs/js/runtime.js",
-          "/packs/js/vendors-node_modules_buefy_dist_buefy_js-node_modules_vue-carousel_dist_vue-carousel_min_js-n-2788c8.js",
-          "/packs/js/application.js"
+          "/packs/js/runtime-b505fa1c510f20c9488d.js",
+          "/packs/js/93-88bb31e4b8360670045a.js",
+          "/packs/js/application-5d1f9053e21ad6a8ee30.js"
         ],
         "css": [
-          "/packs/css/vendors-node_modules_buefy_dist_buefy_js-node_modules_vue-carousel_dist_vue-carousel_min_js-n-2788c8.css",
-          "/packs/css/application.css"
+          "/packs/css/93-35d34798.css",
+          "/packs/css/application-c7b37ba8.css"
         ]
       }
     }
   },
-  "js/application.js.map": "/packs/js/application.js.map",
-  "js/runtime.js.map": "/packs/js/runtime.js.map",
-  "js/vendors-node_modules_buefy_dist_buefy_js-node_modules_vue-carousel_dist_vue-carousel_min_js-n-2788c8.js": "/packs/js/vendors-node_modules_buefy_dist_buefy_js-node_modules_vue-carousel_dist_vue-carousel_min_js-n-2788c8.js",
-  "js/vendors-node_modules_buefy_dist_buefy_js-node_modules_vue-carousel_dist_vue-carousel_min_js-n-2788c8.js.map": "/packs/js/vendors-node_modules_buefy_dist_buefy_js-node_modules_vue-carousel_dist_vue-carousel_min_js-n-2788c8.js.map",
-  "runtime.js": "/packs/js/runtime.js",
+  "js/93-88bb31e4b8360670045a.js": "/packs/js/93-88bb31e4b8360670045a.js",
+  "js/93-88bb31e4b8360670045a.js.LICENSE.txt": "/packs/js/93-88bb31e4b8360670045a.js.LICENSE.txt",
+  "js/93-88bb31e4b8360670045a.js.br": "/packs/js/93-88bb31e4b8360670045a.js.br",
+  "js/93-88bb31e4b8360670045a.js.gz": "/packs/js/93-88bb31e4b8360670045a.js.gz",
+  "js/93-88bb31e4b8360670045a.js.map": "/packs/js/93-88bb31e4b8360670045a.js.map",
+  "js/93-88bb31e4b8360670045a.js.map.br": "/packs/js/93-88bb31e4b8360670045a.js.map.br",
+  "js/93-88bb31e4b8360670045a.js.map.gz": "/packs/js/93-88bb31e4b8360670045a.js.map.gz",
+  "js/application-5d1f9053e21ad6a8ee30.js.br": "/packs/js/application-5d1f9053e21ad6a8ee30.js.br",
+  "js/application-5d1f9053e21ad6a8ee30.js.gz": "/packs/js/application-5d1f9053e21ad6a8ee30.js.gz",
+  "js/application-5d1f9053e21ad6a8ee30.js.map": "/packs/js/application-5d1f9053e21ad6a8ee30.js.map",
+  "js/application-5d1f9053e21ad6a8ee30.js.map.br": "/packs/js/application-5d1f9053e21ad6a8ee30.js.map.br",
+  "js/application-5d1f9053e21ad6a8ee30.js.map.gz": "/packs/js/application-5d1f9053e21ad6a8ee30.js.map.gz",
+  "js/runtime-b505fa1c510f20c9488d.js.br": "/packs/js/runtime-b505fa1c510f20c9488d.js.br",
+  "js/runtime-b505fa1c510f20c9488d.js.gz": "/packs/js/runtime-b505fa1c510f20c9488d.js.gz",
+  "js/runtime-b505fa1c510f20c9488d.js.map": "/packs/js/runtime-b505fa1c510f20c9488d.js.map",
+  "js/runtime-b505fa1c510f20c9488d.js.map.br": "/packs/js/runtime-b505fa1c510f20c9488d.js.map.br",
+  "js/runtime-b505fa1c510f20c9488d.js.map.gz": "/packs/js/runtime-b505fa1c510f20c9488d.js.map.gz",
+  "runtime.js": "/packs/js/runtime-b505fa1c510f20c9488d.js",
   "static/carousel1.jpeg": "/packs/static/carousel1-a315e8f14e1459a61445.jpeg",
   "static/carousel2.jpeg": "/packs/static/carousel2-8c8b755dedde63d42010.jpeg",
   "static/carousel3.jpeg": "/packs/static/carousel3-1544b98e611ffc96f05a.jpeg",
   "static/carousel4.jpeg": "/packs/static/carousel4-47418f4914ade3f7fa57.jpeg",
   "static/fondo.png": "/packs/static/fondo-86d5f1ece17185a668fb.png",
   "static/juego.png": "/packs/static/juego-ed697314fde4213dc28f.png",
-  "static/logo2024.png": "/packs/static/logo2024-148c8b7838c3d370cc0f.png",
+  "static/logo2024.png": "/packs/static/logo2024-ce264d739ef063cfabaa.png",
+  "static/logo2024_white.png": "/packs/static/logo2024_white-8b8da78e1051b3945964.png",
   "static/marco1.png": "/packs/static/marco1-a7b5d748bb8c18a727cb.png",
   "static/marco_video.png": "/packs/static/marco_video-6922f1a8e18f3b7a056b.png",
   "static/sample_juego.png": "/packs/static/sample_juego-4a692714f497ab7ca4a5.png"

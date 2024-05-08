@@ -10,7 +10,6 @@ class LandingController < ApplicationController
 		# if current_user.establishments.empty?
 		# 	return render json: formatted_playsets, status: 200
 		# end
-		ap get_current_establishment.inspect
 		get_current_establishment.playsets.each do |pl|
 			playset = pl.slice(:id, :name, :playset_type, :description, :number_of_games, :cover_url, :number_of_games ).dup
 			playset[:image_url] = get_default_img(playset) if playset[:cover_url].nil? || playset[:cover_url].empty?
@@ -37,13 +36,23 @@ class LandingController < ApplicationController
 
 	def games
 		formatted_games = []
+		games_to_match = []
 		if current_user.establishments.empty?
 			return render json: formatted_games, status: 200
 		end
-		get_current_establishment.playsets.each do |pl|
-			pl.games.each do |game|
-				formatted_games << game.slice(:id, :name, :description, :difficulty, :game_time, :idps_names, :number_of_players, :suggested_age, :youtube_embed_url, :image_url, :playsets_ids, :skills_ids, :skills_by_category, :game_levels)
+		if params[:playset_id]
+			playset = Playset.find params[:playset_id]
+			games_to_match = playset.games
+		else
+			get_current_establishment.playsets.each do |pl|
+				pl.games.each do |game|
+					games_to_match << game
+				end
 			end
+		end
+		
+		games_to_match.each do |game|
+			formatted_games << game.slice(:id, :name, :description, :difficulty, :game_time, :number_of_players, :suggested_age, :youtube_embed_url, :image_url, :game_levels)
 		end
 		render json: formatted_games.sort_by { |obj| obj[:name] }.uniq { |item| item[:id] }
 	end
@@ -54,7 +63,7 @@ class LandingController < ApplicationController
 		all_games_in_playset = []
 		get_current_establishment.playsets.each do |pl|
 			pl.games.each do |game|
-				all_games_in_playset << game.slice(:id, :name, :image_url, :game_time, :difficulty, :suggested_age, :skills_ids) if game[:id] != g[:id]
+				all_games_in_playset << game.slice(:id, :name, :image_url, :game_time, :difficulty, :suggested_age) if game[:id] != g[:id]
 			end
 		end
 		related_games = get_related_games(g, all_games_in_playset.uniq{|gp| gp[:id]})
@@ -79,8 +88,8 @@ class LandingController < ApplicationController
 		if current_user.establishments.empty?
 			return render json: formatted_res, status: 200
 		end
-		get_current_establishment.resources.each do |res|
-			formatted_res << res
+		Resource.all.each do |res|
+			formatted_res << res.slice(:id, :name, :file_url)
 		end
 		render json: formatted_res
 	end
@@ -94,7 +103,8 @@ class LandingController < ApplicationController
 	def get_related_games game, games_to_match
 		games_ranking = []
 		games_to_match.each do |g|
-			matches = count_matches(game[:skills_ids], g[:skills_ids])
+			#matches = count_matches(game[:skills_ids], g[:skills_ids])
+			matches = 0
 			matches += 1 if g[:difficulty] == game[:difficulty]
 			matches += 1 if g[:suggested_age] == game[:suggested_age]
 			matches += 1 if g[:game_time] == game[:game_time]

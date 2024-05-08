@@ -160,7 +160,7 @@ export default {
   mounted () {
     const vm = this
     this.$store.dispatch('playsetStore/index')
-      .then( () => vm.$store.dispatch('gameStore/index') )
+      .then( () => vm.$store.dispatch('gameStore/index', vm.$router.currentRoute.query.playsetId) )
       .then( () => vm.$store.dispatch('gameStore/loadSkills') )
       .then( () => {
         setTimeout(() => {
@@ -270,6 +270,7 @@ export default {
 
   .gamelist{
     max-width: 100%;
+    margin-top: 30px;
   }
 
   .results-container{
@@ -414,7 +415,7 @@ export default {
           border-radius: 5px;
           height: 60px;
           padding: 10px;
-          background-color: #100d2b;
+          background-color: #fabc58;
           height: 20%;
         }
         .card-image{

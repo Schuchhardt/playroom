@@ -38,7 +38,7 @@
       <section v-if="currentPlayset">
         <div class="columns">
           <div class="column">
-            <div><img height="100" v-bind:src="require('../images/logo2024.png')"></div>
+            <div><img height="100" v-bind:src="require('../images/logo2024_white.png')"></div>
             
             <br>
             <p class="bd-notification is-info"><img v-bind:src="currentPlayset.image_url" alt="Ludoteca"></p>
@@ -195,7 +195,7 @@ export default {
   -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
   -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
   box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-  background-color: #443c8f;
+  background-color: #fabc58;
   margin: 10px;
   padding: 0px;
   width: 30%;
@@ -218,11 +218,11 @@ export default {
   .card-header{
     height: 60px;
     padding: 10px;
-    background-color: #443c8f;
+    background-color: #fabc58;
   }
   .card-image{
     min-height: 310px;
-    background-color: #443c8f;
+    background-color: #fabc58;
   }
   p{
     color: white;
@@ -233,7 +233,8 @@ export default {
     margin-bottom: 10px;
   }
   img{
-    background-color: #221f43;
+    background-color: #fabc58;
+    max-height: 280px;
   }
   &:hover{
     opacity: 1;

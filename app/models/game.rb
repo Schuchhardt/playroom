@@ -47,8 +47,8 @@ class Game < ApplicationRecord
 	end
 
 	def playsets_ids
-		self.playsets.map(&:id)
-	end
+		ActiveRecord::Base.connection.execute("SELECT playset_id FROM game_sets WHERE game_id = #{self.id}").map(&:values).flatten
+	  end
 
 	def category_levels
 		self.levels.map(&:category).uniq
@@ -68,7 +68,7 @@ class Game < ApplicationRecord
 	end
 
 	def skills_ids
-		self.skills.map(&:id)
+		ActiveRecord::Base.connection.execute("SELECT skill_id FROM game_skills WHERE game_id = #{self.id}").map(&:values).flatten
 	end
 
 	def skills_by_category

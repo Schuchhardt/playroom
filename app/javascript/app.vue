@@ -143,7 +143,7 @@ html{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: white;
 }
 
 html, body, pre, code, kbd, samp, button, a, input{
@@ -154,6 +154,9 @@ html, body, pre, code, kbd, samp, button, a, input{
   overflow-y: auto;
   width: 280px;
   display: table-row;
+  .is-primary{
+    background-color: #fabc58
+  }
 }
 
 .dd-tile {
@@ -165,7 +168,7 @@ html, body, pre, code, kbd, samp, button, a, input{
 }
 
 .navbar{
-  background-color: #0f0d2a;
+  background-color: white;
   height: 130px;
   ::v-deep .navbar-burger{
     color: white;
@@ -182,13 +185,13 @@ html, body, pre, code, kbd, samp, button, a, input{
 
 .footer{
   width: 100%;
-  background-color: #0f0d2a;
-  color: white;
+  background-color: white;
+  color: #0f0d2a;
   padding: 40px 20px;
   font-size: 12px;
   margin-top: 30px;
   p, strong{
-    color: white;
+    color: #0f0d2a;
     text-transform: uppercase;
     font-family: 'Righteous', cursive;
   }
@@ -196,7 +199,7 @@ html, body, pre, code, kbd, samp, button, a, input{
 
 
 .navbar-brand{
-  height: 110px;
+  height: 100px;
   width: 25%;
   position: relative;
   top: 10px;
@@ -224,9 +227,9 @@ html, body, pre, code, kbd, samp, button, a, input{
 }
 
 .navbar-menu{
-  background-color: #0f0d2a;
+  background-color: white;
   .navbar-item{
-    font-size: 17px;
+    font-size: 19px;
     padding: 25px 15px;
     text-transform: uppercase;
     color: gray;
@@ -235,14 +238,14 @@ html, body, pre, code, kbd, samp, button, a, input{
       opacity: 0.6;
     }
     &.router-link-active{
-      color: white;
+      color: #0f0d2a;
       background: inherit;
       i{
         color: #00d8cd
       }
     }
     &:hover{
-      background-color: #0f0d2a !important;
+      background-color: white !important;
     }
     .ditem{
       text-transform: capitalize !important;;
@@ -250,7 +253,7 @@ html, body, pre, code, kbd, samp, button, a, input{
   }
   .close-btn{
     background-color: transparent;
-    color: white;
+    color: #0f0d2a;
     display: inline-block;
     padding: 0px;
     span{

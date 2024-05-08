@@ -41,9 +41,9 @@ const gameStore = {
     }
   },
   actions: {
-    index(context) {
+    index(context, playsetId) {
       context.commit('setLoading', true)
-  		fetch('/landing/games').then(response => {
+  		fetch(`/landing/games${playsetId ? '?playset_id=' + playsetId : ''}`).then(response => {
         response.json().then( (r) => {
          context.commit('many', r)
          context.commit('setLoading', false)
@@ -93,11 +93,10 @@ const gameStore = {
   getters: {
     gamesFiltered: state => {
       return state.games.filter(game => {
-        const playsetIntersection = state.filterPlaysets.filter(fp => game.playsets_ids.includes(parseInt(fp)));
+        // const playsetIntersection = state.filterPlaysets.filter(fp => game.playsets_ids.includes(parseInt(fp)));
         //const skillIntersection = state.filterSkills.filter(fs => game.skills_ids.includes(parseInt(fs)));
         const levelIntersection = state.filterLevels.filter(fl => game.game_levels.includes(fl));
-        return playsetIntersection.length > 0 &&
-               levelIntersection.length > 0 // &&
+        return levelIntersection.length > 0 // &&
                //skillIntersection.length > 0
       })
     }
