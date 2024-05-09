@@ -28,7 +28,10 @@ html, body, pre, code, kbd, samp, button, a, input {
   width: 280px;
   display: table-row;
 }
-.dd-tile ::v-deep .dropdown-menu {
+.school-dd .is-primary {
+  background-color: #fabc58;
+}
+.dd-tile .dropdown-menu {
   height: 300px;
   overflow-y: auto;
   width: 280px;
@@ -37,7 +40,7 @@ html, body, pre, code, kbd, samp, button, a, input {
   background-color: white;
   height: 130px;
 }
-.navbar ::v-deep .navbar-burger {
+.navbar .navbar-burger {
   color: white;
   position: relative;
   top: 30px;
@@ -262,7 +265,7 @@ html, body, pre, code, kbd, samp, button, a, input {
   -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
   box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
-  background-color: #443c8f;
+  background-color: #fabc58;
   margin: 10px;
   padding: 0px;
   width: 30%;
@@ -285,11 +288,11 @@ html, body, pre, code, kbd, samp, button, a, input {
 .playset .card-header[data-v-bfd72910] {
   height: 60px;
   padding: 10px;
-  background-color: #443c8f;
+  background-color: #fabc58;
 }
 .playset .card-image[data-v-bfd72910] {
   min-height: 310px;
-  background-color: #443c8f;
+  background-color: #fabc58;
 }
 .playset p[data-v-bfd72910] {
   color: white;
@@ -300,7 +303,8 @@ html, body, pre, code, kbd, samp, button, a, input {
   margin-bottom: 10px;
 }
 .playset img[data-v-bfd72910] {
-  background-color: #221f43;
+  background-color: #fabc58;
+  max-height: 280px;
 }
 .playset[data-v-bfd72910]:hover {
   opacity: 1;
@@ -488,7 +492,7 @@ html, body, pre, code, kbd, samp, button, a, input {
   border-radius: 5px;
   height: 60px;
   padding: 10px;
-  background-color: #100d2b;
+  background-color: #fabc58;
   height: 20%;
 }
 .games .games-grid .game-detail .card .card-image[data-v-d6b7fe44] {

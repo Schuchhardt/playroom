@@ -986,7 +986,7 @@ var render = function render() {
     staticClass: "logo-img",
     attrs: {
       height: "150",
-      src: __webpack_require__(/*! images/logo2024_white.png */ "./app/javascript/images/logo2024_white.png")
+      src: __webpack_require__(/*! images/logo2024.png */ "./app/javascript/images/logo2024.png")
     }
   })]), _vm._v(" "), _c("a", {
     staticClass: "navbar-burger burger",
@@ -2823,6 +2823,17 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_6_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_6_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_6_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_stats_vue_vue_type_style_index_0_id_47451888_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/mini-css-extract-plugin/dist/loader.js!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-6.use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-6.use[2]!../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-6.use[3]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./stats.vue?vue&type=style&index=0&id=47451888&lang=scss&scoped=true */ "./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-6.use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-6.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-6.use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./app/javascript/components/stats.vue?vue&type=style&index=0&id=47451888&lang=scss&scoped=true");
 
+
+/***/ }),
+
+/***/ "./app/javascript/images/logo2024.png":
+/*!********************************************!*\
+  !*** ./app/javascript/images/logo2024.png ***!
+  \********************************************/
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+"use strict";
+module.exports = __webpack_require__.p + "static/logo2024-ce264d739ef063cfabaa.png";
 
 /***/ }),
 

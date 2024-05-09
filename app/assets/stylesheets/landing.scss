@@ -12,7 +12,7 @@ body{
 	background-size: cover;
 	background-position: center;
 	width: 100%;
-	height: 110vh;
+	height: 120vh;
 }
 
 .devise-navbar{
@@ -41,7 +41,8 @@ footer{
 .devise-container{
 	background-color: transparentize(#100d2a, 0.3);;
 	display: block;
-	width: 320px;
+	min-width: 320px;
+	max-width: 520px;
 	margin: auto;
 	top: 70px;
     position: relative;
@@ -55,7 +56,7 @@ footer{
 	}
 
 	.button.is-primary{
-	  background-color: #white;
+	  background-color: white;
 	  border-color: transparent;
 	  color: 100d2a;
 	  font-size: 16px;
@@ -107,5 +108,16 @@ footer{
 	.red-alert{
 		color: red;
     	text-align: center;
+	}
+
+	#error_explanation{
+		color: white;
+		background: black;
+		text-align: center;
+		border-radius: 15px;
+		padding: 10px;
+		ul{
+			color: red;
+		}
 	}
 }

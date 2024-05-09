@@ -42,6 +42,9 @@ class User < ApplicationRecord
   enum user_type: { teacher: 0, executive: 1}
   translate_enum :user_type
 
+  attr_accessor :rbd
+
+
   def display_name
   	"#{self.name} #{self.email}"
   end

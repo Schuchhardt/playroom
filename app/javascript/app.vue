@@ -21,12 +21,7 @@
             </span>
             <span>Ludotecas</span>
           </router-link>
-          <!-- <router-link class="navbar-item" to="/games">
-            <span class="icon">
-              <i class="fas fa-book" aria-hidden="true"></i>
-            </span>
-            <span>Juegos</span>
-          </router-link> -->
+          
           <router-link class="navbar-item" to="/resources">
             <span class="icon">
               <i class="fas fa-archive" aria-hidden="true"></i>
@@ -160,7 +155,7 @@ html, body, pre, code, kbd, samp, button, a, input{
 }
 
 .dd-tile {
-  ::v-deep .dropdown-menu{
+  .dropdown-menu{
     height: 300px;
     overflow-y: auto;
     width: 280px;
@@ -170,7 +165,7 @@ html, body, pre, code, kbd, samp, button, a, input{
 .navbar{
   background-color: white;
   height: 130px;
-  ::v-deep .navbar-burger{
+  .navbar-burger{
     color: white;
     position: relative;
     top: 30px;
