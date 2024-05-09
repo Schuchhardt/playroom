@@ -18,6 +18,7 @@ import VueScrollTo from 'vue-scrollto';
 import Chartkick from 'vue-chartkick';
 import VueLazyload from 'vue-lazyload';
 import VueCarousel from 'vue-carousel';
+import VueConfetti from 'vue-confetti';
 
 
 Vue.use(VueLazyload, {
@@ -39,6 +40,7 @@ Vue.use(VueCarousel)
 Vue.use(Router);
 Vue.use(Resource);
 Vue.use(VueScrollTo)
+Vue.use(VueConfetti)
 
 import App from '../app.vue'
 import router from '../router.js'

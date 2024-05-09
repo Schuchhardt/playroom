@@ -179,6 +179,18 @@ html, body, pre, code, kbd, samp, button, a, input {
   left: 0;
   top: 0px;
 }
+#pdf-modal .modal-content {
+  height: 80vh;
+  max-height: 100vh;
+}
+#pdf-modal iframe {
+  height: 70vh;
+  width: 100%;
+}
+#session-modal section {
+  background: #f0f8ff;
+  padding: 80px;
+}
 /*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-6.use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-6.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-6.use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./app/javascript/components/playsets.vue?vue&type=style&index=0&id=bfd72910&lang=scss&scoped=true ***!
   \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
@@ -854,6 +866,11 @@ iframe[data-v-d6b7fe44] {
 .game-pdf-btn[data-v-0cef3ce5] {
   padding: 20px;
   margin: 40px;
+  text-transform: uppercase;
+  font-weight: 800;
+  border-radius: 11px;
+}
+.session-btn[data-v-0cef3ce5] {
   text-transform: uppercase;
   font-weight: 800;
   border-radius: 11px;

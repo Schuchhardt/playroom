@@ -8,12 +8,12 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue_dist_vue_esm__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vue/dist/vue.esm */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var vue_dist_vue_esm__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vue/dist/vue.esm */ "./node_modules/vue/dist/vue.esm.js");
 /* harmony import */ var buefy__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! buefy */ "./node_modules/buefy/dist/buefy.js");
 /* harmony import */ var buefy__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(buefy__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var buefy_dist_buefy_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! buefy/dist/buefy.css */ "./node_modules/buefy/dist/buefy.css");
 /* harmony import */ var buefy_dist_buefy_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(buefy_dist_buefy_css__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var vue_resource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-resource */ "./node_modules/vue-resource/dist/vue-resource.esm.js");
 /* harmony import */ var vue_scrollto__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-scrollto */ "./node_modules/vue-scrollto/vue-scrollto.js");
 /* harmony import */ var vue_scrollto__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue_scrollto__WEBPACK_IMPORTED_MODULE_3__);
@@ -21,9 +21,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_lazyload__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-lazyload */ "./node_modules/vue-lazyload/vue-lazyload.esm.js");
 /* harmony import */ var vue_carousel__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-carousel */ "./node_modules/vue-carousel/dist/vue-carousel.min.js");
 /* harmony import */ var vue_carousel__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(vue_carousel__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _app_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../app.vue */ "./app/javascript/app.vue");
-/* harmony import */ var _router_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../router.js */ "./app/javascript/router.js");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../store */ "./app/javascript/store/index.js");
+/* harmony import */ var vue_confetti__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vue-confetti */ "./node_modules/vue-confetti/dist/vue-confetti.js");
+/* harmony import */ var vue_confetti__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(vue_confetti__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _app_vue__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../app.vue */ "./app/javascript/app.vue");
+/* harmony import */ var _router_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../router.js */ "./app/javascript/router.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../store */ "./app/javascript/store/index.js");
 /* eslint no-console:0 */
 // This file is automatically compiled by Webpack, along with any other files
 // present in this directory. You're encouraged to place your actual application logic in
@@ -44,7 +46,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-vue_dist_vue_esm__WEBPACK_IMPORTED_MODULE_7__["default"].use(vue_lazyload__WEBPACK_IMPORTED_MODULE_5__["default"], {
+
+vue_dist_vue_esm__WEBPACK_IMPORTED_MODULE_8__["default"].use(vue_lazyload__WEBPACK_IMPORTED_MODULE_5__["default"], {
   preLoad: 1.3,
   loading: 'https://i.imgur.com/wGXA2aO.gif',
   attempt: 1
@@ -52,30 +55,31 @@ vue_dist_vue_esm__WEBPACK_IMPORTED_MODULE_7__["default"].use(vue_lazyload__WEBPA
 vue_chartkick__WEBPACK_IMPORTED_MODULE_4__["default"].options = {
   colors: ["#553d96", "#ebd30c", "#5da629", "#d83c7f", "#004c7d", "#393292", "#4ac3d6"]
 };
-vue_dist_vue_esm__WEBPACK_IMPORTED_MODULE_7__["default"].use(vue_chartkick__WEBPACK_IMPORTED_MODULE_4__["default"]);
-vue_dist_vue_esm__WEBPACK_IMPORTED_MODULE_7__["default"].use((buefy__WEBPACK_IMPORTED_MODULE_0___default()), {
+vue_dist_vue_esm__WEBPACK_IMPORTED_MODULE_8__["default"].use(vue_chartkick__WEBPACK_IMPORTED_MODULE_4__["default"]);
+vue_dist_vue_esm__WEBPACK_IMPORTED_MODULE_8__["default"].use((buefy__WEBPACK_IMPORTED_MODULE_0___default()), {
   defaultIconPack: 'fa',
   defaultDayNames: ['Dom', 'Lun', 'Ma', 'Mie', 'Jue', 'Vie', 'Sáb'],
   defaultMonthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
   defaultFirstDayOfWeek: 1
 });
-vue_dist_vue_esm__WEBPACK_IMPORTED_MODULE_7__["default"].use((vue_carousel__WEBPACK_IMPORTED_MODULE_6___default()));
-vue_dist_vue_esm__WEBPACK_IMPORTED_MODULE_7__["default"].use(vue_router__WEBPACK_IMPORTED_MODULE_8__["default"]);
-vue_dist_vue_esm__WEBPACK_IMPORTED_MODULE_7__["default"].use(vue_resource__WEBPACK_IMPORTED_MODULE_2__["default"]);
-vue_dist_vue_esm__WEBPACK_IMPORTED_MODULE_7__["default"].use((vue_scrollto__WEBPACK_IMPORTED_MODULE_3___default()));
+vue_dist_vue_esm__WEBPACK_IMPORTED_MODULE_8__["default"].use((vue_carousel__WEBPACK_IMPORTED_MODULE_6___default()));
+vue_dist_vue_esm__WEBPACK_IMPORTED_MODULE_8__["default"].use(vue_router__WEBPACK_IMPORTED_MODULE_9__["default"]);
+vue_dist_vue_esm__WEBPACK_IMPORTED_MODULE_8__["default"].use(vue_resource__WEBPACK_IMPORTED_MODULE_2__["default"]);
+vue_dist_vue_esm__WEBPACK_IMPORTED_MODULE_8__["default"].use((vue_scrollto__WEBPACK_IMPORTED_MODULE_3___default()));
+vue_dist_vue_esm__WEBPACK_IMPORTED_MODULE_8__["default"].use((vue_confetti__WEBPACK_IMPORTED_MODULE_7___default()));
 
 
 
-vue_dist_vue_esm__WEBPACK_IMPORTED_MODULE_7__["default"].http.headers.common['X-CSRF-Token'] = document.getElementsByName('csrf-token')[0].getAttribute('content');
+vue_dist_vue_esm__WEBPACK_IMPORTED_MODULE_8__["default"].http.headers.common['X-CSRF-Token'] = document.getElementsByName('csrf-token')[0].getAttribute('content');
 document.addEventListener('DOMContentLoaded', () => {
   document.body.appendChild(document.createElement('app'));
-  const app = new vue_dist_vue_esm__WEBPACK_IMPORTED_MODULE_7__["default"]({
+  const app = new vue_dist_vue_esm__WEBPACK_IMPORTED_MODULE_8__["default"]({
     el: 'app',
-    router: _router_js__WEBPACK_IMPORTED_MODULE_10__["default"],
-    store: _store__WEBPACK_IMPORTED_MODULE_11__["default"],
+    router: _router_js__WEBPACK_IMPORTED_MODULE_11__["default"],
+    store: _store__WEBPACK_IMPORTED_MODULE_12__["default"],
     template: '<App/>',
     components: {
-      App: _app_vue__WEBPACK_IMPORTED_MODULE_9__["default"]
+      App: _app_vue__WEBPACK_IMPORTED_MODULE_10__["default"]
     }
   });
 });
@@ -542,7 +546,6 @@ function setCookie(cname, cvalue, exdays) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Experiences',
   data() {
@@ -562,27 +565,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-const ALL_PLAYSET_TYPES = [{
-  id: "1",
-  playset_type: "Convivencia Escolar"
-}, {
-  id: "2",
-  playset_type: "Formación Ciudadana"
-}, {
-  id: "3",
-  playset_type: "Decreto 83, DUA"
-}, {
-  id: "4",
-  playset_type: "PIE"
-}, {
-  id: "5",
-  playset_type: "Estrategias de Transición (373)"
-}
-// { id: "6", playset_type: "Equipo directivo", image_url: "https://i.imgur.com/PNHMbjE.jpg", description: "" },
-// { id: "7", playset_type: "Taller PlayGo", image_url: "https://i.imgur.com/Uv0opz1.jpg", description: "" },
-// { id: "8", playset_type: "Espacios CRA", image_url: "https://i.imgur.com/c0Xw251.jpg", description: "" },
-// { id: "9", playset_type: "Vuelve a clases, vuelve a jugar", image_url: "https://i.imgur.com/TTHcVCI.jpg", description: "" }
-];
 const PLAYSET_TYPES = {
   CONVIVENCIA: "Convivencia Escolar",
   FORMACION: "Formación Ciudadana",
@@ -601,6 +583,10 @@ const PLAYSET_AXES = {
   name: 'Game',
   data() {
     return {
+      isPDFOpen: false,
+      isSessionModalActive: false,
+      today: new Date().toISOString().substr(0, 10),
+      activeTab: 1,
       currentPlayset: {
         playset_type: "TODOS LOS JUEGOS"
       },
@@ -617,6 +603,7 @@ const PLAYSET_AXES = {
     this.$store.dispatch('gameStore/show', this.$router.currentRoute.params.gameId);
     if (this.playsets.length > 0) {
       this.currentPlayset = this.playsets.find(pl => pl.id == this.$router.currentRoute.query.playsetId);
+      this.activeTab = 0;
     }
   },
   watch: {
@@ -655,10 +642,21 @@ const PLAYSET_AXES = {
       this.$router.push("/games/" + game.id);
     },
     goToPDF() {
-      window.open(this.currentGame.pdf_url, '_blank');
+      this.isPDFOpen = true;
+    },
+    openSessionModal() {
+      this.isSessionModalActive = true;
     },
     goBack() {
       this.$router.go(-1);
+    },
+    recordSession() {
+      this.$confetti.start();
+      this.isSessionModalActive = false;
+      const vm = this;
+      setTimeout(() => {
+        vm.$confetti.stop();
+      }, 2000);
     },
     teacherAnswer() {
       window.open("https://api.whatsapp.com/send?phone=56964021713", '_blank');
@@ -1362,11 +1360,27 @@ var render = function render() {
       src: _vm.currentGame.image_url,
       alt: "Imagen Juego"
     }
-  })])]), _vm._v(" "), _c("div", {
+  })]), _vm._v(" "), _vm.currentGame.pdf_url ? _c("button", {
+    staticClass: "button is-primary game-pdf-btn",
+    on: {
+      click: function ($event) {
+        $event.preventDefault();
+        return _vm.goToPDF();
+      }
+    }
+  }, [_vm._m(0), _vm._v(" "), _c("span", [_vm._v(" Ver ficha técnica")])]) : _vm._e(), _vm._v(" "), _c("button", {
+    staticClass: "button is-warning session-btn",
+    on: {
+      click: function ($event) {
+        $event.preventDefault();
+        return _vm.openSessionModal();
+      }
+    }
+  }, [_vm._m(1), _vm._v(" "), _c("span", [_vm._v(" Registrar sesión con este juego")])])]), _vm._v(" "), _c("div", {
     staticClass: "column is-full-mobile"
   }, [_vm.currentGame.difficulty ? _c("div", {
     staticClass: "columns difficulty"
-  }, [_vm._m(0), _vm._v(" "), _c("div", {
+  }, [_vm._m(2), _vm._v(" "), _c("div", {
     staticClass: "column is-full-mobile"
   }, [_c("b-tooltip", {
     attrs: {
@@ -1410,7 +1424,7 @@ var render = function render() {
     }
   })])], 1)]) : _vm._e(), _vm._v(" "), _c("br"), _vm._v(" "), _c("p", {
     staticClass: "how"
-  }, [_vm._v("¿Cómo se juega?")]), _vm._v(" "), _vm.currentGame.youtube_embed_url ? _c("div", {
+  }, [_vm._v(" ¿Cómo se juega?")]), _vm._v(" "), _vm.currentGame.youtube_embed_url ? _c("div", {
     attrs: {
       id: "game-video"
     }
@@ -1425,15 +1439,20 @@ var render = function render() {
     staticClass: "content"
   }, [_vm.currentGame.game_type ? _c("p", [_c("strong", [_vm._v("Tipo de juego:")]), _vm._v(" "), _c("span", {
     staticClass: "is-warning capitalized"
-  }, [_vm._v(_vm._s(_vm.currentGame.game_type))])]) : _vm._e(), _vm._v(" "), _c("p", [_vm._m(1), _vm._v(" "), _c("strong", [_vm._v("Edad sugerida:")]), _vm._v(" " + _vm._s(_vm.currentGame.suggested_age) + "\n            ")]), _vm._v(" "), _c("p", [_vm._m(2), _vm._v(" "), _c("strong", [_vm._v("Tiempo de juego:")]), _vm._v(" " + _vm._s(_vm.currentGame.game_time) + "\n            ")]), _vm._v(" "), _c("p", [_vm._m(3), _vm._v(" "), _c("strong", [_vm._v("Nro de Jugadores:")]), _vm._v(" " + _vm._s(_vm.currentGame.number_of_players) + "\n            ")]), _vm._v(" "), _vm.currentGame.pdf_url ? _c("button", {
-    staticClass: "button is-primary game-pdf-btn",
-    on: {
-      click: function ($event) {
-        $event.preventDefault();
-        return _vm.goToPDF();
-      }
+  }, [_vm._v(_vm._s(_vm.currentGame.game_type))])]) : _vm._e(), _vm._v(" "), _c("p", [_vm._m(3), _vm._v(" "), _c("strong", [_vm._v("Edad sugerida:")]), _vm._v(" " + _vm._s(_vm.currentGame.suggested_age) + "\n            ")]), _vm._v(" "), _c("p", [_vm._m(4), _vm._v(" "), _c("strong", [_vm._v("Tiempo de juego:")]), _vm._v(" " + _vm._s(_vm.currentGame.game_time) + "\n            ")]), _vm._v(" "), _c("p", [_vm._m(5), _vm._v(" "), _c("strong", [_vm._v("Nro de Jugadores:")]), _vm._v(" " + _vm._s(_vm.currentGame.number_of_players) + "\n            ")]), _vm._v(" "), _c("br")])])]) : _vm._e(), _vm._v(" "), _vm.currentGame ? _c("b-tabs", {
+    model: {
+      value: _vm.activeTab,
+      callback: function ($$v) {
+        _vm.activeTab = $$v;
+      },
+      expression: "activeTab"
     }
-  }, [_vm._m(4), _vm._v(" "), _c("span", [_vm._v(" Ver ficha técnica")])]) : _vm._e(), _vm._v(" "), _c("br")])])]) : _vm._e(), _vm._v(" "), _vm._l(Object.keys(_vm.PLAYSET_TYPES), function (pt, i) {
+  }, [_c("b-tab-item", {
+    attrs: {
+      label: _vm.currentPlayset.playset_type.toUpperCase(),
+      visible: _vm.currentPlayset.playset_type !== "TODOS LOS JUEGOS"
+    }
+  }, _vm._l(Object.keys(_vm.PLAYSET_TYPES), function (pt, i) {
     return _c("div", {
       directives: [{
         name: "show",
@@ -1476,20 +1495,29 @@ var render = function render() {
       return _c("p", {
         key: index,
         staticClass: "text-left"
-      }, [_vm._m(5, true), _vm._v(" " + _vm._s(point) + "\n          ")]);
+      }, [_c("span", {
+        staticClass: "icon"
+      }, [_c("i", {
+        staticClass: "fas fa-circle",
+        attrs: {
+          "aria-hidden": "true"
+        }
+      })]), _vm._v(" " + _vm._s(point) + "\n                ")]);
     }), 0)]);
-  }), _vm._v(" "), _vm.hasSelCategory(_vm.currentGame, "XXI") ? _c("div", {
-    staticClass: "columns banner xxi"
-  }, [_vm._m(6), _vm._v(" "), _c("div", {
-    staticClass: "column text-list"
-  }, _vm._l(_vm.currentGame.skills_by_category["Habilidades del siglo XXI"], function (xxiSkill) {
-    return _c("p", {
-      key: xxiSkill.id,
-      staticClass: "text-left"
-    }, [_vm._m(7, true), _vm._v(" " + _vm._s(xxiSkill.name) + "\n        ")]);
-  }), 0)]) : _vm._e(), _vm._v(" "), _vm.hasSelCategory(_vm.currentGame, 1) || _vm.hasSelCategory(_vm.currentGame, 2) || _vm.hasSelCategory(_vm.currentGame, 3) || _vm.hasSelCategory(_vm.currentGame, 4) || _vm.hasSelCategory(_vm.currentGame, 5) ? _c("div", {
+  }), 0), _vm._v(" "), _c("b-tab-item", {
+    attrs: {
+      label: "SEL"
+    }
+  }, [_vm.hasSelCategory(_vm.currentGame, 1) || _vm.hasSelCategory(_vm.currentGame, 2) || _vm.hasSelCategory(_vm.currentGame, 3) || _vm.hasSelCategory(_vm.currentGame, 4) || _vm.hasSelCategory(_vm.currentGame, 5) ? _c("div", {
     staticClass: "columns banner sel"
-  }, [_vm._m(8), _vm._v(" "), _c("div", {
+  }, [_c("div", {
+    staticClass: "column"
+  }, [_c("img", {
+    attrs: {
+      src: "https://i.ibb.co/qCC4t4N/sel.png",
+      alt: "SEL"
+    }
+  })]), _vm._v(" "), _c("div", {
     staticClass: "column text-list"
   }, [_vm.currentGame.skills_by_category["1. Autoconciencia"] ? _c("p", {
     staticClass: "text-left"
@@ -1497,45 +1525,125 @@ var render = function render() {
     return _c("p", {
       key: xxiSkill.id,
       staticClass: "text-left"
-    }, [_vm._m(9, true), _vm._v("  " + _vm._s(xxiSkill.name) + "\n        ")]);
+    }, [_c("span", {
+      staticClass: "icon"
+    }, [_c("i", {
+      staticClass: "fas fa-circle",
+      attrs: {
+        "aria-hidden": "true"
+      }
+    })]), _vm._v("  " + _vm._s(xxiSkill.name) + "\n                  ")]);
   }), _vm._v(" "), _vm.currentGame.skills_by_category["2. Autogestión"] ? _c("p", {
     staticClass: "text-left"
   }, [_vm._v("Autogestión")]) : _vm._e(), _vm._v(" "), _vm._l(_vm.currentGame.skills_by_category["2. Autogestión"], function (xxiSkill) {
     return _c("p", {
       key: xxiSkill.id,
       staticClass: "text-left"
-    }, [_vm._m(10, true), _vm._v("  " + _vm._s(xxiSkill.name) + "\n        ")]);
+    }, [_c("span", {
+      staticClass: "icon"
+    }, [_c("i", {
+      staticClass: "fas fa-circle",
+      attrs: {
+        "aria-hidden": "true"
+      }
+    })]), _vm._v("  " + _vm._s(xxiSkill.name) + "\n                  ")]);
   }), _vm._v(" "), _vm.currentGame.skills_by_category["3. Conciencia del otro"] ? _c("p", {
     staticClass: "text-left"
   }, [_vm._v("Conciencia del otro")]) : _vm._e(), _vm._v(" "), _vm._l(_vm.currentGame.skills_by_category["3. Conciencia del otro"], function (xxiSkill) {
     return _c("p", {
       key: xxiSkill.id,
       staticClass: "text-left"
-    }, [_vm._m(11, true), _vm._v("  " + _vm._s(xxiSkill.name) + "\n        ")]);
+    }, [_c("span", {
+      staticClass: "icon"
+    }, [_c("i", {
+      staticClass: "fas fa-circle",
+      attrs: {
+        "aria-hidden": "true"
+      }
+    })]), _vm._v("  " + _vm._s(xxiSkill.name) + "\n                  ")]);
   }), _vm._v(" "), _vm.currentGame.skills_by_category["4. Habilidades sociales"] ? _c("p", {
     staticClass: "text-left"
   }, [_vm._v("Habilidades sociales")]) : _vm._e(), _vm._v(" "), _vm._l(_vm.currentGame.skills_by_category["4. Habilidades sociales"], function (xxiSkill) {
     return _c("p", {
       key: xxiSkill.id,
       staticClass: "text-left"
-    }, [_vm._m(12, true), _vm._v("  " + _vm._s(xxiSkill.name) + "\n        ")]);
+    }, [_c("span", {
+      staticClass: "icon"
+    }, [_c("i", {
+      staticClass: "fas fa-circle",
+      attrs: {
+        "aria-hidden": "true"
+      }
+    })]), _vm._v("  " + _vm._s(xxiSkill.name) + "\n                  ")]);
   }), _vm._v(" "), _vm.currentGame.skills_by_category["5. Toma de decisiones responsables"] ? _c("p", {
     staticClass: "text-left"
   }, [_vm._v("Toma de decisiones responsables")]) : _vm._e(), _vm._v(" "), _vm._l(_vm.currentGame.skills_by_category["5. Toma de decisiones responsables"], function (xxiSkill) {
     return _c("p", {
       key: xxiSkill.id,
       staticClass: "text-left"
-    }, [_vm._m(13, true), _vm._v("  " + _vm._s(xxiSkill.name) + "\n        ")]);
-  })], 2)]) : _vm._e(), _vm._v(" "), _vm.currentGame.idps_names ? _c("div", {
+    }, [_c("span", {
+      staticClass: "icon"
+    }, [_c("i", {
+      staticClass: "fas fa-circle",
+      attrs: {
+        "aria-hidden": "true"
+      }
+    })]), _vm._v("  " + _vm._s(xxiSkill.name) + "\n                  ")]);
+  })], 2)]) : _vm._e()]), _vm._v(" "), _c("b-tab-item", {
+    attrs: {
+      label: "HABILIDADES SIGLO XXI"
+    }
+  }, [_vm.hasSelCategory(_vm.currentGame, "XXI") ? _c("div", {
+    staticClass: "columns banner xxi"
+  }, [_c("div", {
+    staticClass: "column"
+  }, [_c("img", {
+    attrs: {
+      src: "https://i.ibb.co/VVLZ25n/siglo-xxi.png",
+      alt: "xxi"
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "column text-list"
+  }, _vm._l(_vm.currentGame.skills_by_category["Habilidades del siglo XXI"], function (xxiSkill) {
+    return _c("p", {
+      key: xxiSkill.id,
+      staticClass: "text-left"
+    }, [_c("span", {
+      staticClass: "icon"
+    }, [_c("i", {
+      staticClass: "fas fa-circle",
+      attrs: {
+        "aria-hidden": "true"
+      }
+    })]), _vm._v(" " + _vm._s(xxiSkill.name) + "\n                ")]);
+  }), 0)]) : _vm._e()]), _vm._v(" "), _c("b-tab-item", {
+    attrs: {
+      label: "IDPS"
+    }
+  }, [_vm.currentGame.idps_names ? _c("div", {
     staticClass: "columns banner idps"
-  }, [_vm._m(14), _vm._v(" "), _c("div", {
+  }, [_c("div", {
+    staticClass: "column"
+  }, [_c("img", {
+    attrs: {
+      src: "https://i.ibb.co/NT35ZKv/idps.png",
+      alt: "idps"
+    }
+  })]), _vm._v(" "), _c("div", {
     staticClass: "column text-list"
   }, _vm._l(_vm.currentGame.idps_names.split("-"), function (idp, index) {
     return _c("p", {
       key: index,
       staticClass: "text-left"
-    }, [_vm._m(15, true), _vm._v(" " + _vm._s(idp) + "\n        ")]);
-  }), 0)]) : _vm._e(), _vm._v(" "), _c("div", {
+    }, [_c("span", {
+      staticClass: "icon"
+    }, [_c("i", {
+      staticClass: "fas fa-circle",
+      attrs: {
+        "aria-hidden": "true"
+      }
+    })]), _vm._v(" " + _vm._s(idp) + "\n                ")]);
+  }), 0)]) : _vm._e()])], 1) : _vm._e(), _vm._v(" "), _c("div", {
     staticClass: "columns"
   }, [_c("div", {
     staticClass: "column"
@@ -1614,9 +1722,173 @@ var render = function render() {
         alt: "ludoteca"
       }
     }) : _vm._e()])])])]);
-  })], 2) : _vm._e()], 2) : _vm._e()]);
+  })], 2) : _vm._e()], 1) : _vm._e(), _vm._v(" "), _c("b-modal", {
+    attrs: {
+      active: _vm.isPDFOpen,
+      scroll: "keep",
+      id: "pdf-modal"
+    },
+    on: {
+      "update:active": function ($event) {
+        _vm.isPDFOpen = $event;
+      }
+    }
+  }, [_vm.currentGame ? _c("section", [_c("iframe", {
+    attrs: {
+      src: _vm.currentGame.pdf_url.replace("view?usp=drive_link", "preview"),
+      height: "480",
+      allow: "autoplay"
+    }
+  })]) : _vm._e()]), _vm._v(" "), _c("b-modal", {
+    attrs: {
+      active: _vm.isSessionModalActive,
+      scroll: "keep",
+      id: "session-modal"
+    },
+    on: {
+      "update:active": function ($event) {
+        _vm.isSessionModalActive = $event;
+      }
+    }
+  }, [_c("section", [_c("div", {
+    staticClass: "columns"
+  }, [_c("div", {
+    staticClass: "column"
+  }, [_c("p", {
+    staticClass: "title is-4"
+  }, [_vm._v("Registrar sesión con este juego")]), _vm._v(" "), _c("form", [_c("div", {
+    staticClass: "field"
+  }, [_c("label", {
+    staticClass: "label"
+  }, [_vm._v("¿Cuántos estudiantes jugaron?")]), _vm._v(" "), _c("div", {
+    staticClass: "control"
+  }, [_c("input", {
+    staticClass: "input",
+    attrs: {
+      type: "number",
+      placeholder: "Número de estudiantes"
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "field"
+  }, [_c("label", {
+    staticClass: "label"
+  }, [_vm._v("¿Cuántos eran niños?")]), _vm._v(" "), _c("div", {
+    staticClass: "control"
+  }, [_c("input", {
+    staticClass: "input",
+    attrs: {
+      type: "number",
+      placeholder: "Número de niños"
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "field"
+  }, [_c("label", {
+    staticClass: "label"
+  }, [_vm._v("¿Cuántas eran niñas?")]), _vm._v(" "), _c("div", {
+    staticClass: "control"
+  }, [_c("input", {
+    staticClass: "input",
+    attrs: {
+      type: "number",
+      placeholder: "Número de niñas"
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "field"
+  }, [_c("label", {
+    staticClass: "label"
+  }, [_vm._v("¿Qué día se jugó?")]), _vm._v(" "), _c("div", {
+    staticClass: "control"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.today,
+      expression: "today"
+    }],
+    staticClass: "input",
+    attrs: {
+      type: "date",
+      placeholder: "Fecha de juego"
+    },
+    domProps: {
+      value: _vm.today
+    },
+    on: {
+      input: function ($event) {
+        if ($event.target.composing) return;
+        _vm.today = $event.target.value;
+      }
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "field"
+  }, [_c("label", {
+    staticClass: "label"
+  }, [_vm._v("Curso")]), _vm._v(" "), _c("div", {
+    staticClass: "control"
+  }, [_c("div", {
+    staticClass: "select"
+  }, [_c("select", [_c("option", [_vm._v("1° Básico")]), _vm._v(" "), _c("option", [_vm._v("2° Básico")]), _vm._v(" "), _c("option", [_vm._v("3° Básico")]), _vm._v(" "), _c("option", [_vm._v("4° Básico")]), _vm._v(" "), _c("option", [_vm._v("5° Básico")]), _vm._v(" "), _c("option", [_vm._v("6° Básico")]), _vm._v(" "), _c("option", [_vm._v("7° Básico")]), _vm._v(" "), _c("option", [_vm._v("8° Básico")]), _vm._v(" "), _c("option", [_vm._v("1° Medio")]), _vm._v(" "), _c("option", [_vm._v("2° Medio")]), _vm._v(" "), _c("option", [_vm._v("3° Medio")]), _vm._v(" "), _c("option", [_vm._v("4° Medio")])])])])]), _vm._v(" "), _c("div", {
+    staticClass: "field"
+  }, [_c("label", {
+    staticClass: "label"
+  }, [_vm._v("Subir foto de la sesión")]), _vm._v(" "), _c("div", {
+    staticClass: "control"
+  }, [_c("input", {
+    staticClass: "input",
+    attrs: {
+      type: "file",
+      placeholder: "Foto de la sesión"
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "field is-grouped"
+  }, [_c("div", {
+    staticClass: "control"
+  }, [_c("button", {
+    staticClass: "button is-link",
+    attrs: {
+      type: "button"
+    },
+    on: {
+      click: function ($event) {
+        $event.preventDefault();
+        return _vm.recordSession();
+      }
+    }
+  }, [_vm._v("Registrar")])]), _vm._v(" "), _c("div", {
+    staticClass: "control"
+  }, [_c("button", {
+    staticClass: "button is-link is-light",
+    on: {
+      click: function ($event) {
+        $event.preventDefault();
+        _vm.isSessionModalActive = false;
+      }
+    }
+  }, [_vm._v("Cancelar")])])])])])])])])], 1);
 };
 var staticRenderFns = [function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("span", {
+    staticClass: "icon"
+  }, [_c("i", {
+    staticClass: "fas fa-file",
+    attrs: {
+      "aria-hidden": "true"
+    }
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("span", {
+    staticClass: "icon"
+  }, [_c("i", {
+    staticClass: "fas fa-plus",
+    attrs: {
+      "aria-hidden": "true"
+    }
+  })]);
+}, function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
@@ -1651,138 +1923,6 @@ var staticRenderFns = [function () {
     staticClass: "icon"
   }, [_c("i", {
     staticClass: "fas fa-users",
-    attrs: {
-      "aria-hidden": "true"
-    }
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("span", {
-    staticClass: "icon"
-  }, [_c("i", {
-    staticClass: "fas fa-file",
-    attrs: {
-      "aria-hidden": "true"
-    }
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("span", {
-    staticClass: "icon"
-  }, [_c("i", {
-    staticClass: "fas fa-circle",
-    attrs: {
-      "aria-hidden": "true"
-    }
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "column"
-  }, [_c("img", {
-    attrs: {
-      src: "https://i.ibb.co/VVLZ25n/siglo-xxi.png",
-      alt: "xxi"
-    }
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("span", {
-    staticClass: "icon"
-  }, [_c("i", {
-    staticClass: "fas fa-circle",
-    attrs: {
-      "aria-hidden": "true"
-    }
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "column"
-  }, [_c("img", {
-    attrs: {
-      src: "https://i.ibb.co/qCC4t4N/sel.png",
-      alt: "SEL"
-    }
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("span", {
-    staticClass: "icon"
-  }, [_c("i", {
-    staticClass: "fas fa-circle",
-    attrs: {
-      "aria-hidden": "true"
-    }
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("span", {
-    staticClass: "icon"
-  }, [_c("i", {
-    staticClass: "fas fa-circle",
-    attrs: {
-      "aria-hidden": "true"
-    }
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("span", {
-    staticClass: "icon"
-  }, [_c("i", {
-    staticClass: "fas fa-circle",
-    attrs: {
-      "aria-hidden": "true"
-    }
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("span", {
-    staticClass: "icon"
-  }, [_c("i", {
-    staticClass: "fas fa-circle",
-    attrs: {
-      "aria-hidden": "true"
-    }
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("span", {
-    staticClass: "icon"
-  }, [_c("i", {
-    staticClass: "fas fa-circle",
-    attrs: {
-      "aria-hidden": "true"
-    }
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "column"
-  }, [_c("img", {
-    attrs: {
-      src: "https://i.ibb.co/NT35ZKv/idps.png",
-      alt: "idps"
-    }
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("span", {
-    staticClass: "icon"
-  }, [_c("i", {
-    staticClass: "fas fa-circle",
     attrs: {
       "aria-hidden": "true"
     }
@@ -2861,7 +3001,7 @@ module.exports = __webpack_require__.p + "static/logo2024_white-8b8da78e1051b394
 },
 /******/ function(__webpack_require__) { // webpackRuntimeModules
 /******/ var __webpack_exec__ = function(moduleId) { return __webpack_require__(__webpack_require__.s = moduleId); }
-/******/ __webpack_require__.O(0, ["vendors-node_modules_buefy_dist_buefy_js-node_modules_vue-carousel_dist_vue-carousel_min_js-n-700dfc"], function() { return __webpack_exec__("./app/javascript/packs/application.js"); });
+/******/ __webpack_require__.O(0, ["vendors-node_modules_buefy_dist_buefy_js-node_modules_vue-carousel_dist_vue-carousel_min_js-n-2064fa"], function() { return __webpack_exec__("./app/javascript/packs/application.js"); });
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);

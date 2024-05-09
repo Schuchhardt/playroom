@@ -10,20 +10,20 @@ body {
   background-size: cover;
   background-position: center;
   width: 100%;
-  height: 110vh;
+  height: 120vh;
 }
 
 /* line 18, app/assets/stylesheets/landing.scss */
 .devise-navbar {
-  background-color: #100d2a;
+  background-color: white;
   height: 100px;
 }
 
 /* line 21, app/assets/stylesheets/landing.scss */
 .devise-navbar img {
-  height: 80px;
+  height: 40px;
   position: relative;
-  top: 10px;
+  top: 40px;
   display: block;
   margin: auto;
   max-width: 90%;
@@ -46,14 +46,15 @@ footer img {
 .devise-container {
   background-color: rgba(16, 13, 42, 0.7);
   display: block;
-  width: 320px;
+  min-width: 320px;
+  max-width: 520px;
   margin: auto;
   top: 70px;
   position: relative;
   padding: 30px;
 }
 
-/* line 50, app/assets/stylesheets/landing.scss */
+/* line 51, app/assets/stylesheets/landing.scss */
 .devise-container h2 {
   text-align: center;
   font-weight: bolder;
@@ -61,45 +62,45 @@ footer img {
   color: white;
 }
 
-/* line 57, app/assets/stylesheets/landing.scss */
+/* line 58, app/assets/stylesheets/landing.scss */
 .devise-container .button.is-primary {
-  background-color: #white;
+  background-color: white;
   border-color: transparent;
   color: 100d2a;
   font-size: 16px;
 }
 
-/* line 64, app/assets/stylesheets/landing.scss */
+/* line 65, app/assets/stylesheets/landing.scss */
 .devise-container .field {
   margin: 10px 0;
   color: #FFF;
 }
 
-/* line 67, app/assets/stylesheets/landing.scss */
+/* line 68, app/assets/stylesheets/landing.scss */
 .devise-container .field input {
   font-size: 18px;
   border-radius: 15px;
 }
 
-/* line 70, app/assets/stylesheets/landing.scss */
+/* line 71, app/assets/stylesheets/landing.scss */
 .devise-container .field input::placeholder {
   font-size: 18px;
 }
 
-/* line 74, app/assets/stylesheets/landing.scss */
+/* line 75, app/assets/stylesheets/landing.scss */
 .devise-container .field label {
   margin: 5px 0px;
   position: relative;
   display: inline-block;
 }
 
-/* line 82, app/assets/stylesheets/landing.scss */
+/* line 83, app/assets/stylesheets/landing.scss */
 .devise-container .actions input {
   border-radius: 15px;
   height: 30px;
 }
 
-/* line 88, app/assets/stylesheets/landing.scss */
+/* line 89, app/assets/stylesheets/landing.scss */
 .devise-container a {
   display: block;
   padding: 20px 0px;
@@ -108,21 +109,35 @@ footer img {
   text-align: center;
 }
 
-/* line 96, app/assets/stylesheets/landing.scss */
+/* line 97, app/assets/stylesheets/landing.scss */
 .devise-container input {
   font-size: 1rem;
 }
 
 @media (min-width: 767px) {
-  /* line 99, app/assets/stylesheets/landing.scss */
+  /* line 100, app/assets/stylesheets/landing.scss */
   .devise-container input.input {
     max-width: 70%;
     margin: auto;
   }
 }
 
-/* line 107, app/assets/stylesheets/landing.scss */
+/* line 108, app/assets/stylesheets/landing.scss */
 .devise-container .red-alert {
   color: red;
   text-align: center;
+}
+
+/* line 113, app/assets/stylesheets/landing.scss */
+.devise-container #error_explanation {
+  color: white;
+  background: black;
+  text-align: center;
+  border-radius: 15px;
+  padding: 10px;
+}
+
+/* line 119, app/assets/stylesheets/landing.scss */
+.devise-container #error_explanation ul {
+  color: red;
 }

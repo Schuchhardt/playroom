@@ -15,7 +15,7 @@
 
       <div id="landing-navbar" class="navbar-menu" :class="{'is-active': isMobile}">
         <div class="navbar-start">
-          <router-link class="navbar-item" to="/" >
+          <router-link class="navbar-item" to="/"  >
             <span class="icon">
               <i class="fas fa-archway" aria-hidden="true"></i>
             </span>
@@ -310,5 +310,22 @@ html, body, pre, code, kbd, samp, button, a, input{
   }
 }
 
+#pdf-modal{
+  .modal-content{
+    height: 80vh;
+    max-height: 100vh;
+  }
+  iframe{
+    height: 70vh;
+    width: 100%;
+  }
+}
+
+#session-modal{
+  section{
+    background: #f0f8ff;
+    padding: 80px;
+  }
+}
 
 </style>

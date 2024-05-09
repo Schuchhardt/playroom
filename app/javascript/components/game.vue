@@ -22,6 +22,15 @@
           <p class="bd-notification is-info">
             <img v-bind:src="currentGame.image_url" class="game-img" alt="Imagen Juego">
           </p>
+          <button v-if="currentGame.pdf_url" @click.prevent="goToPDF()" class="button is-primary game-pdf-btn" >
+                <span class="icon"><i class="fas fa-file" aria-hidden="true"></i></span>
+                <span> Ver ficha técnica</span>
+          </button>
+
+          <button @click.prevent="openSessionModal()" class="button is-warning session-btn" >
+            <span class="icon"><i class="fas fa-plus" aria-hidden="true"></i></span>
+            <span> Registrar sesión con este juego</span>
+          </button>
         </div>
         <div class="column is-full-mobile">
           <div class="columns difficulty" v-if="currentGame.difficulty">
@@ -37,7 +46,7 @@
             </div>
           </div>
             <br>
-          <p class="how"></span>¿Cómo se juega?</p>
+          <p class="how"> ¿Cómo se juega?</p>
 
           <div v-if="currentGame.youtube_embed_url" id="game-video">
               <br>
@@ -58,79 +67,91 @@
                 <span class="icon"><i class="fas fa-users" aria-hidden="true"></i></span>
                 <strong>Nro de Jugadores:</strong> {{currentGame.number_of_players}}
               </p>
-              <button v-if="currentGame.pdf_url" @click.prevent="goToPDF()" class="button is-primary game-pdf-btn" >
-                <span class="icon"><i class="fas fa-file" aria-hidden="true"></i></span>
-                <span> Ver ficha técnica</span>
-              </button>
   
             <br>
           </div>
         </div>        
       </div>
-      <div class="columns banner" v-for="(pt, i) in Object.keys(PLAYSET_TYPES)" :key="i" v-show="currentPlayset.playset_type == PLAYSET_TYPES[pt]">
-        <div class="column" >
-          <img src="https://i.ibb.co/hccKfQt/convivencia.png" alt="Conviencia Escolar" v-if="currentPlayset.playset_type == PLAYSET_TYPES.CONVIVENCIA"/>
-          <img src="https://i.ibb.co/WDHK1Ww/formacion.png" alt="Formación Ciudadana" v-if="currentPlayset.playset_type == PLAYSET_TYPES.FORMACION"/>
-          <img src="https://i.ibb.co/Tm5nmbN/dua.png" alt="DUA" v-if="currentPlayset.playset_type == PLAYSET_TYPES.DUA"/>
-          <img src="https://i.ibb.co/6rYdTKs/pie.png" alt="PIE" v-if="currentPlayset.playset_type == PLAYSET_TYPES.PIE"/>
-          <img src="https://i.ibb.co/rHjsM6K/estrategias.png" alt="ESTRATEGIAS" v-if="currentPlayset.playset_type == PLAYSET_TYPES.ESTRATEGIAS"/>
-        </div>
-        <div class="column text-list">
-          <p class="text-left" v-for="(point, index) in PLAYSET_AXES[pt]" :key="index">
-            <span class="icon"><i class="fas fa-circle" aria-hidden="true"></i></span> {{point}}
-            </p>
-        </div>
-      </div>
 
-      <div class="columns banner xxi" v-if="hasSelCategory(currentGame, 'XXI')">
-        <div class="column">
-          <img src="https://i.ibb.co/VVLZ25n/siglo-xxi.png" alt="xxi"/>
-        </div>
-        <div class="column text-list">
-          <p class="text-left" v-for="xxiSkill in currentGame.skills_by_category['Habilidades del siglo XXI']" :key="xxiSkill.id">
-            <span class="icon"><i class="fas fa-circle" aria-hidden="true"></i></span> {{xxiSkill.name}}
-          </p>
-        </div>
-      </div>
+      <!--Tabs con secciones informativas de cada juego como detalles de la ludoteca, informacion sel, ids-->
+      <b-tabs v-model="activeTab" v-if="currentGame">
+            <b-tab-item :label="currentPlayset.playset_type.toUpperCase()" :visible="currentPlayset.playset_type !== 'TODOS LOS JUEGOS'">
+              <div class="columns banner" v-for="(pt, i) in Object.keys(PLAYSET_TYPES)" :key="i" v-show="currentPlayset.playset_type == PLAYSET_TYPES[pt]">
+                <div class="column" >
+                  <img src="https://i.ibb.co/hccKfQt/convivencia.png" alt="Conviencia Escolar" v-if="currentPlayset.playset_type == PLAYSET_TYPES.CONVIVENCIA"/>
+                  <img src="https://i.ibb.co/WDHK1Ww/formacion.png" alt="Formación Ciudadana" v-if="currentPlayset.playset_type == PLAYSET_TYPES.FORMACION"/>
+                  <img src="https://i.ibb.co/Tm5nmbN/dua.png" alt="DUA" v-if="currentPlayset.playset_type == PLAYSET_TYPES.DUA"/>
+                  <img src="https://i.ibb.co/6rYdTKs/pie.png" alt="PIE" v-if="currentPlayset.playset_type == PLAYSET_TYPES.PIE"/>
+                  <img src="https://i.ibb.co/rHjsM6K/estrategias.png" alt="ESTRATEGIAS" v-if="currentPlayset.playset_type == PLAYSET_TYPES.ESTRATEGIAS"/>
+                </div>
+                <div class="column text-list">
+                  <p class="text-left" v-for="(point, index) in PLAYSET_AXES[pt]" :key="index">
+                    <span class="icon"><i class="fas fa-circle" aria-hidden="true"></i></span> {{point}}
+                  </p>
+                </div>
+              </div>
+            </b-tab-item>
 
-     <div class="columns banner sel" v-if="hasSelCategory(currentGame, 1) || hasSelCategory(currentGame, 2) || hasSelCategory(currentGame, 3) || hasSelCategory(currentGame, 4) || hasSelCategory(currentGame, 5)">
-        <div class="column">
-          <img src="https://i.ibb.co/qCC4t4N/sel.png" alt="SEL"/>
-        </div>
-        <div class="column text-list">
-          <p class="text-left" v-if="currentGame.skills_by_category['1. Autoconciencia']">Autoconciencia</p>
-          <p class="text-left" v-for="xxiSkill in currentGame.skills_by_category['1. Autoconciencia']" :key="xxiSkill.id">
-            <span class="icon"><i class="fas fa-circle" aria-hidden="true"></i></span>  {{xxiSkill.name}}
-          </p>
-          <p class="text-left" v-if="currentGame.skills_by_category['2. Autogestión']">Autogestión</p>
-          <p class="text-left" v-for="xxiSkill in currentGame.skills_by_category['2. Autogestión']" :key="xxiSkill.id">
-            <span class="icon"><i class="fas fa-circle" aria-hidden="true"></i></span>  {{xxiSkill.name}}
-          </p>
-          <p class="text-left" v-if="currentGame.skills_by_category['3. Conciencia del otro']">Conciencia del otro</p>
-          <p class="text-left" v-for="xxiSkill in currentGame.skills_by_category['3. Conciencia del otro']" :key="xxiSkill.id">
-            <span class="icon"><i class="fas fa-circle" aria-hidden="true"></i></span>  {{xxiSkill.name}}
-          </p>
-          <p class="text-left" v-if="currentGame.skills_by_category['4. Habilidades sociales']">Habilidades sociales</p>
-          <p class="text-left" v-for="xxiSkill in currentGame.skills_by_category['4. Habilidades sociales']" :key="xxiSkill.id">
-            <span class="icon"><i class="fas fa-circle" aria-hidden="true"></i></span>  {{xxiSkill.name}}
-          </p>
-          <p class="text-left" v-if="currentGame.skills_by_category['5. Toma de decisiones responsables']">Toma de decisiones responsables</p>
-          <p class="text-left" v-for="xxiSkill in currentGame.skills_by_category['5. Toma de decisiones responsables']" :key="xxiSkill.id">
-            <span class="icon"><i class="fas fa-circle" aria-hidden="true"></i></span>  {{xxiSkill.name}}
-          </p>
-        </div>
-      </div>
+            <b-tab-item label="SEL">
 
-      <div class="columns banner idps" v-if="currentGame.idps_names">
-        <div class="column">
-          <img src="https://i.ibb.co/NT35ZKv/idps.png" alt="idps"/>
-        </div>
-        <div class="column text-list">
-          <p class="text-left" v-for="(idp, index) in currentGame.idps_names.split('-')" :key="index" >
-            <span class="icon"><i class="fas fa-circle" aria-hidden="true"></i></span> {{idp}}
-          </p>
-        </div>
-      </div>
+              <div class="columns banner sel" v-if="hasSelCategory(currentGame, 1) || hasSelCategory(currentGame, 2) || hasSelCategory(currentGame, 3) || hasSelCategory(currentGame, 4) || hasSelCategory(currentGame, 5)">
+                  <div class="column">
+                    <img src="https://i.ibb.co/qCC4t4N/sel.png" alt="SEL"/>
+                  </div>
+                  <div class="column text-list">
+                    <p class="text-left" v-if="currentGame.skills_by_category['1. Autoconciencia']">Autoconciencia</p>
+                    <p class="text-left" v-for="xxiSkill in currentGame.skills_by_category['1. Autoconciencia']" :key="xxiSkill.id">
+                      <span class="icon"><i class="fas fa-circle" aria-hidden="true"></i></span>  {{xxiSkill.name}}
+                    </p>
+                    <p class="text-left" v-if="currentGame.skills_by_category['2. Autogestión']">Autogestión</p>
+                    <p class="text-left" v-for="xxiSkill in currentGame.skills_by_category['2. Autogestión']" :key="xxiSkill.id">
+                      <span class="icon"><i class="fas fa-circle" aria-hidden="true"></i></span>  {{xxiSkill.name}}
+                    </p>
+                    <p class="text-left" v-if="currentGame.skills_by_category['3. Conciencia del otro']">Conciencia del otro</p>
+                    <p class="text-left" v-for="xxiSkill in currentGame.skills_by_category['3. Conciencia del otro']" :key="xxiSkill.id">
+                      <span class="icon"><i class="fas fa-circle" aria-hidden="true"></i></span>  {{xxiSkill.name}}
+                    </p>
+                    <p class="text-left" v-if="currentGame.skills_by_category['4. Habilidades sociales']">Habilidades sociales</p>
+                    <p class="text-left" v-for="xxiSkill in currentGame.skills_by_category['4. Habilidades sociales']" :key="xxiSkill.id">
+                      <span class="icon"><i class="fas fa-circle" aria-hidden="true"></i></span>  {{xxiSkill.name}}
+                    </p>
+                    <p class="text-left" v-if="currentGame.skills_by_category['5. Toma de decisiones responsables']">Toma de decisiones responsables</p>
+                    <p class="text-left" v-for="xxiSkill in currentGame.skills_by_category['5. Toma de decisiones responsables']" :key="xxiSkill.id">
+                      <span class="icon"><i class="fas fa-circle" aria-hidden="true"></i></span>  {{xxiSkill.name}}
+                    </p>
+                  </div>
+                </div>
+            
+            </b-tab-item>
+
+            <b-tab-item label="HABILIDADES SIGLO XXI">
+              <div class="columns banner xxi" v-if="hasSelCategory(currentGame, 'XXI')">
+                <div class="column">
+                  <img src="https://i.ibb.co/VVLZ25n/siglo-xxi.png" alt="xxi"/>
+                </div>
+                <div class="column text-list">
+                  <p class="text-left" v-for="xxiSkill in currentGame.skills_by_category['Habilidades del siglo XXI']" :key="xxiSkill.id">
+                    <span class="icon"><i class="fas fa-circle" aria-hidden="true"></i></span> {{xxiSkill.name}}
+                  </p>
+                </div>
+              </div>
+            </b-tab-item>
+
+            <b-tab-item label="IDPS">
+
+              <div class="columns banner idps" v-if="currentGame.idps_names">
+                <div class="column">
+                  <img src="https://i.ibb.co/NT35ZKv/idps.png" alt="idps"/>
+                </div>
+                <div class="column text-list">
+                  <p class="text-left" v-for="(idp, index) in currentGame.idps_names.split('-')" :key="index" >
+                    <span class="icon"><i class="fas fa-circle" aria-hidden="true"></i></span> {{idp}}
+                  </p>
+                </div>
+              </div>
+            </b-tab-item>
+        </b-tabs>
+
 
       <div class="columns">
         <div class="column">
@@ -163,22 +184,92 @@
         </div>
       </div>
     </section>
+    <b-modal :active.sync="isPDFOpen" scroll="keep" id="pdf-modal">
+      <section v-if="currentGame">
+        <iframe :src="currentGame.pdf_url.replace('view?usp=drive_link', 'preview')" height="480" allow="autoplay"></iframe>
+      </section>
+    </b-modal>
+    <b-modal :active.sync="isSessionModalActive" scroll="keep" id="session-modal">
+      <section>
+        <!--Form to save session with this game indicating how many students did play this game, what day was, how many were boys and how many were girls and also to upload a picture of the day-->
+        <div class="columns">
+          <div class="column">
+            <p class="title is-4">Registrar sesión con este juego</p>
+            <form>
+              <div class="field">
+                <label class="label">¿Cuántos estudiantes jugaron?</label>
+                <div class="control">
+                  <input class="input" type="number" placeholder="Número de estudiantes">
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">¿Cuántos eran niños?</label>
+                <div class="control">
+                  <input class="input" type="number" placeholder="Número de niños">
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">¿Cuántas eran niñas?</label>
+                <div class="control">
+                  <input class="input" type="number" placeholder="Número de niñas">
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">¿Qué día se jugó?</label>
+                <div class="control">
+                  <input class="input" type="date" v-model="today" placeholder="Fecha de juego">
+                </div>
+              </div>
+
+              <!--Curso de la session-->
+              <div class="field">
+                <label class="label">Curso</label>
+                <div class="control">
+                  <div class="select">
+                    <select>
+                      <option>1° Básico</option>
+                      <option>2° Básico</option>
+                      <option>3° Básico</option>
+                      <option>4° Básico</option>
+                      <option>5° Básico</option>
+                      <option>6° Básico</option>
+                      <option>7° Básico</option>
+                      <option>8° Básico</option>
+                      <option>1° Medio</option>
+                      <option>2° Medio</option>
+                      <option>3° Medio</option>
+                      <option>4° Medio</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Subir foto de la sesión</label>
+                <div class="control">
+                  <input class="input" type="file" placeholder="Foto de la sesión">
+                </div>
+              </div>
+
+              <div class="field is-grouped">
+                <div class="control">
+                  <button type="button" @click.prevent="recordSession()" class="button is-link">Registrar</button>
+                </div>
+                <div class="control">
+                  <button @click.prevent="isSessionModalActive = false" class="button is-link is-light">Cancelar</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        
+      </section>
+    </b-modal>
   </div>
 </template>
 
 <script>
-const ALL_PLAYSET_TYPES = [
-    { id: "1", playset_type: "Convivencia Escolar" },
-    { id: "2", playset_type: "Formación Ciudadana" },
-    { id: "3", playset_type: "Decreto 83, DUA" },
-    { id: "4", playset_type: "PIE" },
-    { id: "5", playset_type: "Estrategias de Transición (373)" },
-    // { id: "6", playset_type: "Equipo directivo", image_url: "https://i.imgur.com/PNHMbjE.jpg", description: "" },
-    // { id: "7", playset_type: "Taller PlayGo", image_url: "https://i.imgur.com/Uv0opz1.jpg", description: "" },
-    // { id: "8", playset_type: "Espacios CRA", image_url: "https://i.imgur.com/c0Xw251.jpg", description: "" },
-    // { id: "9", playset_type: "Vuelve a clases, vuelve a jugar", image_url: "https://i.imgur.com/TTHcVCI.jpg", description: "" }
-]
-
 const PLAYSET_TYPES = {
   CONVIVENCIA: "Convivencia Escolar",
   FORMACION: "Formación Ciudadana",
@@ -223,6 +314,10 @@ export default {
   name: 'Game',
   data() {
     return {
+      isPDFOpen: false,
+      isSessionModalActive: false,
+      today: new Date().toISOString().substr(0, 10),
+      activeTab: 1,
       currentPlayset: {
         playset_type: "TODOS LOS JUEGOS"
       },
@@ -239,6 +334,7 @@ export default {
     this.$store.dispatch('gameStore/show', this.$router.currentRoute.params.gameId)
     if(this.playsets.length > 0){
       this.currentPlayset = this.playsets.find( (pl) => pl.id == this.$router.currentRoute.query.playsetId)
+      this.activeTab = 0
     }
   },
   watch: {
@@ -277,10 +373,21 @@ export default {
       this.$router.push("/games/" + game.id)
      },
      goToPDF() {
-      window.open(this.currentGame.pdf_url, '_blank')
+      this.isPDFOpen = true
+     },
+     openSessionModal() {
+      this.isSessionModalActive = true
      },
      goBack(){
        this.$router.go(-1)
+     },
+     recordSession(){
+        this.$confetti.start();
+        this.isSessionModalActive = false
+        const vm = this
+        setTimeout(() => {
+          vm.$confetti.stop();
+        }, 2000);
      },
      teacherAnswer(){
       window.open("https://api.whatsapp.com/send?phone=56964021713", '_blank')
@@ -548,6 +655,12 @@ export default {
 .game-pdf-btn{
   padding: 20px;
   margin: 40px;
+  text-transform: uppercase;
+  font-weight: 800;
+  border-radius: 11px;
+}
+
+.session-btn{
   text-transform: uppercase;
   font-weight: 800;
   border-radius: 11px;

@@ -1,50 +1,29 @@
 {
-  "application.css": "/packs/css/application-c6d9a7eb.css",
-  "application.js": "/packs/js/application-3c66e0ae868a150e402d.js",
-  "css/93-35d34798.css": "/packs/css/93-35d34798.css",
-  "css/93-35d34798.css.br": "/packs/css/93-35d34798.css.br",
-  "css/93-35d34798.css.gz": "/packs/css/93-35d34798.css.gz",
-  "css/93-35d34798.css.map": "/packs/css/93-35d34798.css.map",
-  "css/93-35d34798.css.map.br": "/packs/css/93-35d34798.css.map.br",
-  "css/93-35d34798.css.map.gz": "/packs/css/93-35d34798.css.map.gz",
-  "css/application-c6d9a7eb.css.br": "/packs/css/application-c6d9a7eb.css.br",
-  "css/application-c6d9a7eb.css.gz": "/packs/css/application-c6d9a7eb.css.gz",
-  "css/application-c6d9a7eb.css.map": "/packs/css/application-c6d9a7eb.css.map",
-  "css/application-c6d9a7eb.css.map.br": "/packs/css/application-c6d9a7eb.css.map.br",
-  "css/application-c6d9a7eb.css.map.gz": "/packs/css/application-c6d9a7eb.css.map.gz",
+  "application.css": "/packs/css/application.css",
+  "application.js": "/packs/js/application.js",
+  "css/application.css.map": "/packs/css/application.css.map",
+  "css/vendors-node_modules_buefy_dist_buefy_js-node_modules_vue-carousel_dist_vue-carousel_min_js-n-2064fa.css": "/packs/css/vendors-node_modules_buefy_dist_buefy_js-node_modules_vue-carousel_dist_vue-carousel_min_js-n-2064fa.css",
+  "css/vendors-node_modules_buefy_dist_buefy_js-node_modules_vue-carousel_dist_vue-carousel_min_js-n-2064fa.css.map": "/packs/css/vendors-node_modules_buefy_dist_buefy_js-node_modules_vue-carousel_dist_vue-carousel_min_js-n-2064fa.css.map",
   "entrypoints": {
     "application": {
       "assets": {
         "js": [
-          "/packs/js/runtime-b505fa1c510f20c9488d.js",
-          "/packs/js/93-88bb31e4b8360670045a.js",
-          "/packs/js/application-3c66e0ae868a150e402d.js"
+          "/packs/js/runtime.js",
+          "/packs/js/vendors-node_modules_buefy_dist_buefy_js-node_modules_vue-carousel_dist_vue-carousel_min_js-n-2064fa.js",
+          "/packs/js/application.js"
         ],
         "css": [
-          "/packs/css/93-35d34798.css",
-          "/packs/css/application-c6d9a7eb.css"
+          "/packs/css/vendors-node_modules_buefy_dist_buefy_js-node_modules_vue-carousel_dist_vue-carousel_min_js-n-2064fa.css",
+          "/packs/css/application.css"
         ]
       }
     }
   },
-  "js/93-88bb31e4b8360670045a.js": "/packs/js/93-88bb31e4b8360670045a.js",
-  "js/93-88bb31e4b8360670045a.js.LICENSE.txt": "/packs/js/93-88bb31e4b8360670045a.js.LICENSE.txt",
-  "js/93-88bb31e4b8360670045a.js.br": "/packs/js/93-88bb31e4b8360670045a.js.br",
-  "js/93-88bb31e4b8360670045a.js.gz": "/packs/js/93-88bb31e4b8360670045a.js.gz",
-  "js/93-88bb31e4b8360670045a.js.map": "/packs/js/93-88bb31e4b8360670045a.js.map",
-  "js/93-88bb31e4b8360670045a.js.map.br": "/packs/js/93-88bb31e4b8360670045a.js.map.br",
-  "js/93-88bb31e4b8360670045a.js.map.gz": "/packs/js/93-88bb31e4b8360670045a.js.map.gz",
-  "js/application-3c66e0ae868a150e402d.js.br": "/packs/js/application-3c66e0ae868a150e402d.js.br",
-  "js/application-3c66e0ae868a150e402d.js.gz": "/packs/js/application-3c66e0ae868a150e402d.js.gz",
-  "js/application-3c66e0ae868a150e402d.js.map": "/packs/js/application-3c66e0ae868a150e402d.js.map",
-  "js/application-3c66e0ae868a150e402d.js.map.br": "/packs/js/application-3c66e0ae868a150e402d.js.map.br",
-  "js/application-3c66e0ae868a150e402d.js.map.gz": "/packs/js/application-3c66e0ae868a150e402d.js.map.gz",
-  "js/runtime-b505fa1c510f20c9488d.js.br": "/packs/js/runtime-b505fa1c510f20c9488d.js.br",
-  "js/runtime-b505fa1c510f20c9488d.js.gz": "/packs/js/runtime-b505fa1c510f20c9488d.js.gz",
-  "js/runtime-b505fa1c510f20c9488d.js.map": "/packs/js/runtime-b505fa1c510f20c9488d.js.map",
-  "js/runtime-b505fa1c510f20c9488d.js.map.br": "/packs/js/runtime-b505fa1c510f20c9488d.js.map.br",
-  "js/runtime-b505fa1c510f20c9488d.js.map.gz": "/packs/js/runtime-b505fa1c510f20c9488d.js.map.gz",
-  "runtime.js": "/packs/js/runtime-b505fa1c510f20c9488d.js",
+  "js/application.js.map": "/packs/js/application.js.map",
+  "js/runtime.js.map": "/packs/js/runtime.js.map",
+  "js/vendors-node_modules_buefy_dist_buefy_js-node_modules_vue-carousel_dist_vue-carousel_min_js-n-2064fa.js": "/packs/js/vendors-node_modules_buefy_dist_buefy_js-node_modules_vue-carousel_dist_vue-carousel_min_js-n-2064fa.js",
+  "js/vendors-node_modules_buefy_dist_buefy_js-node_modules_vue-carousel_dist_vue-carousel_min_js-n-2064fa.js.map": "/packs/js/vendors-node_modules_buefy_dist_buefy_js-node_modules_vue-carousel_dist_vue-carousel_min_js-n-2064fa.js.map",
+  "runtime.js": "/packs/js/runtime.js",
   "static/carousel1.jpeg": "/packs/static/carousel1-a315e8f14e1459a61445.jpeg",
   "static/carousel2.jpeg": "/packs/static/carousel2-8c8b755dedde63d42010.jpeg",
   "static/carousel3.jpeg": "/packs/static/carousel3-1544b98e611ffc96f05a.jpeg",
