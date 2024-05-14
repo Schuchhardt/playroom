@@ -426,6 +426,7 @@ export default {
         playset_type: "TODOS LOS JUEGOS"
       },
       file: null,
+      fileUrl: null,
       isHelperActive: false,
       sessionForm: {
         ...cleanForm
@@ -475,6 +476,13 @@ export default {
  watch: {
     currentGame () {
       this.sessionForm.games = [this.currentGame.id]
+    },
+    file(newFile) {
+      if (newFile) {
+        console.log('Subiendo archivo...')
+        console.log(newFile)
+        this.uploadFile(newFile)
+      }
     }
   },
   methods: {
@@ -524,11 +532,39 @@ export default {
         }  
       )
      },
+     async uploadFile(file) {
+      const filename = file.name;
+      try {
+        // Obtener la URL presignada del servidor
+        const response = await fetch(`/landing/presigned_url?filename=${filename}`);
+        const data = await response.json();
+        const presignedUrl = data.url;
+        const finalUrl = data.final_url;
+
+        // Subir el archivo a S3 usando la URL presignada
+        const result = await fetch(presignedUrl, {
+          method: 'PUT',
+          body: file,
+          headers: {
+            'Content-Type': file.type
+          }
+        });
+
+        if (result.ok) {
+          this.fileUrl = finalUrl;
+          console.log('Archivo subido correctamente');
+        } else {
+          console.error('Error al subir el archivo');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    },
      sendForm() {
       console.log(this.sessionForm)
       this.$store.dispatch('gameStore/createSession', {
         ...this.sessionForm,
-        picture: this.file
+        picture: this.fileUrl
       })
       .then(() => {
         this.isSessionModalActive = false

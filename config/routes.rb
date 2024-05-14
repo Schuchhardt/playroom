@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'landing/playsets/:id' => "landing#playset"
   get 'landing/games/:id' => "landing#game"
 
+  get 'landing/presigned_url', to: 'landing#presigned_url'
   post 'landing/create_teacher_session' => "landing#new_teacher_session"
   
   root to: 'landing#index'

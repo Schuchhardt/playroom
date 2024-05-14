@@ -123,6 +123,21 @@ class LandingController < ApplicationController
 		end
 	end
 
+	def presigned_url
+		s3_client = Aws::S3::Client.new(
+			access_key_id: Rails.application.credentials.aws[:access_key_id],
+			secret_access_key: Rails.application.credentials.aws[:secret_access_key],
+			region: Rails.application.credentials.aws[:region]
+		)
+		
+		bucket = Rails.application.credentials.aws[:bucket]
+		object_key = params[:filename]
+		final_url = "https://#{bucket}.s3.#{Rails.application.credentials.aws[:region]}.amazonaws.com/#{object_key}"
+		presigned_url = s3_client.presigned_url(:put_object, bucket: bucket, key: object_key, acl: 'public-read')
+	
+		render json: { url: presigned_url, final_url: final_url }
+	end
+
 	private
 	
 	def get_default_img playset
