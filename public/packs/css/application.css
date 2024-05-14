@@ -23,6 +23,9 @@ html {
 html, body, pre, code, kbd, samp, button, a, input {
   font-family: "Righteous", cursive;
 }
+.text-center {
+  text-align: center;
+}
 .school-dd {
   overflow-y: auto;
   width: 280px;
@@ -41,7 +44,7 @@ html, body, pre, code, kbd, samp, button, a, input {
   height: 130px;
 }
 .navbar .navbar-burger {
-  color: white;
+  color: black;
   position: relative;
   top: 30px;
   left: 10px;
@@ -190,6 +193,16 @@ html, body, pre, code, kbd, samp, button, a, input {
 #session-modal section {
   background: #f0f8ff;
   padding: 80px;
+}
+@media (max-width: 414px) {
+#session-modal section {
+    padding: 50px;
+}
+}
+#session-modal .short-control {
+  width: 150px;
+  display: block;
+  margin: auto;
 }
 /*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-6.use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-6.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-6.use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./app/javascript/components/playsets.vue?vue&type=style&index=0&id=bfd72910&lang=scss&scoped=true ***!
@@ -683,6 +696,9 @@ iframe[data-v-d6b7fe44] {
 .game .container .description[data-v-0cef3ce5] {
   text-align: justify;
 }
+.game .container .content[data-v-0cef3ce5] {
+  padding: 20px;
+}
 .game .difficulty[data-v-0cef3ce5] {
   padding: 0;
   margin: auto;
@@ -692,6 +708,12 @@ iframe[data-v-d6b7fe44] {
   text-transform: uppercase;
   position: relative;
   top: 15px;
+}
+@media (max-width: 768px) {
+.game .difficulty p[data-v-0cef3ce5] {
+    top: -5px;
+    text-align: center;
+}
 }
 .game .difficulty .column[data-v-0cef3ce5] {
   padding: 0;

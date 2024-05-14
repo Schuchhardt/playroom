@@ -25,6 +25,7 @@
 # Indexes
 #
 #  index_establishments_on_commune_id  (commune_id)
+#  unique_rbd                          (rbd,rbd) UNIQUE
 #
 # Foreign Keys
 #

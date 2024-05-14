@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get 'landing/skills_categories'
   get 'landing/playsets/:id' => "landing#playset"
   get 'landing/games/:id' => "landing#game"
+
+  post 'landing/create_teacher_session' => "landing#new_teacher_session"
   
   root to: 'landing#index'
   devise_for :users, controllers: { registrations: 'users/registrations' }

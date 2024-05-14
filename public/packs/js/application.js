@@ -368,6 +368,21 @@ const gameStore = {
     },
     inSkill(context, skills_ids) {
       context.commit('setSkillFilters', skills_ids);
+    },
+    createSession(context, session) {
+      return fetch(`/landing/create_teacher_session`, {
+        headers: {
+          'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        method: "POST",
+        body: JSON.stringify(session)
+      }).then(response => {
+        response.json().then(r => console.log('createSession', r));
+      }, error => {
+        console.log(error);
+      });
     }
   },
   getters: {
@@ -579,6 +594,18 @@ const PLAYSET_AXES = {
   PIE: ["NEE transitoria - Trastorno de Deficit atencional", "NEE transitoria - Trastorno específico del lenguaje", "NEE transitoria - Limitaciones significativas de la conducta adaptativa", "TEA - Recomendado TEA "],
   ESTRATEGIAS: ["Compartir estrategias de trabajo con la familia", "Promueve el trabajo entre estudiantes de diferentes edades", "Garantiza juego autónomo", "Garantiza espacios de juegos"]
 };
+const cleanForm = {
+  students: 0,
+  games: [],
+  day: "",
+  course: "",
+  time: "",
+  picture: "",
+  ods_4_material: null,
+  ods_4_motivation: null,
+  ods_5_gender: null,
+  ods_5_stereotypes: null
+};
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Game',
   data() {
@@ -590,6 +617,11 @@ const PLAYSET_AXES = {
       currentPlayset: {
         playset_type: "TODOS LOS JUEGOS"
       },
+      file: null,
+      isHelperActive: false,
+      sessionForm: {
+        ...cleanForm
+      },
       allDifficulties: {
         level_1: "inicial",
         level_2: "intermedio",
@@ -600,16 +632,15 @@ const PLAYSET_AXES = {
     };
   },
   mounted() {
-    this.$store.dispatch('gameStore/show', this.$router.currentRoute.params.gameId);
+    const vm = this;
+    this.$store.dispatch('gameStore/show', this.$router.currentRoute.params.gameId).then(() => {
+      this.$store.dispatch('gameStore/index', vm.$router.currentRoute.query.playsetId);
+    });
     if (this.playsets.length > 0) {
       this.currentPlayset = this.playsets.find(pl => pl.id == this.$router.currentRoute.query.playsetId);
       this.activeTab = 0;
     }
-  },
-  watch: {
-    '$route.params.gameId': function (id) {
-      this.$store.dispatch('gameStore/show', id);
-    }
+    this.sessionForm.day = this.today;
   },
   computed: {
     currentGame() {
@@ -620,6 +651,24 @@ const PLAYSET_AXES = {
     },
     playsets() {
       return this.$store.state.playsetStore.playsets.filter(pl => !pl.disabled);
+    },
+    filteredGames() {
+      return this.$store.state.gameStore.games.map(game => {
+        return {
+          id: game.id,
+          name: game.name
+        };
+      });
+    }
+  },
+  watch: {
+    currentGame() {
+      this.sessionForm.games = [this.currentGame.id];
+      //   {
+      //     id: this.currentGame.id,
+      //     name: this.currentGame.name,
+      //   }
+      // ]
     }
   },
   methods: {
@@ -648,15 +697,11 @@ const PLAYSET_AXES = {
       this.isSessionModalActive = true;
     },
     goBack() {
-      this.$router.go(-1);
-    },
-    recordSession() {
-      this.$confetti.start();
-      this.isSessionModalActive = false;
-      const vm = this;
-      setTimeout(() => {
-        vm.$confetti.stop();
-      }, 2000);
+      this.$router.push("/playsets", {
+        query: {
+          playsetId: this.currentPlayset.id
+        }
+      });
     },
     teacherAnswer() {
       window.open("https://api.whatsapp.com/send?phone=56964021713", '_blank');
@@ -667,12 +712,29 @@ const PLAYSET_AXES = {
         type: "html",
         targetStyles: ['*'],
         header: `Ficha de juego: ${this.currentGame.name}`,
-        documentTitle: 'Playroom 2022',
+        documentTitle: 'Playroom 2024',
         headerStyle: 'font-weight: 300; font-family: Righteous',
         ignoreElements: ['game-video', 'game-sels'],
         onError: function (error) {
           console.log('Error found => ' + error.message);
         }
+      });
+    },
+    sendForm() {
+      console.log(this.sessionForm);
+      this.$store.dispatch('gameStore/createSession', {
+        ...this.sessionForm,
+        picture: this.file
+      }).then(() => {
+        this.isSessionModalActive = false;
+        this.$confetti.start();
+        const vm = this;
+        setTimeout(() => {
+          vm.$confetti.stop();
+          vm.sessionForm = {
+            ...cleanForm
+          };
+        }, 2000);
       });
     }
   }
@@ -1439,7 +1501,7 @@ var render = function render() {
     staticClass: "content"
   }, [_vm.currentGame.game_type ? _c("p", [_c("strong", [_vm._v("Tipo de juego:")]), _vm._v(" "), _c("span", {
     staticClass: "is-warning capitalized"
-  }, [_vm._v(_vm._s(_vm.currentGame.game_type))])]) : _vm._e(), _vm._v(" "), _c("p", [_vm._m(3), _vm._v(" "), _c("strong", [_vm._v("Edad sugerida:")]), _vm._v(" " + _vm._s(_vm.currentGame.suggested_age) + "\n            ")]), _vm._v(" "), _c("p", [_vm._m(4), _vm._v(" "), _c("strong", [_vm._v("Tiempo de juego:")]), _vm._v(" " + _vm._s(_vm.currentGame.game_time) + "\n            ")]), _vm._v(" "), _c("p", [_vm._m(5), _vm._v(" "), _c("strong", [_vm._v("Nro de Jugadores:")]), _vm._v(" " + _vm._s(_vm.currentGame.number_of_players) + "\n            ")]), _vm._v(" "), _c("br")])])]) : _vm._e(), _vm._v(" "), _vm.currentGame ? _c("b-tabs", {
+  }, [_vm._v(_vm._s(_vm.currentGame.game_type))])]) : _vm._e(), _vm._v(" "), _c("p", [_vm._m(3), _vm._v(" "), _c("strong", [_vm._v("Edad sugerida:")]), _vm._v(" " + _vm._s(_vm.currentGame.suggested_age) + "\n            ")]), _vm._v(" "), _c("p", [_vm._m(4), _vm._v(" "), _c("strong", [_vm._v("Tiempo de juego:")]), _vm._v(" " + _vm._s(_vm.currentGame.game_time) + "\n            ")]), _vm._v(" "), _c("p", [_vm._m(5), _vm._v(" "), _c("strong", [_vm._v("Nro de Jugadores:")]), _vm._v(" " + _vm._s(_vm.currentGame.number_of_players) + "\n            ")]), _vm._v(" "), _vm.currentGame.description ? _c("p", [_vm._m(6), _vm._v(" "), _c("strong", [_vm._v("Descripción:")]), _vm._v(" " + _vm._s(_vm.currentGame.description) + "\n            ")]) : _vm._e(), _vm._v(" "), _c("br")])])]) : _vm._e(), _vm._v(" "), _vm.currentGame ? _c("b-tabs", {
     model: {
       value: _vm.activeTab,
       callback: function ($$v) {
@@ -1756,54 +1818,160 @@ var render = function render() {
     staticClass: "column"
   }, [_c("p", {
     staticClass: "title is-4"
-  }, [_vm._v("Registrar sesión con este juego")]), _vm._v(" "), _c("form", [_c("div", {
+  }, [_vm._v("Registrar sesión con este juego")]), _vm._v(" "), _c("form", {
+    ref: "form",
+    on: {
+      submit: function ($event) {
+        $event.preventDefault();
+        return _vm.sendForm();
+      }
+    }
+  }, [_c("div", {
+    staticClass: "field"
+  }, [_c("label", {
+    staticClass: "label"
+  }, [_vm._v("Juego(s) utilizado(s)")]), _vm._v(" "), _c("div", {
+    staticClass: "control text-center"
+  }, [_c("b-dropdown", {
+    attrs: {
+      multiple: "",
+      required: "",
+      "aria-role": "list"
+    },
+    scopedSlots: _vm._u([{
+      key: "trigger",
+      fn: function () {
+        return [_c("b-button", {
+          attrs: {
+            type: "is-primary",
+            "icon-right": "menu-down"
+          }
+        }, [_vm._v("\n                            " + _vm._s(_vm.sessionForm.games.length == 1 ? _vm.currentGame.name : _vm.sessionForm.games.length + " juegos seleccionados") + "\n                        ")])];
+      },
+      proxy: true
+    }]),
+    model: {
+      value: _vm.sessionForm.games,
+      callback: function ($$v) {
+        _vm.$set(_vm.sessionForm, "games", $$v);
+      },
+      expression: "sessionForm.games"
+    }
+  }, [_vm._v(" "), _vm._l(_vm.filteredGames, function (game) {
+    return _c("b-dropdown-item", {
+      key: game.id,
+      attrs: {
+        value: game.id
+      }
+    }, [_c("span", [_vm._v(_vm._s(game.name))])]);
+  })], 2)], 1)]), _vm._v(" "), _c("b-field", {
+    staticClass: "file is-primary",
+    class: {
+      "has-name": !!_vm.file
+    },
+    staticStyle: {
+      display: "block",
+      margin: "auto",
+      "padding-bottom": "20px"
+    }
+  }, [_c("label", {
+    staticClass: "label"
+  }, [_vm._v("Foto de la sesión")]), _vm._v(" "), _c("b-upload", {
+    staticClass: "file-label",
+    staticStyle: {
+      display: "inline-block"
+    },
+    attrs: {
+      required: "",
+      validationMessage: "Por favor sube una foto"
+    },
+    model: {
+      value: _vm.file,
+      callback: function ($$v) {
+        _vm.file = $$v;
+      },
+      expression: "file"
+    }
+  }, [_c("span", {
+    staticClass: "file-cta"
+  }, [_c("b-icon", {
+    staticClass: "file-icon",
+    attrs: {
+      icon: "upload"
+    }
+  }), _vm._v(" "), _c("span", {
+    staticClass: "file-label"
+  }, [_vm._v("Subir una foto de la sesión")])], 1), _vm._v(" "), _vm.file ? _c("span", {
+    staticClass: "file-name",
+    staticStyle: {
+      color: "black"
+    }
+  }, [_vm._v("\n                      " + _vm._s(_vm.file.name) + "\n                  ")]) : _vm._e()])], 1), _vm._v(" "), _c("div", {
     staticClass: "field"
   }, [_c("label", {
     staticClass: "label"
   }, [_vm._v("¿Cuántos estudiantes jugaron?")]), _vm._v(" "), _c("div", {
-    staticClass: "control"
+    staticClass: "control short-control"
   }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.sessionForm.students,
+      expression: "sessionForm.students"
+    }],
     staticClass: "input",
     attrs: {
       type: "number",
       placeholder: "Número de estudiantes"
+    },
+    domProps: {
+      value: _vm.sessionForm.students
+    },
+    on: {
+      input: function ($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.sessionForm, "students", $event.target.value);
+      }
     }
   })])]), _vm._v(" "), _c("div", {
     staticClass: "field"
   }, [_c("label", {
     staticClass: "label"
-  }, [_vm._v("¿Cuántos eran niños?")]), _vm._v(" "), _c("div", {
+  }, [_vm._v("¿En que momento del dia se uso? Indica si fue en horario de clases o algun tiempo libre.")]), _vm._v(" "), _c("div", {
     staticClass: "control"
   }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.sessionForm.time,
+      expression: "sessionForm.time"
+    }],
     staticClass: "input",
     attrs: {
-      type: "number",
-      placeholder: "Número de niños"
-    }
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "field"
-  }, [_c("label", {
-    staticClass: "label"
-  }, [_vm._v("¿Cuántas eran niñas?")]), _vm._v(" "), _c("div", {
-    staticClass: "control"
-  }, [_c("input", {
-    staticClass: "input",
-    attrs: {
-      type: "number",
-      placeholder: "Número de niñas"
+      type: "text",
+      placeholder: "Por ejemplo: En la hora de Orientación"
+    },
+    domProps: {
+      value: _vm.sessionForm.time
+    },
+    on: {
+      input: function ($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.sessionForm, "time", $event.target.value);
+      }
     }
   })])]), _vm._v(" "), _c("div", {
     staticClass: "field"
   }, [_c("label", {
     staticClass: "label"
   }, [_vm._v("¿Qué día se jugó?")]), _vm._v(" "), _c("div", {
-    staticClass: "control"
+    staticClass: "control short-control"
   }, [_c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.today,
-      expression: "today"
+      value: _vm.sessionForm.day,
+      expression: "sessionForm.day"
     }],
     staticClass: "input",
     attrs: {
@@ -1811,60 +1979,253 @@ var render = function render() {
       placeholder: "Fecha de juego"
     },
     domProps: {
-      value: _vm.today
+      value: _vm.sessionForm.day
     },
     on: {
       input: function ($event) {
         if ($event.target.composing) return;
-        _vm.today = $event.target.value;
+        _vm.$set(_vm.sessionForm, "day", $event.target.value);
       }
     }
   })])]), _vm._v(" "), _c("div", {
     staticClass: "field"
   }, [_c("label", {
     staticClass: "label"
-  }, [_vm._v("Curso")]), _vm._v(" "), _c("div", {
-    staticClass: "control"
+  }, [_vm._v("Curso o nivel")]), _vm._v(" "), _c("div", {
+    staticClass: "control short-control"
   }, [_c("div", {
     staticClass: "select"
-  }, [_c("select", [_c("option", [_vm._v("1° Básico")]), _vm._v(" "), _c("option", [_vm._v("2° Básico")]), _vm._v(" "), _c("option", [_vm._v("3° Básico")]), _vm._v(" "), _c("option", [_vm._v("4° Básico")]), _vm._v(" "), _c("option", [_vm._v("5° Básico")]), _vm._v(" "), _c("option", [_vm._v("6° Básico")]), _vm._v(" "), _c("option", [_vm._v("7° Básico")]), _vm._v(" "), _c("option", [_vm._v("8° Básico")]), _vm._v(" "), _c("option", [_vm._v("1° Medio")]), _vm._v(" "), _c("option", [_vm._v("2° Medio")]), _vm._v(" "), _c("option", [_vm._v("3° Medio")]), _vm._v(" "), _c("option", [_vm._v("4° Medio")])])])])]), _vm._v(" "), _c("div", {
+  }, [_c("b-select", {
+    attrs: {
+      placeholder: "Selecciona un curso",
+      required: ""
+    },
+    model: {
+      value: _vm.sessionForm.course,
+      callback: function ($$v) {
+        _vm.$set(_vm.sessionForm, "course", $$v);
+      },
+      expression: "sessionForm.course"
+    }
+  }, [_c("option", {
+    attrs: {
+      value: "1"
+    }
+  }, [_vm._v("1° Básico")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "2"
+    }
+  }, [_vm._v("2° Básico")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "3"
+    }
+  }, [_vm._v("3° Básico")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "4"
+    }
+  }, [_vm._v("4° Básico")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "5"
+    }
+  }, [_vm._v("5° Básico")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "6"
+    }
+  }, [_vm._v("6° Básico")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "7"
+    }
+  }, [_vm._v("7° Básico")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "8"
+    }
+  }, [_vm._v("8° Básico")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "9"
+    }
+  }, [_vm._v("1° Medio")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "10"
+    }
+  }, [_vm._v("2° Medio")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "11"
+    }
+  }, [_vm._v("3° Medio")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "12"
+    }
+  }, [_vm._v("4° Medio")])])], 1)])]), _vm._v(" "), _c("h4", {
+    staticClass: "subtitle black-font"
+  }, [_vm._v("Preguntas sobre el cumplimiento de ODS")]), _vm._v(" "), _c("div", [_c("b-message", {
+    attrs: {
+      title: "Saber más sobre los ODS"
+    },
+    model: {
+      value: _vm.isHelperActive,
+      callback: function ($$v) {
+        _vm.isHelperActive = $$v;
+      },
+      expression: "isHelperActive"
+    }
+  }, [_vm._v("\n                  Los Objetivos de Desarrollo Sostenible (ODS) son un llamado universal a la acción para poner fin a la pobreza, proteger el planeta y garantizar que todas las personas gocen de paz y prosperidad. Estos 17 Objetivos son interdependientes y se equilibran entre las tres dimensiones del desarrollo sostenible: la económica, la social y la ambiental.\n                  Las siguientes preguntas te ayudarán a identificar si este juego contribuye al ODS 4 y 5.\n              ")])], 1), _vm._v(" "), _c("div", {
     staticClass: "field"
   }, [_c("label", {
     staticClass: "label"
-  }, [_vm._v("Subir foto de la sesión")]), _vm._v(" "), _c("div", {
-    staticClass: "control"
-  }, [_c("input", {
-    staticClass: "input",
+  }, [_vm._v("¿Los materiales usados fueron adecuados para el aprendizaje?")]), _vm._v(" "), _c("div", {
+    staticClass: "control short-control"
+  }, [_c("div", {
+    staticClass: "select"
+  }, [_c("select", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.sessionForm.ods_4_material,
+      expression: "sessionForm.ods_4_material"
+    }],
     attrs: {
-      type: "file",
-      placeholder: "Foto de la sesión"
+      required: ""
+    },
+    on: {
+      change: function ($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+        _vm.$set(_vm.sessionForm, "ods_4_material", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+      }
     }
-  })])]), _vm._v(" "), _c("div", {
+  }, [_c("option", {
+    attrs: {
+      value: "1"
+    }
+  }, [_vm._v("Si")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "0"
+    }
+  }, [_vm._v("No")])])])])]), _vm._v(" "), _c("div", {
+    staticClass: "field"
+  }, [_c("label", {
+    staticClass: "label"
+  }, [_vm._v("¿La actividad estimuló el interés de los estudiantes?")]), _vm._v(" "), _c("div", {
+    staticClass: "control short-control"
+  }, [_c("div", {
+    staticClass: "select"
+  }, [_c("select", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.sessionForm.ods_4_motivation,
+      expression: "sessionForm.ods_4_motivation"
+    }],
+    attrs: {
+      required: ""
+    },
+    on: {
+      change: function ($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+        _vm.$set(_vm.sessionForm, "ods_4_motivation", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+      }
+    }
+  }, [_c("option", {
+    attrs: {
+      value: "1"
+    }
+  }, [_vm._v("Si")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "0"
+    }
+  }, [_vm._v("No")])])])])]), _vm._v(" "), _c("div", {
+    staticClass: "field"
+  }, [_c("label", {
+    staticClass: "label"
+  }, [_vm._v("¿Se promovío la participación equitativa de todos los géneros?")]), _vm._v(" "), _c("div", {
+    staticClass: "control short-control"
+  }, [_c("div", {
+    staticClass: "select"
+  }, [_c("select", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.sessionForm.ods_5_gender,
+      expression: "sessionForm.ods_5_gender"
+    }],
+    attrs: {
+      required: ""
+    },
+    on: {
+      change: function ($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+        _vm.$set(_vm.sessionForm, "ods_5_gender", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+      }
+    }
+  }, [_c("option", {
+    attrs: {
+      value: "1"
+    }
+  }, [_vm._v("Si")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "0"
+    }
+  }, [_vm._v("No")])])])])]), _vm._v(" "), _c("div", {
+    staticClass: "field"
+  }, [_c("label", {
+    staticClass: "label"
+  }, [_vm._v("¿Se evitaron los estereotipos de género en la interacción y el material?")]), _vm._v(" "), _c("div", {
+    staticClass: "control short-control"
+  }, [_c("div", {
+    staticClass: "select"
+  }, [_c("select", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.sessionForm.ods_5_stereotypes,
+      expression: "sessionForm.ods_5_stereotypes"
+    }],
+    attrs: {
+      required: ""
+    },
+    on: {
+      change: function ($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+        _vm.$set(_vm.sessionForm, "ods_5_stereotypes", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+      }
+    }
+  }, [_c("option", {
+    attrs: {
+      value: "1"
+    }
+  }, [_vm._v("Si")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "0"
+    }
+  }, [_vm._v("No")])])])])]), _vm._v(" "), _c("div", {
     staticClass: "field is-grouped"
   }, [_c("div", {
     staticClass: "control"
   }, [_c("button", {
     staticClass: "button is-link",
     attrs: {
-      type: "button"
-    },
-    on: {
-      click: function ($event) {
-        $event.preventDefault();
-        return _vm.recordSession();
-      }
+      type: "submit"
     }
-  }, [_vm._v("Registrar")])]), _vm._v(" "), _c("div", {
-    staticClass: "control"
-  }, [_c("button", {
-    staticClass: "button is-link is-light",
-    on: {
-      click: function ($event) {
-        $event.preventDefault();
-        _vm.isSessionModalActive = false;
-      }
-    }
-  }, [_vm._v("Cancelar")])])])])])])])])], 1);
+  }, [_vm._v("Registrar")])])])], 1)])])])])], 1);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -1923,6 +2284,17 @@ var staticRenderFns = [function () {
     staticClass: "icon"
   }, [_c("i", {
     staticClass: "fas fa-users",
+    attrs: {
+      "aria-hidden": "true"
+    }
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("span", {
+    staticClass: "icon"
+  }, [_c("i", {
+    staticClass: "fas fa-book",
     attrs: {
       "aria-hidden": "true"
     }

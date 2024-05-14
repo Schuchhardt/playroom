@@ -67,6 +67,11 @@
                 <span class="icon"><i class="fas fa-users" aria-hidden="true"></i></span>
                 <strong>Nro de Jugadores:</strong> {{currentGame.number_of_players}}
               </p>
+
+              <p v-if="currentGame.description">
+                <span class="icon"><i class="fas fa-book" aria-hidden="true"></i></span>
+                <strong>Descripción:</strong> {{currentGame.description}}
+              </p>
   
             <br>
           </div>
@@ -195,70 +200,156 @@
         <div class="columns">
           <div class="column">
             <p class="title is-4">Registrar sesión con este juego</p>
-            <form>
+            <form ref="form" @submit.prevent="sendForm()">
+
+              <div class="field">
+                <label class="label">Juego(s) utilizado(s)</label>
+                <div class="control text-center">
+                  <b-dropdown
+                      v-model="sessionForm.games"
+                      multiple
+                      required
+                      aria-role="list">
+                      <template #trigger>
+                          <b-button
+                              type="is-primary"
+                              icon-right="menu-down">
+                              {{ sessionForm.games.length == 1 ? currentGame.name : sessionForm.games.length + ' juegos seleccionados' }}
+                          </b-button>
+                      </template>
+                        <b-dropdown-item v-for="game in filteredGames" :key="game.id" :value="game.id">
+                          <span>{{ game.name }}</span>
+                        </b-dropdown-item>
+                  </b-dropdown>
+                </div>
+              </div>
+
+              <b-field class="file is-primary" :class="{'has-name': !!file}" style="display: block; margin: auto; padding-bottom: 20px;">
+                <label class="label">Foto de la sesión</label>
+                <b-upload v-model="file" class="file-label" style="display: inline-block;" required validationMessage="Por favor sube una foto">
+                    <span class="file-cta">
+                        <b-icon class="file-icon" icon="upload"></b-icon>
+                        <span class="file-label">Subir una foto de la sesión</span>
+                    </span>
+                    <span class="file-name" style="color:black" v-if="file">
+                        {{ file.name }}
+                    </span>
+                </b-upload>
+              </b-field>
               <div class="field">
                 <label class="label">¿Cuántos estudiantes jugaron?</label>
-                <div class="control">
-                  <input class="input" type="number" placeholder="Número de estudiantes">
+                <div class="control short-control">
+                  <input class="input" type="number" placeholder="Número de estudiantes" v-model="sessionForm.students">
                 </div>
               </div>
+
               <div class="field">
-                <label class="label">¿Cuántos eran niños?</label>
+                <label class="label">¿En que momento del dia se uso? Indica si fue en horario de clases o algun tiempo libre.</label>
                 <div class="control">
-                  <input class="input" type="number" placeholder="Número de niños">
-                </div>
-              </div>
-              <div class="field">
-                <label class="label">¿Cuántas eran niñas?</label>
-                <div class="control">
-                  <input class="input" type="number" placeholder="Número de niñas">
+                  <input class="input" type="text" placeholder="Por ejemplo: En la hora de Orientación" v-model="sessionForm.time">
                 </div>
               </div>
 
               <div class="field">
                 <label class="label">¿Qué día se jugó?</label>
-                <div class="control">
-                  <input class="input" type="date" v-model="today" placeholder="Fecha de juego">
+                <div class="control short-control">
+                  <input class="input" type="date" placeholder="Fecha de juego" v-model="sessionForm.day">
                 </div>
               </div>
 
               <!--Curso de la session-->
               <div class="field">
-                <label class="label">Curso</label>
-                <div class="control">
+                <label class="label">Curso o nivel</label>
+                <div class="control short-control">
                   <div class="select">
-                    <select>
-                      <option>1° Básico</option>
-                      <option>2° Básico</option>
-                      <option>3° Básico</option>
-                      <option>4° Básico</option>
-                      <option>5° Básico</option>
-                      <option>6° Básico</option>
-                      <option>7° Básico</option>
-                      <option>8° Básico</option>
-                      <option>1° Medio</option>
-                      <option>2° Medio</option>
-                      <option>3° Medio</option>
-                      <option>4° Medio</option>
+                    <b-select placeholder="Selecciona un curso" v-model="sessionForm.course" required>
+                      <option value="1">1° Básico</option>
+                      <option value="2">2° Básico</option>
+                      <option value="3">3° Básico</option>
+                      <option value="4">4° Básico</option>
+                      <option value="5">5° Básico</option>
+                      <option value="6">6° Básico</option>
+                      <option value="7">7° Básico</option>
+                      <option value="8">8° Básico</option>
+                      <option value="9">1° Medio</option>
+                      <option value="10">2° Medio</option>
+                      <option value="11">3° Medio</option>
+                      <option value="12">4° Medio</option>
+                    </b-select>
+                  </div>
+                </div>
+              </div>
+
+            <!--ODS Section: 2 yes/no questions about each ODS (4 and 5) each with a help modal to explain is ODS About -->
+
+            <h4 class="subtitle black-font">Preguntas sobre el cumplimiento de ODS</h4>
+
+            <div>
+                <!-- <b-button
+                  label="¿Que son los ODS?"
+                  @click="isHelperActive = !isHelperActive" /> -->
+                <b-message 
+                    title="Saber más sobre los ODS" 
+                    v-model="isHelperActive" 
+                    >
+                    Los Objetivos de Desarrollo Sostenible (ODS) son un llamado universal a la acción para poner fin a la pobreza, proteger el planeta y garantizar que todas las personas gocen de paz y prosperidad. Estos 17 Objetivos son interdependientes y se equilibran entre las tres dimensiones del desarrollo sostenible: la económica, la social y la ambiental.
+                    Las siguientes preguntas te ayudarán a identificar si este juego contribuye al ODS 4 y 5.
+                </b-message>
+
+            </div>
+
+              <div class="field">
+                <label class="label">¿Los materiales usados fueron adecuados para el aprendizaje?</label>
+                <div class="control short-control">
+                  <div class="select">
+                    <select v-model="sessionForm.ods_4_material" required>
+                      <option value="1">Si</option>
+                      <option value="0">No</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">¿La actividad estimuló el interés de los estudiantes?</label>
+                <div class="control short-control">
+                  <div class="select">
+                    <select v-model="sessionForm.ods_4_motivation" required>
+                      <option value="1">Si</option>
+                      <option value="0">No</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">¿Se promovío la participación equitativa de todos los géneros?</label>
+                <div class="control short-control">
+                  <div class="select">
+                    <select v-model="sessionForm.ods_5_gender" required>
+                      <option value="1">Si</option>
+                      <option value="0">No</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">¿Se evitaron los estereotipos de género en la interacción y el material?</label>
+                <div class="control short-control">
+                  <div class="select">
+                    <select v-model="sessionForm.ods_5_stereotypes" required>
+                      <option value="1">Si</option>
+                      <option value="0">No</option>
                     </select>
                   </div>
                 </div>
               </div>
 
-              <div class="field">
-                <label class="label">Subir foto de la sesión</label>
-                <div class="control">
-                  <input class="input" type="file" placeholder="Foto de la sesión">
-                </div>
-              </div>
-
               <div class="field is-grouped">
                 <div class="control">
-                  <button type="button" @click.prevent="recordSession()" class="button is-link">Registrar</button>
+                  <button type="submit" class="button is-link">Registrar</button>
                 </div>
-                <div class="control">
+                <!-- <div class="control">
                   <button @click.prevent="isSessionModalActive = false" class="button is-link is-light">Cancelar</button>
-                </div>
+                </div> -->
               </div>
             </form>
           </div>
@@ -310,6 +401,19 @@ const PLAYSET_AXES = {
   ]
 }
 
+const cleanForm = {
+  students: 0,
+  games: [],
+  day: "",
+  course: "",
+  time: "",
+  picture: "",
+  ods_4_material: null,
+  ods_4_motivation: null,
+  ods_5_gender: null,
+  ods_5_stereotypes: null,
+}
+
 export default {
   name: 'Game',
   data() {
@@ -321,6 +425,11 @@ export default {
       currentPlayset: {
         playset_type: "TODOS LOS JUEGOS"
       },
+      file: null,
+      isHelperActive: false,
+      sessionForm: {
+        ...cleanForm
+      },
       allDifficulties: {
         level_1: "inicial",
         level_2: "intermedio",
@@ -331,16 +440,18 @@ export default {
     }
   },
   mounted () {
+    const vm = this
     this.$store.dispatch('gameStore/show', this.$router.currentRoute.params.gameId)
+      .then(() => {
+        this.$store.dispatch('gameStore/index', vm.$router.currentRoute.query.playsetId)
+      })
     if(this.playsets.length > 0){
       this.currentPlayset = this.playsets.find( (pl) => pl.id == this.$router.currentRoute.query.playsetId)
       this.activeTab = 0
     }
-  },
-  watch: {
-    '$route.params.gameId': function (id) {
-      this.$store.dispatch('gameStore/show', id)
-    }
+    
+    this.sessionForm.day = this.today
+    
   },
  computed: {
     currentGame () {
@@ -352,7 +463,20 @@ export default {
     playsets () {
       return this.$store.state.playsetStore.playsets.filter((pl) => !pl.disabled)
     },
+    filteredGames () {
+      return this.$store.state.gameStore.games.map( (game) => {
+        return {
+          id: game.id,
+          name: game.name
+        }
+      })
+    },
  },
+ watch: {
+    currentGame () {
+      this.sessionForm.games = [this.currentGame.id]
+    }
+  },
   methods: {
     hasSelCategory(currentGame, categoryNumber){
       let flag = false;
@@ -379,15 +503,7 @@ export default {
       this.isSessionModalActive = true
      },
      goBack(){
-       this.$router.go(-1)
-     },
-     recordSession(){
-        this.$confetti.start();
-        this.isSessionModalActive = false
-        const vm = this
-        setTimeout(() => {
-          vm.$confetti.stop();
-        }, 2000);
+       this.$router.push("/playsets", { query: { playsetId: this.currentPlayset.id }})
      },
      teacherAnswer(){
       window.open("https://api.whatsapp.com/send?phone=56964021713", '_blank')
@@ -399,7 +515,7 @@ export default {
           type: "html",
           targetStyles: ['*'],
           header: `Ficha de juego: ${this.currentGame.name}`,
-          documentTitle: 'Playroom 2022',
+          documentTitle: 'Playroom 2024',
           headerStyle: 'font-weight: 300; font-family: Righteous',
           ignoreElements: ['game-video', 'game-sels'],
           onError: function  (error) {
@@ -407,7 +523,27 @@ export default {
           }
         }  
       )
-     }
+     },
+     sendForm() {
+      console.log(this.sessionForm)
+      this.$store.dispatch('gameStore/createSession', {
+        ...this.sessionForm,
+        picture: this.file
+      })
+      .then(() => {
+        this.isSessionModalActive = false
+        this.$confetti.start();
+        
+        const vm = this
+        setTimeout(() => {
+          vm.$confetti.stop();
+          vm.sessionForm = {
+            ...cleanForm
+          }
+          vm.file = null
+        }, 2000);
+      })
+    }
   }
 };
 </script>
@@ -450,6 +586,9 @@ export default {
     .description{
       text-align: justify;
     }
+    .content{
+      padding: 20px;
+    }
   }
 
   .difficulty{
@@ -460,6 +599,10 @@ export default {
       text-transform: uppercase;
       position: relative;
       top: 15px;
+      @media (max-width: 768px){
+        top: -5px;
+        text-align: center;
+      }
     }
     .column{
       padding: 0;

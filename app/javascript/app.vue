@@ -145,6 +145,10 @@ html, body, pre, code, kbd, samp, button, a, input{
 	font-family: 'Righteous', cursive;
 }
 
+.text-center{
+  text-align: center;
+}
+
 .school-dd{
   overflow-y: auto;
   width: 280px;
@@ -166,7 +170,7 @@ html, body, pre, code, kbd, samp, button, a, input{
   background-color: white;
   height: 130px;
   .navbar-burger{
-    color: white;
+    color: black;
     position: relative;
     top: 30px;
     left: 10px;
@@ -286,7 +290,7 @@ html, body, pre, code, kbd, samp, button, a, input{
     span{
       position: relative;
       top: 25px;
-        @media(max-width: 414px) {
+      @media(max-width: 414px) {
         top: 0px;
       }
     }
@@ -325,6 +329,14 @@ html, body, pre, code, kbd, samp, button, a, input{
   section{
     background: #f0f8ff;
     padding: 80px;
+    @media(max-width: 414px) {
+      padding: 50px;
+    }
+  }
+  .short-control{
+    width: 150px;
+    display: block;
+    margin: auto;
   }
 }
 

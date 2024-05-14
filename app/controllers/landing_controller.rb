@@ -94,6 +94,35 @@ class LandingController < ApplicationController
 		render json: formatted_res
 	end
 
+	def new_teacher_session
+		sessions = []
+		sessions_errors = []
+		params[:games].each do |game|
+			new_session = TeacherSession.new(
+				user_id: current_user.id,
+				game_id: game,
+				number_of_students: params[:students],
+				subject: params[:time],
+				played_at: params[:day],
+				grade: params[:course].to_i,
+				ods_4_material:	params[:ods_4_material].to_i,
+				ods_4_motivation:	params[:ods_4_motivation].to_i,
+				ods_5_gender:	params[:ods_5_gender].to_i,
+				ods_5_stereotypes:	params[:ods_5_stereotypes].to_i
+			)
+			if new_session.save
+				sessions << new_session
+			else
+				sessions_errors << new_session.errors
+			end
+		end
+		if sessions_errors.any?
+			render json: { errors: sessions_errors }, status: 400
+		else
+			render json: sessions, status: 200
+		end
+	end
+
 	private
 	
 	def get_default_img playset

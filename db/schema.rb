@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_07_17_232419) do
+ActiveRecord::Schema.define(version: 2024_05_14_022917) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pg_stat_statements"
   enable_extension "plpgsql"
 
   create_table "active_admin_comments", force: :cascade do |t|
@@ -99,6 +100,7 @@ ActiveRecord::Schema.define(version: 2023_07_17_232419) do
     t.string "contact_email"
     t.string "contact_phone"
     t.index ["commune_id"], name: "index_establishments_on_commune_id"
+    t.index ["rbd", "rbd"], name: "unique_rbd", unique: true
   end
 
   create_table "experiences", force: :cascade do |t|
@@ -223,6 +225,23 @@ ActiveRecord::Schema.define(version: 2023_07_17_232419) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "teacher_sessions", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "game_id", null: false
+    t.integer "number_of_students"
+    t.string "subject"
+    t.datetime "played_at"
+    t.integer "grade"
+    t.boolean "ods_4_material"
+    t.boolean "ods_4_motivation"
+    t.boolean "ods_5_gender"
+    t.boolean "ods_5_stereotypes"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["game_id"], name: "index_teacher_sessions_on_game_id"
+    t.index ["user_id"], name: "index_teacher_sessions_on_user_id"
+  end
+
   create_table "user_establishments", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "establishment_id"
@@ -271,6 +290,8 @@ ActiveRecord::Schema.define(version: 2023_07_17_232419) do
   add_foreign_key "game_skills", "games"
   add_foreign_key "game_skills", "skills"
   add_foreign_key "playsets", "establishments"
+  add_foreign_key "teacher_sessions", "games"
+  add_foreign_key "teacher_sessions", "users"
   add_foreign_key "user_establishments", "establishments"
   add_foreign_key "user_establishments", "users"
 end

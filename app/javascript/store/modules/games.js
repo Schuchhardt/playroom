@@ -89,6 +89,23 @@ const gameStore = {
     inSkill(context, skills_ids) {
       context.commit('setSkillFilters', skills_ids)
     },
+    createSession(context, session) {
+      return fetch(`/landing/create_teacher_session`, {
+          headers:{
+            'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          method: "POST",
+          body: JSON.stringify(session)
+        })
+        .then(response => {
+          response.json()
+            .then( (r) => console.log('createSession', r) )
+        }, error => {
+          console.log(error)
+        });
+    },
   },
   getters: {
     gamesFiltered: state => {

@@ -1,0 +1,52 @@
+# == Schema Information
+#
+# Table name: teacher_sessions
+#
+#  id                 :bigint(8)        not null, primary key
+#  grade              :integer
+#  number_of_students :integer
+#  ods_4_material     :boolean
+#  ods_4_motivation   :boolean
+#  ods_5_gender       :boolean
+#  ods_5_stereotypes  :boolean
+#  played_at          :datetime
+#  subject            :string
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  game_id            :bigint(8)        not null
+#  user_id            :bigint(8)        not null
+#
+# Indexes
+#
+#  index_teacher_sessions_on_game_id  (game_id)
+#  index_teacher_sessions_on_user_id  (user_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (game_id => games.id)
+#  fk_rails_...  (user_id => users.id)
+#
+
+one:
+  user_id: one
+  game_id: one
+  number_of_students: 1
+  subject: MyString
+  played_at: 2024-05-13 22:29:17
+  grade: 1
+  ods_4_material: false
+  ods_4_motivation: false
+  ods_5_gender: false
+  ods_5_stereotypes: false
+
+two:
+  user_id: two
+  game_id: two
+  number_of_students: 1
+  subject: MyString
+  played_at: 2024-05-13 22:29:17
+  grade: 1
+  ods_4_material: false
+  ods_4_motivation: false
+  ods_5_gender: false
+  ods_5_stereotypes: false
