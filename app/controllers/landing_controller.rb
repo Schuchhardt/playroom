@@ -109,6 +109,7 @@ class LandingController < ApplicationController
 				ods_4_motivation:	params[:ods_4_motivation].to_i,
 				ods_5_gender:	params[:ods_5_gender].to_i,
 				ods_5_stereotypes:	params[:ods_5_stereotypes].to_i
+				picture_url: params[:picture]
 			)
 			if new_session.save
 				sessions << new_session
@@ -122,18 +123,21 @@ class LandingController < ApplicationController
 			render json: sessions, status: 200
 		end
 	end
-
+	
 	def presigned_url
 		s3_client = Aws::S3::Client.new(
-			access_key_id: Rails.application.credentials.aws[:access_key_id],
-			secret_access_key: Rails.application.credentials.aws[:secret_access_key],
-			region: Rails.application.credentials.aws[:region]
+			access_key_id: ENV['AWS_S3_ACCESS_KEY_ID'],
+			secret_access_key: ENV['AWS_S3_SECRET_ACCESS_KEY'],
+			region: ENV['AWS_S3_REGION']
 		)
+
+		s3_presigner = Aws::S3::Presigner.new(client: s3_client)
+
 		
-		bucket = Rails.application.credentials.aws[:bucket]
+		bucket = ENV['AWS_S3_BUCKET_NAME']
 		object_key = params[:filename]
-		final_url = "https://#{bucket}.s3.#{Rails.application.credentials.aws[:region]}.amazonaws.com/#{object_key}"
-		presigned_url = s3_client.presigned_url(:put_object, bucket: bucket, key: object_key, acl: 'public-read')
+		final_url = "https://#{bucket}.s3.#{ENV['AWS_S3_REGION']}.amazonaws.com/#{object_key}"
+		presigned_url = s3_presigner.presigned_url(:put_object, bucket: bucket, key: object_key, acl: 'public-read')
 	
 		render json: { url: presigned_url, final_url: final_url }
 	end

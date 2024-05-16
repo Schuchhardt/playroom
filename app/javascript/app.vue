@@ -19,20 +19,20 @@
             <span class="icon">
               <i class="fas fa-archway" aria-hidden="true"></i>
             </span>
-            <span>Ludotecas</span>
+            <span class="righteous">Ludotecas</span>
           </router-link>
           
           <router-link class="navbar-item" to="/resources">
             <span class="icon">
               <i class="fas fa-archive" aria-hidden="true"></i>
             </span>
-            <span>Recursos</span>
+            <span class="righteous">Recursos</span>
           </router-link>
           <router-link class="navbar-item" to="/stats">
             <span class="icon">
               <i class="fas fa-chart-bar" aria-hidden="true"></i>
             </span>
-            <span>Estadísticas</span>
+            <span class="righteous">Estadísticas</span>
           </router-link>
         </div>
         <div class="navbar-end">
@@ -53,6 +53,7 @@
                     <b-button
                         :label="currentEstablishment.name"
                         type="is-primary"
+                        class="righteous"
                         :icon-right="active ? 'menu-up' : 'menu-down'" />
                 </template>
                 <b-dropdown-item class="ditem" v-for="est in allEstablishments" aria-role="listitem" :key="est.id" @click="changeSchool(est)">{{est.name}}</b-dropdown-item>
@@ -122,11 +123,7 @@ export default {
 
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css?family=Righteous');
-
-body{
-	background-color: #1f1c43;
-}
-
+@import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
 html{
   @media(max-width: 414px) {
     min-width: 103vw;
@@ -134,11 +131,19 @@ html{
 }
 
 #app {
-  font-family: 'Righteous', cursive;
+  font-family: 'Righteous', cursive !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: white;
+  width: 100vw;
+}
+.righteous{
+  font-family: 'Righteous', cursive !important;
+}
+
+.b-tabs span{
+  font-family: 'Righteous', cursive !important;
 }
 
 html, body, pre, code, kbd, samp, button, a, input{
@@ -169,10 +174,11 @@ html, body, pre, code, kbd, samp, button, a, input{
 .navbar{
   background-color: white;
   height: 130px;
+  box-shadow: 1px 1px #ddd;
   .navbar-burger{
     color: black;
     position: relative;
-    top: 30px;
+    top: 20px;
     left: 10px;
   }
   &.nav-fixed{
@@ -338,6 +344,41 @@ html, body, pre, code, kbd, samp, button, a, input{
     display: block;
     margin: auto;
   }
+
+  .register-session-btn{
+    display: block;
+    margin: auto;
+    width: 300px;
+    margin-top: 40px;
+  }
 }
+
+.lds-dual-ring {
+  margin-top: 15px;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 24px;
+  height: 24px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #fcf;
+  border-color: #fcf transparent #fcf transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 
 </style>

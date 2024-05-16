@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_05_14_022917) do
+ActiveRecord::Schema.define(version: 2024_05_16_182020) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_stat_statements"
@@ -238,6 +238,7 @@ ActiveRecord::Schema.define(version: 2024_05_14_022917) do
     t.boolean "ods_5_stereotypes"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "picture_url"
     t.index ["game_id"], name: "index_teacher_sessions_on_game_id"
     t.index ["user_id"], name: "index_teacher_sessions_on_user_id"
   end

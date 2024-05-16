@@ -155,6 +155,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_dist_vue_esm__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue/dist/vue.esm */ "./node_modules/vue/dist/vue.esm.js");
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vuex_persist__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuex-persist */ "./node_modules/vuex-persist/dist/esm/index.js");
 /* harmony import */ var _modules_playsets__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/playsets */ "./app/javascript/store/modules/playsets.js");
 /* harmony import */ var _modules_games__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/games */ "./app/javascript/store/modules/games.js");
 /* harmony import */ var _modules_establishments__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/establishments */ "./app/javascript/store/modules/establishments.js");
@@ -167,14 +168,20 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 vue_dist_vue_esm__WEBPACK_IMPORTED_MODULE_4__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_5__["default"]);
+const vuexLocal = new vuex_persist__WEBPACK_IMPORTED_MODULE_6__["default"]({
+  storage: window.localStorage,
+  modules: ['playsetStore', 'gameStore', 'establishmentStore', 'resourceStore'] // Specify modules to persist
+});
 /* harmony default export */ __webpack_exports__["default"] = (new vuex__WEBPACK_IMPORTED_MODULE_5__["default"].Store({
   modules: {
     playsetStore: _modules_playsets__WEBPACK_IMPORTED_MODULE_0__["default"],
     gameStore: _modules_games__WEBPACK_IMPORTED_MODULE_1__["default"],
     establishmentStore: _modules_establishments__WEBPACK_IMPORTED_MODULE_2__["default"],
     resourceStore: _modules_resources__WEBPACK_IMPORTED_MODULE_3__["default"]
-  }
+  },
+  plugins: [vuexLocal.plugin] // Add the VuexPersistence plugin here
 }));
 
 /***/ }),
@@ -618,6 +625,7 @@ const cleanForm = {
         playset_type: "TODOS LOS JUEGOS"
       },
       file: null,
+      fileUrl: null,
       isHelperActive: false,
       sessionForm: {
         ...cleanForm
@@ -664,11 +672,13 @@ const cleanForm = {
   watch: {
     currentGame() {
       this.sessionForm.games = [this.currentGame.id];
-      //   {
-      //     id: this.currentGame.id,
-      //     name: this.currentGame.name,
-      //   }
-      // ]
+    },
+    file(newFile) {
+      if (newFile) {
+        console.log('Subiendo archivo...');
+        console.log(newFile);
+        this.uploadFile(newFile);
+      }
     }
   },
   methods: {
@@ -720,11 +730,41 @@ const cleanForm = {
         }
       });
     },
+    async uploadFile(file) {
+      const filename = file.name;
+      try {
+        // Obtener la URL presignada del servidor
+        const response = await fetch(`/landing/presigned_url?filename=${filename}`);
+        const data = await response.json();
+        const presignedUrl = data.url;
+        const finalUrl = data.final_url;
+        console.log('URL presignada:', presignedUrl);
+        console.log('URL final:', finalUrl);
+        // Subir el archivo a S3 usando la URL presignada
+        const result = await fetch(presignedUrl, {
+          method: 'PUT',
+          body: file,
+          headers: {
+            'Content-Type': file.type
+          }
+        });
+        console.log(result);
+        if (result.ok) {
+          this.fileUrl = finalUrl;
+          console.log('Archivo subido correctamente');
+        } else {
+          console.error('Error al subir el archivo');
+        }
+      } catch (error) {
+        console.log('Error al subir el archivo');
+        console.error('Error:', error);
+      }
+    },
     sendForm() {
       console.log(this.sessionForm);
       this.$store.dispatch('gameStore/createSession', {
         ...this.sessionForm,
-        picture: this.file
+        picture: this.fileUrl
       }).then(() => {
         this.isSessionModalActive = false;
         this.$confetti.start();
@@ -734,6 +774,7 @@ const cleanForm = {
           vm.sessionForm = {
             ...cleanForm
           };
+          vm.file = null;
         }, 2000);
       });
     }
@@ -1097,7 +1138,9 @@ var render = function render() {
     attrs: {
       "aria-hidden": "true"
     }
-  })]), _vm._v(" "), _c("span", [_vm._v("Ludotecas")])]), _vm._v(" "), _c("router-link", {
+  })]), _vm._v(" "), _c("span", {
+    staticClass: "righteous"
+  }, [_vm._v("Ludotecas")])]), _vm._v(" "), _c("router-link", {
     staticClass: "navbar-item",
     attrs: {
       to: "/resources"
@@ -1109,7 +1152,9 @@ var render = function render() {
     attrs: {
       "aria-hidden": "true"
     }
-  })]), _vm._v(" "), _c("span", [_vm._v("Recursos")])]), _vm._v(" "), _c("router-link", {
+  })]), _vm._v(" "), _c("span", {
+    staticClass: "righteous"
+  }, [_vm._v("Recursos")])]), _vm._v(" "), _c("router-link", {
     staticClass: "navbar-item",
     attrs: {
       to: "/stats"
@@ -1121,7 +1166,9 @@ var render = function render() {
     attrs: {
       "aria-hidden": "true"
     }
-  })]), _vm._v(" "), _c("span", [_vm._v("Estadísticas")])])], 1), _vm._v(" "), _c("div", {
+  })]), _vm._v(" "), _c("span", {
+    staticClass: "righteous"
+  }, [_vm._v("Estadísticas")])])], 1), _vm._v(" "), _c("div", {
     staticClass: "navbar-end"
   }, [_c("div", {
     staticClass: "navbar-item"
@@ -1158,6 +1205,7 @@ var render = function render() {
         active
       }) {
         return [_c("b-button", {
+          staticClass: "righteous",
           attrs: {
             label: _vm.currentEstablishment.name,
             type: "is-primary",
@@ -1165,7 +1213,7 @@ var render = function render() {
           }
         })];
       }
-    }], null, false, 2894929811)
+    }], null, false, 2461101727)
   }, [_vm._v(" "), _vm._l(_vm.allEstablishments, function (est) {
     return _c("b-dropdown-item", {
       key: est.id,
@@ -1379,7 +1427,10 @@ var render = function render() {
       "aria-label": "breadcrumbs"
     }
   }, [_c("ul", {
-    staticClass: "navbar-start"
+    staticClass: "navbar-start",
+    staticStyle: {
+      "padding-top": "10px"
+    }
   }, [_vm.currentPlayset ? _c("li", {
     staticClass: "navbar-item"
   }, [_c("a", {
@@ -1400,12 +1451,12 @@ var render = function render() {
       "aria-hidden": "true"
     }
   }), _vm._v(" "), _c("span", {
-    staticClass: "text"
+    staticClass: "text righteous"
   }, [_vm._v(" " + _vm._s(_vm.currentPlayset.playset_type) + " ")])])])]) : _vm._e()])]), _vm._v(" "), _vm.loading ? _c("div", {
     staticClass: "column is-full-mobile"
-  }, [_c("p", {
-    staticClass: "bd-notification is-info"
-  }, [_vm._v("Cargando...")])]) : _vm._e(), _vm._v(" "), !_vm.loading ? _c("div", {
+  }, [_c("div", {
+    staticClass: "lds-dual-ring"
+  })]) : _vm._e(), _vm._v(" "), !_vm.loading ? _c("div", {
     staticClass: "columns",
     attrs: {
       id: "game"
@@ -1413,11 +1464,11 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "column is-full-mobile"
   }, [_c("p", {
-    staticClass: "title is-4"
+    staticClass: "title is-4 righteous"
   }, [_vm._v(_vm._s(_vm.currentGame.name))]), _vm._v(" "), _c("p", {
     staticClass: "bd-notification is-info"
   }, [_c("img", {
-    staticClass: "game-img",
+    staticClass: "game-img animate__animated animate__zoomIn",
     attrs: {
       src: _vm.currentGame.image_url,
       alt: "Imagen Juego"
@@ -1430,7 +1481,9 @@ var render = function render() {
         return _vm.goToPDF();
       }
     }
-  }, [_vm._m(0), _vm._v(" "), _c("span", [_vm._v(" Ver ficha técnica")])]) : _vm._e(), _vm._v(" "), _c("button", {
+  }, [_vm._m(0), _vm._v(" "), _c("span", {
+    staticClass: "righteous"
+  }, [_vm._v(" Ver ficha técnica")])]) : _vm._e(), _vm._v(" "), _c("button", {
     staticClass: "button is-warning session-btn",
     on: {
       click: function ($event) {
@@ -1438,7 +1491,9 @@ var render = function render() {
         return _vm.openSessionModal();
       }
     }
-  }, [_vm._m(1), _vm._v(" "), _c("span", [_vm._v(" Registrar sesión con este juego")])])]), _vm._v(" "), _c("div", {
+  }, [_vm._m(1), _vm._v(" "), _c("span", {
+    staticClass: "righteous"
+  }, [_vm._v(" Registrar sesión con este juego")])])]), _vm._v(" "), _c("div", {
     staticClass: "column is-full-mobile"
   }, [_vm.currentGame.difficulty ? _c("div", {
     staticClass: "columns difficulty"
@@ -1485,8 +1540,9 @@ var render = function render() {
       alt: _vm.currentGame.difficulty
     }
   })])], 1)]) : _vm._e(), _vm._v(" "), _c("br"), _vm._v(" "), _c("p", {
-    staticClass: "how"
+    staticClass: "how righteous"
   }, [_vm._v(" ¿Cómo se juega?")]), _vm._v(" "), _vm.currentGame.youtube_embed_url ? _c("div", {
+    staticClass: "animate__animated animate__zoomIn",
     attrs: {
       id: "game-video"
     }
@@ -1499,9 +1555,20 @@ var render = function render() {
     }
   })]) : _vm._e(), _vm._v(" "), _c("br"), _vm._v(" "), _c("div", {
     staticClass: "content"
-  }, [_vm.currentGame.game_type ? _c("p", [_c("strong", [_vm._v("Tipo de juego:")]), _vm._v(" "), _c("span", {
+  }, [_vm.currentGame.game_type ? _c("p", [_vm._m(3), _vm._v(" "), _c("strong", {
+    staticClass: "righteous"
+  }, [_vm._v("Tipo de juego:")]), _vm._v(" "), _c("span", {
     staticClass: "is-warning capitalized"
-  }, [_vm._v(_vm._s(_vm.currentGame.game_type))])]) : _vm._e(), _vm._v(" "), _c("p", [_vm._m(3), _vm._v(" "), _c("strong", [_vm._v("Edad sugerida:")]), _vm._v(" " + _vm._s(_vm.currentGame.suggested_age) + "\n            ")]), _vm._v(" "), _c("p", [_vm._m(4), _vm._v(" "), _c("strong", [_vm._v("Tiempo de juego:")]), _vm._v(" " + _vm._s(_vm.currentGame.game_time) + "\n            ")]), _vm._v(" "), _c("p", [_vm._m(5), _vm._v(" "), _c("strong", [_vm._v("Nro de Jugadores:")]), _vm._v(" " + _vm._s(_vm.currentGame.number_of_players) + "\n            ")]), _vm._v(" "), _vm.currentGame.description ? _c("p", [_vm._m(6), _vm._v(" "), _c("strong", [_vm._v("Descripción:")]), _vm._v(" " + _vm._s(_vm.currentGame.description) + "\n            ")]) : _vm._e(), _vm._v(" "), _c("br")])])]) : _vm._e(), _vm._v(" "), _vm.currentGame ? _c("b-tabs", {
+  }, [_vm._v(_vm._s(_vm.currentGame.game_type))])]) : _vm._e(), _vm._v(" "), _c("p", [_vm._m(4), _vm._v(" "), _c("strong", {
+    staticClass: "righteous"
+  }, [_vm._v("Edad sugerida:")]), _vm._v(" " + _vm._s(_vm.currentGame.suggested_age) + "\n            ")]), _vm._v(" "), _c("p", [_vm._m(5), _vm._v(" "), _c("strong", {
+    staticClass: "righteous"
+  }, [_vm._v("Tiempo de juego:")]), _vm._v(" " + _vm._s(_vm.currentGame.game_time) + "\n            ")]), _vm._v(" "), _c("p", [_vm._m(6), _vm._v(" "), _c("strong", {
+    staticClass: "righteous"
+  }, [_vm._v("Nro de Jugadores:")]), _vm._v(" " + _vm._s(_vm.currentGame.number_of_players) + "\n            ")]), _vm._v(" "), _vm.currentGame.description ? _c("p", [_vm._m(7), _vm._v(" "), _c("strong", {
+    staticClass: "righteous"
+  }, [_vm._v("Descripción:")]), _vm._v(" " + _vm._s(_vm.currentGame.description) + "\n            ")]) : _vm._e(), _vm._v(" "), _c("br")])])]) : _vm._e(), _vm._v(" "), _vm.currentPlayset && _vm.currentGame ? _c("b-tabs", {
+    staticClass: "righteous animate__animated animate__backInUp animate__delay-2s",
     model: {
       value: _vm.activeTab,
       callback: function ($$v) {
@@ -1705,7 +1772,7 @@ var render = function render() {
         "aria-hidden": "true"
       }
     })]), _vm._v(" " + _vm._s(idp) + "\n                ")]);
-  }), 0)]) : _vm._e()])], 1) : _vm._e(), _vm._v(" "), _c("div", {
+  }), 0)]) : _vm._e()])], 1) : _vm._e(), _vm._v(" "), _vm.loading ? _c("div", {
     staticClass: "columns"
   }, [_c("div", {
     staticClass: "column"
@@ -1739,7 +1806,7 @@ var render = function render() {
       src: "https://i.ibb.co/ZhhQG4y/proferesponde.png",
       alt: "Profesor Responde"
     }
-  })])])]), _vm._v(" "), _c("br"), _vm._v(" "), _vm.currentGame.related_games.length > 0 ? _c("div", {
+  })])])]) : _vm._e(), _vm._v(" "), _c("br"), _vm._v(" "), !_vm.loading && _vm.currentGame.related_games.length > 0 ? _c("div", {
     staticClass: "columns games-grid"
   }, [_c("p", {
     staticClass: "t"
@@ -1795,9 +1862,9 @@ var render = function render() {
         _vm.isPDFOpen = $event;
       }
     }
-  }, [_vm.currentGame ? _c("section", [_c("iframe", {
+  }, [_vm.currentGame && _vm.currentGame.pdf_url ? _c("section", [_c("iframe", {
     attrs: {
-      src: _vm.currentGame.pdf_url.replace("view?usp=drive_link", "preview"),
+      src: _vm.currentGame.pdf_url?.replace("view?usp=drive_link", "preview"),
       height: "480",
       allow: "autoplay"
     }
@@ -1947,9 +2014,14 @@ var render = function render() {
       expression: "sessionForm.time"
     }],
     staticClass: "input",
+    staticStyle: {
+      width: "320px",
+      display: "block",
+      margin: "auto"
+    },
     attrs: {
       type: "text",
-      placeholder: "Por ejemplo: En la hora de Orientación"
+      placeholder: "Ej: En la hora de Orientación"
     },
     domProps: {
       value: _vm.sessionForm.time
@@ -2217,11 +2289,11 @@ var render = function render() {
       value: "0"
     }
   }, [_vm._v("No")])])])])]), _vm._v(" "), _c("div", {
-    staticClass: "field is-grouped"
+    staticClass: "field"
   }, [_c("div", {
     staticClass: "control"
   }, [_c("button", {
-    staticClass: "button is-link",
+    staticClass: "button is-link register-session-btn",
     attrs: {
       type: "submit"
     }
@@ -2254,7 +2326,20 @@ var staticRenderFns = [function () {
     _c = _vm._self._c;
   return _c("div", {
     staticClass: "column is-full-mobile"
-  }, [_c("p", [_vm._v("Nivel de Dificultad")])]);
+  }, [_c("p", {
+    staticClass: "righteous"
+  }, [_vm._v("Nivel de Dificultad")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("span", {
+    staticClass: "icon"
+  }, [_c("i", {
+    staticClass: "fas fa-gamepad",
+    attrs: {
+      "aria-hidden": "true"
+    }
+  })]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -2324,7 +2409,7 @@ var render = function render() {
     staticClass: "games container-fluid"
   }, [_vm.loading ? _c("div", {
     staticClass: "lds-dual-ring"
-  }, [_c("div")]) : _vm._e(), _vm._v(" "), _c("section", [_vm.currentPlayset ? _c("nav", {
+  }) : _vm._e(), _vm._v(" "), _c("section", [_vm.currentPlayset ? _c("nav", {
     staticClass: "breadcrumb",
     attrs: {
       "aria-label": "breadcrumbs"
@@ -2341,7 +2426,7 @@ var render = function render() {
       }
     }
   }, [_vm._m(0)])]), _vm._v(" "), _c("li", {
-    staticClass: "navbar-item is-active"
+    staticClass: "navbar-item is-active righteous animate__animated animate__fadeInDown"
   }, [_vm._v(" " + _vm._s(_vm.currentPlayset.playset_type))])])]) : _vm._e()]), _vm._v(" "), _c("div", {
     staticClass: "container-fluid is-fullhd"
   }, [_c("div", {
@@ -2412,32 +2497,15 @@ var render = function render() {
     }, [_c("div", {
       staticClass: "card-header"
     }, [_c("p", {
-      staticClass: "title"
+      staticClass: "title righteous"
     }, [_vm._v(_vm._s(g.name))])]), _vm._v(" "), _c("div", {
       staticClass: "card-image"
     }, [_c("figure", {
-      staticClass: "image"
-    }, [g.image_url ? _c("img", {
-      directives: [{
-        name: "lazy",
-        rawName: "v-lazy",
-        value: g.image_url,
-        expression: "g.image_url"
-      }],
-      attrs: {
-        alt: "ludoteca"
+      staticClass: "image animate__animated animate__zoomIn",
+      style: {
+        "background-image": "url(" + g.image_url + ")"
       }
-    }) : _vm._e(), _vm._v(" "), !g.image_url ? _c("img", {
-      directives: [{
-        name: "lazy",
-        rawName: "v-lazy",
-        value: "https://i.imgur.com/Erx03u5.png",
-        expression: "'https://i.imgur.com/Erx03u5.png'"
-      }],
-      attrs: {
-        alt: "ludoteca"
-      }
-    }) : _vm._e()])])])]);
+    })])])]);
   })], 2) : _vm._e()])])]), _vm._v(" "), _c("div", {
     staticClass: "filter-container"
   }, [_c("button", {
@@ -2461,7 +2529,7 @@ var staticRenderFns = [function () {
       "aria-hidden": "true"
     }
   }), _vm._v(" "), _c("span", {
-    staticClass: "text"
+    staticClass: "text righteous"
   }, [_vm._v(" LUDOTECAS ")])]);
 }, function () {
   var _vm = this,
@@ -2510,7 +2578,7 @@ var render = function render() {
     }, [_c("div", {
       staticClass: "card-header"
     }, [_c("p", {
-      staticClass: "title"
+      staticClass: "title righteous"
     }, [_vm._v(_vm._s(playset.playset_type))])]), _vm._v(" "), _c("div", {
       staticClass: "card-image",
       on: {
@@ -2528,8 +2596,9 @@ var render = function render() {
         value: playset.image_url,
         expression: "playset.image_url"
       }],
+      staticClass: "animate__animated animate__fadeIn",
       attrs: {
-        alt: "ludoteca"
+        alt: playset.playset_type
       }
     }) : _vm._e()])])])]);
   }), 0)]), _vm._v(" "), _c("b-modal", {
@@ -2555,6 +2624,7 @@ var render = function render() {
   })]), _vm._v(" "), _c("br"), _vm._v(" "), _c("p", {
     staticClass: "bd-notification is-info"
   }, [_c("img", {
+    staticClass: "animate__animated animate__fadeInUp",
     attrs: {
       src: _vm.currentPlayset.image_url,
       alt: "Ludoteca"
@@ -2562,13 +2632,13 @@ var render = function render() {
   })])]), _vm._v(" "), _c("div", {
     staticClass: "column"
   }, [_c("p", {
-    staticClass: "title is-4"
-  }, [_vm._v(_vm._s(_vm.currentPlayset.playset_type))]), _vm._v(" "), _c("br"), _vm._v(" "), _c("p", [_c("strong", [_vm._v("Descripción:")])]), _c("p", {
+    staticClass: "title is-4 righteous"
+  }, [_vm._v(_vm._s(_vm.currentPlayset.playset_type))]), _vm._v(" "), _c("br"), _vm._v(" "), _c("p", [_c("strong", [_vm._v("Descripción:")])]), _vm._v(" "), _c("p", {
     staticClass: "bd-notification is-info description"
   }, [_vm._v(_vm._s(_vm.currentPlayset.description))]), _vm._v(" "), !_vm.currentPlayset.disabled ? _c("div", {
     staticClass: "content"
   }, [_c("button", {
-    staticClass: "button is-light",
+    staticClass: "button is-light animate__animated animate__bounceIn animate__delay-1s",
     on: {
       click: function ($event) {
         $event.preventDefault();
@@ -3373,7 +3443,7 @@ module.exports = __webpack_require__.p + "static/logo2024_white-8b8da78e1051b394
 },
 /******/ function(__webpack_require__) { // webpackRuntimeModules
 /******/ var __webpack_exec__ = function(moduleId) { return __webpack_require__(__webpack_require__.s = moduleId); }
-/******/ __webpack_require__.O(0, ["vendors-node_modules_buefy_dist_buefy_js-node_modules_vue-carousel_dist_vue-carousel_min_js-n-2064fa"], function() { return __webpack_exec__("./app/javascript/packs/application.js"); });
+/******/ __webpack_require__.O(0, ["vendors-node_modules_buefy_dist_buefy_js-node_modules_vue-carousel_dist_vue-carousel_min_js-n-ac2c9d"], function() { return __webpack_exec__("./app/javascript/packs/application.js"); });
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);

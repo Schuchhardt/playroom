@@ -5,20 +5,28 @@
 /*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-6.use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-6.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-6.use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./app/javascript/app.vue?vue&type=style&index=0&id=6fb8108a&lang=scss (1) ***!
   \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-body {
-  background-color: #1f1c43;
-}
+@import url(https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css);
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-6.use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-6.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-6.use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./app/javascript/app.vue?vue&type=style&index=0&id=6fb8108a&lang=scss (2) ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 @media (max-width: 414px) {
 html {
     min-width: 103vw;
 }
 }
 #app {
-  font-family: "Righteous", cursive;
+  font-family: "Righteous", cursive !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: white;
+  width: 100vw;
+}
+.righteous {
+  font-family: "Righteous", cursive !important;
+}
+.b-tabs span {
+  font-family: "Righteous", cursive !important;
 }
 html, body, pre, code, kbd, samp, button, a, input {
   font-family: "Righteous", cursive;
@@ -42,11 +50,12 @@ html, body, pre, code, kbd, samp, button, a, input {
 .navbar {
   background-color: white;
   height: 130px;
+  box-shadow: 1px 1px #ddd;
 }
 .navbar .navbar-burger {
   color: black;
   position: relative;
-  top: 30px;
+  top: 20px;
   left: 10px;
 }
 .navbar.nav-fixed {
@@ -204,6 +213,38 @@ html, body, pre, code, kbd, samp, button, a, input {
   display: block;
   margin: auto;
 }
+#session-modal .register-session-btn {
+  display: block;
+  margin: auto;
+  width: 300px;
+  margin-top: 40px;
+}
+.lds-dual-ring {
+  margin-top: 15px;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 24px;
+  height: 24px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #fcf;
+  border-color: #fcf transparent #fcf transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+0% {
+    transform: rotate(0deg);
+}
+100% {
+    transform: rotate(360deg);
+}
+}
 /*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-6.use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-6.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-6.use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./app/javascript/components/playsets.vue?vue&type=style&index=0&id=bfd72910&lang=scss&scoped=true ***!
   \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
@@ -240,8 +281,9 @@ html, body, pre, code, kbd, samp, button, a, input {
   font-size: 30px;
 }
 .playsets[data-v-bfd72910] .modal-content .description {
-  padding: 30px;
+  padding: 20px 30px 30px 30px;
   text-align: justify;
+  letter-spacing: normal;
 }
 .playsets[data-v-bfd72910] .modal-content button {
   background: transparent;
@@ -329,7 +371,6 @@ html, body, pre, code, kbd, samp, button, a, input {
 }
 .playset img[data-v-bfd72910] {
   background-color: #fabc58;
-  max-height: 280px;
 }
 .playset[data-v-bfd72910]:hover {
   opacity: 1;
@@ -365,7 +406,7 @@ html, body, pre, code, kbd, samp, button, a, input {
   padding-bottom: 100px;
 }
 .games .breadcrumb[data-v-d6b7fe44] {
-  padding: 10px 80px;
+  padding: 0px 80px;
 }
 .games .breadcrumb a[data-v-d6b7fe44] {
   color: white;
@@ -375,18 +416,27 @@ html, body, pre, code, kbd, samp, button, a, input {
   padding-left: 10px;
 }
 .games .breadcrumb li[data-v-d6b7fe44]::before {
-  margin-right: 10px;
+  display: none;
 }
 .games .breadcrumb .is-active[data-v-d6b7fe44] {
   color: white;
   padding-left: 30px;
+  font-size: 50px;
+  margin-left: 20%;
+}
+.games .breadcrumb .navbar-start[data-v-d6b7fe44] {
+  font-size: 20px;
+}
+.games .breadcrumb .navbar-item[data-v-d6b7fe44]:first-child {
+  position: relative;
+  top: 20px;
 }
 .games .is-fullhd[data-v-d6b7fe44] {
   padding: 0 20px;
 }
 .games .gamelist[data-v-d6b7fe44] {
   max-width: 100%;
-  margin-top: 30px;
+  padding-top: 20px;
 }
 .games .results-container[data-v-d6b7fe44] {
   width: 60%;
@@ -525,6 +575,9 @@ html, body, pre, code, kbd, samp, button, a, input {
 }
 .games .games-grid .game-detail .card .card-image .image[data-v-d6b7fe44] {
   height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .games .games-grid .game-detail .card .card-image img[data-v-d6b7fe44] {
   max-height: 100%;
@@ -631,31 +684,6 @@ iframe[data-v-d6b7fe44] {
   width: 100%;
   height: 300px;
 }
-.lds-dual-ring[data-v-d6b7fe44] {
-  margin-top: 150px;
-  display: inline-block;
-  width: 80px;
-  height: 80px;
-}
-.lds-dual-ring[data-v-d6b7fe44]:after {
-  content: " ";
-  display: block;
-  width: 64px;
-  height: 64px;
-  margin: 8px;
-  border-radius: 50%;
-  border: 6px solid #fcf;
-  border-color: #fcf transparent #fcf transparent;
-  animation: lds-dual-ring-d6b7fe44 1.2s linear infinite;
-}
-@keyframes lds-dual-ring-d6b7fe44 {
-0% {
-    transform: rotate(0deg);
-}
-100% {
-    transform: rotate(360deg);
-}
-}
 /*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-6.use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-6.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-6.use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./app/javascript/components/game.vue?vue&type=style&index=0&id=0cef3ce5&lang=scss&scoped=true ***!
   \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
@@ -663,13 +691,15 @@ iframe[data-v-d6b7fe44] {
   text-align: left;
 }
 .game[data-v-0cef3ce5] {
-  margin-top: 130px;
   min-height: 1250px;
   background-image: url(/packs/static/fondo-86d5f1ece17185a668fb.png);
   background-repeat: repeat;
   background-size: 400px;
   background-color: white;
   padding-bottom: 100px;
+  width: 92vw;
+  margin: auto;
+  margin-top: 100px;
 }
 .game img[data-v-0cef3ce5] {
   width: 450px;

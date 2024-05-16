@@ -1,31 +1,18 @@
 <template>
   <div class="playsets container-fluid">
     <div class="container">
-      <!-- <carousel :autoplay="true" :perPage="1" :loop="true">
-        <slide>
-          <div class="bg bg-1"></div>
-        </slide>
-        <slide>
-          <div class="bg bg-2"></div>
-        </slide>
-        <slide>
-          <div class="bg bg-3"></div>
-        </slide>
-        <slide>
-          <div class="bg bg-4"></div>
-        </slide>
-      </carousel> -->
+      
       <!-- <p v-if="playsets.length == 0"><br><br> No hay Ludotecas cargadas en este establecimiento</p> -->
 
       <div class="columns is-3" >
           <div class="column is-one-third playset is-full-mobile" v-for="playset in playsets" v-bind:key="playset.id" v-bind:class="{ disabled: playset.disabled }">
             <div class="card">
               <div class="card-header">
-                <p class="title">{{playset.playset_type}}</p>
+                <p class="title righteous">{{playset.playset_type}}</p>
               </div>
               <div class="card-image" @click.prevent="openPlaysetDetail(playset)">
                 <figure class="image">
-                  <img v-if="playset.image_url" v-lazy="playset.image_url" alt="ludoteca"> 
+                  <img v-if="playset.image_url" v-lazy="playset.image_url" class="animate__animated animate__fadeIn" :alt="playset.playset_type"> 
                 </figure>
               </div>
 
@@ -41,17 +28,17 @@
             <div><img height="100" v-bind:src="require('../images/logo2024_white.png')"></div>
             
             <br>
-            <p class="bd-notification is-info"><img v-bind:src="currentPlayset.image_url" alt="Ludoteca"></p>
+            <p class="bd-notification is-info"><img class="animate__animated animate__fadeInUp" v-bind:src="currentPlayset.image_url" alt="Ludoteca"></p>
 
             
           </div>
           <div class="column">
-            <p class="title is-4">{{currentPlayset.playset_type}}</p>
+            <p class="title is-4 righteous">{{currentPlayset.playset_type}}</p>
             <br>
-            <p><strong>Descripción:</strong>
+            <p><strong>Descripción:</strong></p>
             <p class="bd-notification is-info description">{{currentPlayset.description}}</p>            
             <div class="content" v-if="!currentPlayset.disabled"> 
-                <button @click.prevent="goToPlayset(currentPlayset)" class="button is-light">
+                <button @click.prevent="goToPlayset(currentPlayset)" class="button is-light animate__animated animate__bounceIn animate__delay-1s">
                   <span class="icon">
                     <i class="fas fa-book" aria-hidden="true"></i>
                   </span>
@@ -142,8 +129,9 @@ export default {
       font-size: 30px;
     }
     .description{
-      padding: 30px;
+      padding: 20px 30px 30px 30px;
       text-align: justify;
+      letter-spacing: normal;
     }
     button{
       background: transparent;
@@ -234,7 +222,6 @@ export default {
   }
   img{
     background-color: #fabc58;
-    max-height: 280px;
   }
   &:hover{
     opacity: 1;

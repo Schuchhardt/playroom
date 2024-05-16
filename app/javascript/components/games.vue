@@ -1,6 +1,7 @@
 <template>
   <div class="games container-fluid">
-    <div class="lds-dual-ring" v-if="loading"><div></div></div>
+    <div class="lds-dual-ring" v-if="loading">
+    </div>
     <section>
       <nav class="breadcrumb" aria-label="breadcrumbs" v-if="currentPlayset">
         <ul class="navbar-start">
@@ -8,11 +9,11 @@
             <a @click.prevent="goBack()">
               <span class="icon">
                 <i class="fas fa-chevron-left" aria-hidden="true"></i> 
-                <span class="text"> LUDOTECAS </span>
+                <span class="text righteous"> LUDOTECAS </span>
               </span>
             </a>
           </li>
-          <li class="navbar-item is-active"> {{currentPlayset.playset_type}}</li>
+          <li class="navbar-item is-active righteous animate__animated animate__fadeInDown"> {{currentPlayset.playset_type}}</li>
         </ul>
       </nav>
     </section>
@@ -64,12 +65,12 @@
             <div class="column is-one-third is-full-mobile game-detail" v-for="g in filteredGames" :key="g.id">
               <div class="card" v-on:click.prevent="goToGame(g)">
                 <div class="card-header">
-                  <p class="title">{{g.name}}</p>
+                  <p class="title righteous">{{g.name}}</p>
                 </div>
                 <div class="card-image">
-                  <figure class="image">
-                    <img v-if="g.image_url" v-lazy="g.image_url" alt="ludoteca"> 
-                    <img v-if="!g.image_url" v-lazy="'https://i.imgur.com/Erx03u5.png'" alt="ludoteca"> 
+                  <figure class="image animate__animated animate__zoomIn" :style="{'background-image': 'url('+ g.image_url + ')'}">
+                    <!-- <img v-if="g.image_url" v-lazy="g.image_url" :alt="'Imagen del juego ' + g.name"> 
+                    <img v-if="!g.image_url" v-lazy="'https://i.imgur.com/Erx03u5.png'" :alt=" 'Imagen del juego ' +g.name">  -->
                   </figure>
                 </div>
               </div>
@@ -247,7 +248,7 @@ export default {
   padding-bottom: 100px;
 
   .breadcrumb{
-    padding: 10px 80px;
+    padding: 0px 80px;
     a {
       color: white;
       padding: 0 30px;
@@ -256,11 +257,20 @@ export default {
       }
     }
     li::before{
-      margin-right: 10px;
+      display: none;
     }
     .is-active{
       color: white;
       padding-left: 30px;
+      font-size: 50px;
+      margin-left: 20%;
+    }
+    .navbar-start{
+      font-size: 20px;
+    }
+    .navbar-item:first-child{
+      position: relative;
+      top: 20px;
     }
   }
 
@@ -270,7 +280,7 @@ export default {
 
   .gamelist{
     max-width: 100%;
-    margin-top: 30px;
+    padding-top: 20px;
   }
 
   .results-container{
@@ -422,6 +432,9 @@ export default {
           height: 80%;
           .image{
             height: 100%;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
           }
           img{
             max-height: 100%;
@@ -529,32 +542,6 @@ export default {
 iframe{
   width: 100%;
   height: 300px;
-}
-
-.lds-dual-ring {
-  margin-top: 150px;
-  display: inline-block;
-  width: 80px;
-  height: 80px;
-}
-.lds-dual-ring:after {
-  content: " ";
-  display: block;
-  width: 64px;
-  height: 64px;
-  margin: 8px;
-  border-radius: 50%;
-  border: 6px solid #fcf;
-  border-color: #fcf transparent #fcf transparent;
-  animation: lds-dual-ring 1.2s linear infinite;
-}
-@keyframes lds-dual-ring {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
 }
 
 

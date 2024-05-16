@@ -2,40 +2,41 @@
   <div class="game container-fluid">
     <section class="container" v-if="currentGame">
       <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul class="navbar-start">
+        <ul class="navbar-start" style="padding-top: 10px;">
           <li class="navbar-item" v-if="currentPlayset">
             <a @click.prevent="goBack()">
               <span class="icon" style="padding-left: 10vw;">
                 <i class="fas fa-chevron-left" aria-hidden="true"></i> 
-                <span class="text"> {{currentPlayset.playset_type}} </span>
+                <span class="text righteous"> {{currentPlayset.playset_type}} </span>
               </span>
             </a>
           </li>
         </ul>
       </nav>
       <div class="column is-full-mobile" v-if="loading">
-        <p class="bd-notification is-info">Cargando...</p>
+        <div class="lds-dual-ring">
+        </div>
       </div>
       <div class="columns" id="game" v-if="!loading">
         <div class="column is-full-mobile">
-          <p class="title is-4">{{currentGame.name}}</p>
+          <p class="title is-4 righteous">{{currentGame.name}}</p>
           <p class="bd-notification is-info">
-            <img v-bind:src="currentGame.image_url" class="game-img" alt="Imagen Juego">
+            <img v-bind:src="currentGame.image_url" class="game-img animate__animated animate__zoomIn" alt="Imagen Juego">
           </p>
           <button v-if="currentGame.pdf_url" @click.prevent="goToPDF()" class="button is-primary game-pdf-btn" >
                 <span class="icon"><i class="fas fa-file" aria-hidden="true"></i></span>
-                <span> Ver ficha técnica</span>
+                <span class="righteous"> Ver ficha técnica</span>
           </button>
 
           <button @click.prevent="openSessionModal()" class="button is-warning session-btn" >
             <span class="icon"><i class="fas fa-plus" aria-hidden="true"></i></span>
-            <span> Registrar sesión con este juego</span>
+            <span class="righteous"> Registrar sesión con este juego</span>
           </button>
         </div>
         <div class="column is-full-mobile">
           <div class="columns difficulty" v-if="currentGame.difficulty">
             <div class="column is-full-mobile">
-              <p>Nivel de Dificultad</p>
+              <p class="righteous">Nivel de Dificultad</p>
             </div>
             <div class="column is-full-mobile">
               <b-tooltip :label="currentGame.difficulty">
@@ -46,31 +47,34 @@
             </div>
           </div>
             <br>
-          <p class="how"> ¿Cómo se juega?</p>
+          <p class="how righteous"> ¿Cómo se juega?</p>
 
-          <div v-if="currentGame.youtube_embed_url" id="game-video">
+          <div v-if="currentGame.youtube_embed_url" id="game-video" class="animate__animated animate__zoomIn">
               <br>
               <iframe :src="currentGame.youtube_embed_url" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
           <br>
           <div class="content">
-              <p v-if="currentGame.game_type"><strong>Tipo de juego:</strong> <span class="is-warning capitalized">{{currentGame.game_type}}</span></p>
+              <p v-if="currentGame.game_type">
+                <span class="icon"><i class="fas fa-gamepad" aria-hidden="true"></i></span>
+                <strong class="righteous">Tipo de juego:</strong> <span class="is-warning capitalized">{{currentGame.game_type}}</span>
+              </p>
               <p>
                 <span class="icon"><i class="fas fa-child" aria-hidden="true"></i></span>
-                <strong>Edad sugerida:</strong> {{currentGame.suggested_age}}
+                <strong class="righteous">Edad sugerida:</strong> {{currentGame.suggested_age}}
               </p>
               <p>
                 <span class="icon"><i class="fas fa-clock" aria-hidden="true"></i></span>
-                <strong>Tiempo de juego:</strong> {{currentGame.game_time}}
+                <strong class="righteous">Tiempo de juego:</strong> {{currentGame.game_time}}
               </p>
               <p>
                 <span class="icon"><i class="fas fa-users" aria-hidden="true"></i></span>
-                <strong>Nro de Jugadores:</strong> {{currentGame.number_of_players}}
+                <strong class="righteous">Nro de Jugadores:</strong> {{currentGame.number_of_players}}
               </p>
 
               <p v-if="currentGame.description">
                 <span class="icon"><i class="fas fa-book" aria-hidden="true"></i></span>
-                <strong>Descripción:</strong> {{currentGame.description}}
+                <strong class="righteous">Descripción:</strong> {{currentGame.description}}
               </p>
   
             <br>
@@ -79,7 +83,7 @@
       </div>
 
       <!--Tabs con secciones informativas de cada juego como detalles de la ludoteca, informacion sel, ids-->
-      <b-tabs v-model="activeTab" v-if="currentGame">
+      <b-tabs v-model="activeTab" v-if="currentPlayset && currentGame" class="righteous animate__animated animate__backInUp animate__delay-2s">
             <b-tab-item :label="currentPlayset.playset_type.toUpperCase()" :visible="currentPlayset.playset_type !== 'TODOS LOS JUEGOS'">
               <div class="columns banner" v-for="(pt, i) in Object.keys(PLAYSET_TYPES)" :key="i" v-show="currentPlayset.playset_type == PLAYSET_TYPES[pt]">
                 <div class="column" >
@@ -158,7 +162,7 @@
         </b-tabs>
 
 
-      <div class="columns">
+      <div class="columns" v-if="loading">
         <div class="column">
           <button @click.prevent="printGameDetail()" class="button print-btn is-light transparent">
             <img class="print-img-button" src="https://i.ibb.co/Z1mTM3T/imprimir.png" alt="Imprimir Ficha">
@@ -172,7 +176,7 @@
       </div>
 
       <br>
-      <div class="columns games-grid" v-if="currentGame.related_games.length > 0">
+      <div class="columns games-grid" v-if="!loading && currentGame.related_games.length > 0">
         <p class="t"> Lleva también al aula </p>
         <div class="column is-one-quarter is-full-mobile game-detail" v-for="g in currentGame.related_games" :key="g.id">
           <div class="card" v-on:click.prevent="goToGame(g)">
@@ -190,8 +194,8 @@
       </div>
     </section>
     <b-modal :active.sync="isPDFOpen" scroll="keep" id="pdf-modal">
-      <section v-if="currentGame">
-        <iframe :src="currentGame.pdf_url.replace('view?usp=drive_link', 'preview')" height="480" allow="autoplay"></iframe>
+      <section v-if="currentGame && currentGame.pdf_url">
+        <iframe :src="currentGame.pdf_url?.replace('view?usp=drive_link', 'preview')" height="480" allow="autoplay"></iframe>
       </section>
     </b-modal>
     <b-modal :active.sync="isSessionModalActive" scroll="keep" id="session-modal">
@@ -246,7 +250,7 @@
               <div class="field">
                 <label class="label">¿En que momento del dia se uso? Indica si fue en horario de clases o algun tiempo libre.</label>
                 <div class="control">
-                  <input class="input" type="text" placeholder="Por ejemplo: En la hora de Orientación" v-model="sessionForm.time">
+                  <input class="input" type="text" placeholder="Ej: En la hora de Orientación" v-model="sessionForm.time" style="width: 320px;display: block;margin: auto;">
                 </div>
               </div>
 
@@ -343,9 +347,9 @@
                 </div>
               </div>
 
-              <div class="field is-grouped">
+              <div class="field">
                 <div class="control">
-                  <button type="submit" class="button is-link">Registrar</button>
+                  <button type="submit" class="button is-link register-session-btn">Registrar</button>
                 </div>
                 <!-- <div class="control">
                   <button @click.prevent="isSessionModalActive = false" class="button is-link is-light">Cancelar</button>
@@ -541,15 +545,18 @@ export default {
         const presignedUrl = data.url;
         const finalUrl = data.final_url;
 
+        console.log('URL presignada:', presignedUrl);
+        console.log('URL final:', finalUrl);
         // Subir el archivo a S3 usando la URL presignada
         const result = await fetch(presignedUrl, {
           method: 'PUT',
           body: file,
           headers: {
-            'Content-Type': file.type
-          }
-        });
-
+              'Content-Type': file.type
+            }
+          });
+          
+        console.log(result);
         if (result.ok) {
           this.fileUrl = finalUrl;
           console.log('Archivo subido correctamente');
@@ -557,6 +564,7 @@ export default {
           console.error('Error al subir el archivo');
         }
       } catch (error) {
+        console.log('Error al subir el archivo');
         console.error('Error:', error);
       }
     },
@@ -588,13 +596,15 @@ export default {
 @import "../utils.scss";
   
 .game{
-  margin-top: 130px;
   min-height: 1250px;
   background-image: url("../../assets/images/fondo.png");
   background-repeat: repeat;
   background-size: 400px;
   background-color: white;
   padding-bottom: 100px;
+  width: 92vw;
+  margin: auto;
+  margin-top: 100px;
 
   img{
     width: 450px
