@@ -108,7 +108,7 @@ class LandingController < ApplicationController
 				ods_4_material:	params[:ods_4_material].to_i,
 				ods_4_motivation:	params[:ods_4_motivation].to_i,
 				ods_5_gender:	params[:ods_5_gender].to_i,
-				ods_5_stereotypes:	params[:ods_5_stereotypes].to_i
+				ods_5_stereotypes:	params[:ods_5_stereotypes].to_i,
 				picture_url: params[:picture]
 			)
 			if new_session.save
