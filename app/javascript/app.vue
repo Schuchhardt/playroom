@@ -227,7 +227,6 @@ html, body, pre, code, kbd, samp, button, a, input{
     box-sizing: unset;
     position: relative;
     left: 0;
-
   }
 }
 
@@ -242,7 +241,7 @@ html, body, pre, code, kbd, samp, button, a, input{
       color: #00d8cd;
       opacity: 0.6;
     }
-    &.router-link-active{
+    &.router-link-exact-active{
       color: #0f0d2a;
       background: inherit;
       i{

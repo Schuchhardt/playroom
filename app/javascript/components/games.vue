@@ -290,13 +290,13 @@ export default {
     margin: auto;
     position: relative;
     top: 95px;
-    .bg-img{
-      border-right: 10px solid $dark-blue;
-      background-image: url("../../assets/images/sample_juego.png");
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-    }
+    // .bg-img{
+    //   border-right: 10px solid $dark-blue;
+    //   background-image: url("../../assets/images/sample_juego.png");
+    //   background-size: cover;
+    //   background-repeat: no-repeat;
+    //   background-position: center;
+    // }
     ul{
       text-align: left;
       list-style-type: disc;
@@ -373,25 +373,25 @@ export default {
 
   .games-grid{
     .game-detail{
-      .bg-img{
-        background-image: url("../images/juego.png");
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-        height: 300px;
-        width: 80%;
-        margin: auto;
-        transition: all .2s linear;
-        cursor: pointer;
-        &:hover{
-          opacity: 0.8;
-          a{
-            opacity: 0.9;
-            background: $dark-blue;
-            color: $white;
-          }
-        }
-      }
+      // .bg-img{
+      //   background-image: url("../images/juego.png");
+      //   background-size: contain;
+      //   background-repeat: no-repeat;
+      //   background-position: center;
+      //   height: 300px;
+      //   width: 80%;
+      //   margin: auto;
+      //   transition: all .2s linear;
+      //   cursor: pointer;
+      //   &:hover{
+      //     opacity: 0.8;
+      //     a{
+      //       opacity: 0.9;
+      //       background: $dark-blue;
+      //       color: $white;
+      //     }
+      //   }
+      // }
       a{
         position: relative;
         top: 230px;

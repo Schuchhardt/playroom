@@ -750,25 +750,25 @@ export default {
 .games-grid{
   margin-top: 50px;
   .game-detail{
-    .bg-img{
-      background-image: url("../images/juego.png");
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      height: 300px;
-      width: 80%;
-      margin: auto;
-      transition: all .2s linear;
-      cursor: pointer;
-      &:hover{
-        opacity: 0.8;
-        a{
-          opacity: 0.9;
-          background: $dark-blue;
-          color: $white;
-        }
-      }
-    }
+    // .bg-img{
+    //   background-image: url("../images/juego.png");
+    //   background-size: contain;
+    //   background-repeat: no-repeat;
+    //   background-position: center;
+    //   height: 300px;
+    //   width: 80%;
+    //   margin: auto;
+    //   transition: all .2s linear;
+    //   cursor: pointer;
+    //   &:hover{
+    //     opacity: 0.8;
+    //     a{
+    //       opacity: 0.9;
+    //       background: $dark-blue;
+    //       color: $white;
+    //     }
+    //   }
+    // }
     a{
       position: relative;
       top: 230px;
