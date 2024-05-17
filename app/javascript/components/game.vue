@@ -39,7 +39,7 @@
               <p class="righteous">Nivel de Dificultad</p>
             </div>
             <div class="column is-full-mobile">
-              <b-tooltip :label="currentGame.difficulty" always  append-to-body>
+              <b-tooltip :label="currentGame.difficulty" >
                 <img class="difficulty-img" src="https://i.ibb.co/Fgcb2XG/level-1.png" :alt="currentGame.difficulty" v-show="currentGame.difficulty == allDifficulties.level_1"/>
                 <img class="difficulty-img" src="https://i.ibb.co/BsPyH64/level-2.png" :alt="currentGame.difficulty" v-show="currentGame.difficulty == allDifficulties.level_2"/>
                 <img class="difficulty-img" src="https://i.ibb.co/CKzjN4R/level-3.png" :alt="currentGame.difficulty" v-show="currentGame.difficulty == allDifficulties.level_3"/>
