@@ -551,10 +551,10 @@ export default {
         const result = await fetch(presignedUrl, {
           method: 'PUT',
           body: file,
-          headers: {
-              'Content-Type': file.type
-            }
-          });
+          // headers: {
+          //     'Content-Type': file.type
+          // }
+        });
           
         console.log(result);
         if (result.ok) {
@@ -577,7 +577,12 @@ export default {
       .then(() => {
         this.isSessionModalActive = false
         this.$confetti.start();
-        
+        this.$buefy.toast.open({
+                    duration: 5000,
+                    message: `¡Sesión registrada con éxito!`,
+                    position: 'is-bottom',
+                    type: 'is-success'
+                })
         const vm = this
         setTimeout(() => {
           vm.$confetti.stop();
@@ -748,7 +753,7 @@ export default {
 }
 
 .games-grid{
-  margin-top: 50px;
+  // margin-top: 50px;
   .game-detail{
     // .bg-img{
     //   background-image: url("../images/juego.png");
