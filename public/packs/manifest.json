@@ -1,28 +1,28 @@
 {
-  "application.css": "/packs/css/application-1eb5311d.css",
-  "application.js": "/packs/js/application-c8f9607d1bfcd0c9da64.js",
+  "application.css": "/packs/css/application-7712c756.css",
+  "application.js": "/packs/js/application-daf7fc88b6a9e158e305.js",
   "css/635-4377ed5e.css": "/packs/css/635-4377ed5e.css",
   "css/635-4377ed5e.css.br": "/packs/css/635-4377ed5e.css.br",
   "css/635-4377ed5e.css.gz": "/packs/css/635-4377ed5e.css.gz",
   "css/635-4377ed5e.css.map": "/packs/css/635-4377ed5e.css.map",
   "css/635-4377ed5e.css.map.br": "/packs/css/635-4377ed5e.css.map.br",
   "css/635-4377ed5e.css.map.gz": "/packs/css/635-4377ed5e.css.map.gz",
-  "css/application-1eb5311d.css.br": "/packs/css/application-1eb5311d.css.br",
-  "css/application-1eb5311d.css.gz": "/packs/css/application-1eb5311d.css.gz",
-  "css/application-1eb5311d.css.map": "/packs/css/application-1eb5311d.css.map",
-  "css/application-1eb5311d.css.map.br": "/packs/css/application-1eb5311d.css.map.br",
-  "css/application-1eb5311d.css.map.gz": "/packs/css/application-1eb5311d.css.map.gz",
+  "css/application-7712c756.css.br": "/packs/css/application-7712c756.css.br",
+  "css/application-7712c756.css.gz": "/packs/css/application-7712c756.css.gz",
+  "css/application-7712c756.css.map": "/packs/css/application-7712c756.css.map",
+  "css/application-7712c756.css.map.br": "/packs/css/application-7712c756.css.map.br",
+  "css/application-7712c756.css.map.gz": "/packs/css/application-7712c756.css.map.gz",
   "entrypoints": {
     "application": {
       "assets": {
         "js": [
           "/packs/js/runtime-b505fa1c510f20c9488d.js",
           "/packs/js/635-dc6cb6c279cdc8ef0905.js",
-          "/packs/js/application-c8f9607d1bfcd0c9da64.js"
+          "/packs/js/application-daf7fc88b6a9e158e305.js"
         ],
         "css": [
           "/packs/css/635-4377ed5e.css",
-          "/packs/css/application-1eb5311d.css"
+          "/packs/css/application-7712c756.css"
         ]
       }
     }
@@ -34,11 +34,11 @@
   "js/635-dc6cb6c279cdc8ef0905.js.map": "/packs/js/635-dc6cb6c279cdc8ef0905.js.map",
   "js/635-dc6cb6c279cdc8ef0905.js.map.br": "/packs/js/635-dc6cb6c279cdc8ef0905.js.map.br",
   "js/635-dc6cb6c279cdc8ef0905.js.map.gz": "/packs/js/635-dc6cb6c279cdc8ef0905.js.map.gz",
-  "js/application-c8f9607d1bfcd0c9da64.js.br": "/packs/js/application-c8f9607d1bfcd0c9da64.js.br",
-  "js/application-c8f9607d1bfcd0c9da64.js.gz": "/packs/js/application-c8f9607d1bfcd0c9da64.js.gz",
-  "js/application-c8f9607d1bfcd0c9da64.js.map": "/packs/js/application-c8f9607d1bfcd0c9da64.js.map",
-  "js/application-c8f9607d1bfcd0c9da64.js.map.br": "/packs/js/application-c8f9607d1bfcd0c9da64.js.map.br",
-  "js/application-c8f9607d1bfcd0c9da64.js.map.gz": "/packs/js/application-c8f9607d1bfcd0c9da64.js.map.gz",
+  "js/application-daf7fc88b6a9e158e305.js.br": "/packs/js/application-daf7fc88b6a9e158e305.js.br",
+  "js/application-daf7fc88b6a9e158e305.js.gz": "/packs/js/application-daf7fc88b6a9e158e305.js.gz",
+  "js/application-daf7fc88b6a9e158e305.js.map": "/packs/js/application-daf7fc88b6a9e158e305.js.map",
+  "js/application-daf7fc88b6a9e158e305.js.map.br": "/packs/js/application-daf7fc88b6a9e158e305.js.map.br",
+  "js/application-daf7fc88b6a9e158e305.js.map.gz": "/packs/js/application-daf7fc88b6a9e158e305.js.map.gz",
   "js/runtime-b505fa1c510f20c9488d.js.br": "/packs/js/runtime-b505fa1c510f20c9488d.js.br",
   "js/runtime-b505fa1c510f20c9488d.js.gz": "/packs/js/runtime-b505fa1c510f20c9488d.js.gz",
   "js/runtime-b505fa1c510f20c9488d.js.map": "/packs/js/runtime-b505fa1c510f20c9488d.js.map",
@@ -50,10 +50,8 @@
   "static/carousel3.jpeg": "/packs/static/carousel3-1544b98e611ffc96f05a.jpeg",
   "static/carousel4.jpeg": "/packs/static/carousel4-47418f4914ade3f7fa57.jpeg",
   "static/fondo.png": "/packs/static/fondo-86d5f1ece17185a668fb.png",
-  "static/juego.png": "/packs/static/juego-ed697314fde4213dc28f.png",
   "static/logo2024.png": "/packs/static/logo2024-ce264d739ef063cfabaa.png",
   "static/logo2024_white.png": "/packs/static/logo2024_white-8b8da78e1051b3945964.png",
   "static/marco1.png": "/packs/static/marco1-a7b5d748bb8c18a727cb.png",
-  "static/marco_video.png": "/packs/static/marco_video-6922f1a8e18f3b7a056b.png",
-  "static/sample_juego.png": "/packs/static/sample_juego-4a692714f497ab7ca4a5.png"
+  "static/marco_video.png": "/packs/static/marco_video-6922f1a8e18f3b7a056b.png"
 }
