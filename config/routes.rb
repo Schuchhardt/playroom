@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   get 'landing/presigned_url', to: 'landing#presigned_url'
   post 'landing/create_teacher_session' => "landing#new_teacher_session"
+
+  get 'landing/teacher_ranking', to: 'landing#teacher_ranking'
   
   root to: 'landing#index'
   devise_for :users, controllers: { registrations: 'users/registrations' }

@@ -602,7 +602,7 @@ const PLAYSET_AXES = {
   ESTRATEGIAS: ["Compartir estrategias de trabajo con la familia", "Promueve el trabajo entre estudiantes de diferentes edades", "Garantiza juego autónomo", "Garantiza espacios de juegos"]
 };
 const cleanForm = {
-  students: 0,
+  students: null,
   games: [],
   day: "",
   course: "",
@@ -619,6 +619,7 @@ const cleanForm = {
     return {
       isPDFOpen: false,
       isSessionModalActive: false,
+      isSessionSubmitted: false,
       today: new Date().toISOString().substr(0, 10),
       activeTab: 1,
       currentPlayset: {
@@ -698,7 +699,8 @@ const cleanForm = {
       };
     },
     goToGame(game) {
-      this.$router.push("/games/" + game.id);
+      console.log(game.id);
+      window.open(`/#/games/${game.id}${this.currentPlayset?.id ? '?playsetId=' + this.currentPlayset?.id : ''}`, '_blank');
     },
     goToPDF() {
       this.isPDFOpen = true;
@@ -743,10 +745,10 @@ const cleanForm = {
         // Subir el archivo a S3 usando la URL presignada
         const result = await fetch(presignedUrl, {
           method: 'PUT',
-          body: file,
-          headers: {
-            'Content-Type': file.type
-          }
+          body: file
+          // headers: {
+          //     'Content-Type': file.type
+          // }
         });
         console.log(result);
         if (result.ok) {
@@ -766,10 +768,11 @@ const cleanForm = {
         ...this.sessionForm,
         picture: this.fileUrl
       }).then(() => {
-        this.isSessionModalActive = false;
+        this.isSessionSubmitted = true;
         this.$confetti.start();
         const vm = this;
         setTimeout(() => {
+          vm.isSessionModalActive = false;
           vm.$confetti.stop();
           vm.sessionForm = {
             ...cleanForm
@@ -1038,13 +1041,124 @@ __webpack_require__.r(__webpack_exports__);
       currentGame: null,
       skills_category: [["1. Autoconciencia", 92], ["2. Autogestión", 88], ["3. Conciencia del otro", 65], ["4. Habilidades sociales", 87], ["5. Toma de decisiones responsables", 82]],
       skills_xx: [["Pensamiento critico", 76], ["Creatividad", 67], ["Curiosidad", 77], ["Trabajo en equipo (Colaboración)", 92], ["Comunicación", 80], ["Aprender a aprender", 89]],
-      idps: [["Autoestima académica y motivación escolar", 77], ["Asistencia escolar", 65], ["Retención escolar", 82], ["Equidad de genero", 77], ["Participación y formación ciudadana", 91], ["Clima de convivencia escolar", 76]]
+      idps: [["Autoestima académica y motivación escolar", 77], ["Asistencia escolar", 65], ["Retención escolar", 82], ["Equidad de genero", 77], ["Participación y formación ciudadana", 91], ["Clima de convivencia escolar", 76]],
+      ranking: [],
+      // 	["Juan Perez ", 76],
+      // 	["Pedro Gonzalez ", 67],
+      // 	["Julio Almodovar", 77],
+      // 	["Rosario Venegas", 92],
+      // 	["Juan Carlos Medina", 80],
+      // ],
+      rankingChartOptions: {
+        chartArea: {
+          left: 250,
+          right: 50,
+          top: 100,
+          bottom: 100
+        },
+        title: 'Ranking de usuarios con más sesiones',
+        titleTextStyle: {
+          fontSize: 24 // Adjust the font size as needed
+        },
+        hAxis: {
+          title: 'Cantidad de sesiones registradas',
+          minValue: 0
+        },
+        vAxis: {
+          title: 'Usuarios'
+        },
+        bar: {
+          groupWidth: '75%'
+        },
+        legend: {
+          position: 'none'
+        }
+      },
+      pieOptions: {
+        title: 'Habilidades SEL en ludotecas',
+        titleTextStyle: {
+          fontSize: 24 // Adjust the font size as needed
+        },
+        pieHole: 0.4,
+        legend: {
+          position: 'none'
+        },
+        chartArea: {
+          left: 50,
+          right: 50,
+          top: 100,
+          bottom: 100
+        }
+      },
+      barOptions: {
+        title: 'Habilidades Siglo XXI en ludotecas',
+        titleTextStyle: {
+          fontSize: 24 // Adjust the font size as needed
+        },
+        hAxis: {
+          title: 'Habilidades',
+          minValue: 0
+        },
+        vAxis: {
+          title: 'Porcentaje'
+        },
+        chartArea: {
+          left: 250,
+          right: 50,
+          top: 100,
+          bottom: 100,
+          width: '90vw',
+          height: '40'
+        },
+        legend: {
+          position: 'none'
+        }
+      },
+      columnOptions: {
+        title: 'IDPs en ludotecas',
+        titleTextStyle: {
+          fontSize: 24 // Adjust the font size as needed
+        },
+        hAxis: {
+          title: 'IDPs',
+          minValue: 0
+        },
+        vAxis: {
+          title: 'Porcentaje'
+        },
+        chartArea: {
+          left: 50,
+          right: 50,
+          top: 100,
+          bottom: 100,
+          width: '90vw',
+          height: '40'
+        },
+        legend: {
+          position: 'none'
+        }
+      }
     };
   },
   methods: {
     goToPlayset(playset) {
       this.$router.push("games/" + playset.id);
+    },
+    getRanking() {
+      this.loading = true;
+      const vm = this;
+      fetch('/landing/teacher_ranking').then(response => response.json()).then(data => {
+        vm.ranking = data.teacher_ranking;
+        console.log(vm.ranking);
+        vm.loading = false;
+      }).catch(error => {
+        console.error(error);
+        this.loading = false;
+      });
     }
+  },
+  mounted() {
+    this.getRanking();
   }
 });
 
@@ -1474,7 +1588,7 @@ var render = function render() {
       alt: "Imagen Juego"
     }
   })]), _vm._v(" "), _vm.currentGame.pdf_url ? _c("button", {
-    staticClass: "button is-primary game-pdf-btn",
+    staticClass: "button is-primary game-pdf-btn animate__animated animate__pulse animate__repeat-3",
     on: {
       click: function ($event) {
         $event.preventDefault();
@@ -1484,7 +1598,7 @@ var render = function render() {
   }, [_vm._m(0), _vm._v(" "), _c("span", {
     staticClass: "righteous"
   }, [_vm._v(" Ver ficha técnica")])]) : _vm._e(), _vm._v(" "), _c("button", {
-    staticClass: "button is-warning session-btn",
+    staticClass: "button is-warning session-btn animate__animated animate__pulse animate__repeat-3 animate__delay-5s",
     on: {
       click: function ($event) {
         $event.preventDefault();
@@ -1493,7 +1607,7 @@ var render = function render() {
     }
   }, [_vm._m(1), _vm._v(" "), _c("span", {
     staticClass: "righteous"
-  }, [_vm._v(" Registrar sesión con este juego")])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v(" ¿Ya jugaste? Registra tu sesión acá")])])]), _vm._v(" "), _c("div", {
     staticClass: "column is-full-mobile"
   }, [_vm.currentGame.difficulty ? _c("div", {
     staticClass: "columns difficulty"
@@ -1501,7 +1615,9 @@ var render = function render() {
     staticClass: "column is-full-mobile"
   }, [_c("b-tooltip", {
     attrs: {
-      label: _vm.currentGame.difficulty
+      label: _vm.currentGame.difficulty,
+      always: "",
+      "append-to-body": ""
     }
   }, [_c("img", {
     directives: [{
@@ -1568,7 +1684,7 @@ var render = function render() {
   }, [_vm._v("Nro de Jugadores:")]), _vm._v(" " + _vm._s(_vm.currentGame.number_of_players) + "\n            ")]), _vm._v(" "), _vm.currentGame.description ? _c("p", [_vm._m(7), _vm._v(" "), _c("strong", {
     staticClass: "righteous"
   }, [_vm._v("Descripción:")]), _vm._v(" " + _vm._s(_vm.currentGame.description) + "\n            ")]) : _vm._e(), _vm._v(" "), _c("br")])])]) : _vm._e(), _vm._v(" "), _vm.currentPlayset && _vm.currentGame ? _c("b-tabs", {
-    staticClass: "righteous animate__animated animate__backInUp animate__delay-2s",
+    staticClass: "righteous animate__animated animate__backInUp animate__delay-4s",
     model: {
       value: _vm.activeTab,
       callback: function ($$v) {
@@ -1649,7 +1765,7 @@ var render = function render() {
   })]), _vm._v(" "), _c("div", {
     staticClass: "column text-list"
   }, [_vm.currentGame.skills_by_category["1. Autoconciencia"] ? _c("p", {
-    staticClass: "text-left"
+    staticClass: "text-left righteous"
   }, [_vm._v("Autoconciencia")]) : _vm._e(), _vm._v(" "), _vm._l(_vm.currentGame.skills_by_category["1. Autoconciencia"], function (xxiSkill) {
     return _c("p", {
       key: xxiSkill.id,
@@ -1661,9 +1777,9 @@ var render = function render() {
       attrs: {
         "aria-hidden": "true"
       }
-    })]), _vm._v("  " + _vm._s(xxiSkill.name) + "\n                  ")]);
+    })]), _vm._v("  " + _vm._s(xxiSkill.name.replace(/d/g, "").replace(".", "")) + "\n                  ")]);
   }), _vm._v(" "), _vm.currentGame.skills_by_category["2. Autogestión"] ? _c("p", {
-    staticClass: "text-left"
+    staticClass: "text-left righteous"
   }, [_vm._v("Autogestión")]) : _vm._e(), _vm._v(" "), _vm._l(_vm.currentGame.skills_by_category["2. Autogestión"], function (xxiSkill) {
     return _c("p", {
       key: xxiSkill.id,
@@ -1675,9 +1791,9 @@ var render = function render() {
       attrs: {
         "aria-hidden": "true"
       }
-    })]), _vm._v("  " + _vm._s(xxiSkill.name) + "\n                  ")]);
+    })]), _vm._v("  " + _vm._s(xxiSkill.name.replace(/d/g, "").replace(".", "")) + "\n                  ")]);
   }), _vm._v(" "), _vm.currentGame.skills_by_category["3. Conciencia del otro"] ? _c("p", {
-    staticClass: "text-left"
+    staticClass: "text-left righteous"
   }, [_vm._v("Conciencia del otro")]) : _vm._e(), _vm._v(" "), _vm._l(_vm.currentGame.skills_by_category["3. Conciencia del otro"], function (xxiSkill) {
     return _c("p", {
       key: xxiSkill.id,
@@ -1689,9 +1805,9 @@ var render = function render() {
       attrs: {
         "aria-hidden": "true"
       }
-    })]), _vm._v("  " + _vm._s(xxiSkill.name) + "\n                  ")]);
+    })]), _vm._v("  " + _vm._s(xxiSkill.name.replace(/d/g, "").replace(".", "")) + "\n                  ")]);
   }), _vm._v(" "), _vm.currentGame.skills_by_category["4. Habilidades sociales"] ? _c("p", {
-    staticClass: "text-left"
+    staticClass: "text-left righteous"
   }, [_vm._v("Habilidades sociales")]) : _vm._e(), _vm._v(" "), _vm._l(_vm.currentGame.skills_by_category["4. Habilidades sociales"], function (xxiSkill) {
     return _c("p", {
       key: xxiSkill.id,
@@ -1703,9 +1819,9 @@ var render = function render() {
       attrs: {
         "aria-hidden": "true"
       }
-    })]), _vm._v("  " + _vm._s(xxiSkill.name) + "\n                  ")]);
+    })]), _vm._v("  " + _vm._s(xxiSkill.name.replace(/d/g, "").replace(".", "")) + "\n                  ")]);
   }), _vm._v(" "), _vm.currentGame.skills_by_category["5. Toma de decisiones responsables"] ? _c("p", {
-    staticClass: "text-left"
+    staticClass: "text-left righteous"
   }, [_vm._v("Toma de decisiones responsables")]) : _vm._e(), _vm._v(" "), _vm._l(_vm.currentGame.skills_by_category["5. Toma de decisiones responsables"], function (xxiSkill) {
     return _c("p", {
       key: xxiSkill.id,
@@ -1717,7 +1833,7 @@ var render = function render() {
       attrs: {
         "aria-hidden": "true"
       }
-    })]), _vm._v("  " + _vm._s(xxiSkill.name) + "\n                  ")]);
+    })]), _vm._v("  " + _vm._s(xxiSkill.name.replace(/d/g, "").replace(".", "")) + "\n                  ")]);
   })], 2)]) : _vm._e()]), _vm._v(" "), _c("b-tab-item", {
     attrs: {
       label: "HABILIDADES SIGLO XXI"
@@ -1773,7 +1889,7 @@ var render = function render() {
       }
     })]), _vm._v(" " + _vm._s(idp) + "\n                ")]);
   }), 0)]) : _vm._e()])], 1) : _vm._e(), _vm._v(" "), _vm.loading ? _c("div", {
-    staticClass: "columns"
+    staticClass: "columns animate__animated animate__backInUp animate__delay-4s"
   }, [_c("div", {
     staticClass: "column"
   }, [_c("button", {
@@ -1810,47 +1926,30 @@ var render = function render() {
     staticClass: "columns games-grid"
   }, [_c("p", {
     staticClass: "t"
-  }, [_vm._v(" Lleva también al aula ")]), _vm._v(" "), _vm._l(_vm.currentGame.related_games, function (g) {
+  }, [_vm._v(" Lleva también al aula ")]), _vm._v(" "), _vm._l(_vm.currentGame.related_games, function (relatedGame) {
     return _c("div", {
-      key: g.id,
+      key: relatedGame.id,
       staticClass: "column is-one-quarter is-full-mobile game-detail"
     }, [_c("div", {
       staticClass: "card",
       on: {
         click: function ($event) {
           $event.preventDefault();
-          return _vm.goToGame(g);
+          return _vm.goToGame(relatedGame);
         }
       }
     }, [_c("div", {
       staticClass: "card-header"
     }, [_c("p", {
       staticClass: "title"
-    }, [_vm._v(_vm._s(g.name))])]), _vm._v(" "), _c("div", {
+    }, [_vm._v(_vm._s(relatedGame.name))])]), _vm._v(" "), _c("div", {
       staticClass: "card-image"
     }, [_c("figure", {
-      staticClass: "image"
-    }, [g.image_url ? _c("img", {
-      directives: [{
-        name: "lazy",
-        rawName: "v-lazy",
-        value: g.image_url,
-        expression: "g.image_url"
-      }],
-      attrs: {
-        alt: "ludoteca"
+      staticClass: "image animate__animated animate__zoomIn",
+      style: {
+        "background-image": "url(" + relatedGame.image_url + ")"
       }
-    }) : _vm._e(), _vm._v(" "), !g.image_url ? _c("img", {
-      directives: [{
-        name: "lazy",
-        rawName: "v-lazy",
-        value: "https://i.imgur.com/Erx03u5.png",
-        expression: "'https://i.imgur.com/Erx03u5.png'"
-      }],
-      attrs: {
-        alt: "ludoteca"
-      }
-    }) : _vm._e()])])])]);
+    })])])]);
   })], 2) : _vm._e()], 1) : _vm._e(), _vm._v(" "), _c("b-modal", {
     attrs: {
       active: _vm.isPDFOpen,
@@ -1989,7 +2088,7 @@ var render = function render() {
     staticClass: "input",
     attrs: {
       type: "number",
-      placeholder: "Número de estudiantes"
+      placeholder: "# de estudiantes"
     },
     domProps: {
       value: _vm.sessionForm.students
@@ -2297,7 +2396,23 @@ var render = function render() {
     attrs: {
       type: "submit"
     }
-  }, [_vm._v("Registrar")])])])], 1)])])])])], 1);
+  }, [_vm._v("Registrar")])]), _vm._v(" "), _c("b-message", {
+    staticClass: "pt-2",
+    attrs: {
+      "auto-close": "",
+      "has-icon": "",
+      title: "Genial!",
+      type: "is-success",
+      "aria-close-label": "Close message"
+    },
+    model: {
+      value: _vm.isSessionSubmitted,
+      callback: function ($$v) {
+        _vm.isSessionSubmitted = $$v;
+      },
+      expression: "isSessionSubmitted"
+    }
+  }, [_vm._v("\n                  Tu sesión ha sido registrada con éxito\n              ")])], 1)], 1)])])])])], 1);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -2728,21 +2843,50 @@ var render = function render() {
     staticClass: "stats container-fluid"
   }, [_c("div", {
     staticClass: "container"
-  }, [_c("div", {
+  }, [_c("p", {
+    staticStyle: {
+      "padding-top": "35px"
+    }
+  }, [_vm._v("De acuerdo a las sesiones guardadas y a las ludotecas disponibles en tu colegio")]), _vm._v(" "), _c("div", {
     staticClass: "columns is-3"
-  }, [_c("p", [_vm._v("Estadisticas")]), _vm._v(" "), _c("br"), _vm._v(" "), _c("pie-chart", {
+  }, [_vm.ranking.length > 0 ? _c("div", {
+    staticClass: "column is-full-mobile"
+  }, [_c("bar-chart", {
+    staticClass: "ranking-chart",
     attrs: {
-      data: _vm.skills_category
+      library: _vm.rankingChartOptions,
+      data: _vm.ranking,
+      width: "90vw",
+      height: "40"
     }
-  }), _vm._v(" "), _c("br"), _vm._v(" "), _c("bar-chart", {
+  })], 1) : _vm._e(), _vm._v(" "), _c("div", {
+    staticClass: "column is-full-mobile"
+  }, [_c("pie-chart", {
     attrs: {
-      data: _vm.skills_xx
+      library: _vm.pieOptions,
+      data: _vm.skills_category,
+      width: "90vw",
+      height: "40"
     }
-  }), _vm._v(" "), _c("br"), _vm._v(" "), _c("column-chart", {
+  })], 1), _vm._v(" "), _c("div", {
+    staticClass: "column is-full-mobile"
+  }, [_c("bar-chart", {
     attrs: {
-      data: _vm.idps
+      library: _vm.barOptions,
+      data: _vm.skills_xx,
+      width: "90vw",
+      height: "40"
     }
-  })], 1)])]);
+  })], 1), _vm._v(" "), _c("div", {
+    staticClass: "column is-full-mobile"
+  }, [_c("column-chart", {
+    attrs: {
+      library: _vm.columnOptions,
+      data: _vm.idps,
+      width: "90vw",
+      height: "40"
+    }
+  })], 1)])])]);
 };
 var staticRenderFns = [];
 render._withStripped = true;

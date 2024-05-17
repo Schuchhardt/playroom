@@ -23,14 +23,14 @@
           <p class="bd-notification is-info">
             <img v-bind:src="currentGame.image_url" class="game-img animate__animated animate__zoomIn" alt="Imagen Juego">
           </p>
-          <button v-if="currentGame.pdf_url" @click.prevent="goToPDF()" class="button is-primary game-pdf-btn" >
+          <button v-if="currentGame.pdf_url" @click.prevent="goToPDF()" class="button is-primary game-pdf-btn animate__animated animate__pulse animate__repeat-3" >
                 <span class="icon"><i class="fas fa-file" aria-hidden="true"></i></span>
                 <span class="righteous"> Ver ficha técnica</span>
           </button>
 
-          <button @click.prevent="openSessionModal()" class="button is-warning session-btn" >
+          <button @click.prevent="openSessionModal()" class="button is-warning session-btn animate__animated animate__pulse animate__repeat-3 animate__delay-5s" >
             <span class="icon"><i class="fas fa-plus" aria-hidden="true"></i></span>
-            <span class="righteous"> Registrar sesión con este juego</span>
+            <span class="righteous"> ¿Ya jugaste? Registra tu sesión acá</span>
           </button>
         </div>
         <div class="column is-full-mobile">
@@ -39,7 +39,7 @@
               <p class="righteous">Nivel de Dificultad</p>
             </div>
             <div class="column is-full-mobile">
-              <b-tooltip :label="currentGame.difficulty">
+              <b-tooltip :label="currentGame.difficulty" always  append-to-body>
                 <img class="difficulty-img" src="https://i.ibb.co/Fgcb2XG/level-1.png" :alt="currentGame.difficulty" v-show="currentGame.difficulty == allDifficulties.level_1"/>
                 <img class="difficulty-img" src="https://i.ibb.co/BsPyH64/level-2.png" :alt="currentGame.difficulty" v-show="currentGame.difficulty == allDifficulties.level_2"/>
                 <img class="difficulty-img" src="https://i.ibb.co/CKzjN4R/level-3.png" :alt="currentGame.difficulty" v-show="currentGame.difficulty == allDifficulties.level_3"/>
@@ -83,7 +83,7 @@
       </div>
 
       <!--Tabs con secciones informativas de cada juego como detalles de la ludoteca, informacion sel, ids-->
-      <b-tabs v-model="activeTab" v-if="currentPlayset && currentGame" class="righteous animate__animated animate__backInUp animate__delay-2s">
+      <b-tabs v-model="activeTab" v-if="currentPlayset && currentGame" class="righteous animate__animated animate__backInUp animate__delay-4s">
             <b-tab-item :label="currentPlayset.playset_type.toUpperCase()" :visible="currentPlayset.playset_type !== 'TODOS LOS JUEGOS'">
               <div class="columns banner" v-for="(pt, i) in Object.keys(PLAYSET_TYPES)" :key="i" v-show="currentPlayset.playset_type == PLAYSET_TYPES[pt]">
                 <div class="column" >
@@ -108,25 +108,25 @@
                     <img src="https://i.ibb.co/qCC4t4N/sel.png" alt="SEL"/>
                   </div>
                   <div class="column text-list">
-                    <p class="text-left" v-if="currentGame.skills_by_category['1. Autoconciencia']">Autoconciencia</p>
+                    <p class="text-left righteous" v-if="currentGame.skills_by_category['1. Autoconciencia']">Autoconciencia</p>
                     <p class="text-left" v-for="xxiSkill in currentGame.skills_by_category['1. Autoconciencia']" :key="xxiSkill.id">
-                      <span class="icon"><i class="fas fa-circle" aria-hidden="true"></i></span>  {{xxiSkill.name}}
+                      <span class="icon"><i class="fas fa-circle" aria-hidden="true"></i></span>  {{xxiSkill.name.replace(/d/g,'').replace('.','')}}
                     </p>
-                    <p class="text-left" v-if="currentGame.skills_by_category['2. Autogestión']">Autogestión</p>
+                    <p class="text-left righteous" v-if="currentGame.skills_by_category['2. Autogestión']">Autogestión</p>
                     <p class="text-left" v-for="xxiSkill in currentGame.skills_by_category['2. Autogestión']" :key="xxiSkill.id">
-                      <span class="icon"><i class="fas fa-circle" aria-hidden="true"></i></span>  {{xxiSkill.name}}
+                      <span class="icon"><i class="fas fa-circle" aria-hidden="true"></i></span>  {{xxiSkill.name.replace(/d/g,'').replace('.','')}}
                     </p>
-                    <p class="text-left" v-if="currentGame.skills_by_category['3. Conciencia del otro']">Conciencia del otro</p>
+                    <p class="text-left righteous" v-if="currentGame.skills_by_category['3. Conciencia del otro']">Conciencia del otro</p>
                     <p class="text-left" v-for="xxiSkill in currentGame.skills_by_category['3. Conciencia del otro']" :key="xxiSkill.id">
-                      <span class="icon"><i class="fas fa-circle" aria-hidden="true"></i></span>  {{xxiSkill.name}}
+                      <span class="icon"><i class="fas fa-circle" aria-hidden="true"></i></span>  {{xxiSkill.name.replace(/d/g,'').replace('.','')}}
                     </p>
-                    <p class="text-left" v-if="currentGame.skills_by_category['4. Habilidades sociales']">Habilidades sociales</p>
+                    <p class="text-left righteous" v-if="currentGame.skills_by_category['4. Habilidades sociales']">Habilidades sociales</p>
                     <p class="text-left" v-for="xxiSkill in currentGame.skills_by_category['4. Habilidades sociales']" :key="xxiSkill.id">
-                      <span class="icon"><i class="fas fa-circle" aria-hidden="true"></i></span>  {{xxiSkill.name}}
+                      <span class="icon"><i class="fas fa-circle" aria-hidden="true"></i></span>  {{xxiSkill.name.replace(/d/g,'').replace('.','')}}
                     </p>
-                    <p class="text-left" v-if="currentGame.skills_by_category['5. Toma de decisiones responsables']">Toma de decisiones responsables</p>
+                    <p class="text-left righteous" v-if="currentGame.skills_by_category['5. Toma de decisiones responsables']">Toma de decisiones responsables</p>
                     <p class="text-left" v-for="xxiSkill in currentGame.skills_by_category['5. Toma de decisiones responsables']" :key="xxiSkill.id">
-                      <span class="icon"><i class="fas fa-circle" aria-hidden="true"></i></span>  {{xxiSkill.name}}
+                      <span class="icon"><i class="fas fa-circle" aria-hidden="true"></i></span>  {{xxiSkill.name.replace(/d/g,'').replace('.','')}}
                     </p>
                   </div>
                 </div>
@@ -162,7 +162,7 @@
         </b-tabs>
 
 
-      <div class="columns" v-if="loading">
+      <div class="columns animate__animated animate__backInUp animate__delay-4s " v-if="loading">
         <div class="column">
           <button @click.prevent="printGameDetail()" class="button print-btn is-light transparent">
             <img class="print-img-button" src="https://i.ibb.co/Z1mTM3T/imprimir.png" alt="Imprimir Ficha">
@@ -178,15 +178,15 @@
       <br>
       <div class="columns games-grid" v-if="!loading && currentGame.related_games.length > 0">
         <p class="t"> Lleva también al aula </p>
-        <div class="column is-one-quarter is-full-mobile game-detail" v-for="g in currentGame.related_games" :key="g.id">
-          <div class="card" v-on:click.prevent="goToGame(g)">
+        <div class="column is-one-quarter is-full-mobile game-detail" v-for="relatedGame in currentGame.related_games" :key="relatedGame.id">
+          <div class="card" @click.prevent="goToGame(relatedGame)">
             <div class="card-header">
-              <p class="title">{{g.name}}</p>
+              <p class="title">{{relatedGame.name}}</p>
             </div>
             <div class="card-image">
-              <figure class="image">
-                <img v-if="g.image_url" v-lazy="g.image_url" alt="ludoteca"> 
-                <img v-if="!g.image_url" v-lazy="'https://i.imgur.com/Erx03u5.png'" alt="ludoteca"> 
+              <figure class="image animate__animated animate__zoomIn" :style="{'background-image': 'url('+ relatedGame.image_url + ')'}">
+                <!-- <img v-if="relatedGame.image_url" v-lazy="relatedGame.image_url" alt="ludoteca"> 
+                <img v-if="!relatedGame.image_url" v-lazy="'https://i.imgur.com/Erx03u5.png'" alt="ludoteca">  -->
               </figure>
             </div>
           </div>
@@ -243,7 +243,7 @@
               <div class="field">
                 <label class="label">¿Cuántos estudiantes jugaron?</label>
                 <div class="control short-control">
-                  <input class="input" type="number" placeholder="Número de estudiantes" v-model="sessionForm.students">
+                  <input class="input" type="number" placeholder="# de estudiantes" v-model="sessionForm.students">
                 </div>
               </div>
 
@@ -351,6 +351,17 @@
                 <div class="control">
                   <button type="submit" class="button is-link register-session-btn">Registrar</button>
                 </div>
+
+                <b-message 
+                    class="pt-2"
+                    auto-close
+                    has-icon
+                    v-model="isSessionSubmitted"
+                    title="Genial!" 
+                    type="is-success" 
+                    aria-close-label="Close message">
+                    Tu sesión ha sido registrada con éxito
+                </b-message>
                 <!-- <div class="control">
                   <button @click.prevent="isSessionModalActive = false" class="button is-link is-light">Cancelar</button>
                 </div> -->
@@ -406,7 +417,7 @@ const PLAYSET_AXES = {
 }
 
 const cleanForm = {
-  students: 0,
+  students: null,
   games: [],
   day: "",
   course: "",
@@ -424,6 +435,7 @@ export default {
     return {
       isPDFOpen: false,
       isSessionModalActive: false,
+      isSessionSubmitted: false,
       today: new Date().toISOString().substr(0, 10),
       activeTab: 1,
       currentPlayset: {
@@ -506,7 +518,8 @@ export default {
       }
      },
      goToGame(game) {
-      this.$router.push("/games/" + game.id)
+      console.log(game.id)
+      window.open(`/#/games/${game.id}${this.currentPlayset?.id ? '?playsetId=' + this.currentPlayset?.id : ''}`, '_blank')
      },
      goToPDF() {
       this.isPDFOpen = true
@@ -575,16 +588,11 @@ export default {
         picture: this.fileUrl
       })
       .then(() => {
-        this.isSessionModalActive = false
+        this.isSessionSubmitted = true
         this.$confetti.start();
-        this.$buefy.toast.open({
-                    duration: 5000,
-                    message: `¡Sesión registrada con éxito!`,
-                    position: 'is-bottom',
-                    type: 'is-success'
-                })
         const vm = this
         setTimeout(() => {
+          vm.isSessionModalActive = false
           vm.$confetti.stop();
           vm.sessionForm = {
             ...cleanForm
@@ -813,6 +821,9 @@ export default {
         height: 80%;
         .image{
           height: 100%;
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
         }
         img{
           max-height: 100%;

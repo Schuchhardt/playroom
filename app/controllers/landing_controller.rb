@@ -142,6 +142,27 @@ class LandingController < ApplicationController
 		render json: { url: presigned_url, final_url: final_url }
 	end
 
+	# Get top 5 teachers with most sessions: 
+	# [ teacher_name, teacher_sessions_count ]
+	def teacher_ranking
+		sessions = TeacherSession.all.group_by(&:user_id)
+		teacher_ranking = []
+		sessions.each do |user_id, user_sessions|
+			teacher = User.find(user_id)
+			teacher_ranking << ["#{teacher.name}", user_sessions.count]
+			teacher_ranking << ["#{teacher.name}", user_sessions.count]
+			teacher_ranking << ["#{teacher.name}", user_sessions.count]
+
+			teacher_ranking << ["#{teacher.name}", user_sessions.count]
+			teacher_ranking << ["#{teacher.name}", user_sessions.count]
+			teacher_ranking << ["#{teacher.name}", user_sessions.count]
+		end
+		teacher_ranking = teacher_ranking.sort_by{ |tr| tr[1] }.reverse.first(5)
+		render json: { teacher_ranking: teacher_ranking }, status: 200
+	end
+
+
+
 	private
 	
 	def get_default_img playset
